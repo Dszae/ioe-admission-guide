@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ioe-admission.dipeshsapkota7.com.np/sitemap.xml
+Sitemap: https://git-visualizer.dipeshsapkota7.com.np/sitemap.xml
