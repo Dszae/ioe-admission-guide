@@ -352,7 +352,7 @@ export default function App() {
                 {mode === 'campus' && (
                   <div>
                     <label className={`block text-xs font-bold uppercase tracking-wider mb-2 ${theme.mutedText}`}>Target Campus</label>
-                    <select className={`w-full px-4 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all font-mono text-sm uppercase tracking-wider cursor-pointer ${theme.inputBg}`} value={form.college} onChange={(e) => setForm({...form, college: e.target.value})}>
+                    <select aria-label="Target Campus" className={`w-full px-4 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all font-mono text-sm uppercase tracking-wider cursor-pointer ${theme.inputBg}`} value={form.college} onChange={(e) => setForm({...form, college: e.target.value})}>
                       <option value="Pulchowk">Pulchowk Campus</option>
                       <option value="Thapathali">Thapathali Campus</option>
                       <option value="WRC">Pashchimanchal (WRC, Pokhara)</option>
@@ -363,20 +363,20 @@ export default function App() {
                 )}
                 <div className={mode === 'cross' ? 'sm:col-span-2' : ''}>
                   <label className={`block text-xs font-bold uppercase tracking-wider mb-2 ${theme.mutedText}`}>Engineering Program</label>
-                  <select className={`w-full px-4 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all font-mono text-sm tracking-wider cursor-pointer ${theme.inputBg}`} value={form.program} onChange={(e) => setForm({...form, program: e.target.value})}>
+                  <select aria-label="Engineering Program" className={`w-full px-4 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all font-mono text-sm tracking-wider cursor-pointer ${theme.inputBg}`} value={form.program} onChange={(e) => setForm({...form, program: e.target.value})}>
                     {availablePrograms.map(prog => <option key={prog} value={prog}>{prog}</option>)}
                   </select>
                 </div>
                 <div>
                   <label className={`block text-xs font-bold uppercase tracking-wider mb-2 ${theme.mutedText}`}>Fee Structure</label>
-                  <select className={`w-full px-4 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all font-mono text-sm uppercase tracking-wider cursor-pointer ${theme.inputBg}`} value={form.feeType} onChange={(e) => setForm({...form, feeType: e.target.value})}>
+                  <select aria-label="Fee Structure" className={`w-full px-4 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all font-mono text-sm uppercase tracking-wider cursor-pointer ${theme.inputBg}`} value={form.feeType} onChange={(e) => setForm({...form, feeType: e.target.value})}>
                     <option value="Regular">Regular (Scholarship)</option>
                     <option value="FullFee">Full Fee (Paying)</option>
                   </select>
                 </div>
                 <div>
                   <label className={`block text-xs font-bold uppercase tracking-wider mb-2 ${theme.mutedText}`}>Admission Quota</label>
-                  <select className={`w-full px-4 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all font-mono text-sm uppercase tracking-wider cursor-pointer ${theme.inputBg}`} value={form.quota} onChange={(e) => setForm({...form, quota: e.target.value})}>
+                  <select aria-label="Admission Quota" className={`w-full px-4 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all font-mono text-sm uppercase tracking-wider cursor-pointer ${theme.inputBg}`} value={form.quota} onChange={(e) => setForm({...form, quota: e.target.value})}>
                     <option value="Open">Open Category</option>
                     <option value="Janajati">Adivashi / Janajati</option>
                     <option value="Female_FmQ">Female Merit Quota (FmQ)</option>
@@ -677,10 +677,10 @@ export default function App() {
               <p className={`text-sm mb-8 print:text-black ${theme.mutedText}`}>Compare syllabus overlap and core sectors between engineering faculties.</p>
               
               <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-8 print:hidden">
-                <select className={`w-full px-4 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all font-mono text-base tracking-wider cursor-pointer ${theme.inputBg}`} value={compA} onChange={(e) => setCompA(e.target.value)}>
+                <select aria-label="First Faculty to Compare" className={`w-full px-4 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all font-mono text-base tracking-wider cursor-pointer ${theme.inputBg}`} value={compA} onChange={(e) => setCompA(e.target.value)}>
                   {Object.keys(FACULTY_DATA).map(prog => <option key={prog} value={prog}>{prog}</option>)}
                 </select>
-                <select className={`w-full px-4 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all font-mono text-base tracking-wider cursor-pointer ${theme.inputBg}`} value={compB} onChange={(e) => setCompB(e.target.value)}>
+                <select aria-label="Second Faculty to Compare" className={`w-full px-4 py-4 rounded-xl border focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all font-mono text-base tracking-wider cursor-pointer ${theme.inputBg}`} value={compB} onChange={(e) => setCompB(e.target.value)}>
                   {Object.keys(FACULTY_DATA).map(prog => <option key={prog} value={prog}>{prog}</option>)}
                 </select>
               </div>
@@ -784,11 +784,6 @@ export default function App() {
         </main>
       </div>
       
-      {/* 
-        CRITICAL SEO UPDATE: 
-        This footer links directly to your main portfolio. Search engines use this 
-        to pass domain authority from your predictor app back to your primary site.
-      */}
       <div className={`mt-8 mb-4 relative z-10 text-xs font-bold uppercase tracking-widest print:hidden ${theme.mutedText} opacity-80 hover:opacity-100 transition-opacity`}>
         Developed by{' '}
         <a 
