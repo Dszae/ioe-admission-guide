@@ -35,7 +35,7 @@ This project provides **estimates and guidance**, not official admission decisio
 ## Repository Structure
 
 ```text
-/home/runner/work/ioe-admission-guide/ioe-admission-guide
+.
 ├─ src/
 │  ├─ App.jsx            # Main UI, calculators, data tables, admission guidance
 │  ├─ main.jsx           # App bootstrap
