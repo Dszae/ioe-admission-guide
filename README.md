@@ -76,6 +76,12 @@ Build static assets:
 npm run build
 ```
 
+Check the source for lint issues:
+
+```bash
+npm run lint
+```
+
 Preview the production build locally:
 
 ```bash
