@@ -98,25 +98,14 @@ export default function Header({
             </div>
 
             <div className="flex flex-col min-w-0">
-              <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium text-slate-500 leading-none mb-1">
-                <a
-                  href="https://www.dipeshsapkota7.com.np/"
-                  target="_blank"
-                  rel="noopener noreferrer home author"
-                  className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                  title="Dipesh Sapkota Portfolio"
-                >
-                  dipeshsapkota7.com.np
-                </a>
-                <span className="opacity-40" aria-hidden="true">/</span>
-                <span className="text-slate-600 dark:text-slate-400 font-semibold">admission</span>
-              </nav>
-
+              <span className="text-[10px] sm:text-[11px] font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider leading-none mb-1">
+                TU Engineering Counseling
+              </span>
               <div className="flex items-center gap-1.5 sm:gap-2">
                 <span className="text-sm sm:text-base font-bold tracking-tight text-slate-900 dark:text-white truncate leading-tight">
                   IOE Admission Hub
                 </span>
-                <span className="text-[10px] font-semibold px-1.5 py-0.2 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/50 hidden md:inline-block">
+                <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/50 hidden md:inline-block">
                   2081/2082 BS
                 </span>
               </div>
@@ -149,23 +138,8 @@ export default function Header({
             })}
           </nav>
 
-          {/* Right: Actions, Backlinks & Hamburger Button */}
+          {/* Right: Print, Theme Toggle & Mobile/Tablet Hamburger Button */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            {/* Original Website Link */}
-            <a
-              href="https://www.dipeshsapkota7.com.np/"
-              target="_blank"
-              rel="noopener noreferrer home author"
-              title="Visit original developer website dipeshsapkota7.com.np"
-              aria-label="Visit original developer website dipeshsapkota7.com.np"
-              className="px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-50 dark:hover:bg-slate-750 text-xs font-medium transition-colors shadow-2xs hidden sm:inline-flex items-center gap-1.5"
-            >
-              <span>dipeshsapkota7.com.np</span>
-              <svg className="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </a>
-
             {/* Print / Save Button */}
             <button
               onClick={() => window.print()}
@@ -198,14 +172,14 @@ export default function Header({
               )}
             </button>
 
-            {/* Hamburger Button to Open Drawer */}
+            {/* Mobile & Tablet Hamburger Button (Hidden on Laptops lg:hidden) */}
             <button
               type="button"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label={menuOpen ? "Close menu" : "Open navigation menu"}
               aria-expanded={menuOpen}
               aria-controls="mobile-nav-dialog"
-              className="p-2 sm:px-2.5 sm:py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-2xs hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="lg:hidden p-2 sm:px-2.5 sm:py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-2xs hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <svg className="w-5 h-5 text-slate-700 dark:text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 {menuOpen ? (
@@ -308,57 +282,6 @@ export default function Header({
                 </div>
               ))}
 
-              {/* External Sitelinks & Network */}
-              <div className="pt-3 border-t border-slate-200 dark:border-slate-800 space-y-2">
-                <span className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-2 block">
-                  Author & Network Links
-                </span>
-                
-                {/* Main Website Link */}
-                <a
-                  href="https://www.dipeshsapkota7.com.np/"
-                  target="_blank"
-                  rel="noopener noreferrer home author"
-                  className="p-3 rounded-xl border border-blue-200/80 dark:border-blue-800/40 bg-blue-50/40 dark:bg-blue-950/20 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors flex items-center justify-between text-xs text-blue-700 dark:text-blue-300 font-semibold"
-                >
-                  <div className="flex flex-col">
-                    <span>Original Website: dipeshsapkota7.com.np</span>
-                    <span className="text-[11px] font-normal text-blue-600/80 dark:text-blue-400/80">Developer portfolio and engineering projects</span>
-                  </div>
-                  <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-
-                {/* Git Visualizer Companion Platform */}
-                <a
-                  href="https://git-visualizer.dipeshsapkota7.com.np/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-850 transition-colors flex items-center justify-between text-xs text-slate-700 dark:text-slate-300 font-medium"
-                >
-                  <div className="flex flex-col">
-                    <span className="font-semibold text-slate-900 dark:text-white">Git Visualizer Platform</span>
-                    <span className="text-[11px] text-slate-500 dark:text-slate-400">Interactive commit graph and simulator</span>
-                  </div>
-                  <svg className="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-
-                {/* Official TU Portal */}
-                <a
-                  href="https://entrance.ioe.edu.np/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2.5 rounded-lg border border-slate-200/80 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center justify-between"
-                >
-                  <span>Official IOE Entrance Board (entrance.ioe.edu.np)</span>
-                  <svg className="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-              </div>
             </div>
 
             {/* Drawer Footer Actions */}

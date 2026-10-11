@@ -143,7 +143,7 @@ export default function App() {
   return (
     <div className={`min-h-screen flex flex-col items-center justify-between transition-colors duration-200 ${
       isDark ? 'dark bg-[#0b0e17] text-slate-100' : 'bg-[#f8fafc] text-slate-800'
-    } pt-20 sm:pt-24 p-2 sm:p-5 lg:p-7 font-sans print:bg-white print:text-black print:p-0`}>
+    } pt-20 sm:pt-24 lg:pt-28 px-3 sm:px-6 lg:px-8 pb-8 sm:pb-12 font-sans print:bg-white print:text-black print:p-0`}>
 
       {/* Fixed Navbar at Top */}
       <Header 
@@ -154,7 +154,7 @@ export default function App() {
       />
 
       {/* Main Container */}
-      <div className="w-full max-w-5xl relative z-10 flex-1 flex flex-col">
+      <div className="w-full max-w-5xl relative z-10 flex-1 flex flex-col mt-2 sm:mt-4">
         
         {/* Navigation Bar */}
         <nav 
