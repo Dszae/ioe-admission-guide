@@ -46,8 +46,6 @@ const NAV_GROUPS = [
 const tabHref = (tabId) => tabId === 'predictor' ? '/' : `/?tab=${tabId}`;
 
 export default function Header({ 
-  isDark, 
-  setIsDark, 
   activeTab = 'predictor', 
   setActiveTab 
 }) {
@@ -239,7 +237,7 @@ export default function Header({
             </div>
           </nav>
 
-          {/* Right: Print, Theme Toggle & Mobile/Tablet Hamburger Button */}
+          {/* Right: Print and Mobile/Tablet Hamburger Button */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {/* Print / Save Button */}
             <button
@@ -252,25 +250,6 @@ export default function Header({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
               </svg>
               <span className="hidden md:inline">Print</span>
-            </button>
-
-            {/* Theme Toggle Button */}
-            <button
-              onClick={() => setIsDark(!isDark)}
-              aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-              aria-pressed={isDark}
-              title={isDark ? "Switch to light theme" : "Switch to dark theme"}
-              className="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-2xs hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              {isDark ? (
-                <svg className="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-              ) : (
-                <svg className="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.03 9.03 0 008.354-5.646z" />
-                </svg>
-              )}
             </button>
 
             {/* Mobile & Tablet Hamburger Button (Hidden on Laptops lg:hidden) */}

@@ -30,36 +30,20 @@ function TabLoadingSkeleton() {
 }
 
 export default function App() {
-  const [isDark, setIsDark] = useState(() => {
-    try {
-      const saved = localStorage.getItem('theme');
-      if (saved) return saved === 'dark';
-      return false; // Default to light theme
-    } catch {
-      return false;
-    }
-  });
+  const isDark = false;
 
-  // Sync dark class on document root, body, color-scheme, and storage
+  // Keep the document in the single supported light theme.
   useEffect(() => {
     try {
       const root = document.documentElement;
       const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-      if (isDark) {
-        root.classList.add('dark');
-        document.body.classList.add('dark');
-        root.style.colorScheme = 'dark';
-        if (themeColorMeta) themeColorMeta.setAttribute('content', '#000000');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        root.classList.remove('dark');
-        document.body.classList.remove('dark');
-        root.style.colorScheme = 'light';
-        if (themeColorMeta) themeColorMeta.setAttribute('content', '#1e40af');
-        localStorage.setItem('theme', 'light');
-      }
+      root.classList.remove('dark');
+      document.body.classList.remove('dark');
+      root.style.colorScheme = 'light';
+      if (themeColorMeta) themeColorMeta.setAttribute('content', '#1e40af');
+      localStorage.removeItem('theme');
     } catch {}
-  }, [isDark]);
+  }, []);
   
   // Read initial tab from URL parameter for search sitelink compatibility
   const [activeTab, setActiveTab] = useState(() => {
@@ -106,8 +90,6 @@ export default function App() {
 
       {/* Fixed Navbar at Top */}
       <Header 
-        isDark={isDark} 
-        setIsDark={setIsDark} 
         activeTab={activeTab}
         setActiveTab={setActiveTab}
       />
