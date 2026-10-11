@@ -1,0 +1,25 @@
+# IOE Admission Hub & Rank Predictor
+
+> A modern, accessible, and fast admission guidance portal for engineering aspirants of the Institute of Engineering (IOE), Tribhuvan University (TU), Nepal.
+
+URL: https://ioe-admission.dipeshsapkota7.com.np/
+Repository: https://github.com/dipeshsapkota7/ioe-predictor
+Author: Dipesh Sapkota
+
+## Overview
+IOE Admission Hub assists high school graduates (+2 / A-Level / Diploma in Engineering) in evaluating their admission probabilities into engineering programs across constituent campuses and affiliated colleges under Tribhuvan University.
+
+## Core Modules & Capabilities
+- **Rank & Probability Predictor**: Evaluates student entrance ranks against multi-year historical cutoff benchmarks across regular and full-fee quotas.
+- **Constituent Campus Explorer**: Comprehensive seat matrix across all 5 constituent campuses (Pulchowk, Thapathali, WRC, ERC, ChEC) totaling 2,040 constituent engineering seats.
+- **Affiliated College Directory**: Details for 10 TU-affiliated private engineering colleges across Bagmati, Gandaki, and Koshi provinces.
+- **CBT Score Calculator**: Accurately computes net scores based on IOE's standard 140-mark entrance format with a 10% negative marking penalty for incorrect responses.
+- **Score-to-Rank Estimator**: Maps estimated entrance scores to historical percentile ranks based on archive distribution curves.
+- **Priority List Generator**: Builds tailored counseling priority order based on rank bracket, location preference, and financial scheme (regular vs. full-fee).
+- **Counseling & Document Checklist**: Step-by-step checklist of mandatory certificates, transcripts, citizenship, and quota endorsements.
+- **Official Notice Tracker**: Aggregated feed of authentic IOE entrance examination boards and campus counseling links.
+
+## Official Data Provenance & Disclaimers
+- All seat numbers, constituent program distributions, and official syllabi reflect authentic published documentation from the IOE Entrance Examination Board (entrance.ioe.edu.np) and IOE Central Admission Committee (admission.ioe.edu.np).
+- Cutoff ranks and admission percentiles are historical references from verified 2079/2080 BS counseling archives.
+- Statistical estimations are guidance tools and do not constitute an official guarantee of admission. Official admissions are governed exclusively by IOE TU merit rank allocations.
