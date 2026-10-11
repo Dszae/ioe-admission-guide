@@ -1,4 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+
+const SECONDARY_TABS = [
+  { id: 'estimator', label: 'Score Curve' },
+  { id: 'affiliated', label: 'Affiliated Colleges' },
+  { id: 'compare', label: 'Compare Disciplines' },
+  { id: 'checklist', label: 'Checklist' },
+  { id: 'notices', label: 'Official Notices' },
+  { id: 'financials', label: 'Fee Breakdown' }
+];
 
 const NAV_GROUPS = [
   {
@@ -41,6 +50,21 @@ export default function Header({
   setActiveTab 
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
+  const moreRef = useRef(null);
+
+  // Close More dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (moreRef.current && !moreRef.current.contains(e.target)) {
+        setMoreOpen(false);
+      }
+    };
+    if (moreOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [moreOpen]);
 
   // Lock background scrolling and interaction when menu is open
   useEffect(() => {
@@ -53,22 +77,24 @@ export default function Header({
     }
   }, [menuOpen]);
 
-  // Close menu on Escape key
+  // Close menus on Escape key
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape' && menuOpen) {
-        setMenuOpen(false);
+      if (e.key === 'Escape') {
+        if (moreOpen) setMoreOpen(false);
+        if (menuOpen) setMenuOpen(false);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [menuOpen]);
+  }, [menuOpen, moreOpen]);
 
   const handleSelectTab = (tabId) => {
     if (setActiveTab) {
       setActiveTab(tabId);
     }
     setMenuOpen(false);
+    setMoreOpen(false);
   };
 
   return (
@@ -112,7 +138,7 @@ export default function Header({
             </div>
           </div>
 
-          {/* Center: Desktop Shortcut Navigation */}
+          {/* Center: Desktop Shortcut Navigation with More Dropdown */}
           <nav className="hidden lg:flex items-center gap-1" aria-label="Quick Navigation">
             {[
               { id: 'predictor', label: 'Predictor' },
@@ -136,6 +162,58 @@ export default function Header({
                 </button>
               );
             })}
+
+            {/* Desktop More Tools Dropdown */}
+            <div className="relative" ref={moreRef}>
+              <button
+                type="button"
+                onClick={() => setMoreOpen(!moreOpen)}
+                aria-expanded={moreOpen}
+                aria-haspopup="true"
+                className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all inline-flex items-center gap-1.5 ${
+                  SECONDARY_TABS.some(t => t.id === activeTab)
+                    ? 'bg-blue-600 text-white shadow-2xs'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                }`}
+              >
+                <span>
+                  {SECONDARY_TABS.find(t => t.id === activeTab)?.label || 'More'}
+                </span>
+                <svg className={`w-3.5 h-3.5 transition-transform duration-200 ${moreOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {moreOpen && (
+                <div className="absolute right-0 top-full mt-1.5 w-52 py-1 bg-white dark:bg-[#131620] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl z-50 animate-fadeIn">
+                  <div className="px-3 py-1.5 border-b border-slate-100 dark:border-slate-800 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                    Additional Tools
+                  </div>
+                  {SECONDARY_TABS.map((tab) => {
+                    const isCurrent = activeTab === tab.id;
+                    return (
+                      <button
+                        key={tab.id}
+                        onClick={() => {
+                          handleSelectTab(tab.id);
+                          setMoreOpen(false);
+                        }}
+                        className={`w-full text-left px-3 py-2 flex items-center justify-between text-xs transition-colors ${
+                          isCurrent
+                            ? 'bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-blue-300 font-semibold'
+                            : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
+                        }`}
+                      >
+                        <span>{tab.label}</span>
+                        {isCurrent && (
+                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400"></span>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* Right: Print, Theme Toggle & Mobile/Tablet Hamburger Button */}
