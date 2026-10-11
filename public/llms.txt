@@ -2,9 +2,9 @@
 
 > A modern, accessible, and fast admission guidance portal for engineering aspirants of the Institute of Engineering (IOE), Tribhuvan University (TU), Nepal.
 
-URL: https://ioe-admission.dipeshsapkota7.com.np/
-Repository: https://github.com/dipeshsapkota7/ioe-predictor
-Author: Dipesh Sapkota
+- **Website**: [https://ioe-admission.dipeshsapkota7.com.np/](https://ioe-admission.dipeshsapkota7.com.np/)
+- **Repository**: [https://github.com/dipeshsapkota7/ioe-predictor](https://github.com/dipeshsapkota7/ioe-predictor)
+- **Author**: Dipesh Sapkota
 
 ## Overview
 IOE Admission Hub assists high school graduates (+2 / A-Level / Diploma in Engineering) in evaluating their admission probabilities into engineering programs across constituent campuses and affiliated colleges under Tribhuvan University.
