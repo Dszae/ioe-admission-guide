@@ -39,6 +39,19 @@ export default function Footer({ isDark, showOfficialPortals = false }) {
       </div>
       )}
 
+      <nav aria-label="IOE Admission Hub sections" className="mb-5 border-y border-slate-200 py-4">
+        <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2.5">
+          Explore IOE Admission Hub
+        </h2>
+        <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
+          <a href="/" className="text-blue-700 hover:text-blue-900 hover:underline">Predictor</a>
+          <a href="/?tab=campuses" className="text-blue-700 hover:text-blue-900 hover:underline">Campuses</a>
+          <a href="/?tab=priority" className="text-blue-700 hover:text-blue-900 hover:underline">Priority</a>
+          <a href="/?tab=calculator" className="text-blue-700 hover:text-blue-900 hover:underline">Calculator</a>
+          <a href="/?tab=guide" className="text-blue-700 hover:text-blue-900 hover:underline">Guide</a>
+        </div>
+      </nav>
+
       {/* Disclaimers & Credits */}
       <div className="space-y-4 text-xs leading-relaxed border-t border-slate-200 dark:border-slate-800 pt-5">
         

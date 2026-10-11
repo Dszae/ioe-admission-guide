@@ -357,18 +357,6 @@ export default function Header({
 
             </div>
 
-            {/* Drawer Footer Actions */}
-            <div className="p-4 border-t border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-800 flex items-center justify-between text-xs">
-              <span className="text-slate-700 dark:text-slate-200 font-medium">
-                Theme: {isDark ? 'Dark Mode' : 'Light Mode'}
-              </span>
-              <button
-                onClick={() => setIsDark(!isDark)}
-                className="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold shadow-2xs hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
-              >
-                Switch to {isDark ? 'Light' : 'Dark'}
-              </button>
-            </div>
           </div>
         </>
       )}

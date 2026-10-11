@@ -7,21 +7,8 @@
     <link rel="apple-touch-icon" href="/ioe-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1e40af" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="color-scheme" content="light" />
     <link rel="author" href="https://www.dipeshsapkota7.com.np/" />
-
-    <script>
-      (function() {
-        try {
-          var t = localStorage.getItem('theme');
-          var isDark = t === 'dark'; // Default to light theme, only use dark if explicitly saved
-          if (isDark) {
-            document.documentElement.classList.add('dark');
-            document.documentElement.style.colorScheme = 'dark';
-          }
-        } catch(e) {}
-      })();
-    </script>
 
     <!-- Google Font: Manrope -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -55,7 +42,7 @@
     <meta property="twitter:description" content="A comprehensive admission toolkit for Tribhuvan University Institute of Engineering (IOE) applicants in Nepal. Predict ranks, explore constituent campus seats, track notices, and organize priority lists." />
     <meta property="twitter:image" content="https://ioe-admission.dipeshsapkota7.com.np/og-image.png" />
 
-    <!-- Structured Data (JSON-LD) with Sitelinks & Original Site Backlink -->
+    <!-- Structured Data for the IOE admission hub and its crawlable sections -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -140,37 +127,37 @@
               {
                 "@type": "SiteNavigationElement",
                 "position": 1,
-                "name": "Rank Probability Predictor",
+                "name": "Predictor",
                 "description": "Predict admission cutoff rank probability across Pulchowk, Thapathali, WRC, ERC, and ChEC",
-                "url": "https://ioe-admission.dipeshsapkota7.com.np/?tab=predictor"
+                "url": "https://ioe-admission.dipeshsapkota7.com.np/"
               },
               {
                 "@type": "SiteNavigationElement",
                 "position": 2,
-                "name": "Constituent Campuses & Seat Matrix",
+                "name": "Campuses",
                 "description": "Explore 2,040 seat matrix and faculties across TU constituent colleges",
                 "url": "https://ioe-admission.dipeshsapkota7.com.np/?tab=campuses"
               },
               {
                 "@type": "SiteNavigationElement",
                 "position": 3,
-                "name": "Priority Sequence Optimizer",
+                "name": "Priority",
                 "description": "Algorithmic multi-tier choice generator for IOE admission preference forms",
                 "url": "https://ioe-admission.dipeshsapkota7.com.np/?tab=priority"
               },
               {
                 "@type": "SiteNavigationElement",
                 "position": 4,
-                "name": "CBT Negative Marking Calculator",
+                "name": "Calculator",
                 "description": "Calculate exact net entrance score with official 10 percent negative deduction",
                 "url": "https://ioe-admission.dipeshsapkota7.com.np/?tab=calculator"
               },
               {
                 "@type": "SiteNavigationElement",
                 "position": 5,
-                "name": "Original Website — Dipesh Sapkota",
-                "description": "Developer portfolio, projects, and original personal website",
-                "url": "https://www.dipeshsapkota7.com.np/"
+                "name": "Guide",
+                "description": "IOE counseling handbook, admission process, and document guidance",
+                "url": "https://ioe-admission.dipeshsapkota7.com.np/?tab=guide"
               }
             ]
           }

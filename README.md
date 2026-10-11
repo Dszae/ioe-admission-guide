@@ -42,7 +42,7 @@ A comprehensive, mobile-first, and accessible admission guidance platform for In
 ├── src/
 │   ├── components/         # Modular feature components
 │   │   ├── common/         # Reusable UI elements (InfoDisclaimer, StatusBadge)
-│   │   ├── Header.jsx      # Accessible masthead with dark mode toggle & mobile navigation
+│   │   ├── Header.jsx      # Accessible masthead with responsive navigation
 │   │   ├── Footer.jsx      # Semantic footer with official links & disclaimers
 │   │   ├── RankPredictor.jsx   # Core admission probability predictor
 │   │   ├── CampusExplorer.jsx  # Constituent seat matrix explorer (2,040 seats)
