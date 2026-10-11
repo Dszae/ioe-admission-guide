@@ -1,21 +1,92 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default function Header({ isDark, setIsDark }) {
+const NAV_GROUPS = [
+  {
+    title: 'Rank & Admission Odds',
+    items: [
+      { id: 'predictor', label: 'Rank Probability Predictor', desc: 'Predict admission odds across TU constituent campuses' },
+      { id: 'calculator', label: 'CBT Negative Marking Calculator', desc: 'Calculate exact net score with 10% deduction' },
+      { id: 'estimator', label: 'Score-to-Rank Curve', desc: 'Examine historical score distributions and percentiles' }
+    ]
+  },
+  {
+    title: 'Campuses & Seat Matrices',
+    items: [
+      { id: 'campuses', label: 'Constituent Campuses (2,040 Seats)', desc: 'Pulchowk, Thapathali, WRC, ERC, ChEC seats' },
+      { id: 'affiliated', label: 'Affiliated Colleges', desc: 'Private TU affiliated engineering colleges' },
+      { id: 'compare', label: 'Compare Disciplines', desc: 'Side-by-side engineering program comparison' }
+    ]
+  },
+  {
+    title: 'Preference & Strategy',
+    items: [
+      { id: 'priority', label: 'Priority Sequence Optimizer', desc: 'Algorithmic multi-tier choice form generator' }
+    ]
+  },
+  {
+    title: 'Admissions Guide & Official Data',
+    items: [
+      { id: 'guide', label: 'Counseling Handbook', desc: 'Step-by-step admission procedure and guidelines' },
+      { id: 'checklist', label: 'Action Checklist', desc: 'Required documents and deadline checklist' },
+      { id: 'notices', label: 'Official Notices & Deadlines', desc: 'Important TU IOE announcements and circulars' },
+      { id: 'financials', label: 'Tuition & Fee Breakdown', desc: 'Regular vs. Full-Fee cost analysis' }
+    ]
+  }
+];
+
+export default function Header({ 
+  isDark, 
+  setIsDark, 
+  activeTab = 'predictor', 
+  setActiveTab 
+}) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Lock background scrolling and interaction when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [menuOpen]);
+
+  // Close menu on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [menuOpen]);
+
+  const handleSelectTab = (tabId) => {
+    if (setActiveTab) {
+      setActiveTab(tabId);
+    }
+    setMenuOpen(false);
+  };
+
   return (
     <>
       <a 
         href="#main-content" 
-        className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-3 focus:py-1.5 focus:bg-blue-600 focus:text-white focus:rounded-md focus:shadow-md focus:outline-none text-xs font-medium"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-60 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-lg focus:shadow-lg focus:outline-none text-xs font-semibold"
       >
         Skip to main content
       </a>
 
-      <header className="w-full max-w-5xl mb-3 sm:mb-6 relative z-10 print:hidden mt-1 sm:mt-2">
-        <div className="flex items-center justify-between gap-2.5 sm:gap-4">
+      {/* Fixed Navbar at Top */}
+      <header className="fixed top-0 inset-x-0 z-40 h-16 sm:h-18 bg-white/95 dark:bg-[#0b0e17]/95 backdrop-blur-md border-b border-slate-200/90 dark:border-slate-800/90 print:hidden transition-colors shadow-2xs">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 h-full flex items-center justify-between gap-3 sm:gap-4">
           
-          {/* Logo & Brand Identity */}
-          <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center p-1.5 shadow-2xs shrink-0">
+          {/* Logo & Brand Identity with Breadcrumb Sitelink */}
+          <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0 shrink-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center p-1.5 shadow-2xs shrink-0">
               <img 
                 src="/ioe-logo.png" 
                 alt="Tribhuvan University Emblem" 
@@ -25,41 +96,82 @@ export default function Header({ isDark, setIsDark }) {
                 }}
               />
             </div>
-            <div className="min-w-0">
-              <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
-                <h1 className="text-base sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white truncate">
+
+            <div className="flex flex-col min-w-0">
+              <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium text-slate-500 leading-none mb-1">
+                <a
+                  href="https://www.dipeshsapkota7.com.np/"
+                  target="_blank"
+                  rel="noopener noreferrer home author"
+                  className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  title="Dipesh Sapkota Portfolio"
+                >
+                  dipeshsapkota7.com.np
+                </a>
+                <span className="opacity-40" aria-hidden="true">/</span>
+                <span className="text-slate-600 dark:text-slate-400 font-semibold">admission</span>
+              </nav>
+
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="text-sm sm:text-base font-bold tracking-tight text-slate-900 dark:text-white truncate leading-tight">
                   IOE Admission Hub
-                </h1>
-                <span className="text-[10px] sm:text-[11px] font-medium px-1.5 sm:px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/50 shrink-0">
+                </span>
+                <span className="text-[10px] font-semibold px-1.5 py-0.2 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/50 hidden md:inline-block">
                   2081/2082 BS
                 </span>
               </div>
-              <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 truncate hidden xs:block">
-                Tribhuvan University B.E. & B.Arch Admissions Portal
-              </p>
             </div>
           </div>
 
-          {/* Action Controls & Original Site Backlink */}
+          {/* Center: Desktop Shortcut Navigation */}
+          <nav className="hidden lg:flex items-center gap-1" aria-label="Quick Navigation">
+            {[
+              { id: 'predictor', label: 'Predictor' },
+              { id: 'campuses', label: 'Campuses' },
+              { id: 'priority', label: 'Priority' },
+              { id: 'calculator', label: 'Calculator' },
+              { id: 'guide', label: 'Guide' }
+            ].map(tab => {
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => handleSelectTab(tab.id)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                    isActive
+                      ? 'bg-blue-600 text-white shadow-2xs'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
+          </nav>
+
+          {/* Right: Actions, Backlinks & Hamburger Button */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            {/* Original Website Link */}
             <a
               href="https://www.dipeshsapkota7.com.np/"
               target="_blank"
-              rel="noopener noreferrer"
-              title="Visit original developer portfolio website"
-              className="px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-50 dark:hover:bg-slate-750 text-[11px] sm:text-xs font-medium transition-colors shadow-2xs hidden sm:inline-flex items-center gap-1"
+              rel="noopener noreferrer home author"
+              title="Visit original developer website dipeshsapkota7.com.np"
+              aria-label="Visit original developer website dipeshsapkota7.com.np"
+              className="px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-50 dark:hover:bg-slate-750 text-xs font-medium transition-colors shadow-2xs hidden sm:inline-flex items-center gap-1.5"
             >
-              <span>Main Site</span>
+              <span>dipeshsapkota7.com.np</span>
               <svg className="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
             </a>
 
+            {/* Print / Save Button */}
             <button
               onClick={() => window.print()}
-              aria-label="Print page or save as PDF"
+              aria-label="Print admission report or save as PDF"
               title="Print page or save as PDF"
-              className="p-2 sm:px-2.5 sm:py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-750 text-xs font-medium transition-colors shadow-2xs inline-flex items-center gap-1.5"
+              className="p-2 sm:px-2.5 sm:py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-750 text-xs font-medium transition-colors shadow-2xs hidden xs:inline-flex items-center gap-1.5"
             >
               <svg className="w-4 h-4 text-slate-500 dark:text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
@@ -67,9 +179,11 @@ export default function Header({ isDark, setIsDark }) {
               <span className="hidden md:inline">Print</span>
             </button>
 
+            {/* Theme Toggle Button */}
             <button
               onClick={() => setIsDark(!isDark)}
               aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+              aria-pressed={isDark}
               title={isDark ? "Switch to light theme" : "Switch to dark theme"}
               className="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-2xs hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
@@ -83,10 +197,185 @@ export default function Header({ isDark, setIsDark }) {
                 </svg>
               )}
             </button>
+
+            {/* Hamburger Button to Open Drawer */}
+            <button
+              type="button"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={menuOpen ? "Close menu" : "Open navigation menu"}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav-dialog"
+              className="p-2 sm:px-2.5 sm:py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-2xs hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <svg className="w-5 h-5 text-slate-700 dark:text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                {menuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+              <span className="text-xs font-semibold hidden sm:inline">Menu</span>
+            </button>
           </div>
 
         </div>
       </header>
+
+      {/* Background Overlay & Modal Drawer When Toggled */}
+      {menuOpen && (
+        <>
+          {/* Backdrop Overlay - Blocks Background Access Completely */}
+          <div 
+            className="fixed inset-0 bg-slate-950/65 dark:bg-black/80 backdrop-blur-xs z-50 transition-opacity animate-fadeIn"
+            onClick={() => setMenuOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* Drawer Dialog */}
+          <div 
+            id="mobile-nav-dialog"
+            role="dialog" 
+            aria-modal="true" 
+            aria-label="Site Navigation and Admissions Tools"
+            className="fixed top-0 right-0 h-full w-full max-w-sm sm:max-w-md bg-white dark:bg-[#0f1320] border-l border-slate-200 dark:border-slate-800 z-50 shadow-2xl flex flex-col overflow-y-auto animate-fadeIn"
+          >
+            {/* Drawer Top Header */}
+            <div className="sticky top-0 z-10 px-5 py-4 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-[#0f1320]/95 backdrop-blur-md flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-lg bg-blue-600/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </div>
+                <div>
+                  <h2 className="text-sm font-bold text-slate-900 dark:text-white leading-tight">
+                    All Admission Tools
+                  </h2>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                    Navigate IOE Hub Modules & Sitelinks
+                  </p>
+                </div>
+              </div>
+
+              {/* Close Button (X) */}
+              <button
+                type="button"
+                onClick={() => setMenuOpen(false)}
+                aria-label="Close navigation menu"
+                className="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Drawer Body: Categorized Sitelink Navigation */}
+            <div className="p-4 sm:p-5 space-y-5 flex-1">
+              {NAV_GROUPS.map((group, gIdx) => (
+                <div key={gIdx} className="space-y-1.5">
+                  <span className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-2 block">
+                    {group.title}
+                  </span>
+                  <div className="space-y-1">
+                    {group.items.map((item) => {
+                      const isCurrent = activeTab === item.id;
+                      return (
+                        <button
+                          key={item.id}
+                          onClick={() => handleSelectTab(item.id)}
+                          className={`w-full text-left p-2.5 sm:p-3 rounded-xl transition-all flex items-start justify-between gap-2 border ${
+                            isCurrent
+                              ? 'bg-blue-50/80 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800/80 text-blue-900 dark:text-blue-100 shadow-2xs'
+                              : 'bg-slate-50/50 dark:bg-slate-900/30 border-transparent hover:border-slate-200 dark:hover:border-slate-800 hover:bg-slate-100/70 dark:hover:bg-slate-850 text-slate-700 dark:text-slate-300'
+                          }`}
+                        >
+                          <div className="min-w-0">
+                            <span className={`text-xs font-bold block ${isCurrent ? 'text-blue-700 dark:text-blue-400' : 'text-slate-900 dark:text-white'}`}>
+                              {item.label}
+                            </span>
+                            <span className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">
+                              {item.desc}
+                            </span>
+                          </div>
+                          {isCurrent && (
+                            <span className="w-2 h-2 rounded-full bg-blue-600 shrink-0 mt-1.5" aria-hidden="true"></span>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+
+              {/* External Sitelinks & Network */}
+              <div className="pt-3 border-t border-slate-200 dark:border-slate-800 space-y-2">
+                <span className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-2 block">
+                  Author & Network Links
+                </span>
+                
+                {/* Main Website Link */}
+                <a
+                  href="https://www.dipeshsapkota7.com.np/"
+                  target="_blank"
+                  rel="noopener noreferrer home author"
+                  className="p-3 rounded-xl border border-blue-200/80 dark:border-blue-800/40 bg-blue-50/40 dark:bg-blue-950/20 hover:bg-blue-50 dark:hover:bg-blue-950/40 transition-colors flex items-center justify-between text-xs text-blue-700 dark:text-blue-300 font-semibold"
+                >
+                  <div className="flex flex-col">
+                    <span>Original Website: dipeshsapkota7.com.np</span>
+                    <span className="text-[11px] font-normal text-blue-600/80 dark:text-blue-400/80">Developer portfolio and engineering projects</span>
+                  </div>
+                  <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+
+                {/* Git Visualizer Companion Platform */}
+                <a
+                  href="https://git-visualizer.dipeshsapkota7.com.np/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40 hover:bg-slate-100 dark:hover:bg-slate-850 transition-colors flex items-center justify-between text-xs text-slate-700 dark:text-slate-300 font-medium"
+                >
+                  <div className="flex flex-col">
+                    <span className="font-semibold text-slate-900 dark:text-white">Git Visualizer Platform</span>
+                    <span className="text-[11px] text-slate-500 dark:text-slate-400">Interactive commit graph and simulator</span>
+                  </div>
+                  <svg className="w-4 h-4 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+
+                {/* Official TU Portal */}
+                <a
+                  href="https://entrance.ioe.edu.np/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 rounded-lg border border-slate-200/80 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center justify-between"
+                >
+                  <span>Official IOE Entrance Board (entrance.ioe.edu.np)</span>
+                  <svg className="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Drawer Footer Actions */}
+            <div className="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/60 flex items-center justify-between text-xs">
+              <span className="text-slate-500 dark:text-slate-400 font-medium">
+                Theme: {isDark ? 'Dark Mode' : 'Light Mode'}
+              </span>
+              <button
+                onClick={() => setIsDark(!isDark)}
+                className="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold shadow-2xs hover:bg-slate-100 dark:hover:bg-slate-750 transition-colors"
+              >
+                Switch to {isDark ? 'Light' : 'Dark'}
+              </button>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CAMPUS_DETAILS, CAMPUS_SEATS, ALL_PROGRAMS, CAMPUS_NAMES } from '../data/admissionData';
 import InfoDisclaimer from './common/InfoDisclaimer';
 
-export default function CampusExplorer({ isDark }) {
+export default function CampusExplorer({ isDark, onNavigateTab }) {
   const [selectedCampus, setSelectedCampus] = useState('Pulchowk');
   const [searchQuery, setSearchQuery] = useState('');
   const [programFilter, setProgramFilter] = useState('All');
@@ -192,6 +192,50 @@ export default function CampusExplorer({ isDark }) {
           </tbody>
         </table>
       </div>
+
+      {/* Internal Sitelinks */}
+      {onNavigateTab && (
+        <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 print:hidden">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              Related Admission Tools
+            </h3>
+            <span className="text-[11px] text-slate-400">Direct Navigation</span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <button
+              type="button"
+              onClick={() => onNavigateTab('predictor')}
+              className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 text-left transition-all group shadow-2xs"
+            >
+              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                <span>Check Your Admission Chances</span>
+                <svg className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">
+                Enter your entrance rank to view program cutoffs
+              </p>
+            </button>
+            <button
+              type="button"
+              onClick={() => onNavigateTab('priority')}
+              className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 text-left transition-all group shadow-2xs"
+            >
+              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                <span>Build Priority Form</span>
+                <svg className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">
+                Generate safe priority combinations for counseling
+              </p>
+            </button>
+          </div>
+        </div>
+      )}
 
       <InfoDisclaimer
         isDark={isDark}

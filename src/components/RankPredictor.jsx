@@ -3,7 +3,7 @@ import { CUTOFFS, CAMPUS_NAMES, ALL_PROGRAMS, ADMISSION_METADATA } from '../data
 import { getProbability, getPhaseCutoff } from '../utils/calculations';
 import InfoDisclaimer from './common/InfoDisclaimer';
 
-export default function RankPredictor({ isDark }) {
+export default function RankPredictor({ isDark, onNavigateTab }) {
   const [mode, setMode] = useState('campus');
   const [phase, setPhase] = useState(1);
   const [form, setForm] = useState({ 
@@ -440,6 +440,68 @@ export default function RankPredictor({ isDark }) {
                 </div>
               );
             })}
+          </div>
+        </div>
+      )}
+
+      {/* Internal Sitelinks & Connected Tools */}
+      {onNavigateTab && (
+        <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 print:hidden">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              Related Admission Hub Tools
+            </h3>
+            <span className="text-[11px] text-slate-400">Quick Deep Links</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+            <button
+              type="button"
+              onClick={() => onNavigateTab('campuses')}
+              className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 text-left transition-all group shadow-2xs"
+            >
+              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                <span>Constituent Campuses</span>
+                <svg className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">
+                Explore 2,040 seats & faculty allocations
+              </p>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => onNavigateTab('priority')}
+              className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 text-left transition-all group shadow-2xs"
+            >
+              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                <span>Priority Planner</span>
+                <svg className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">
+                Build an optimal multi-tier preference order
+              </p>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => onNavigateTab('calculator')}
+              className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 text-left transition-all group shadow-2xs"
+            >
+              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                <span>CBT Score Calculator</span>
+                <svg className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">
+                Calculate net marks with 10% penalty
+              </p>
+            </button>
           </div>
         </div>
       )}

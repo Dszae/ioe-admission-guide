@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { calculateNetCbtScore, calculateDetailedCbtScore } from '../utils/calculations';
 import InfoDisclaimer from './common/InfoDisclaimer';
 
-export default function CBTCalculator({ isDark, onSendToEstimator }) {
+export default function CBTCalculator({ isDark, onSendToEstimator, onNavigateTab }) {
   const [mode, setMode] = useState('quick'); // 'quick' | 'detailed'
   
   // Quick mode state
@@ -265,6 +265,50 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
             </div>
           );
         })()
+      )}
+
+      {/* Internal Sitelinks */}
+      {onNavigateTab && (
+        <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 print:hidden">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              Related Admissions Tools
+            </h3>
+            <span className="text-[11px] text-slate-400">Direct Navigation</span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <button
+              type="button"
+              onClick={() => onNavigateTab('predictor')}
+              className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 text-left transition-all group shadow-2xs"
+            >
+              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                <span>Rank Probability Predictor</span>
+                <svg className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">
+                Estimate closing cutoffs and seat odds by rank
+              </p>
+            </button>
+            <button
+              type="button"
+              onClick={() => onNavigateTab('estimator')}
+              className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 text-left transition-all group shadow-2xs"
+            >
+              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                <span>Score Curve Estimator</span>
+                <svg className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">
+                Convert your net score into an estimated rank range
+              </p>
+            </button>
+          </div>
+        </div>
       )}
 
       <InfoDisclaimer

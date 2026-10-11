@@ -142,11 +142,16 @@ export default function App() {
 
   return (
     <div className={`min-h-screen flex flex-col items-center justify-between transition-colors duration-200 ${
-      isDark ? 'dark bg-[#0b0d13] text-slate-100' : 'bg-[#f8fafc] text-slate-800'
-    } p-2 sm:p-5 lg:p-7 font-sans print:bg-white print:text-black print:p-0`}>
+      isDark ? 'dark bg-[#0b0e17] text-slate-100' : 'bg-[#f8fafc] text-slate-800'
+    } pt-20 sm:pt-24 p-2 sm:p-5 lg:p-7 font-sans print:bg-white print:text-black print:p-0`}>
 
-      {/* Header */}
-      <Header isDark={isDark} setIsDark={setIsDark} />
+      {/* Fixed Navbar at Top */}
+      <Header 
+        isDark={isDark} 
+        setIsDark={setIsDark} 
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
 
       {/* Main Container */}
       <div className="w-full max-w-5xl relative z-10 flex-1 flex flex-col">
@@ -216,19 +221,19 @@ export default function App() {
             : 'bg-white border-slate-200/90 shadow-2xs'
         }`}>
           <main id="main-content" tabIndex="-1" className="min-w-0 focus:outline-none">
-            {activeTab === 'predictor' && <RankPredictor isDark={isDark} />}
+            {activeTab === 'predictor' && <RankPredictor isDark={isDark} onNavigateTab={setActiveTab} />}
             
             <Suspense fallback={<TabLoadingSkeleton />}>
-              {activeTab === 'campuses' && <CampusExplorer isDark={isDark} />}
+              {activeTab === 'campuses' && <CampusExplorer isDark={isDark} onNavigateTab={setActiveTab} />}
               {activeTab === 'notices' && <NoticeTracker isDark={isDark} />}
-              {activeTab === 'priority' && <PriorityGenerator isDark={isDark} />}
+              {activeTab === 'priority' && <PriorityGenerator isDark={isDark} onNavigateTab={setActiveTab} />}
               {activeTab === 'checklist' && <StudentChecklist isDark={isDark} />}
-              {activeTab === 'calculator' && <CBTCalculator isDark={isDark} onSendToEstimator={handleSendToEstimator} />}
-              {activeTab === 'estimator' && <ScoreEstimator isDark={isDark} initialScore={estimatorPreScore} />}
-              {activeTab === 'guide' && <AdmissionGuide isDark={isDark} />}
+              {activeTab === 'calculator' && <CBTCalculator isDark={isDark} onSendToEstimator={handleSendToEstimator} onNavigateTab={setActiveTab} />}
+              {activeTab === 'estimator' && <ScoreEstimator isDark={isDark} initialScore={estimatorPreScore} onNavigateTab={setActiveTab} />}
+              {activeTab === 'guide' && <AdmissionGuide isDark={isDark} onNavigateTab={setActiveTab} />}
               {activeTab === 'compare' && <FacultyCompare isDark={isDark} />}
               {activeTab === 'affiliated' && <AffiliatedColleges isDark={isDark} />}
-              {activeTab === 'financials' && <FinancialsBreakdown isDark={isDark} />}
+              {activeTab === 'financials' && <FinancialsBreakdown isDark={isDark} onNavigateTab={setActiveTab} />}
             </Suspense>
           </main>
         </div>
