@@ -94,28 +94,28 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
     switch (color) {
       case 'emerald':
         return {
-          container: isDark ? 'bg-emerald-950/30 border-emerald-800/60 text-emerald-100' : 'bg-emerald-50/80 border-emerald-200 text-emerald-950',
-          badge: isDark ? 'bg-emerald-900/50 text-emerald-300 border-emerald-700/60' : 'bg-emerald-100 text-emerald-800 border-emerald-300',
-          statBg: isDark ? 'bg-emerald-900/20 border-emerald-800/40' : 'bg-emerald-100/60 border-emerald-200'
+          container: isDark ? 'bg-emerald-900/50 border-emerald-500 text-emerald-50' : 'bg-emerald-50 border-emerald-300 text-emerald-950',
+          badge: isDark ? 'bg-emerald-800 text-emerald-50 border-emerald-400' : 'bg-emerald-100 text-emerald-900 border-emerald-300',
+          statBg: isDark ? 'bg-emerald-800/80 border-emerald-500' : 'bg-emerald-100 border-emerald-300'
         };
       case 'amber':
         return {
-          container: isDark ? 'bg-amber-950/30 border-amber-800/60 text-amber-100' : 'bg-amber-50/80 border-amber-200 text-amber-950',
-          badge: isDark ? 'bg-amber-900/50 text-amber-300 border-amber-700/60' : 'bg-amber-100 text-amber-900 border-amber-300',
-          statBg: isDark ? 'bg-amber-900/20 border-amber-800/40' : 'bg-amber-100/60 border-amber-200'
+          container: isDark ? 'bg-amber-900/50 border-amber-500 text-amber-50' : 'bg-amber-50 border-amber-300 text-amber-950',
+          badge: isDark ? 'bg-amber-800 text-amber-50 border-amber-400' : 'bg-amber-100 text-amber-950 border-amber-300',
+          statBg: isDark ? 'bg-amber-800/80 border-amber-500' : 'bg-amber-100 border-amber-300'
         };
       case 'orange':
         return {
-          container: isDark ? 'bg-orange-950/30 border-orange-800/60 text-orange-100' : 'bg-orange-50/80 border-orange-200 text-orange-950',
-          badge: isDark ? 'bg-orange-900/50 text-orange-300 border-orange-700/60' : 'bg-orange-100 text-orange-900 border-orange-300',
-          statBg: isDark ? 'bg-orange-900/20 border-orange-800/40' : 'bg-orange-100/60 border-orange-200'
+          container: isDark ? 'bg-orange-900/50 border-orange-500 text-orange-50' : 'bg-orange-50 border-orange-300 text-orange-950',
+          badge: isDark ? 'bg-orange-800 text-orange-50 border-orange-400' : 'bg-orange-100 text-orange-950 border-orange-300',
+          statBg: isDark ? 'bg-orange-800/80 border-orange-500' : 'bg-orange-100 border-orange-300'
         };
       case 'red':
       default:
         return {
-          container: isDark ? 'bg-rose-950/30 border-rose-800/60 text-rose-100' : 'bg-rose-50/80 border-rose-200 text-rose-950',
-          badge: isDark ? 'bg-rose-900/50 text-rose-300 border-rose-700/60' : 'bg-rose-100 text-rose-900 border-rose-300',
-          statBg: isDark ? 'bg-rose-900/20 border-rose-800/40' : 'bg-rose-100/60 border-rose-200'
+          container: isDark ? 'bg-rose-900/50 border-rose-500 text-rose-50' : 'bg-rose-50 border-rose-300 text-rose-950',
+          badge: isDark ? 'bg-rose-800 text-rose-50 border-rose-400' : 'bg-rose-100 text-rose-950 border-rose-300',
+          statBg: isDark ? 'bg-rose-800/80 border-rose-500' : 'bg-rose-100 border-rose-300'
         };
     }
   };
@@ -136,14 +136,14 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
       {/* Mode & Phase Switches */}
       <div className="grid sm:grid-cols-2 gap-2.5 sm:gap-4 mb-5 sm:mb-6 print:hidden">
         {/* Scope Segmented Control */}
-        <div className="grid grid-cols-2 p-1 rounded-xl bg-slate-100 dark:bg-slate-850 border border-slate-200 dark:border-slate-800" role="group" aria-label="Prediction Scope">
+        <div className="grid grid-cols-2 p-1 rounded-xl bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-500" role="group" aria-label="Prediction Scope">
           <button 
             type="button"
             onClick={() => handleModeChange('campus')} 
             className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all text-center ${
               mode === 'campus' 
-                ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs' 
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                ? 'bg-white dark:bg-slate-500 text-slate-900 dark:text-white shadow-xs' 
+                : 'text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             By Specific Campus
@@ -153,8 +153,8 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
             onClick={() => handleModeChange('cross')} 
             className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all text-center ${
               mode === 'cross' 
-                ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs' 
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                ? 'bg-white dark:bg-slate-500 text-slate-900 dark:text-white shadow-xs' 
+                : 'text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             Compare All
@@ -162,14 +162,14 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
         </div>
 
         {/* Phase Round Segmented Control */}
-        <div className="grid grid-cols-2 p-1 rounded-xl bg-slate-100 dark:bg-slate-850 border border-slate-200 dark:border-slate-800" role="group" aria-label="Merit List Round">
+        <div className="grid grid-cols-2 p-1 rounded-xl bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-500" role="group" aria-label="Merit List Round">
           <button 
             type="button"
             onClick={() => setPhase(1)} 
             className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all text-center ${
               phase === 1 
-                ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs' 
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                ? 'bg-white dark:bg-slate-500 text-slate-900 dark:text-white shadow-xs' 
+                : 'text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             Phase 1 First List
@@ -179,8 +179,8 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
             onClick={() => setPhase(2)} 
             className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all text-center ${
               phase === 2 
-                ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs' 
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                ? 'bg-white dark:bg-slate-500 text-slate-900 dark:text-white shadow-xs' 
+                : 'text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             Final List (Estimated)
@@ -395,60 +395,48 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
       {/* Internal Sitelinks & Connected Tools */}
       {onNavigateTab && (
         <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 print:hidden">
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-              Related Admission Hub Tools
-            </h3>
-            <span className="text-[11px] text-slate-400">Quick Deep Links</span>
-          </div>
+          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-3">
+            Related Tools
+          </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
             <button
               type="button"
               onClick={() => onNavigateTab('campuses')}
-              className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 text-left transition-all group shadow-2xs"
+              className="p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600 text-left transition-all group shadow-2xs"
             >
-              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
+              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-300">
                 <span>Constituent Campuses</span>
-                <svg className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">
-                Explore 2,040 seats & faculty allocations
-              </p>
             </button>
 
             <button
               type="button"
               onClick={() => onNavigateTab('priority')}
-              className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 text-left transition-all group shadow-2xs"
+              className="p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600 text-left transition-all group shadow-2xs"
             >
-              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
+              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-300">
                 <span>Priority Planner</span>
-                <svg className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">
-                Build an optimal multi-tier preference order
-              </p>
             </button>
 
             <button
               type="button"
               onClick={() => onNavigateTab('calculator')}
-              className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 text-left transition-all group shadow-2xs"
+              className="p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600 text-left transition-all group shadow-2xs"
             >
-              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                <span>CBT Score Calculator</span>
-                <svg className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-300">
+                <span>CBT Calculator</span>
+                <svg className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">
-                Calculate net marks with 10% penalty
-              </p>
             </button>
           </div>
         </div>

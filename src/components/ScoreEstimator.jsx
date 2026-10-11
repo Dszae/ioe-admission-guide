@@ -18,24 +18,19 @@ export default function ScoreEstimator({ isDark, initialScore = '' }) {
     calculateEstimate(scoreInput);
   };
 
-  const handleQuickPreset = (val) => {
-    setScoreInput(String(val));
-    calculateEstimate(val);
-  };
-
   const getResultStyle = (color) => {
     switch (color) {
       case 'emerald':
-        return isDark ? 'bg-emerald-950/30 border-emerald-800/60 text-emerald-100' : 'bg-emerald-50/80 border-emerald-200 text-emerald-950';
+        return isDark ? 'bg-emerald-900/50 border-emerald-500 text-emerald-50' : 'bg-emerald-50 border-emerald-300 text-emerald-950';
       case 'teal':
-        return isDark ? 'bg-teal-950/30 border-teal-800/60 text-teal-100' : 'bg-teal-50/80 border-teal-200 text-teal-950';
+        return isDark ? 'bg-teal-900/50 border-teal-500 text-teal-50' : 'bg-teal-50 border-teal-300 text-teal-950';
       case 'amber':
-        return isDark ? 'bg-amber-950/30 border-amber-800/60 text-amber-100' : 'bg-amber-50/80 border-amber-200 text-amber-950';
+        return isDark ? 'bg-amber-900/50 border-amber-500 text-amber-50' : 'bg-amber-50 border-amber-300 text-amber-950';
       case 'orange':
-        return isDark ? 'bg-orange-950/30 border-orange-800/60 text-orange-100' : 'bg-orange-50/80 border-orange-200 text-orange-950';
+        return isDark ? 'bg-orange-900/50 border-orange-500 text-orange-50' : 'bg-orange-50 border-orange-300 text-orange-950';
       case 'red':
       default:
-        return isDark ? 'bg-rose-950/30 border-rose-800/60 text-rose-100' : 'bg-rose-50/80 border-rose-200 text-rose-950';
+        return isDark ? 'bg-rose-900/50 border-rose-500 text-rose-50' : 'bg-rose-50 border-rose-300 text-rose-950';
     }
   };
 
@@ -51,7 +46,7 @@ export default function ScoreEstimator({ isDark, initialScore = '' }) {
         </p>
       </div>
 
-      <form onSubmit={handleEstimate} className="bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 p-4 sm:p-5 rounded-xl print:hidden flex flex-col gap-3">
+      <form onSubmit={handleEstimate} className="bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-500 p-4 sm:p-5 rounded-xl print:hidden flex flex-col gap-3">
         <div>
           <label htmlFor="score-input" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
             Your Expected CBT Score (Out of 140) <span className="text-rose-500">*</span>
@@ -77,40 +72,7 @@ export default function ScoreEstimator({ isDark, initialScore = '' }) {
               Estimate Rank Bracket
             </button>
           </div>
-          <p className="text-[11px] text-slate-500 mt-1.5">Minimum qualifying pass mark is 56 (40%).</p>
-        </div>
-
-        {/* Quick preset chips */}
-        <div className="flex flex-wrap items-center gap-1.5 pt-1">
-          <span className="text-[11px] text-slate-500 dark:text-slate-400">Try example:</span>
-          <button
-            type="button"
-            onClick={() => handleQuickPreset(115)}
-            className="px-2 py-0.5 rounded text-[11px] font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
-          >
-            115 Marks
-          </button>
-          <button
-            type="button"
-            onClick={() => handleQuickPreset(96)}
-            className="px-2 py-0.5 rounded text-[11px] font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
-          >
-            96 Marks
-          </button>
-          <button
-            type="button"
-            onClick={() => handleQuickPreset(78)}
-            className="px-2 py-0.5 rounded text-[11px] font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
-          >
-            78 Marks
-          </button>
-          <button
-            type="button"
-            onClick={() => handleQuickPreset(62)}
-            className="px-2 py-0.5 rounded text-[11px] font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
-          >
-            62 Marks
-          </button>
+          <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1.5">Minimum qualifying pass mark is 56 (40%).</p>
         </div>
       </form>
 
@@ -133,7 +95,7 @@ export default function ScoreEstimator({ isDark, initialScore = '' }) {
       )}
 
       {/* Historical Score vs Rank Reference Guide */}
-      <div className="mt-6 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850">
+      <div className="mt-6 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800">
         <h4 className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-3">
           Historical Score vs Rank Distribution Benchmarks
         </h4>

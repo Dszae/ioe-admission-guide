@@ -9,11 +9,11 @@ export default function InfoDisclaimer({ title, text, isDark, type = 'info', hea
 
   const containerStyle = isDark
     ? isAlert
-      ? 'bg-amber-950/20 border-amber-800/40 text-amber-200/90'
-      : 'bg-slate-900/40 border-slate-800 text-slate-300'
+      ? 'bg-amber-900/40 border-amber-500 text-amber-100'
+      : 'bg-slate-700/70 border-slate-500 text-slate-100'
     : isAlert
-      ? 'bg-amber-50/80 border-amber-200 text-amber-900'
-      : 'bg-slate-50 border-slate-200 text-slate-700';
+      ? 'bg-amber-50 border-amber-300 text-amber-950'
+      : 'bg-slate-50 border-slate-200 text-slate-800';
 
   const iconStyle = isAlert
     ? 'text-amber-600 dark:text-amber-400'

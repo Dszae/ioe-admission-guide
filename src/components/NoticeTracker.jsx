@@ -66,7 +66,7 @@ export default function NoticeTracker({ isDark }) {
             return (
               <article
                 key={notice.id}
-                className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850/60 shadow-2xs transition-all hover:border-slate-300 dark:hover:border-slate-700"
+                className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/60 shadow-2xs transition-all hover:border-slate-300 dark:hover:border-slate-700"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                   <div className="flex items-center gap-2 flex-wrap">

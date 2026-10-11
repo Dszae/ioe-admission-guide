@@ -17,7 +17,7 @@ export default function AdmissionGuide({ isDark }) {
       <div className="space-y-3.5 sm:space-y-4">
         
         {/* Step 1: Phase-Wise Counseling */}
-        <div className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850/60 shadow-2xs">
+        <div className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/60 shadow-2xs">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/50">
               Rule 01
@@ -58,7 +58,7 @@ export default function AdmissionGuide({ isDark }) {
         </div>
 
         {/* Step 2: Quota Reservations */}
-        <div className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850/60 shadow-2xs">
+        <div className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/60 shadow-2xs">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/50">
               Rule 02
@@ -99,7 +99,7 @@ export default function AdmissionGuide({ isDark }) {
         </div>
 
         {/* Step 3: Mandatory Document Checklist */}
-        <div className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850/60 shadow-2xs">
+        <div className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/60 shadow-2xs">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/50">
               Rule 03
@@ -131,7 +131,7 @@ export default function AdmissionGuide({ isDark }) {
         </div>
 
         {/* Step 4: Seat Acceptance & Claim Window */}
-        <div className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850/60 shadow-2xs">
+        <div className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/60 shadow-2xs">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/50">
               Rule 04

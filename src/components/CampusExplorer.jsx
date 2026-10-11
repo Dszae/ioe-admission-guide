@@ -55,7 +55,7 @@ export default function CampusExplorer({ isDark, onNavigateTab }) {
 
       {/* Selected Campus Overview Card */}
       {campus && (
-        <div className="p-4 sm:p-6 rounded-xl border border-slate-200/90 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 mb-6">
+        <div className="p-4 sm:p-6 rounded-xl border border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-700 mb-6">
           <div className="flex flex-col sm:flex-row justify-between items-start gap-3 sm:gap-4 mb-3">
             <div>
               <div className="flex items-center gap-2">
@@ -80,7 +80,7 @@ export default function CampusExplorer({ isDark, onNavigateTab }) {
                 href={campus.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors inline-flex items-center gap-1 shadow-2xs"
+                className="px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors inline-flex items-center gap-1 shadow-2xs"
               >
                 <span>Campus Portal</span>
                 <svg className="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -95,7 +95,7 @@ export default function CampusExplorer({ isDark, onNavigateTab }) {
           </p>
 
           {/* Quick Stats Grid */}
-          <div className="grid grid-cols-3 gap-2 sm:gap-3 p-3 sm:p-3.5 rounded-xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-750 text-center shadow-2xs">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 p-3 sm:p-3.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 text-center shadow-2xs">
             <div>
               <p className="text-[10px] sm:text-[11px] font-medium text-slate-500 dark:text-slate-400">Regular Seats</p>
               <p className="text-base sm:text-xl font-mono font-bold text-slate-900 dark:text-white mt-0.5">{totalRegular}</p>
@@ -115,7 +115,7 @@ export default function CampusExplorer({ isDark, onNavigateTab }) {
             <div className="mt-3.5 flex flex-wrap gap-1.5 items-center">
               <span className="text-[11px] text-slate-500 dark:text-slate-400 mr-1">Facilities:</span>
               {campus.facilities.map((fac, idx) => (
-                <span key={idx} className="text-[11px] px-2 py-0.5 rounded-md bg-white dark:bg-slate-800 border border-slate-200/60 dark:border-slate-750 text-slate-700 dark:text-slate-300">
+                <span key={idx} className="text-[11px] px-2 py-0.5 rounded-md bg-white dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700 text-slate-700 dark:text-slate-300">
                   {fac}
                 </span>
               ))}
@@ -157,7 +157,7 @@ export default function CampusExplorer({ isDark, onNavigateTab }) {
       <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 shadow-2xs">
         <table className="w-full text-left text-xs sm:text-sm min-w-[440px]">
           <thead>
-            <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-850 text-slate-600 dark:text-slate-400 font-semibold text-xs">
+            <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-semibold text-xs">
               <th scope="col" className="p-3 sm:p-3.5">Engineering Discipline</th>
               <th scope="col" className="p-3 sm:p-3.5 text-center">Regular (Subsidized)</th>
               <th scope="col" className="p-3 sm:p-3.5 text-center">Full Fee (Paying)</th>
@@ -167,7 +167,7 @@ export default function CampusExplorer({ isDark, onNavigateTab }) {
           <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
             {filteredSeats.length > 0 ? (
               filteredSeats.map((item, idx) => (
-                <tr key={idx} className="hover:bg-slate-50/60 dark:hover:bg-slate-850/50 transition-colors">
+                <tr key={idx} className="hover:bg-slate-50/60 dark:hover:bg-slate-800/50 transition-colors">
                   <td className="p-3 sm:p-3.5 font-medium text-slate-900 dark:text-white">
                     {item.program}
                   </td>
@@ -196,42 +196,33 @@ export default function CampusExplorer({ isDark, onNavigateTab }) {
       {/* Internal Sitelinks */}
       {onNavigateTab && (
         <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 print:hidden">
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-              Related Admission Tools
-            </h3>
-            <span className="text-[11px] text-slate-400">Direct Navigation</span>
-          </div>
+          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-3">
+            Related Tools
+          </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <button
               type="button"
               onClick={() => onNavigateTab('predictor')}
-              className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 text-left transition-all group shadow-2xs"
+              className="p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600 text-left transition-all group shadow-2xs"
             >
-              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                <span>Check Your Admission Chances</span>
-                <svg className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-300">
+                <span>Rank Predictor</span>
+                <svg className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">
-                Enter your entrance rank to view program cutoffs
-              </p>
             </button>
             <button
               type="button"
               onClick={() => onNavigateTab('priority')}
-              className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 text-left transition-all group shadow-2xs"
+              className="p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600 text-left transition-all group shadow-2xs"
             >
-              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                <span>Build Priority Form</span>
-                <svg className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-300">
+                <span>Priority Form</span>
+                <svg className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">
-                Generate safe priority combinations for counseling
-              </p>
             </button>
           </div>
         </div>

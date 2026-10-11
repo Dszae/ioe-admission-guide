@@ -41,7 +41,7 @@ export default function AffiliatedColleges({ isDark }) {
         {filtered.map((col, idx) => (
           <div
             key={idx}
-            className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850/60 shadow-2xs flex flex-col justify-between transition-colors"
+            className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/60 shadow-2xs flex flex-col justify-between transition-colors"
           >
             <div>
               <div className="flex justify-between items-start gap-2 mb-1">

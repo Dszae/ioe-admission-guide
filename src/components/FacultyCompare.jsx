@@ -59,7 +59,7 @@ export default function FacultyCompare({ isDark }) {
       </div>
 
       {/* Overlap Summary Banner */}
-      <div className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-850 flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 text-center sm:text-left shadow-2xs">
+      <div className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 text-center sm:text-left shadow-2xs">
         <div>
           <span className="text-xs font-semibold text-blue-700 dark:text-blue-400 block mb-0.5">
             Curriculum Foundation Overlap
@@ -77,7 +77,7 @@ export default function FacultyCompare({ isDark }) {
       <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
         
         {/* Card A */}
-        <div className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850/60 shadow-2xs">
+        <div className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/60 shadow-2xs">
           <h3 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white mb-1.5">
             {compA}
           </h3>
@@ -109,7 +109,7 @@ export default function FacultyCompare({ isDark }) {
         </div>
 
         {/* Card B */}
-        <div className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850/60 shadow-2xs">
+        <div className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/60 shadow-2xs">
           <h3 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white mb-1.5">
             {compB}
           </h3>

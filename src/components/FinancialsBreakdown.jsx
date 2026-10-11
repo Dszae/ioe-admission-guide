@@ -20,7 +20,7 @@ export default function FinancialsBreakdown({ isDark }) {
         {Object.entries(FINANCIALS).map(([typeKey, item]) => (
           <div
             key={typeKey}
-            className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850/60 shadow-2xs flex flex-col justify-between transition-colors"
+            className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/60 shadow-2xs flex flex-col justify-between transition-colors"
           >
             <div>
               <div className="flex items-center gap-2 mb-3">
@@ -60,7 +60,7 @@ export default function FinancialsBreakdown({ isDark }) {
       </div>
 
       {/* Installment Schedule & Financial Tips */}
-      <div className="mt-6 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850">
+      <div className="mt-6 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800">
         <h4 className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2.5">
           Semester Installment Payment Rules
         </h4>

@@ -13,32 +13,32 @@ const NAV_GROUPS = [
   {
     title: 'Rank & Admission Odds',
     items: [
-      { id: 'predictor', label: 'Rank Probability Predictor', desc: 'Predict admission odds across TU constituent campuses' },
-      { id: 'calculator', label: 'CBT Negative Marking Calculator', desc: 'Calculate exact net score with 10% deduction' },
-      { id: 'estimator', label: 'Score-to-Rank Curve', desc: 'Examine historical score distributions and percentiles' }
+      { id: 'predictor', label: 'Rank Predictor' },
+      { id: 'calculator', label: 'CBT Calculator' },
+      { id: 'estimator', label: 'Score-to-Rank Curve' }
     ]
   },
   {
     title: 'Campuses & Seat Matrices',
     items: [
-      { id: 'campuses', label: 'Constituent Campuses (2,040 Seats)', desc: 'Pulchowk, Thapathali, WRC, ERC, ChEC seats' },
-      { id: 'affiliated', label: 'Affiliated Colleges', desc: 'Private TU affiliated engineering colleges' },
-      { id: 'compare', label: 'Compare Disciplines', desc: 'Side-by-side engineering program comparison' }
+      { id: 'campuses', label: 'Constituent Campuses' },
+      { id: 'affiliated', label: 'Affiliated Colleges' },
+      { id: 'compare', label: 'Compare Disciplines' }
     ]
   },
   {
     title: 'Preference & Strategy',
     items: [
-      { id: 'priority', label: 'Priority Sequence Optimizer', desc: 'Algorithmic multi-tier choice form generator' }
+      { id: 'priority', label: 'Priority Optimizer' }
     ]
   },
   {
-    title: 'Admissions Guide & Official Data',
+    title: 'Admissions Guide',
     items: [
-      { id: 'guide', label: 'Counseling Handbook', desc: 'Step-by-step admission procedure and guidelines' },
-      { id: 'checklist', label: 'Action Checklist', desc: 'Required documents and deadline checklist' },
-      { id: 'notices', label: 'Official Notices & Deadlines', desc: 'Important TU IOE announcements and circulars' },
-      { id: 'financials', label: 'Tuition & Fee Breakdown', desc: 'Regular vs. Full-Fee cost analysis' }
+      { id: 'guide', label: 'Counseling Handbook' },
+      { id: 'checklist', label: 'Checklist' },
+      { id: 'notices', label: 'Official Notices' },
+      { id: 'financials', label: 'Fee Breakdown' }
     ]
   }
 ];
@@ -107,7 +107,7 @@ export default function Header({
       </a>
 
       {/* Fixed Navbar at Top */}
-      <header className="fixed top-0 inset-x-0 z-40 h-16 sm:h-18 bg-white/95 dark:bg-[#0b0e17]/95 backdrop-blur-md border-b border-slate-200/90 dark:border-slate-800/90 print:hidden transition-colors shadow-2xs">
+      <header className="fixed top-0 inset-x-0 z-40 h-16 sm:h-18 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-600 print:hidden transition-colors shadow-2xs">
         <div className="max-w-6xl mx-auto px-3 sm:px-6 h-full flex items-center justify-between gap-3 sm:gap-4">
           
           {/* Logo & Brand Identity (Links to same page) */}
@@ -199,8 +199,8 @@ export default function Header({
               </button>
 
               {moreOpen && (
-                <div className="absolute right-0 top-full mt-1.5 w-52 py-1 bg-white dark:bg-[#131620] border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl z-50 animate-fadeIn">
-                  <div className="px-3 py-1.5 border-b border-slate-100 dark:border-slate-800 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                <div className="absolute right-0 top-full mt-1.5 w-52 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-600 rounded-xl shadow-xl z-50 animate-fadeIn">
+                  <div className="px-3 py-1.5 border-b border-slate-100 dark:border-slate-600 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
                     Additional Tools
                   </div>
                   {SECONDARY_TABS.map((tab) => {
@@ -237,7 +237,7 @@ export default function Header({
               onClick={() => window.print()}
               aria-label="Print admission report or save as PDF"
               title="Print page or save as PDF"
-              className="p-2 sm:px-2.5 sm:py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-750 text-xs font-medium transition-colors shadow-2xs hidden xs:inline-flex items-center gap-1.5"
+              className="p-2 sm:px-2.5 sm:py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 text-xs font-medium transition-colors shadow-2xs hidden xs:inline-flex items-center gap-1.5"
             >
               <svg className="w-4 h-4 text-slate-500 dark:text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
@@ -251,7 +251,7 @@ export default function Header({
               aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
               aria-pressed={isDark}
               title={isDark ? "Switch to light theme" : "Switch to dark theme"}
-              className="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-2xs hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-2xs hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               {isDark ? (
                 <svg className="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -271,7 +271,7 @@ export default function Header({
               aria-label={menuOpen ? "Close menu" : "Open navigation menu"}
               aria-expanded={menuOpen}
               aria-controls="mobile-nav-dialog"
-              className="lg:hidden p-2 sm:px-2.5 sm:py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-2xs hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="lg:hidden p-2 sm:px-2.5 sm:py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 shadow-2xs hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors flex items-center gap-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <svg className="w-5 h-5 text-slate-700 dark:text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 {menuOpen ? (
@@ -303,10 +303,10 @@ export default function Header({
             role="dialog" 
             aria-modal="true" 
             aria-label="Site Navigation and Admissions Tools"
-            className="fixed top-0 right-0 h-full w-full max-w-sm sm:max-w-md bg-white dark:bg-[#0f1320] border-l border-slate-200 dark:border-slate-800 z-50 shadow-2xl flex flex-col overflow-y-auto animate-fadeIn"
+            className="fixed top-0 right-0 h-full w-full max-w-sm sm:max-w-md bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-600 z-50 shadow-2xl flex flex-col overflow-y-auto animate-fadeIn"
           >
             {/* Drawer Top Header */}
-            <div className="sticky top-0 z-10 px-5 py-4 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-[#0f1320]/95 backdrop-blur-md flex items-center justify-between">
+            <div className="sticky top-0 z-10 px-5 py-4 border-b border-slate-200 dark:border-slate-600 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-lg bg-blue-600/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 flex items-center justify-center">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -315,11 +315,8 @@ export default function Header({
                 </div>
                 <div>
                   <h2 className="text-sm font-bold text-slate-900 dark:text-white leading-tight">
-                    All Admission Tools
+                    Menu
                   </h2>
-                  <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                    Navigate IOE Hub Modules & Sitelinks
-                  </p>
                 </div>
               </div>
 
@@ -350,22 +347,17 @@ export default function Header({
                         <button
                           key={item.id}
                           onClick={() => handleSelectTab(item.id)}
-                          className={`w-full text-left p-2.5 sm:p-3 rounded-xl transition-all flex items-start justify-between gap-2 border ${
+                          className={`w-full text-left px-3 py-2.5 rounded-xl transition-all flex items-center justify-between gap-2 border ${
                             isCurrent
-                              ? 'bg-blue-50/80 dark:bg-blue-950/40 border-blue-200 dark:border-blue-800/80 text-blue-900 dark:text-blue-100 shadow-2xs'
-                              : 'bg-slate-50/50 dark:bg-slate-900/30 border-transparent hover:border-slate-200 dark:hover:border-slate-800 hover:bg-slate-100/70 dark:hover:bg-slate-850 text-slate-700 dark:text-slate-300'
+                              ? 'bg-blue-50 dark:bg-blue-900/50 border-blue-200 dark:border-blue-500 text-blue-900 dark:text-blue-100 shadow-2xs'
+                              : 'bg-slate-50 dark:bg-slate-800 border-transparent hover:border-slate-200 dark:hover:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100'
                           }`}
                         >
-                          <div className="min-w-0">
-                            <span className={`text-xs font-bold block ${isCurrent ? 'text-blue-700 dark:text-blue-400' : 'text-slate-900 dark:text-white'}`}>
-                              {item.label}
-                            </span>
-                            <span className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">
-                              {item.desc}
-                            </span>
-                          </div>
+                          <span className={`text-sm font-semibold ${isCurrent ? 'text-blue-700 dark:text-blue-200' : 'text-slate-900 dark:text-white'}`}>
+                            {item.label}
+                          </span>
                           {isCurrent && (
-                            <span className="w-2 h-2 rounded-full bg-blue-600 shrink-0 mt-1.5" aria-hidden="true"></span>
+                            <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-300 shrink-0" aria-hidden="true"></span>
                           )}
                         </button>
                       );
@@ -377,13 +369,13 @@ export default function Header({
             </div>
 
             {/* Drawer Footer Actions */}
-            <div className="p-4 border-t border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/60 flex items-center justify-between text-xs">
-              <span className="text-slate-500 dark:text-slate-400 font-medium">
+            <div className="p-4 border-t border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-800 flex items-center justify-between text-xs">
+              <span className="text-slate-700 dark:text-slate-200 font-medium">
                 Theme: {isDark ? 'Dark Mode' : 'Light Mode'}
               </span>
               <button
                 onClick={() => setIsDark(!isDark)}
-                className="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold shadow-2xs hover:bg-slate-100 dark:hover:bg-slate-750 transition-colors"
+                className="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold shadow-2xs hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
               >
                 Switch to {isDark ? 'Light' : 'Dark'}
               </button>

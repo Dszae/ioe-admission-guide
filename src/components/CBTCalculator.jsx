@@ -52,14 +52,14 @@ export default function CBTCalculator({ isDark, onSendToEstimator, onNavigateTab
       </div>
 
       {/* Mode Switch */}
-      <div className="inline-flex p-1 rounded-xl bg-slate-100 dark:bg-slate-850 border border-slate-200 dark:border-slate-800 mb-6" role="group" aria-label="Calculator Mode">
+      <div className="inline-flex p-1 rounded-xl bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-500 mb-6" role="group" aria-label="Calculator Mode">
         <button
           type="button"
           onClick={() => setMode('quick')}
           className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
             mode === 'quick'
-              ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs'
-              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              ? 'bg-white dark:bg-slate-500 text-slate-900 dark:text-white shadow-xs'
+              : 'text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
           Quick Marks Mode
@@ -69,8 +69,8 @@ export default function CBTCalculator({ isDark, onSendToEstimator, onNavigateTab
           onClick={() => setMode('detailed')}
           className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
             mode === 'detailed'
-              ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs'
-              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              ? 'bg-white dark:bg-slate-500 text-slate-900 dark:text-white shadow-xs'
+              : 'text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
           1-Mark & 2-Mark Breakdown
@@ -230,7 +230,7 @@ export default function CBTCalculator({ isDark, onSendToEstimator, onNavigateTab
           const res = mode === 'quick' ? quickResult : detailedResult;
           const scoreValue = mode === 'quick' ? res.net : res.totalNet;
           return (
-            <div className="mt-6 p-5 sm:p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-850 text-center animate-fadeIn shadow-2xs">
+            <div className="mt-6 p-5 sm:p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 text-center animate-fadeIn shadow-2xs">
               <span className="text-xs font-medium text-slate-500 dark:text-slate-400 block mb-1">
                 Your Calculated Net Score
               </span>
@@ -270,42 +270,33 @@ export default function CBTCalculator({ isDark, onSendToEstimator, onNavigateTab
       {/* Internal Sitelinks */}
       {onNavigateTab && (
         <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 print:hidden">
-          <div className="flex items-center justify-between mb-3">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-              Related Admissions Tools
-            </h3>
-            <span className="text-[11px] text-slate-400">Direct Navigation</span>
-          </div>
+          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-3">
+            Related Tools
+          </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <button
               type="button"
               onClick={() => onNavigateTab('predictor')}
-              className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 text-left transition-all group shadow-2xs"
+              className="p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600 text-left transition-all group shadow-2xs"
             >
-              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                <span>Rank Probability Predictor</span>
-                <svg className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-300">
+                <span>Rank Predictor</span>
+                <svg className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">
-                Estimate closing cutoffs and seat odds by rank
-              </p>
             </button>
             <button
               type="button"
               onClick={() => onNavigateTab('estimator')}
-              className="p-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 hover:bg-slate-50 dark:hover:bg-slate-850 text-left transition-all group shadow-2xs"
+              className="p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600 text-left transition-all group shadow-2xs"
             >
-              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
-                <span>Score Curve Estimator</span>
-                <svg className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-300">
+                <span>Score-to-Rank Curve</span>
+                <svg className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">
-                Convert your net score into an estimated rank range
-              </p>
             </button>
           </div>
         </div>

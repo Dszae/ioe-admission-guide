@@ -90,8 +90,8 @@ export const CAMPUS_DETAILS = {
     admissionPortal: "https://entrance.ioe.edu.np",
     type: "Constituent Campus",
     totalSeats: 24,
-    description: "The newest constituent wing of IOE established in Bharatpur, Chitwan, focusing on Architecture and Computer Engineering.",
-    facilities: ["Design Studios", "Modern Computing Units", "Growing Technical Library"]
+    description: "The newest constituent wing of IOE established in Rampur, Chitwan. It currently offers Bachelor of Architecture (B.Arch) only.",
+    facilities: ["Design Studios", "Architecture Workshop", "Growing Technical Library"]
   }
 };
 
@@ -192,7 +192,6 @@ export const CUTOFFS = {
     "Agricultural Engineering": { Regular: { Open: 1450, Janajati: 1600, Female_FmQ: 1750, Female_RsQ: 1700 }, FullFee: { Open: 4200, Janajati: 4500, Female_FmQ: 4800, Female_RsQ: 4700 } }
   },
   ChEC: {
-    "Computer Engineering": { Regular: { Open: 450, Janajati: 550, Female_FmQ: 400, Female_RsQ: 380 }, FullFee: { Open: 1800, Janajati: 2000, Female_FmQ: 1950, Female_RsQ: 1900 } },
     "Architecture": { Regular: { Open: 1800, Janajati: 1950, Female_FmQ: 1800, Female_RsQ: 1750 }, FullFee: { Open: 3500, Janajati: 3800, Female_FmQ: 3600, Female_RsQ: 3500 } }
   }
 };

@@ -18,11 +18,11 @@ const FinancialsBreakdown = lazy(() => import('./components/FinancialsBreakdown'
 function TabLoadingSkeleton() {
   return (
     <div className="py-12 px-4 text-center animate-pulse" role="status" aria-label="Loading section">
-      <div className="h-4 w-36 bg-slate-200 dark:bg-slate-800 rounded mx-auto mb-2.5"></div>
-      <div className="h-3 w-56 bg-slate-100 dark:bg-slate-850 rounded mx-auto mb-6"></div>
+      <div className="h-4 w-36 bg-slate-200 dark:bg-slate-700 rounded mx-auto mb-2.5"></div>
+      <div className="h-3 w-56 bg-slate-100 dark:bg-slate-700 rounded mx-auto mb-6"></div>
       <div className="grid sm:grid-cols-2 gap-3 max-w-lg mx-auto">
-        <div className="h-24 bg-slate-100 dark:bg-slate-800/50 rounded-lg"></div>
-        <div className="h-24 bg-slate-100 dark:bg-slate-800/50 rounded-lg"></div>
+        <div className="h-24 bg-slate-100 dark:bg-slate-700/60 rounded-lg"></div>
+        <div className="h-24 bg-slate-100 dark:bg-slate-700/60 rounded-lg"></div>
       </div>
       <span className="sr-only">Loading section content...</span>
     </div>
@@ -49,7 +49,7 @@ export default function App() {
         root.classList.add('dark');
         document.body.classList.add('dark');
         root.style.colorScheme = 'dark';
-        if (themeColorMeta) themeColorMeta.setAttribute('content', '#0b0e17');
+        if (themeColorMeta) themeColorMeta.setAttribute('content', '#0f172a');
         localStorage.setItem('theme', 'dark');
       } else {
         root.classList.remove('dark');
@@ -101,7 +101,7 @@ export default function App() {
 
   return (
     <div className={`min-h-screen flex flex-col items-center justify-between transition-colors duration-200 ${
-      isDark ? 'dark bg-[#0b0e17] text-slate-100' : 'bg-[#f8fafc] text-slate-800'
+      isDark ? 'dark bg-slate-900 text-slate-100' : 'bg-slate-50 text-slate-800'
     } pt-20 sm:pt-24 lg:pt-28 px-3 sm:px-6 lg:px-8 pb-8 sm:pb-12 font-sans print:bg-white print:text-black print:p-0`}>
 
       {/* Fixed Navbar at Top */}
@@ -118,7 +118,7 @@ export default function App() {
         {/* Card Surface for Content */}
         <div className={`w-full rounded-xl sm:rounded-2xl border transition-colors duration-200 p-3.5 sm:p-7 lg:p-8 print:border-none print:shadow-none print:bg-transparent print:p-0 ${
           isDark 
-            ? 'bg-[#131620] border-slate-800/90 shadow-2xs' 
+            ? 'bg-slate-800 border-slate-600 shadow-sm' 
             : 'bg-white border-slate-200/90 shadow-2xs'
         }`}>
           <main id="main-content" tabIndex="-1" className="min-w-0 focus:outline-none">
@@ -142,7 +142,7 @@ export default function App() {
       </div>
 
       {/* Footer */}
-      <Footer isDark={isDark} />
+      <Footer isDark={isDark} showOfficialPortals={activeTab === 'predictor'} />
 
     </div>
   );

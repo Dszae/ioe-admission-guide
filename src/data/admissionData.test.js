@@ -48,6 +48,12 @@ describe('Admission Data Integrity', () => {
     });
   });
 
+  it('lists Architecture only at Chitwan Engineering Campus', () => {
+    expect(Object.keys(CUTOFFS.ChEC)).toEqual(['Architecture']);
+    expect(CAMPUS_SEATS.ChEC.map((seat) => seat.program)).toEqual(['Architecture']);
+    expect(CAMPUS_DETAILS.ChEC.description).not.toMatch(/Computer Engineering/i);
+  });
+
   it('checks that all campus details have complete information', () => {
     Object.values(CAMPUS_DETAILS).forEach((details) => {
       expect(details.fullName).toBeDefined();
