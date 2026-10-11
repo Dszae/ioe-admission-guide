@@ -43,7 +43,7 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
     <div className="animate-fadeIn">
       
       <div className="mb-6">
-        <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white print:text-black">
+        <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white print:text-black">
           CBT Negative Marking Calculator
         </h2>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
@@ -52,14 +52,14 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
       </div>
 
       {/* Mode Switch */}
-      <div className="flex gap-2 mb-6" role="group" aria-label="Calculator Mode">
+      <div className="inline-flex p-1 rounded-xl bg-slate-100 dark:bg-slate-850 border border-slate-200 dark:border-slate-800 mb-6" role="group" aria-label="Calculator Mode">
         <button
           type="button"
           onClick={() => setMode('quick')}
-          className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xl transition-all border ${
+          className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
             mode === 'quick'
-              ? 'bg-cyan-700 text-white border-cyan-600 shadow-sm'
-              : 'bg-slate-100 dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300'
+              ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs'
+              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
           Quick Marks Mode
@@ -67,22 +67,22 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
         <button
           type="button"
           onClick={() => setMode('detailed')}
-          className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xl transition-all border ${
+          className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
             mode === 'detailed'
-              ? 'bg-cyan-700 text-white border-cyan-600 shadow-sm'
-              : 'bg-slate-100 dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300'
+              ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs'
+              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
-          Detailed 1-Mark & 2-Mark Breakdown
+          1-Mark & 2-Mark Breakdown
         </button>
       </div>
 
       {/* Quick Calculator Form */}
       {mode === 'quick' && (
-        <form onSubmit={handleQuickCalc} className="grid sm:grid-cols-2 gap-5 print:hidden">
+        <form onSubmit={handleQuickCalc} className="grid sm:grid-cols-2 gap-4 sm:gap-5 print:hidden">
           <div>
-            <label htmlFor="quick-correct" className="block text-xs font-bold uppercase tracking-wider mb-2 text-slate-600 dark:text-slate-400">
-              Total Positive Marks Scored (Max 140) <span className="text-red-500">*</span>
+            <label htmlFor="quick-correct" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+              Positive Marks Scored (Max 140) <span className="text-rose-500">*</span>
             </label>
             <input
               id="quick-correct"
@@ -90,17 +90,18 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
               step="any"
               min="0"
               max="140"
+              inputMode="decimal"
               placeholder="e.g. 102"
               value={quickForm.correct}
               onChange={(e) => setQuickForm({ ...quickForm, correct: e.target.value })}
               required
-              className="w-full px-5 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-base focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-2xs"
             />
           </div>
 
           <div>
-            <label htmlFor="quick-wrong" className="block text-xs font-bold uppercase tracking-wider mb-2 text-slate-600 dark:text-slate-400">
-              Total Incorrect Question Marks (Penalty Base) <span className="text-red-500">*</span>
+            <label htmlFor="quick-wrong" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+              Incorrect Question Marks (Penalty Base) <span className="text-rose-500">*</span>
             </label>
             <input
               id="quick-wrong"
@@ -108,19 +109,20 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
               step="any"
               min="0"
               max="140"
+              inputMode="decimal"
               placeholder="e.g. 24"
               value={quickForm.wrong}
               onChange={(e) => setQuickForm({ ...quickForm, wrong: e.target.value })}
               required
-              className="w-full px-5 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-base focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-2xs"
             />
-            <p className="text-[11px] text-slate-500 mt-1">10% will be subtracted from your positive score.</p>
+            <p className="text-[11px] text-slate-500 mt-1">Official 10% penalty (-0.1 per mark) subtracted from raw score.</p>
           </div>
 
           <div className="sm:col-span-2">
             <button
               type="submit"
-              className="w-full py-4 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
+              className="w-full py-3 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-xs rounded-xl transition-all shadow-xs min-h-[44px]"
             >
               Calculate Net Score
             </button>
@@ -130,14 +132,14 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
 
       {/* Detailed Calculator Form */}
       {mode === 'detailed' && (
-        <form onSubmit={handleDetailedCalc} className="grid sm:grid-cols-2 gap-5 print:hidden">
-          <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400 mb-3">
+        <form onSubmit={handleDetailedCalc} className="grid sm:grid-cols-2 gap-4 sm:gap-5 print:hidden">
+          <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40">
+            <h3 className="text-xs font-semibold text-blue-700 dark:text-blue-400 mb-3">
               1-Mark Questions (Standard MCQ)
             </h3>
             <div className="space-y-3">
               <div>
-                <label htmlFor="detail-c1" className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">
+                <label htmlFor="detail-c1" className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Correct 1-Mark Answers
                 </label>
                 <input
@@ -145,14 +147,15 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
                   type="number"
                   min="0"
                   max="100"
+                  inputMode="numeric"
                   placeholder="e.g. 45"
                   value={detailedForm.correct1}
                   onChange={(e) => setDetailedForm({ ...detailedForm, correct1: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  className="w-full px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               <div>
-                <label htmlFor="detail-w1" className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">
+                <label htmlFor="detail-w1" className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Incorrect 1-Mark Answers (-0.1 penalty each)
                 </label>
                 <input
@@ -160,22 +163,23 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
                   type="number"
                   min="0"
                   max="100"
+                  inputMode="numeric"
                   placeholder="e.g. 10"
                   value={detailedForm.wrong1}
                   onChange={(e) => setDetailedForm({ ...detailedForm, wrong1: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  className="w-full px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
             </div>
           </div>
 
-          <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400 mb-3">
+          <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40">
+            <h3 className="text-xs font-semibold text-blue-700 dark:text-blue-400 mb-3">
               2-Mark Questions (Conceptual MCQ)
             </h3>
             <div className="space-y-3">
               <div>
-                <label htmlFor="detail-c2" className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">
+                <label htmlFor="detail-c2" className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Correct 2-Mark Answers
                 </label>
                 <input
@@ -183,14 +187,15 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
                   type="number"
                   min="0"
                   max="50"
+                  inputMode="numeric"
                   placeholder="e.g. 25"
                   value={detailedForm.correct2}
                   onChange={(e) => setDetailedForm({ ...detailedForm, correct2: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  className="w-full px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               <div>
-                <label htmlFor="detail-w2" className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">
+                <label htmlFor="detail-w2" className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">
                   Incorrect 2-Mark Answers (-0.2 penalty each)
                 </label>
                 <input
@@ -198,10 +203,11 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
                   type="number"
                   min="0"
                   max="50"
+                  inputMode="numeric"
                   placeholder="e.g. 6"
                   value={detailedForm.wrong2}
                   onChange={(e) => setDetailedForm({ ...detailedForm, wrong2: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  className="w-full px-3.5 py-2 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
             </div>
@@ -210,7 +216,7 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
           <div className="sm:col-span-2">
             <button
               type="submit"
-              className="w-full py-4 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
+              className="w-full py-3 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-xs rounded-xl transition-all shadow-xs min-h-[44px]"
             >
               Calculate Detailed CBT Score
             </button>
@@ -224,23 +230,23 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
           const res = mode === 'quick' ? quickResult : detailedResult;
           const scoreValue = mode === 'quick' ? res.net : res.totalNet;
           return (
-            <div className="mt-8 p-6 sm:p-8 rounded-2xl border border-cyan-500/30 bg-cyan-50/50 dark:bg-cyan-950/20 text-center animate-fadeIn">
-              <span className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 block mb-1">
+            <div className="mt-6 p-5 sm:p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-850 text-center animate-fadeIn shadow-2xs">
+              <span className="text-xs font-medium text-slate-500 dark:text-slate-400 block mb-1">
                 Your Calculated Net Score
               </span>
-              <div className="text-4xl sm:text-6xl font-black font-mono text-cyan-700 dark:text-cyan-300 my-2">
-                {scoreValue} <span className="text-2xl text-slate-400">/ 140</span>
+              <div className="text-3xl sm:text-5xl font-mono font-bold text-slate-900 dark:text-white my-1">
+                {scoreValue} <span className="text-lg text-slate-400 font-normal">/ 140</span>
               </div>
               
-              <div className="flex justify-center items-center gap-4 text-xs font-semibold text-slate-600 dark:text-slate-400 my-4 flex-wrap">
-                <span>Total Negative Penalty: <strong>-{res.penalty || res.totalPenalty} Marks</strong></span>
+              <div className="flex justify-center items-center gap-3 text-xs font-medium text-slate-600 dark:text-slate-400 my-3 flex-wrap">
+                <span>Penalty Deducted: <strong>-{res.penalty || res.totalPenalty}</strong></span>
                 <span>•</span>
-                <span>Percentage: <strong>{res.percentage}%</strong></span>
+                <span>Score: <strong>{res.percentage}%</strong></span>
                 <span>•</span>
                 <span>
-                  Pass Benchmark (56 Marks):{' '}
-                  <strong className={res.isQualified ? 'text-emerald-700 dark:text-emerald-400' : 'text-red-700 dark:text-red-400'}>
-                    {res.isQualified ? 'QUALIFIED (Met)' : 'BELOW 40% PASS MARK'}
+                  Eligibility (Pass 56):{' '}
+                  <strong className={res.isQualified ? 'text-emerald-700 dark:text-emerald-400' : 'text-rose-700 dark:text-rose-400'}>
+                    {res.isQualified ? 'Qualified (Met)' : 'Below 40% Pass Mark'}
                   </strong>
                 </span>
               </div>
@@ -248,9 +254,10 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
               {onSendToEstimator && (
                 <button
                   onClick={() => onSendToEstimator(scoreValue)}
-                  className="mt-2 px-6 py-2.5 rounded-xl border border-cyan-700 dark:border-cyan-500 text-cyan-800 dark:text-cyan-300 font-bold text-xs hover:bg-cyan-700 hover:text-white transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  className="mt-2 inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-xs font-medium hover:bg-slate-100 transition-colors shadow-2xs"
                 >
-                  Pass Score to Rank Estimator →
+                  <span>Pass Score to Rank Curve Estimator</span>
+                  <span>→</span>
                 </button>
               )}
             </div>
@@ -267,4 +274,3 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
     </div>
   );
 }
-

@@ -1,22 +1,38 @@
 import React from 'react';
 
-export default function StatusBadge({ label, color = 'cyan', isDark }) {
+export default function StatusBadge({ label, color = 'blue', isDark }) {
   const colorMap = {
-    emerald: isDark ? 'bg-emerald-950/60 text-emerald-300 border-emerald-700/50' : 'bg-emerald-100 text-emerald-900 border-emerald-200',
-    amber: isDark ? 'bg-amber-950/60 text-amber-300 border-amber-700/50' : 'bg-amber-100 text-amber-950 border-amber-300',
-    orange: isDark ? 'bg-orange-950/60 text-orange-300 border-orange-700/50' : 'bg-orange-100 text-orange-950 border-orange-300',
-    red: isDark ? 'bg-red-950/60 text-red-300 border-red-700/50' : 'bg-red-100 text-red-900 border-red-200',
-    cyan: isDark ? 'bg-cyan-950/60 text-cyan-300 border-cyan-700/50' : 'bg-cyan-100 text-cyan-900 border-cyan-200',
-    teal: isDark ? 'bg-teal-950/60 text-teal-300 border-teal-700/50' : 'bg-teal-100 text-teal-900 border-teal-200',
-    slate: isDark ? 'bg-slate-900 text-slate-200 border-slate-700' : 'bg-slate-100 text-slate-800 border-slate-200'
+    emerald: isDark 
+      ? 'bg-emerald-950/50 text-emerald-300 border-emerald-800/60' 
+      : 'bg-emerald-50 text-emerald-800 border-emerald-200',
+    blue: isDark 
+      ? 'bg-blue-950/50 text-blue-300 border-blue-800/60' 
+      : 'bg-blue-50 text-blue-800 border-blue-200',
+    cyan: isDark 
+      ? 'bg-sky-950/50 text-sky-300 border-sky-800/60' 
+      : 'bg-sky-50 text-sky-800 border-sky-200',
+    teal: isDark 
+      ? 'bg-teal-950/50 text-teal-300 border-teal-800/60' 
+      : 'bg-teal-50 text-teal-800 border-teal-200',
+    amber: isDark 
+      ? 'bg-amber-950/50 text-amber-300 border-amber-800/60' 
+      : 'bg-amber-50 text-amber-900 border-amber-200',
+    orange: isDark 
+      ? 'bg-orange-950/50 text-orange-300 border-orange-800/60' 
+      : 'bg-orange-50 text-orange-900 border-orange-200',
+    red: isDark 
+      ? 'bg-rose-950/50 text-rose-300 border-rose-800/60' 
+      : 'bg-rose-50 text-rose-800 border-rose-200',
+    slate: isDark 
+      ? 'bg-slate-800/60 text-slate-300 border-slate-700/60' 
+      : 'bg-slate-100 text-slate-700 border-slate-200'
   };
 
   const chosenStyle = colorMap[color] || colorMap.slate;
 
   return (
-    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wider uppercase border ${chosenStyle}`}>
+    <span className={`inline-flex items-center px-2 py-0.5 rounded-md text-xs font-medium border ${chosenStyle}`}>
       {label}
     </span>
   );
 }
-

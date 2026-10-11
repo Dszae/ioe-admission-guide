@@ -44,64 +44,93 @@ export default function RankPredictor({ isDark }) {
     }));
   };
 
-  const handlePredict = (e) => {
-    e.preventDefault();
-    const rank = parseInt(form.rank, 10);
+  const runPrediction = (rankNum, targetForm = form, targetMode = mode, targetPhase = phase) => {
+    const rank = parseInt(rankNum, 10);
     if (!rank || rank < 1) return;
 
-    if (mode === 'campus') {
-      const feeData = CUTOFFS[form.college]?.[form.program]?.[form.feeType];
+    if (targetMode === 'campus') {
+      const feeData = CUTOFFS[targetForm.college]?.[targetForm.program]?.[targetForm.feeType];
       if (!feeData) {
         setSingleResult({ 
           status: 'UNAVAILABLE', 
-          message: `${form.program} is not offered under ${form.feeType} at ${CAMPUS_NAMES[form.college]}.` 
+          message: `${targetForm.program} is not offered under ${targetForm.feeType} at ${CAMPUS_NAMES[targetForm.college]}.` 
         });
+        setMultiResult(null);
         return;
       }
-      const baseCutoff = feeData[form.quota] || feeData['Open'];
-      const finalCutoff = getPhaseCutoff(baseCutoff, form.feeType, phase);
+      const baseCutoff = feeData[targetForm.quota] || feeData['Open'];
+      const finalCutoff = getPhaseCutoff(baseCutoff, targetForm.feeType, targetPhase);
       setSingleResult({ 
-        ...getProbability(rank, finalCutoff, phase), 
+        ...getProbability(rank, finalCutoff, targetPhase), 
         cutoff: finalCutoff, 
         input: rank 
       });
+      setMultiResult(null);
     } else {
       const resultsAcrossCampuses = Object.keys(CUTOFFS).map(campusName => {
-        const programData = CUTOFFS[campusName]?.[form.program];
-        if (!programData || !programData[form.feeType]) {
+        const programData = CUTOFFS[campusName]?.[targetForm.program];
+        if (!programData || !programData[targetForm.feeType]) {
           return { campus: campusName, status: 'NOT OFFERED' };
         }
-        const baseCutoff = programData[form.feeType][form.quota] || programData[form.feeType]['Open'];
-        const finalCutoff = getPhaseCutoff(baseCutoff, form.feeType, phase);
+        const baseCutoff = programData[targetForm.feeType][targetForm.quota] || programData[targetForm.feeType]['Open'];
+        const finalCutoff = getPhaseCutoff(baseCutoff, targetForm.feeType, targetPhase);
         return { 
           campus: campusName, 
-          ...getProbability(rank, finalCutoff, phase), 
+          ...getProbability(rank, finalCutoff, targetPhase), 
           cutoff: finalCutoff 
         };
       });
       setMultiResult(resultsAcrossCampuses);
+      setSingleResult(null);
     }
   };
 
-  const badgeColorClasses = (color) => {
+  const handlePredict = (e) => {
+    e.preventDefault();
+    runPrediction(form.rank);
+  };
+
+  const handleQuickPreset = (presetRank, presetCollege, presetProgram) => {
+    const updated = {
+      ...form,
+      rank: String(presetRank),
+      college: presetCollege,
+      program: presetProgram,
+      feeType: 'Regular',
+      quota: 'Open'
+    };
+    setForm(updated);
+    setMode('campus');
+    runPrediction(presetRank, updated, 'campus', phase);
+  };
+
+  const resultTheme = (color) => {
     switch (color) {
       case 'emerald':
-        return isDark 
-          ? 'bg-emerald-950/60 border-emerald-700/60 text-emerald-300' 
-          : 'bg-emerald-50 border-emerald-300 text-emerald-950';
+        return {
+          container: isDark ? 'bg-emerald-950/30 border-emerald-800/60 text-emerald-100' : 'bg-emerald-50/80 border-emerald-200 text-emerald-950',
+          badge: isDark ? 'bg-emerald-900/50 text-emerald-300 border-emerald-700/60' : 'bg-emerald-100 text-emerald-800 border-emerald-300',
+          statBg: isDark ? 'bg-emerald-900/20 border-emerald-800/40' : 'bg-emerald-100/60 border-emerald-200'
+        };
       case 'amber':
-        return isDark 
-          ? 'bg-amber-950/60 border-amber-700/60 text-amber-300' 
-          : 'bg-amber-50 border-amber-300 text-amber-950';
+        return {
+          container: isDark ? 'bg-amber-950/30 border-amber-800/60 text-amber-100' : 'bg-amber-50/80 border-amber-200 text-amber-950',
+          badge: isDark ? 'bg-amber-900/50 text-amber-300 border-amber-700/60' : 'bg-amber-100 text-amber-900 border-amber-300',
+          statBg: isDark ? 'bg-amber-900/20 border-amber-800/40' : 'bg-amber-100/60 border-amber-200'
+        };
       case 'orange':
-        return isDark 
-          ? 'bg-orange-950/60 border-orange-700/60 text-orange-300' 
-          : 'bg-orange-50 border-orange-300 text-orange-950';
+        return {
+          container: isDark ? 'bg-orange-950/30 border-orange-800/60 text-orange-100' : 'bg-orange-50/80 border-orange-200 text-orange-950',
+          badge: isDark ? 'bg-orange-900/50 text-orange-300 border-orange-700/60' : 'bg-orange-100 text-orange-900 border-orange-300',
+          statBg: isDark ? 'bg-orange-900/20 border-orange-800/40' : 'bg-orange-100/60 border-orange-200'
+        };
       case 'red':
       default:
-        return isDark 
-          ? 'bg-red-950/60 border-red-700/60 text-red-300' 
-          : 'bg-red-50 border-red-300 text-red-950';
+        return {
+          container: isDark ? 'bg-rose-950/30 border-rose-800/60 text-rose-100' : 'bg-rose-50/80 border-rose-200 text-rose-950',
+          badge: isDark ? 'bg-rose-900/50 text-rose-300 border-rose-700/60' : 'bg-rose-100 text-rose-900 border-rose-300',
+          statBg: isDark ? 'bg-rose-900/20 border-rose-800/40' : 'bg-rose-100/60 border-rose-200'
+        };
     }
   };
 
@@ -111,53 +140,55 @@ export default function RankPredictor({ isDark }) {
       {/* Title & Provenance Notice */}
       <div className="mb-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-          <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white print:text-black">
+          <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white print:text-black">
             Admission Rank Probability Predictor
           </h2>
-          <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-md w-fit">
-            Benchmark: {ADMISSION_METADATA.academicYear}
+          <span className="text-xs text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-md w-fit">
+            Historical Cutoffs: {ADMISSION_METADATA.academicYear}
           </span>
         </div>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
-          Evaluate your admission odds based on verified historical closing merit ranks across constituent engineering campuses.
+          Estimate your admission probability based on verified historical closing merit ranks across constituent engineering campuses.
         </p>
       </div>
 
       {/* Mode & Phase Switches */}
-      <div className="flex flex-col sm:flex-row justify-between mb-8 gap-4 print:hidden">
-        <div className="grid grid-cols-2 gap-2 w-full sm:w-auto" role="group" aria-label="Prediction Mode">
+      <div className="flex flex-col sm:flex-row justify-between mb-6 gap-3 print:hidden">
+        {/* Scope Segmented Control */}
+        <div className="inline-flex p-1 rounded-xl bg-slate-100 dark:bg-slate-850 border border-slate-200 dark:border-slate-800" role="group" aria-label="Prediction Scope">
           <button 
             type="button"
             onClick={() => handleModeChange('campus')} 
-            className={`px-4 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xl transition-all border ${
+            className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
               mode === 'campus' 
-                ? 'bg-cyan-700 text-white border-cyan-600 shadow-md' 
-                : 'bg-slate-100 dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs' 
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            By Campus
+            By Specific Campus
           </button>
           <button 
             type="button"
             onClick={() => handleModeChange('cross')} 
-            className={`px-4 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xl transition-all border ${
+            className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
               mode === 'cross' 
-                ? 'bg-cyan-700 text-white border-cyan-600 shadow-md' 
-                : 'bg-slate-100 dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs' 
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            Across All Campuses
+            Compare All Campuses
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-2 w-full sm:w-auto" role="group" aria-label="Phase Round">
+        {/* Phase Round Segmented Control */}
+        <div className="inline-flex p-1 rounded-xl bg-slate-100 dark:bg-slate-850 border border-slate-200 dark:border-slate-800" role="group" aria-label="Merit List Round">
           <button 
             type="button"
             onClick={() => setPhase(1)} 
-            className={`px-4 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xl transition-all border ${
+            className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
               phase === 1 
-                ? 'bg-cyan-700 text-white border-cyan-600 shadow-md' 
-                : 'bg-slate-100 dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs' 
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             Phase 1 (First List)
@@ -165,10 +196,10 @@ export default function RankPredictor({ isDark }) {
           <button 
             type="button"
             onClick={() => setPhase(2)} 
-            className={`px-4 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xl transition-all border ${
+            className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
               phase === 2 
-                ? 'bg-cyan-700 text-white border-cyan-600 shadow-md' 
-                : 'bg-slate-100 dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs' 
+                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             Final List (Estimated)
@@ -176,35 +207,71 @@ export default function RankPredictor({ isDark }) {
         </div>
       </div>
 
-      {/* Form with accessible labels and IDs */}
-      <form onSubmit={handlePredict} className="grid sm:grid-cols-2 gap-5 sm:gap-6 print:hidden">
+      {/* Main Predictor Form */}
+      <form onSubmit={handlePredict} className="grid sm:grid-cols-2 gap-4 sm:gap-5 print:hidden">
         
+        {/* Merit Rank Input */}
         <div className="sm:col-span-2">
-          <label htmlFor="pred-rank" className="block text-xs font-bold uppercase tracking-wider mb-2 text-slate-600 dark:text-slate-400">
-            Your IOE Entrance Merit Rank <span className="text-red-500">*</span>
+          <label htmlFor="pred-rank" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            Your IOE Entrance Merit Rank <span className="text-rose-500">*</span>
           </label>
           <input 
             id="pred-rank"
             type="number" 
-            placeholder="e.g. 145" 
-            className="w-full px-5 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-base focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all shadow-sm"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            placeholder="e.g. 240" 
+            className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-base focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors shadow-2xs"
             value={form.rank} 
             onChange={(e) => setForm({ ...form, rank: e.target.value })} 
             required 
             min="1"
             max="15000"
           />
-          <p className="text-[11px] text-slate-500 mt-1">Enter your official merit rank published on the IOE result card.</p>
+          
+          {/* Quick preset chips for absolute beginners */}
+          <div className="flex flex-wrap items-center gap-1.5 mt-2">
+            <span className="text-[11px] text-slate-500 dark:text-slate-400">Try example:</span>
+            <button
+              type="button"
+              onClick={() => handleQuickPreset(120, 'Pulchowk', 'Computer Engineering')}
+              className="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
+            >
+              Rank 120 (Pulchowk Comp)
+            </button>
+            <button
+              type="button"
+              onClick={() => handleQuickPreset(580, 'Pulchowk', 'Civil Engineering')}
+              className="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
+            >
+              Rank 580 (Pulchowk Civil)
+            </button>
+            <button
+              type="button"
+              onClick={() => handleQuickPreset(1450, 'Thapathali', 'Mechanical Engineering')}
+              className="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
+            >
+              Rank 1,450 (Thapathali)
+            </button>
+            <button
+              type="button"
+              onClick={() => handleQuickPreset(2800, 'WRC', 'Civil Engineering')}
+              className="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
+            >
+              Rank 2,800 (WRC Pokhara)
+            </button>
+          </div>
         </div>
 
+        {/* Campus Selection */}
         {mode === 'campus' && (
           <div>
-            <label htmlFor="pred-college" className="block text-xs font-bold uppercase tracking-wider mb-2 text-slate-600 dark:text-slate-400">
+            <label htmlFor="pred-college" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
               Target Constituent Campus
             </label>
             <select 
               id="pred-college"
-              className="w-full px-4 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all shadow-sm"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors shadow-2xs"
               value={form.college} 
               onChange={(e) => handleCollegeChange(e.target.value)}
             >
@@ -217,13 +284,14 @@ export default function RankPredictor({ isDark }) {
           </div>
         )}
 
+        {/* Engineering Program */}
         <div className={mode === 'cross' ? 'sm:col-span-2' : ''}>
-          <label htmlFor="pred-program" className="block text-xs font-bold uppercase tracking-wider mb-2 text-slate-600 dark:text-slate-400">
+          <label htmlFor="pred-program" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
             Engineering Program
           </label>
           <select 
             id="pred-program"
-            className="w-full px-4 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all shadow-sm"
+            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors shadow-2xs"
             value={form.program} 
             onChange={(e) => setForm({ ...form, program: e.target.value })}
           >
@@ -233,28 +301,30 @@ export default function RankPredictor({ isDark }) {
           </select>
         </div>
 
+        {/* Fee Category */}
         <div>
-          <label htmlFor="pred-fee" className="block text-xs font-bold uppercase tracking-wider mb-2 text-slate-600 dark:text-slate-400">
+          <label htmlFor="pred-fee" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
             Fee Category
           </label>
           <select 
             id="pred-fee"
-            className="w-full px-4 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all shadow-sm"
+            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors shadow-2xs"
             value={form.feeType} 
             onChange={(e) => setForm({ ...form, feeType: e.target.value })}
           >
-            <option value="Regular">Regular (Government Subsidized Scholarship)</option>
+            <option value="Regular">Regular (Subsidized Scholarship)</option>
             <option value="FullFee">Full Fee (Paying Category)</option>
           </select>
         </div>
 
+        {/* Quota */}
         <div>
-          <label htmlFor="pred-quota" className="block text-xs font-bold uppercase tracking-wider mb-2 text-slate-600 dark:text-slate-400">
+          <label htmlFor="pred-quota" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
             Admission Quota
           </label>
           <select 
             id="pred-quota"
-            className="w-full px-4 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all shadow-sm"
+            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors shadow-2xs"
             value={form.quota} 
             onChange={(e) => setForm({ ...form, quota: e.target.value })}
           >
@@ -265,10 +335,11 @@ export default function RankPredictor({ isDark }) {
           </select>
         </div>
 
-        <div className="sm:col-span-2 mt-2">
+        {/* Submit Button */}
+        <div className="sm:col-span-2 mt-1">
           <button 
             type="submit" 
-            className="w-full py-4 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 active:scale-[0.99] text-white font-bold text-sm tracking-wider uppercase rounded-xl transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
+            className="w-full py-3.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-sm rounded-xl transition-all shadow-xs focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 min-h-[44px]"
           >
             Calculate Admission Probability
           </button>
@@ -282,80 +353,89 @@ export default function RankPredictor({ isDark }) {
       </div>
 
       {/* Print View Header */}
-      <div className="hidden print:block mb-8">
-        <h2 className="text-2xl font-black border-b pb-2 mb-4">IOE Admission Prediction Summary</h2>
-        <p className="font-bold">Merit Rank: {form.rank}</p>
-        <p>Program: {form.program} ({form.feeType} - {form.quota})</p>
-        <p>List Phase: {phase === 1 ? 'Phase 1 First List' : 'Final Round Estimate'}</p>
+      <div className="hidden print:block mb-6">
+        <h2 className="text-xl font-bold border-b pb-2 mb-3">IOE Admission Prediction Summary</h2>
+        <p className="font-semibold text-sm">Merit Rank: {form.rank}</p>
+        <p className="text-sm">Program: {form.program} ({form.feeType} - {form.quota})</p>
+        <p className="text-sm">List Phase: {phase === 1 ? 'Phase 1 First List' : 'Final Round Estimate'}</p>
       </div>
 
       {/* Single Campus Result Card */}
       {mode === 'campus' && singleResult && (
-        <div className="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800 animate-fadeIn print:border-none print:pt-0">
+        <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-800 animate-fadeIn print:border-none print:pt-0">
           {singleResult.status === 'UNAVAILABLE' ? (
-            <div className="p-6 rounded-2xl text-center border bg-slate-100 dark:bg-slate-900 border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400">
-              <p className="font-semibold">{singleResult.message}</p>
+            <div className="p-5 rounded-xl text-center border bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400">
+              <p className="font-medium text-sm">{singleResult.message}</p>
             </div>
-          ) : (
-            <div className={`p-6 sm:p-8 border rounded-2xl flex flex-col sm:flex-row justify-between items-center gap-6 transition-all ${badgeColorClasses(singleResult.color)}`}>
-              <div className="text-center sm:text-left">
-                <span className="text-[11px] font-bold uppercase tracking-widest opacity-80 block mb-1">
-                  Historical Admission Outlook
-                </span>
-                <h3 className="text-2xl sm:text-4xl font-extrabold tracking-tight mb-2">
-                  {singleResult.status}
-                </h3>
-                <p className="text-sm font-medium opacity-90 max-w-md">
-                  {singleResult.message}
-                </p>
-              </div>
+          ) : (() => {
+            const theme = resultTheme(singleResult.color);
+            return (
+              <div className={`p-5 sm:p-6 border rounded-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-5 transition-all ${theme.container}`}>
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full border ${theme.badge}`}>
+                      {singleResult.status}
+                    </span>
+                    <span className="text-xs text-slate-500 dark:text-slate-400">
+                      {CAMPUS_NAMES[form.college]} • {form.program}
+                    </span>
+                  </div>
+                  <p className="text-sm sm:text-base font-semibold mt-1">
+                    {singleResult.message}
+                  </p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                    Based on {phase === 1 ? 'Phase 1 first list' : 'subsequent round closing'} data under {form.feeType} ({form.quota}).
+                  </p>
+                </div>
 
-              <div className="text-center sm:text-right flex-shrink-0 bg-white/40 dark:bg-black/20 p-4 rounded-xl border border-current/20">
-                <p className="text-xs font-bold uppercase tracking-wider opacity-80 mb-1">
-                  Historical Cutoff Rank
-                </p>
-                <p className="text-3xl sm:text-5xl font-mono font-extrabold">
-                  {singleResult.cutoff}
-                </p>
-                <p className="text-[10px] opacity-75 mt-1 font-mono">
-                  Your Rank: {singleResult.input}
-                </p>
+                <div className={`text-center sm:text-right flex-shrink-0 p-4 rounded-xl border ${theme.statBg} w-full sm:w-auto`}>
+                  <p className="text-xs font-medium text-slate-500 dark:text-slate-400 mb-0.5">
+                    Historical Closing Cutoff
+                  </p>
+                  <p className="text-2xl sm:text-4xl font-mono font-bold">
+                    {singleResult.cutoff}
+                  </p>
+                  <p className="text-xs font-mono text-slate-500 dark:text-slate-400 mt-1">
+                    Your Rank: {singleResult.input}
+                  </p>
+                </div>
               </div>
-            </div>
-          )}
+            );
+          })()}
         </div>
       )}
 
       {/* Multi Campus Results Grid */}
       {mode === 'cross' && multiResult && (
-        <div className="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800 animate-fadeIn print:border-none print:pt-0">
-          <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-cyan-500"></span>
-            {form.program} — Outlook Across All Constituent Campuses
+        <div className="mt-6 pt-6 border-t border-slate-200 dark:border-slate-800 animate-fadeIn print:border-none print:pt-0">
+          <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-blue-600"></span>
+            {form.program} — Outlook Across Constituent Campuses
           </h3>
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-2 gap-3.5">
             {multiResult.map((res, idx) => {
               if (res.status === 'NOT OFFERED') {
                 return (
-                  <div key={idx} className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 flex justify-between items-center text-slate-500">
-                    <span className="font-semibold text-sm">{CAMPUS_NAMES[res.campus]}</span>
-                    <span className="text-xs uppercase font-bold px-2 py-1 rounded bg-slate-200 dark:bg-slate-800 text-slate-500">Not Offered</span>
+                  <div key={idx} className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30 flex justify-between items-center text-slate-400 text-xs">
+                    <span className="font-medium text-slate-600 dark:text-slate-400">{CAMPUS_NAMES[res.campus]}</span>
+                    <span className="px-2 py-0.5 rounded bg-slate-200/60 dark:bg-slate-800 text-slate-500 font-medium">Not Offered</span>
                   </div>
                 );
               }
+              const theme = resultTheme(res.color);
               return (
-                <div key={idx} className={`p-4 sm:p-5 rounded-xl border flex flex-col justify-between transition-all ${badgeColorClasses(res.color)}`}>
-                  <div className="flex justify-between items-start mb-4 gap-2">
-                    <h4 className="font-bold text-sm sm:text-base leading-snug">
+                <div key={idx} className={`p-4 rounded-xl border flex flex-col justify-between transition-all ${theme.container}`}>
+                  <div className="flex justify-between items-start mb-3 gap-2">
+                    <h4 className="font-semibold text-sm leading-snug">
                       {CAMPUS_NAMES[res.campus]}
                     </h4>
-                    <span className="text-[10px] uppercase font-bold px-2.5 py-1 rounded-full bg-current/10 whitespace-nowrap">
+                    <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-full border whitespace-nowrap ${theme.badge}`}>
                       {res.status}
                     </span>
                   </div>
-                  <div className="flex justify-between items-end border-t border-current/10 pt-3">
-                    <span className="text-xs font-semibold opacity-80">Historical Cutoff:</span>
-                    <span className="text-lg font-mono font-bold">{res.cutoff}</span>
+                  <div className="flex justify-between items-end border-t border-current/10 pt-2 text-xs">
+                    <span className="opacity-80">Closing Cutoff:</span>
+                    <span className="font-mono font-bold text-base">{res.cutoff}</span>
                   </div>
                 </div>
               );
@@ -367,8 +447,8 @@ export default function RankPredictor({ isDark }) {
       {/* Predictor Disclaimer */}
       <InfoDisclaimer 
         isDark={isDark}
-        title="Probabilistic Methodology & Non-Guarantee Notice" 
-        text="Cutoff values represent historical closing ranks from previous IOE admission lists. Actual closing ranks for the current academic session may deviate upward or downward depending on test difficulty, applicant distribution, and seat withdrawals. This statistical tool does not guarantee admission." 
+        title="Probabilistic Methodology & Guidance Notice" 
+        text="Cutoff values represent historical closing ranks from previous IOE admission lists. Actual closing ranks for the current academic session may deviate upward or downward depending on test difficulty, applicant distribution, and seat withdrawals. This statistical tool is designed for planning guidance and does not guarantee admission." 
       />
 
     </div>

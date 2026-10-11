@@ -7,7 +7,7 @@ export default function FinancialsBreakdown({ isDark }) {
     <div className="animate-fadeIn">
       
       <div className="mb-6">
-        <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white print:text-black">
+        <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white print:text-black">
           4-Year Engineering Financial Investment Breakdown
         </h2>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
@@ -16,63 +16,61 @@ export default function FinancialsBreakdown({ isDark }) {
       </div>
 
       {/* Financials Cards Grid */}
-      <div className="grid lg:grid-cols-3 gap-5">
+      <div className="grid lg:grid-cols-3 gap-4 sm:gap-5">
         {Object.entries(FINANCIALS).map(([typeKey, item]) => (
           <div
             key={typeKey}
-            className={`p-5 sm:p-6 rounded-2xl border flex flex-col justify-between transition-colors ${
-              isDark ? 'bg-slate-900/60 border-slate-800' : 'bg-white border-slate-200 shadow-sm'
-            }`}
+            className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850/60 shadow-2xs flex flex-col justify-between transition-colors"
           >
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-[11px] font-medium px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/50">
                   {typeKey} Category
                 </span>
               </div>
 
-              <h3 className="font-extrabold text-base sm:text-lg text-slate-900 dark:text-white mb-2">
+              <h3 className="font-bold text-base text-slate-900 dark:text-white mb-1.5">
                 {item.type}
               </h3>
 
-              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
                 {item.notes}
               </p>
 
-              <div className="space-y-4 mb-6">
-                <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-700/60">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block">4-Year Total Tuition</span>
+              <div className="space-y-3 mb-5">
+                <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60">
+                  <span className="text-[11px] font-medium text-slate-500 block">4-Year Total Tuition</span>
                   <span className="text-sm font-mono font-bold text-slate-900 dark:text-white mt-0.5 block">{item.tuition}</span>
                 </div>
 
-                <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-700/60">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block">Est. Living Costs (4 Yrs)</span>
+                <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60">
+                  <span className="text-[11px] font-medium text-slate-500 block">Est. Living Expenses (4 Yrs)</span>
                   <span className="text-sm font-mono font-bold text-slate-900 dark:text-white mt-0.5 block">{item.living}</span>
                   <span className="text-[10px] text-slate-500 mt-0.5 block">Estimated at ~NPR 10k/month (food + room)</span>
                 </div>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block mb-1">Total Estimated Investment</span>
-              <span className="text-lg sm:text-xl font-mono font-extrabold text-cyan-600 dark:text-cyan-400">{item.total}</span>
+            <div className="pt-3.5 border-t border-slate-100 dark:border-slate-800">
+              <span className="text-[11px] font-medium text-slate-500 block mb-0.5">Total Estimated Investment</span>
+              <span className="text-base sm:text-lg font-mono font-bold text-blue-700 dark:text-blue-400">{item.total}</span>
             </div>
           </div>
         ))}
       </div>
 
       {/* Installment Schedule & Financial Tips */}
-      <div className="mt-8 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40">
-        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-3">
+      <div className="mt-6 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850">
+        <h4 className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2.5">
           Semester Installment Payment Rules
         </h4>
         <div className="grid sm:grid-cols-2 gap-4 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
           <div>
-            <strong className="text-slate-800 dark:text-slate-200 block mb-1">Constituent Campuses (Pulchowk, Thapathali, WRC, ERC, ChEC):</strong>
+            <strong className="text-slate-800 dark:text-slate-200 block mb-1">Constituent Campuses:</strong>
             Full Fee tuition is divided across 8 semesters. The first installment (~NPR 80,000 to 1,20,000 depending on faculty) is paid upon initial seat acceptance at the campus bank counter. Subsequent installments are payable before each semester examination registration.
           </div>
           <div>
-            <strong className="text-slate-800 dark:text-slate-200 block mb-1">Hostel & Accommodation Subsidies:</strong>
+            <strong className="text-slate-800 dark:text-slate-200 block mb-1">Hostel & Living Costs:</strong>
             Campus hostels at Pulchowk, WRC, and ERC provide highly subsidized accommodation (~NPR 1,500 to 3,000/month room rent) awarded through separate hostel merit applications following admission.
           </div>
         </div>
@@ -87,4 +85,3 @@ export default function FinancialsBreakdown({ isDark }) {
     </div>
   );
 }
-

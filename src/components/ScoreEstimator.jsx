@@ -8,25 +8,34 @@ export default function ScoreEstimator({ isDark, initialScore = '' }) {
     initialScore ? getScoreToRankEstimate(initialScore) : null
   );
 
+  const calculateEstimate = (scoreVal) => {
+    const res = getScoreToRankEstimate(scoreVal);
+    setEstimateResult(res);
+  };
+
   const handleEstimate = (e) => {
     e.preventDefault();
-    const res = getScoreToRankEstimate(scoreInput);
-    setEstimateResult(res);
+    calculateEstimate(scoreInput);
+  };
+
+  const handleQuickPreset = (val) => {
+    setScoreInput(String(val));
+    calculateEstimate(val);
   };
 
   const getResultStyle = (color) => {
     switch (color) {
       case 'emerald':
-        return isDark ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-400' : 'bg-emerald-50 border-emerald-200 text-emerald-800';
+        return isDark ? 'bg-emerald-950/30 border-emerald-800/60 text-emerald-100' : 'bg-emerald-50/80 border-emerald-200 text-emerald-950';
       case 'teal':
-        return isDark ? 'bg-teal-500/10 border-teal-500/40 text-teal-400' : 'bg-teal-50 border-teal-200 text-teal-800';
+        return isDark ? 'bg-teal-950/30 border-teal-800/60 text-teal-100' : 'bg-teal-50/80 border-teal-200 text-teal-950';
       case 'amber':
-        return isDark ? 'bg-amber-500/10 border-amber-500/40 text-amber-400' : 'bg-amber-50 border-amber-200 text-amber-800';
+        return isDark ? 'bg-amber-950/30 border-amber-800/60 text-amber-100' : 'bg-amber-50/80 border-amber-200 text-amber-950';
       case 'orange':
-        return isDark ? 'bg-orange-500/10 border-orange-500/40 text-orange-400' : 'bg-orange-50 border-orange-200 text-orange-800';
+        return isDark ? 'bg-orange-950/30 border-orange-800/60 text-orange-100' : 'bg-orange-50/80 border-orange-200 text-orange-950';
       case 'red':
       default:
-        return isDark ? 'bg-red-500/10 border-red-500/40 text-red-400' : 'bg-red-50 border-red-200 text-red-800';
+        return isDark ? 'bg-rose-950/30 border-rose-800/60 text-rose-100' : 'bg-rose-50/80 border-rose-200 text-rose-950';
     }
   };
 
@@ -34,7 +43,7 @@ export default function ScoreEstimator({ isDark, initialScore = '' }) {
     <div className="animate-fadeIn">
       
       <div className="mb-6">
-        <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white print:text-black">
+        <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white print:text-black">
           CBT Score-to-Rank Curve Estimator
         </h2>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
@@ -42,48 +51,81 @@ export default function ScoreEstimator({ isDark, initialScore = '' }) {
         </p>
       </div>
 
-      <form onSubmit={handleEstimate} className="bg-cyan-500/5 border border-cyan-500/20 p-5 sm:p-6 rounded-2xl print:hidden flex flex-col sm:flex-row gap-4">
-        <div className="w-full">
-          <label htmlFor="score-input" className="block text-xs font-bold uppercase tracking-wider mb-2 text-slate-600 dark:text-slate-400">
-            Your Expected Score (Out of 140) <span className="text-red-500">*</span>
+      <form onSubmit={handleEstimate} className="bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 p-4 sm:p-5 rounded-xl print:hidden flex flex-col gap-3">
+        <div>
+          <label htmlFor="score-input" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            Your Expected CBT Score (Out of 140) <span className="text-rose-500">*</span>
           </label>
-          <input
-            id="score-input"
-            type="number"
-            step="any"
-            min="1"
-            max="140"
-            placeholder="e.g. 104.5"
-            value={scoreInput}
-            onChange={(e) => setScoreInput(e.target.value)}
-            required
-            className="w-full px-5 py-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-base focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all shadow-sm"
-          />
-          <p className="text-[11px] text-slate-500 mt-1">Minimum qualifying pass mark is 56 (40%).</p>
+          <div className="flex flex-col sm:flex-row gap-2.5">
+            <input
+              id="score-input"
+              type="number"
+              step="any"
+              min="1"
+              max="140"
+              inputMode="decimal"
+              placeholder="e.g. 104.5"
+              value={scoreInput}
+              onChange={(e) => setScoreInput(e.target.value)}
+              required
+              className="flex-1 px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-base focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-2xs"
+            />
+            <button
+              type="submit"
+              className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-xs rounded-xl transition-all shadow-xs whitespace-nowrap min-h-[44px]"
+            >
+              Estimate Rank Bracket
+            </button>
+          </div>
+          <p className="text-[11px] text-slate-500 mt-1.5">Minimum qualifying pass mark is 56 (40%).</p>
         </div>
 
-        <div className="w-full sm:w-auto flex items-end">
+        {/* Quick preset chips */}
+        <div className="flex flex-wrap items-center gap-1.5 pt-1">
+          <span className="text-[11px] text-slate-500 dark:text-slate-400">Try example:</span>
           <button
-            type="submit"
-            className="w-full sm:w-auto px-8 py-3.5 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 active:scale-[0.98] text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all shadow-md whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
+            type="button"
+            onClick={() => handleQuickPreset(115)}
+            className="px-2 py-0.5 rounded text-[11px] font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
           >
-            Estimate Rank Bracket
+            115 Marks
+          </button>
+          <button
+            type="button"
+            onClick={() => handleQuickPreset(96)}
+            className="px-2 py-0.5 rounded text-[11px] font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
+          >
+            96 Marks
+          </button>
+          <button
+            type="button"
+            onClick={() => handleQuickPreset(78)}
+            className="px-2 py-0.5 rounded text-[11px] font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
+          >
+            78 Marks
+          </button>
+          <button
+            type="button"
+            onClick={() => handleQuickPreset(62)}
+            className="px-2 py-0.5 rounded text-[11px] font-medium bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100"
+          >
+            62 Marks
           </button>
         </div>
       </form>
 
       {estimateResult && (
-        <div className={`mt-8 p-6 sm:p-8 rounded-2xl border text-center transition-all ${getResultStyle(estimateResult.color)}`}>
-          <span className="text-xs font-bold uppercase tracking-widest opacity-80 block mb-1">
+        <div className={`mt-6 p-5 sm:p-6 rounded-xl border text-center transition-all ${getResultStyle(estimateResult.color)}`}>
+          <span className="text-xs font-medium opacity-80 block mb-1">
             Estimated Merit Rank Bracket
           </span>
-          <h3 className="text-3xl sm:text-5xl font-mono font-extrabold my-2">
+          <h3 className="text-2xl sm:text-4xl font-mono font-bold my-1">
             {estimateResult.range}
           </h3>
-          <p className="text-xs sm:text-sm font-semibold max-w-lg mx-auto opacity-90 mt-2">
+          <p className="text-xs sm:text-sm font-medium max-w-lg mx-auto opacity-90 mt-1">
             {estimateResult.msg}
           </p>
-          <div className="mt-4 pt-3 border-t border-current/20 text-xs font-medium opacity-80">
+          <div className="mt-3 pt-2.5 border-t border-current/15 text-xs font-medium opacity-80">
             Pass Benchmark (56 Marks):{' '}
             <strong>{estimateResult.isQualified ? 'Eligible for IOE Merit Listing' : 'Does not meet 40% Pass Cutoff'}</strong>
           </div>
@@ -91,30 +133,30 @@ export default function ScoreEstimator({ isDark, initialScore = '' }) {
       )}
 
       {/* Historical Score vs Rank Reference Guide */}
-      <div className="mt-8 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/40">
-        <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-3">
+      <div className="mt-6 p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-850">
+        <h4 className="text-xs font-semibold text-slate-700 dark:text-slate-300 mb-3">
           Historical Score vs Rank Distribution Benchmarks
         </h4>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
-          <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60">
-            <span className="text-slate-500 block text-[10px] uppercase font-bold">120+ Marks</span>
-            <strong className="text-emerald-600 dark:text-emerald-400 font-mono text-sm">Rank &lt; 100</strong>
-            <p className="text-[11px] text-slate-500 mt-1">Topper Zone</p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
+          <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60">
+            <span className="text-slate-500 block text-[11px] font-medium">120+ Marks</span>
+            <strong className="text-slate-900 dark:text-white font-mono text-sm block mt-0.5">Rank &lt; 100</strong>
+            <p className="text-[11px] text-slate-500 mt-0.5">Top Merit Zone</p>
           </div>
-          <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60">
-            <span className="text-slate-500 block text-[10px] uppercase font-bold">100 - 119 Marks</span>
-            <strong className="text-teal-600 dark:text-teal-400 font-mono text-sm">Rank 100 - 500</strong>
-            <p className="text-[11px] text-slate-500 mt-1">Pulchowk Regular</p>
+          <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60">
+            <span className="text-slate-500 block text-[11px] font-medium">100 - 119 Marks</span>
+            <strong className="text-slate-900 dark:text-white font-mono text-sm block mt-0.5">Rank 100 - 500</strong>
+            <p className="text-[11px] text-slate-500 mt-0.5">Pulchowk Regular</p>
           </div>
-          <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60">
-            <span className="text-slate-500 block text-[10px] uppercase font-bold">85 - 99 Marks</span>
-            <strong className="text-amber-600 dark:text-amber-400 font-mono text-sm">Rank 500 - 1500</strong>
-            <p className="text-[11px] text-slate-500 mt-1">Full Fee / Regional</p>
+          <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60">
+            <span className="text-slate-500 block text-[11px] font-medium">85 - 99 Marks</span>
+            <strong className="text-slate-900 dark:text-white font-mono text-sm block mt-0.5">Rank 500 - 1500</strong>
+            <p className="text-[11px] text-slate-500 mt-0.5">Full Fee / Regional</p>
           </div>
-          <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60">
-            <span className="text-slate-500 block text-[10px] uppercase font-bold">56 - 84 Marks</span>
-            <strong className="text-orange-600 dark:text-orange-400 font-mono text-sm">Rank 1500 - 5000+</strong>
-            <p className="text-[11px] text-slate-500 mt-1">Regional / Affiliated</p>
+          <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60">
+            <span className="text-slate-500 block text-[11px] font-medium">56 - 84 Marks</span>
+            <strong className="text-slate-900 dark:text-white font-mono text-sm block mt-0.5">Rank 1500 - 5000+</strong>
+            <p className="text-[11px] text-slate-500 mt-0.5">Regional / Affiliated</p>
           </div>
         </div>
       </div>
@@ -128,4 +170,3 @@ export default function ScoreEstimator({ isDark, initialScore = '' }) {
     </div>
   );
 }
-
