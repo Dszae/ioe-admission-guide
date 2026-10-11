@@ -20,8 +20,8 @@ body,
 
 html.dark,
 body.dark {
-  background-color: #101820;
-  color: #e8eef2;
+  background-color: #0b1220;
+  color: #eef4fb;
   color-scheme: dark;
 }
 
@@ -32,21 +32,21 @@ body:not(.dark) {
   color-scheme: light;
 }
 
-/* Dark mode palette: charcoal surfaces with a calm teal action color. */
+/* Dark mode palette: deep navy surfaces with calm, high-contrast blue accents. */
 html.dark .dark\:text-slate-400 {
-  color: #b8c6d0 !important;
+  color: #b8c6d6 !important;
 }
 html.dark .dark\:text-slate-500 {
-  color: #9fb0bc !important;
+  color: #a3b3c7 !important;
 }
 html.dark .dark\:text-slate-300 {
-  color: #d5e0e6 !important;
+  color: #d8e3f0 !important;
 }
 
 /* Dark mode form elements with better contrast */
 html.dark select option {
-  background-color: #1b2933;
-  color: #e8eef2;
+  background-color: #111c2e;
+  color: #eef4fb;
 }
 
 html:not(.dark) select option {
@@ -57,100 +57,100 @@ html:not(.dark) select option {
 html.dark input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
 html.dark select,
 html.dark textarea {
-  background-color: #17232c !important;
-  color: #e8eef2 !important;
-  border-color: #435462 !important;
+  background-color: #0f192a !important;
+  color: #eef4fb !important;
+  border-color: #405572 !important;
 }
 
 html.dark input::placeholder,
 html.dark textarea::placeholder {
-  color: #91a4b1 !important;
+  color: #91a5bd !important;
   opacity: 1;
 }
 
 /* Dark mode card/container backgrounds with better contrast */
 html.dark .dark\:bg-slate-800\/60 {
-  background-color: #1b2933 !important;
+  background-color: #111c2e !important;
 }
 html.dark .dark\:bg-slate-800\/50 {
-  background-color: #1b2933 !important;
+  background-color: #111c2e !important;
 }
 html.dark .dark\:bg-slate-800 {
-  background-color: #1b2933 !important;
+  background-color: #111c2e !important;
 }
 html.dark .dark\:bg-slate-900\/60 {
-  background-color: #101820 !important;
+  background-color: #0b1220 !important;
 }
 html.dark .dark\:bg-blue-950\/60 {
-  background-color: #12343a !important;
+  background-color: #172a49 !important;
 }
 html.dark .dark\:bg-slate-50 {
-  background-color: #22313b !important;
+  background-color: #1d2d44 !important;
 }
 html.dark .dark\:bg-slate-700 {
-  background-color: #263641 !important;
+  background-color: #263a55 !important;
 }
 html.dark .dark\:bg-slate-500 {
-  background-color: #496272 !important;
+  background-color: #4b6380 !important;
 }
 
 /* Dark mode borders with better contrast */
 html.dark .dark\:border-slate-800 {
-  border-color: #2b3b47 !important;
+  border-color: #263a55 !important;
 }
 html.dark .dark\:border-slate-700\/60 {
-  border-color: #435462 !important;
+  border-color: #405572 !important;
 }
 html.dark .dark\:border-slate-200\/60 {
-  border-color: #435462 !important;
+  border-color: #405572 !important;
 }
 html.dark .dark\:border-blue-800\/50 {
-  border-color: #216b70 !important;
+  border-color: #315b92 !important;
 }
 html.dark .dark\:border-slate-100 {
-  border-color: #2b3b47 !important;
+  border-color: #263a55 !important;
 }
 html.dark .dark\:border-slate-200 {
-  border-color: #435462 !important;
+  border-color: #405572 !important;
 }
 
 /* Dark mode text colors with proper contrast */
 html.dark .dark\:text-white {
-  color: #f2f7f8 !important;
+  color: #f5f8fc !important;
 }
 html.dark .dark\:text-slate-200 {
-  color: #d5e0e6 !important;
+  color: #d8e3f0 !important;
 }
 html.dark .dark\:text-blue-400 {
-  color: #6ee7d8 !important;
+  color: #93c5fd !important;
 }
 html.dark .dark\:text-blue-300 {
-  color: #a7f3e8 !important;
+  color: #bfdbfe !important;
 }
 html.dark .dark\:text-slate-600 {
-  color: #9fb0bc !important;
+  color: #a3b3c7 !important;
 }
 html.dark .dark\:text-slate-700 {
-  color: #c4d1d8 !important;
+  color: #c8d5e4 !important;
 }
 
 html.dark .dark\:hover\:bg-slate-800:hover {
-  background-color: #263641 !important;
+  background-color: #1d2d44 !important;
 }
 html.dark .dark\:hover\:bg-slate-700:hover {
-  background-color: #344955 !important;
+  background-color: #344c6b !important;
 }
 html.dark .dark\:bg-blue-950\/40 {
-  background-color: #12343a !important;
+  background-color: #172a49 !important;
 }
 html.dark .bg-blue-600 {
-  background-color: #139a93 !important;
+  background-color: #2563eb !important;
 }
 html.dark .hover\:bg-blue-700:hover {
-  background-color: #0f817b !important;
+  background-color: #1d4ed8 !important;
 }
 html.dark .active\:bg-blue-800:active {
-  background-color: #0b6c68 !important;
+  background-color: #1e40af !important;
 }
 
 button,

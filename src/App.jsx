@@ -49,7 +49,7 @@ export default function App() {
         root.classList.add('dark');
         document.body.classList.add('dark');
         root.style.colorScheme = 'dark';
-        if (themeColorMeta) themeColorMeta.setAttribute('content', '#0f172a');
+        if (themeColorMeta) themeColorMeta.setAttribute('content', '#0b1220');
         localStorage.setItem('theme', 'dark');
       } else {
         root.classList.remove('dark');
