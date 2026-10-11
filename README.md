@@ -9,7 +9,7 @@ A comprehensive, mobile-first, and accessible admission guidance platform for In
 
 ## 🚀 Key Modules & Capabilities
 
-* **Statistical Rank Probability Predictor:** Evaluates admission odds by individual campus or across all constituent campuses using verified historical closing merit ranks (2079/2080 BS benchmark). Features probabilistic tiers (High, Moderate, Competitive, Reach) without misleading guarantees.
+* **Statistical Rank Probability Predictor:** Evaluates admission odds by individual campus or across all constituent campuses using verified historical closing merit ranks (2082 BS benchmark). Features probabilistic tiers (High, Moderate, Competitive, Reach) without misleading guarantees.
 * **Constituent Campus & Seat Matrix Explorer:** Detailed exploration of all 5 constituent engineering colleges (Pulchowk, Thapathali, WRC Pokhara, ERC Dharan, ChEC Chitwan) with verified seat intakes (Total 2,040 constituent seats) and program breakdowns.
 * **Affiliated Colleges Directory:** Comprehensive directory of 10 TU-affiliated private engineering institutions across Nepal with intake programs and locations.
 * **Official Admission Notices Tracker:** Curated and searchable tracker of official notices, circulars, and quota documents directly linking to authentic IOE and campus admission portals.

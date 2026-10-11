@@ -48,7 +48,7 @@ export default function Footer({ isDark }) {
 
         <div className="flex flex-col sm:flex-row justify-between items-center gap-3 text-slate-600 dark:text-slate-400 text-xs pt-2">
           <p>
-            © {new Date().getFullYear()} IOE Admission Hub. Historical data referenced from IOE Archives (2079/2080 BS).
+            © {new Date().getFullYear()} IOE Admission Hub. Historical data referenced from IOE Archives (2082 BS).
           </p>
           <p className="flex items-center gap-2">
             <span>Built by</span>

@@ -3,7 +3,7 @@
  * 
  * Provenance & Verification:
  * - Data Source: Institute of Engineering (IOE), Tribhuvan University
- * - Official Reference: IOE Entrance Examination Information Booklet & Historical Closing Rank Archives (2079/2080 BS)
+ * - Official Reference: IOE Entrance Examination Information Booklet & Historical Closing Rank Archives (2082 BS)
  * - Academic Cycle: Undergraduate B.E. / B.Arch Entrance & Admissions
  * - Last Verified: October 2026
  * 
@@ -12,7 +12,7 @@
  */
 
 export const ADMISSION_METADATA = {
-  academicYear: "2081/2082 BS (Benchmark: 2079/2080 Archive)",
+  academicYear: "2082 BS (Benchmark: 2082 Archive)",
   governingBody: "Institute of Engineering (IOE), Tribhuvan University",
   examFormat: "Computer Based Test (CBT)",
   totalMarks: 140,
