@@ -43,6 +43,8 @@ const NAV_GROUPS = [
   }
 ];
 
+const tabHref = (tabId) => tabId === 'predictor' ? '/' : `/?tab=${tabId}`;
+
 export default function Header({ 
   isDark, 
   setIsDark, 
@@ -95,6 +97,11 @@ export default function Header({
     }
     setMenuOpen(false);
     setMoreOpen(false);
+  };
+
+  const handleTabLinkClick = (event, tabId) => {
+    event.preventDefault();
+    handleSelectTab(tabId);
   };
 
   return (
@@ -163,9 +170,10 @@ export default function Header({
             ].map(tab => {
               const isActive = activeTab === tab.id;
               return (
-                <button
+                <a
                   key={tab.id}
-                  onClick={() => handleSelectTab(tab.id)}
+                  href={tabHref(tab.id)}
+                  onClick={(event) => handleTabLinkClick(event, tab.id)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                     isActive
                       ? 'bg-blue-600 text-white shadow-2xs'
@@ -173,7 +181,7 @@ export default function Header({
                   }`}
                 >
                   {tab.label}
-                </button>
+                </a>
               );
             })}
 
@@ -206,10 +214,11 @@ export default function Header({
                   {SECONDARY_TABS.map((tab) => {
                     const isCurrent = activeTab === tab.id;
                     return (
-                      <button
+                      <a
                         key={tab.id}
-                        onClick={() => {
-                          handleSelectTab(tab.id);
+                        href={tabHref(tab.id)}
+                        onClick={(event) => {
+                          handleTabLinkClick(event, tab.id);
                           setMoreOpen(false);
                         }}
                         className={`w-full text-left px-3 py-2 flex items-center justify-between text-xs transition-colors ${
@@ -222,7 +231,7 @@ export default function Header({
                         {isCurrent && (
                           <span className="w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-400"></span>
                         )}
-                      </button>
+                      </a>
                     );
                   })}
                 </div>
@@ -344,9 +353,10 @@ export default function Header({
                     {group.items.map((item) => {
                       const isCurrent = activeTab === item.id;
                       return (
-                        <button
+                        <a
                           key={item.id}
-                          onClick={() => handleSelectTab(item.id)}
+                          href={tabHref(item.id)}
+                          onClick={(event) => handleTabLinkClick(event, item.id)}
                           className={`w-full text-left px-3 py-2.5 rounded-xl transition-all flex items-center justify-between gap-2 border ${
                             isCurrent
                               ? 'bg-blue-50 dark:bg-blue-900/50 border-blue-200 dark:border-blue-500 text-blue-900 dark:text-blue-100 shadow-2xs'
@@ -359,7 +369,7 @@ export default function Header({
                           {isCurrent && (
                             <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-300 shrink-0" aria-hidden="true"></span>
                           )}
-                        </button>
+                        </a>
                       );
                     })}
                   </div>

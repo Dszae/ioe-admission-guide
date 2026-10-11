@@ -7,12 +7,14 @@
     <link rel="apple-touch-icon" href="/ioe-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1e40af" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="author" href="https://www.dipeshsapkota7.com.np/" />
 
     <script>
       (function() {
         try {
           var t = localStorage.getItem('theme');
-          var isDark = t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          var isDark = t === 'dark'; // Default to light theme, only use dark if explicitly saved
           if (isDark) {
             document.documentElement.classList.add('dark');
             document.documentElement.style.colorScheme = 'dark';
@@ -32,12 +34,15 @@
     <meta name="keywords" content="IOE entrance, IOE rank predictor, TU engineering admission, Pulchowk Campus cutoff, Thapathali Campus seats, WRC, ERC, CBT negative marking, Dipesh Sapkota" />
     <meta name="author" content="Dipesh Sapkota" />
     <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://ioe-admission.dipeshsapkota7.com.np/" />
 
     <meta name="google-site-verification" content="wtQe5iJTyPSo0Nrj7GN4IteUky0stRBG7tIB1Lu92P8" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="IOE Admission Hub" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:url" content="https://ioe-admission.dipeshsapkota7.com.np/" />
     <meta property="og:title" content="IOE Admission Hub | Rank Predictor, Campus Explorer & Guide" />
     <meta property="og:description" content="A comprehensive admission toolkit for Tribhuvan University Institute of Engineering (IOE) applicants in Nepal. Predict ranks, explore constituent campus seats, track notices, and organize priority lists." />
@@ -76,6 +81,7 @@
             "@id": "https://ioe-admission.dipeshsapkota7.com.np/#website",
             "url": "https://ioe-admission.dipeshsapkota7.com.np/",
             "name": "IOE Admission Hub",
+            "alternateName": "IOE Admission Guide by Dipesh Sapkota",
             "isPartOf": {
               "@type": "WebSite",
               "@id": "https://www.dipeshsapkota7.com.np/#website",
@@ -88,6 +94,25 @@
               "name": "Dipesh Sapkota",
               "url": "https://www.dipeshsapkota7.com.np/"
             }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://ioe-admission.dipeshsapkota7.com.np/#webpage",
+            "url": "https://ioe-admission.dipeshsapkota7.com.np/",
+            "name": "IOE Admission Hub | Rank Predictor, Campus Explorer & Guide",
+            "isPartOf": {
+              "@id": "https://www.dipeshsapkota7.com.np/#website"
+            },
+            "about": {
+              "@id": "https://ioe-admission.dipeshsapkota7.com.np/#webapp"
+            },
+            "author": {
+              "@id": "https://www.dipeshsapkota7.com.np/#author"
+            },
+            "breadcrumb": {
+              "@id": "https://ioe-admission.dipeshsapkota7.com.np/#breadcrumbs"
+            },
+            "inLanguage": "en"
           },
           {
             "@type": "BreadcrumbList",

@@ -34,7 +34,7 @@ export default function App() {
     try {
       const saved = localStorage.getItem('theme');
       if (saved) return saved === 'dark';
-      return typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      return false; // Default to light theme
     } catch {
       return false;
     }
