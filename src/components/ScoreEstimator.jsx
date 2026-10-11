@@ -65,7 +65,7 @@ export default function ScoreEstimator({ isDark, initialScore = '' }) {
         <div className="w-full sm:w-auto flex items-end">
           <button
             type="submit"
-            className="w-full sm:w-auto px-8 py-3.5 bg-cyan-600 hover:bg-cyan-500 active:scale-[0.98] text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all shadow-md whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            className="w-full sm:w-auto px-8 py-3.5 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 active:scale-[0.98] text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all shadow-md whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
           >
             Estimate Rank Bracket
           </button>

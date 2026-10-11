@@ -48,7 +48,7 @@ export default function NoticeTracker({ isDark }) {
               onClick={() => setSelectedCategory(cat)}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all border flex-shrink-0 ${
                 selectedCategory === cat
-                  ? 'bg-cyan-600 text-white border-cyan-500 shadow-sm'
+                  ? 'bg-cyan-700 text-white border-cyan-600 shadow-sm'
                   : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-400'
               }`}
             >

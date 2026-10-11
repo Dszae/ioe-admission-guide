@@ -58,8 +58,8 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
           onClick={() => setMode('quick')}
           className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xl transition-all border ${
             mode === 'quick'
-              ? 'bg-cyan-600 text-white border-cyan-500 shadow-sm'
-              : 'bg-slate-100 dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400'
+              ? 'bg-cyan-700 text-white border-cyan-600 shadow-sm'
+              : 'bg-slate-100 dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300'
           }`}
         >
           Quick Marks Mode
@@ -69,8 +69,8 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
           onClick={() => setMode('detailed')}
           className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xl transition-all border ${
             mode === 'detailed'
-              ? 'bg-cyan-600 text-white border-cyan-500 shadow-sm'
-              : 'bg-slate-100 dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400'
+              ? 'bg-cyan-700 text-white border-cyan-600 shadow-sm'
+              : 'bg-slate-100 dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300'
           }`}
         >
           Detailed 1-Mark & 2-Mark Breakdown
@@ -120,7 +120,7 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
           <div className="sm:col-span-2">
             <button
               type="submit"
-              className="w-full py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full py-4 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
             >
               Calculate Net Score
             </button>
@@ -210,7 +210,7 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
           <div className="sm:col-span-2">
             <button
               type="submit"
-              className="w-full py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full py-4 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
             >
               Calculate Detailed CBT Score
             </button>
@@ -228,7 +228,7 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
               <span className="text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 block mb-1">
                 Your Calculated Net Score
               </span>
-              <div className="text-4xl sm:text-6xl font-black font-mono text-cyan-600 dark:text-cyan-400 my-2">
+              <div className="text-4xl sm:text-6xl font-black font-mono text-cyan-700 dark:text-cyan-300 my-2">
                 {scoreValue} <span className="text-2xl text-slate-400">/ 140</span>
               </div>
               
@@ -239,7 +239,7 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
                 <span>•</span>
                 <span>
                   Pass Benchmark (56 Marks):{' '}
-                  <strong className={res.isQualified ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400'}>
+                  <strong className={res.isQualified ? 'text-emerald-700 dark:text-emerald-400' : 'text-red-700 dark:text-red-400'}>
                     {res.isQualified ? 'QUALIFIED (Met)' : 'BELOW 40% PASS MARK'}
                   </strong>
                 </span>
@@ -248,7 +248,7 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
               {onSendToEstimator && (
                 <button
                   onClick={() => onSendToEstimator(scoreValue)}
-                  className="mt-2 px-6 py-2.5 rounded-xl border border-cyan-500 text-cyan-600 dark:text-cyan-400 font-bold text-xs hover:bg-cyan-600 hover:text-white transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  className="mt-2 px-6 py-2.5 rounded-xl border border-cyan-700 dark:border-cyan-500 text-cyan-800 dark:text-cyan-300 font-bold text-xs hover:bg-cyan-700 hover:text-white transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-cyan-500"
                 >
                   Pass Score to Rank Estimator →
                 </button>

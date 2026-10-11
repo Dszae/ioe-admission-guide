@@ -87,21 +87,21 @@ export default function RankPredictor({ isDark }) {
     switch (color) {
       case 'emerald':
         return isDark 
-          ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-400' 
-          : 'bg-emerald-50 border-emerald-200 text-emerald-800';
+          ? 'bg-emerald-950/60 border-emerald-700/60 text-emerald-300' 
+          : 'bg-emerald-50 border-emerald-300 text-emerald-950';
       case 'amber':
         return isDark 
-          ? 'bg-amber-500/10 border-amber-500/40 text-amber-400' 
-          : 'bg-amber-50 border-amber-200 text-amber-800';
+          ? 'bg-amber-950/60 border-amber-700/60 text-amber-300' 
+          : 'bg-amber-50 border-amber-300 text-amber-950';
       case 'orange':
         return isDark 
-          ? 'bg-orange-500/10 border-orange-500/40 text-orange-400' 
-          : 'bg-orange-50 border-orange-200 text-orange-800';
+          ? 'bg-orange-950/60 border-orange-700/60 text-orange-300' 
+          : 'bg-orange-50 border-orange-300 text-orange-950';
       case 'red':
       default:
         return isDark 
-          ? 'bg-red-500/10 border-red-500/40 text-red-400' 
-          : 'bg-red-50 border-red-200 text-red-800';
+          ? 'bg-red-950/60 border-red-700/60 text-red-300' 
+          : 'bg-red-50 border-red-300 text-red-950';
     }
   };
 
@@ -131,8 +131,8 @@ export default function RankPredictor({ isDark }) {
             onClick={() => handleModeChange('campus')} 
             className={`px-4 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xl transition-all border ${
               mode === 'campus' 
-                ? 'bg-cyan-600 text-white border-cyan-500 shadow-md' 
-                : 'bg-slate-100 dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                ? 'bg-cyan-700 text-white border-cyan-600 shadow-md' 
+                : 'bg-slate-100 dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             By Campus
@@ -142,8 +142,8 @@ export default function RankPredictor({ isDark }) {
             onClick={() => handleModeChange('cross')} 
             className={`px-4 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xl transition-all border ${
               mode === 'cross' 
-                ? 'bg-cyan-600 text-white border-cyan-500 shadow-md' 
-                : 'bg-slate-100 dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                ? 'bg-cyan-700 text-white border-cyan-600 shadow-md' 
+                : 'bg-slate-100 dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             Across All Campuses
@@ -156,8 +156,8 @@ export default function RankPredictor({ isDark }) {
             onClick={() => setPhase(1)} 
             className={`px-4 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xl transition-all border ${
               phase === 1 
-                ? 'bg-cyan-600 text-white border-cyan-500 shadow-md' 
-                : 'bg-slate-100 dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                ? 'bg-cyan-700 text-white border-cyan-600 shadow-md' 
+                : 'bg-slate-100 dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             Phase 1 (First List)
@@ -167,8 +167,8 @@ export default function RankPredictor({ isDark }) {
             onClick={() => setPhase(2)} 
             className={`px-4 py-2.5 text-xs font-bold uppercase tracking-wider rounded-xl transition-all border ${
               phase === 2 
-                ? 'bg-cyan-600 text-white border-cyan-500 shadow-md' 
-                : 'bg-slate-100 dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                ? 'bg-cyan-700 text-white border-cyan-600 shadow-md' 
+                : 'bg-slate-100 dark:bg-slate-800/60 border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
             Final List (Estimated)
@@ -268,7 +268,7 @@ export default function RankPredictor({ isDark }) {
         <div className="sm:col-span-2 mt-2">
           <button 
             type="submit" 
-            className="w-full py-4 bg-cyan-600 hover:bg-cyan-500 active:scale-[0.99] text-white font-bold text-sm tracking-wider uppercase rounded-xl transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            className="w-full py-4 bg-cyan-700 hover:bg-cyan-800 active:bg-cyan-900 active:scale-[0.99] text-white font-bold text-sm tracking-wider uppercase rounded-xl transition-all shadow-md focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
           >
             Calculate Admission Probability
           </button>
