@@ -12,7 +12,7 @@
  */
 
 export const ADMISSION_METADATA = {
-  academicYear: "2082 BS (Benchmark: 2082 Archive)",
+  academicYear: "2082 BS",
   governingBody: "Institute of Engineering (IOE), Tribhuvan University",
   examFormat: "Computer Based Test (CBT)",
   totalMarks: 140,

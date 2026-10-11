@@ -90,20 +90,6 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
     runPrediction(form.rank);
   };
 
-  const handleQuickPreset = (presetRank, presetCollege, presetProgram) => {
-    const updated = {
-      ...form,
-      rank: String(presetRank),
-      college: presetCollege,
-      program: presetProgram,
-      feeType: 'Regular',
-      quota: 'Open'
-    };
-    setForm(updated);
-    setMode('campus');
-    runPrediction(presetRank, updated, 'campus', phase);
-  };
-
   const resultTheme = (color) => {
     switch (color) {
       case 'emerald':
@@ -137,16 +123,11 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
   return (
     <div className="animate-fadeIn">
       
-      {/* Title & Provenance Notice */}
+      {/* Title */}
       <div className="mb-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-          <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white print:text-black">
-            Admission Rank Probability Predictor
-          </h2>
-          <span className="text-xs text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-md w-fit">
-            Historical Cutoffs: {ADMISSION_METADATA.academicYear}
-          </span>
-        </div>
+        <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white print:text-black">
+          Admission Rank Probability Predictor
+        </h2>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
           Estimate your admission probability based on verified historical closing merit ranks across constituent engineering campuses.
         </p>
@@ -221,46 +202,13 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
             inputMode="numeric"
             pattern="[0-9]*"
             placeholder="e.g. 240" 
-            className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-mono text-base focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors shadow-2xs"
+            className="w-full px-4 py-3 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-semibold tabular-nums text-base focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors shadow-2xs"
             value={form.rank} 
             onChange={(e) => setForm({ ...form, rank: e.target.value })} 
             required 
             min="1"
             max="15000"
           />
-          
-          {/* Quick preset chips for absolute beginners */}
-          <div className="flex flex-wrap items-center gap-1.5 mt-2">
-            <span className="text-[11px] text-slate-500 dark:text-slate-400">Try example:</span>
-            <button
-              type="button"
-              onClick={() => handleQuickPreset(120, 'Pulchowk', 'Computer Engineering')}
-              className="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
-            >
-              Rank 120 (Pulchowk Comp)
-            </button>
-            <button
-              type="button"
-              onClick={() => handleQuickPreset(580, 'Pulchowk', 'Civil Engineering')}
-              className="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
-            >
-              Rank 580 (Pulchowk Civil)
-            </button>
-            <button
-              type="button"
-              onClick={() => handleQuickPreset(1450, 'Thapathali', 'Mechanical Engineering')}
-              className="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
-            >
-              Rank 1,450 (Thapathali)
-            </button>
-            <button
-              type="button"
-              onClick={() => handleQuickPreset(2800, 'WRC', 'Civil Engineering')}
-              className="px-2 py-0.5 rounded text-[11px] font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors"
-            >
-              Rank 2,800 (WRC Pokhara)
-            </button>
-          </div>
         </div>
 
         {/* Campus Selection */}
@@ -392,10 +340,10 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
                   <p className="text-xs font-medium text-slate-500 dark:text-slate-400 mb-0.5">
                     Historical Closing Cutoff
                   </p>
-                  <p className="text-2xl sm:text-4xl font-mono font-bold">
+                  <p className="text-2xl sm:text-4xl font-bold tracking-tight tabular-nums">
                     {singleResult.cutoff}
                   </p>
-                  <p className="text-xs font-mono text-slate-500 dark:text-slate-400 mt-1">
+                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1">
                     Your Rank: {singleResult.input}
                   </p>
                 </div>
@@ -435,7 +383,7 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
                   </div>
                   <div className="flex justify-between items-end border-t border-current/10 pt-2 text-xs">
                     <span className="opacity-80">Closing Cutoff:</span>
-                    <span className="font-mono font-bold text-base">{res.cutoff}</span>
+                    <span className="font-bold text-base tabular-nums">{res.cutoff}</span>
                   </div>
                 </div>
               );
