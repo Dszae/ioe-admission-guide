@@ -153,13 +153,13 @@ export default function RankPredictor({ isDark }) {
       </div>
 
       {/* Mode & Phase Switches */}
-      <div className="flex flex-col sm:flex-row justify-between mb-6 gap-3 print:hidden">
+      <div className="grid sm:grid-cols-2 gap-2.5 sm:gap-4 mb-5 sm:mb-6 print:hidden">
         {/* Scope Segmented Control */}
-        <div className="inline-flex p-1 rounded-xl bg-slate-100 dark:bg-slate-850 border border-slate-200 dark:border-slate-800" role="group" aria-label="Prediction Scope">
+        <div className="grid grid-cols-2 p-1 rounded-xl bg-slate-100 dark:bg-slate-850 border border-slate-200 dark:border-slate-800" role="group" aria-label="Prediction Scope">
           <button 
             type="button"
             onClick={() => handleModeChange('campus')} 
-            className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all text-center ${
               mode === 'campus' 
                 ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs' 
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
@@ -170,33 +170,33 @@ export default function RankPredictor({ isDark }) {
           <button 
             type="button"
             onClick={() => handleModeChange('cross')} 
-            className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all text-center ${
               mode === 'cross' 
                 ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs' 
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            Compare All Campuses
+            Compare All
           </button>
         </div>
 
         {/* Phase Round Segmented Control */}
-        <div className="inline-flex p-1 rounded-xl bg-slate-100 dark:bg-slate-850 border border-slate-200 dark:border-slate-800" role="group" aria-label="Merit List Round">
+        <div className="grid grid-cols-2 p-1 rounded-xl bg-slate-100 dark:bg-slate-850 border border-slate-200 dark:border-slate-800" role="group" aria-label="Merit List Round">
           <button 
             type="button"
             onClick={() => setPhase(1)} 
-            className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all text-center ${
               phase === 1 
                 ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs' 
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            Phase 1 (First List)
+            Phase 1 First List
           </button>
           <button 
             type="button"
             onClick={() => setPhase(2)} 
-            className={`px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all text-center ${
               phase === 2 
                 ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs' 
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'

@@ -22,8 +22,8 @@ export default function CampusExplorer({ isDark }) {
   return (
     <div className="animate-fadeIn">
       
-      <div className="mb-6">
-        <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+      <div className="mb-5 sm:mb-6">
+        <h2 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white">
           Constituent Campuses & Seat Matrix
         </h2>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
@@ -32,7 +32,7 @@ export default function CampusExplorer({ isDark }) {
       </div>
 
       {/* Campus Selector Pills */}
-      <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1 mb-6" role="tablist" aria-label="Campus Selection">
+      <div className="flex gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pb-1 mb-5" role="tablist" aria-label="Campus Selection">
         {Object.keys(CAMPUS_DETAILS).map((cKey) => {
           const isSelected = selectedCampus === cKey;
           return (
@@ -41,7 +41,7 @@ export default function CampusExplorer({ isDark }) {
               role="tab"
               aria-selected={isSelected}
               onClick={() => setSelectedCampus(cKey)}
-              className={`px-3.5 py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all border flex-shrink-0 min-h-[40px] ${
+              className={`px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-lg text-xs font-semibold whitespace-nowrap transition-all border shrink-0 min-h-[38px] ${
                 isSelected
                   ? 'bg-blue-600 text-white border-blue-600 shadow-2xs'
                   : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-700'
@@ -55,19 +55,23 @@ export default function CampusExplorer({ isDark }) {
 
       {/* Selected Campus Overview Card */}
       {campus && (
-        <div className="p-5 sm:p-6 rounded-xl border border-slate-200/90 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 mb-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-3.5">
+        <div className="p-4 sm:p-6 rounded-xl border border-slate-200/90 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 mb-6">
+          <div className="flex flex-col sm:flex-row justify-between items-start gap-3 sm:gap-4 mb-3">
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-[11px] font-medium px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/50">
+                <span className="text-[10px] sm:text-[11px] font-medium px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/50">
                   {campus.type} • Est. {campus.established}
                 </span>
               </div>
-              <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mt-1.5">
+              <h3 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-white mt-1.5">
                 {campus.fullName}
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                📍 {campus.location} ({campus.district} District)
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 flex items-center gap-1">
+                <svg className="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <span>{campus.location} ({campus.district} District)</span>
               </p>
             </div>
 
@@ -76,9 +80,12 @@ export default function CampusExplorer({ isDark }) {
                 href={campus.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors flex items-center gap-1.5 shadow-2xs"
+                className="px-2.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors inline-flex items-center gap-1 shadow-2xs"
               >
-                Campus Portal ↗
+                <span>Campus Portal</span>
+                <svg className="w-3 h-3 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
               </a>
             </div>
           </div>
@@ -88,18 +95,18 @@ export default function CampusExplorer({ isDark }) {
           </p>
 
           {/* Quick Stats Grid */}
-          <div className="grid grid-cols-3 gap-3 p-3.5 rounded-xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-750 text-center shadow-2xs">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 p-3 sm:p-3.5 rounded-xl bg-white dark:bg-slate-850 border border-slate-200/80 dark:border-slate-750 text-center shadow-2xs">
             <div>
-              <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400">Regular (Subsidized)</p>
-              <p className="text-lg sm:text-xl font-mono font-bold text-slate-900 dark:text-white mt-0.5">{totalRegular}</p>
+              <p className="text-[10px] sm:text-[11px] font-medium text-slate-500 dark:text-slate-400">Regular Seats</p>
+              <p className="text-base sm:text-xl font-mono font-bold text-slate-900 dark:text-white mt-0.5">{totalRegular}</p>
             </div>
             <div>
-              <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400">Full Fee (Paying)</p>
-              <p className="text-lg sm:text-xl font-mono font-bold text-slate-900 dark:text-white mt-0.5">{totalFullFee}</p>
+              <p className="text-[10px] sm:text-[11px] font-medium text-slate-500 dark:text-slate-400">Full Fee Seats</p>
+              <p className="text-base sm:text-xl font-mono font-bold text-slate-900 dark:text-white mt-0.5">{totalFullFee}</p>
             </div>
             <div>
-              <p className="text-[11px] font-medium text-slate-500 dark:text-slate-400">Total Intake</p>
-              <p className="text-lg sm:text-xl font-mono font-bold text-blue-600 dark:text-blue-400 mt-0.5">{campus.totalSeats}</p>
+              <p className="text-[10px] sm:text-[11px] font-medium text-slate-500 dark:text-slate-400">Total Intake</p>
+              <p className="text-base sm:text-xl font-mono font-bold text-blue-600 dark:text-blue-400 mt-0.5">{campus.totalSeats}</p>
             </div>
           </div>
 
@@ -108,7 +115,7 @@ export default function CampusExplorer({ isDark }) {
             <div className="mt-3.5 flex flex-wrap gap-1.5 items-center">
               <span className="text-[11px] text-slate-500 dark:text-slate-400 mr-1">Facilities:</span>
               {campus.facilities.map((fac, idx) => (
-                <span key={idx} className="text-[11px] px-2 py-0.5 rounded-md bg-white dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700/60 text-slate-700 dark:text-slate-300">
+                <span key={idx} className="text-[11px] px-2 py-0.5 rounded-md bg-white dark:bg-slate-800 border border-slate-200/60 dark:border-slate-750 text-slate-700 dark:text-slate-300">
                   {fac}
                 </span>
               ))}
@@ -118,7 +125,7 @@ export default function CampusExplorer({ isDark }) {
       )}
 
       {/* Program Search & Filter Controls */}
-      <div className="flex flex-col sm:flex-row gap-3 mb-4">
+      <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 mb-4">
         <div className="flex-1">
           <label htmlFor="search-program" className="sr-only">Search engineering programs</label>
           <input
@@ -127,7 +134,7 @@ export default function CampusExplorer({ isDark }) {
             placeholder="Filter programs (e.g. Civil, Computer, Electrical)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-2xs"
+            className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-2xs"
           />
         </div>
         <div className="w-full sm:w-56">
@@ -136,7 +143,7 @@ export default function CampusExplorer({ isDark }) {
             id="filter-program"
             value={programFilter}
             onChange={(e) => setProgramFilter(e.target.value)}
-            className="w-full px-3 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs sm:text-sm text-slate-900 dark:text-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-2xs"
+            className="w-full px-3 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs sm:text-sm text-slate-900 dark:text-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-2xs"
           >
             <option value="All">All Disciplines</option>
             {ALL_PROGRAMS.map(prog => (
@@ -146,13 +153,13 @@ export default function CampusExplorer({ isDark }) {
         </div>
       </div>
 
-      {/* Verified Seat Matrix Table */}
+      {/* Verified Seat Matrix Table with horizontal scroll container */}
       <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/60 shadow-2xs">
-        <table className="w-full text-left text-xs sm:text-sm">
+        <table className="w-full text-left text-xs sm:text-sm min-w-[440px]">
           <thead>
             <tr className="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-850 text-slate-600 dark:text-slate-400 font-semibold text-xs">
               <th scope="col" className="p-3 sm:p-3.5">Engineering Discipline</th>
-              <th scope="col" className="p-3 sm:p-3.5 text-center">Regular (Scholarship)</th>
+              <th scope="col" className="p-3 sm:p-3.5 text-center">Regular (Subsidized)</th>
               <th scope="col" className="p-3 sm:p-3.5 text-center">Full Fee (Paying)</th>
               <th scope="col" className="p-3 sm:p-3.5 text-right">Total Intake</th>
             </tr>

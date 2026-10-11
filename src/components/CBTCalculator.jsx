@@ -257,7 +257,9 @@ export default function CBTCalculator({ isDark, onSendToEstimator }) {
                   className="mt-2 inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-slate-200 text-xs font-medium hover:bg-slate-100 transition-colors shadow-2xs"
                 >
                   <span>Pass Score to Rank Curve Estimator</span>
-                  <span>→</span>
+                  <svg className="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
                 </button>
               )}
             </div>
