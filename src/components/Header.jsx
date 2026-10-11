@@ -110,32 +110,46 @@ export default function Header({
       <header className="fixed top-0 inset-x-0 z-40 h-16 sm:h-18 bg-white/95 dark:bg-[#0b0e17]/95 backdrop-blur-md border-b border-slate-200/90 dark:border-slate-800/90 print:hidden transition-colors shadow-2xs">
         <div className="max-w-6xl mx-auto px-3 sm:px-6 h-full flex items-center justify-between gap-3 sm:gap-4">
           
-          {/* Logo & Brand Identity with Breadcrumb Sitelink */}
+          {/* Logo & Brand Identity (Links to same page) */}
           <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0 shrink-0">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center p-1.5 shadow-2xs shrink-0">
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                handleSelectTab('predictor');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              title="IOE Admission Hub — Go to homepage"
+              aria-label="IOE Admission Hub homepage"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center p-1.5 shadow-2xs shrink-0 hover:border-blue-500 dark:hover:border-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
               <img 
                 src="/ioe-logo.png" 
-                alt="Tribhuvan University Emblem" 
+                alt="Tribhuvan University IOE Emblem" 
                 className="w-full h-full object-contain"
                 onError={(e) => {
                   e.currentTarget.src = "/ioe logo.png";
                 }}
               />
-            </div>
+            </a>
 
-            <div className="flex flex-col min-w-0">
-              <span className="text-[10px] sm:text-[11px] font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider leading-none mb-1">
-                TU Engineering Counseling
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                handleSelectTab('predictor');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="flex items-center gap-1.5 sm:gap-2 group focus:outline-none"
+              title="IOE Admission Hub"
+            >
+              <span className="text-sm sm:text-base font-bold tracking-tight text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate leading-tight">
+                IOE Admission Hub
               </span>
-              <div className="flex items-center gap-1.5 sm:gap-2">
-                <span className="text-sm sm:text-base font-bold tracking-tight text-slate-900 dark:text-white truncate leading-tight">
-                  IOE Admission Hub
-                </span>
-                <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/50 hidden md:inline-block">
-                  2081/2082 BS
-                </span>
-              </div>
-            </div>
+              <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/50 hidden md:inline-block">
+                2081/2082 BS
+              </span>
+            </a>
           </div>
 
           {/* Center: Desktop Shortcut Navigation with More Dropdown */}

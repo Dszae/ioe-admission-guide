@@ -30,7 +30,36 @@ function TabLoadingSkeleton() {
 }
 
 export default function App() {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(() => {
+    try {
+      const saved = localStorage.getItem('theme');
+      if (saved) return saved === 'dark';
+      return typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    } catch {
+      return false;
+    }
+  });
+
+  // Sync dark class on document root, body, color-scheme, and storage
+  useEffect(() => {
+    try {
+      const root = document.documentElement;
+      const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+      if (isDark) {
+        root.classList.add('dark');
+        document.body.classList.add('dark');
+        root.style.colorScheme = 'dark';
+        if (themeColorMeta) themeColorMeta.setAttribute('content', '#0b0e17');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        root.classList.remove('dark');
+        document.body.classList.remove('dark');
+        root.style.colorScheme = 'light';
+        if (themeColorMeta) themeColorMeta.setAttribute('content', '#1e40af');
+        localStorage.setItem('theme', 'light');
+      }
+    } catch {}
+  }, [isDark]);
   
   // Read initial tab from URL parameter for search sitelink compatibility
   const [activeTab, setActiveTab] = useState(() => {

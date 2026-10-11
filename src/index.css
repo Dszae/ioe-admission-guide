@@ -12,6 +12,30 @@ body,
   -moz-osx-font-smoothing: grayscale;
 }
 
+html.dark,
+body.dark {
+  background-color: #0b0e17;
+  color: #f1f5f9;
+  color-scheme: dark;
+}
+
+html:not(.dark),
+body:not(.dark) {
+  background-color: #f8fafc;
+  color: #0f172a;
+  color-scheme: light;
+}
+
+html.dark select option {
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+html:not(.dark) select option {
+  background-color: #ffffff;
+  color: #0f172a;
+}
+
 button,
 input,
 select,
