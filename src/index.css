@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,6 +10,12 @@ body,
   font-family: 'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Monospace font for numbers and financial data */
+.font-mono-nums {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-variant-numeric: tabular-nums;
 }
 
 html.dark,
@@ -26,19 +32,20 @@ body:not(.dark) {
   color-scheme: light;
 }
 
-/* Dark mode: keep muted text readable on slate backgrounds */
+/* Dark mode: improved contrast ratios for readability */
 html.dark .dark\:text-slate-400 {
-  color: #cbd5e1 !important;
+  color: #e2e8f0 !important; /* slate-200 for better contrast */
 }
 html.dark .dark\:text-slate-500 {
-  color: #94a3b8 !important;
+  color: #cbd5e1 !important; /* slate-300 for better contrast */
 }
 html.dark .dark\:text-slate-300 {
-  color: #e2e8f0 !important;
+  color: #f1f5f9 !important; /* slate-100 for better contrast */
 }
 
+/* Dark mode form elements with better contrast */
 html.dark select option {
-  background-color: #0f172a;
+  background-color: #1e293b;
   color: #f8fafc;
 }
 
@@ -50,15 +57,75 @@ html:not(.dark) select option {
 html.dark input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
 html.dark select,
 html.dark textarea {
-  background-color: #334155 !important;
+  background-color: #1e293b !important;
   color: #f8fafc !important;
-  border-color: #94a3b8 !important;
+  border-color: #64748b !important; /* slate-500 for better visibility */
 }
 
 html.dark input::placeholder,
 html.dark textarea::placeholder {
-  color: #cbd5e1 !important;
+  color: #94a3b8 !important; /* slate-400 */
   opacity: 1;
+}
+
+/* Dark mode card/container backgrounds with better contrast */
+html.dark .dark\:bg-slate-800\/60 {
+  background-color: #1e293b !important; /* slate-800 at full opacity */
+}
+html.dark .dark\:bg-slate-800\/50 {
+  background-color: #1e293b !important;
+}
+html.dark .dark\:bg-slate-800 {
+  background-color: #1e293b !important;
+}
+html.dark .dark\:bg-slate-900\/60 {
+  background-color: #0f172a !important;
+}
+html.dark .dark\:bg-blue-950\/60 {
+  background-color: #172554 !important;
+}
+html.dark .dark\:bg-slate-50 {
+  background-color: #1e293b !important;
+}
+
+/* Dark mode borders with better contrast */
+html.dark .dark\:border-slate-800 {
+  border-color: #334155 !important; /* slate-700 */
+}
+html.dark .dark\:border-slate-700\/60 {
+  border-color: #475569 !important; /* slate-600 */
+}
+html.dark .dark\:border-slate-200\/60 {
+  border-color: #475569 !important;
+}
+html.dark .dark\:border-blue-800\/50 {
+  border-color: #1e3a8a !important;
+}
+html.dark .dark\:border-slate-100 {
+  border-color: #334155 !important;
+}
+html.dark .dark\:border-slate-200 {
+  border-color: #475569 !important;
+}
+
+/* Dark mode text colors with proper contrast */
+html.dark .dark\:text-white {
+  color: #f8fafc !important;
+}
+html.dark .dark\:text-slate-200 {
+  color: #e2e8f0 !important;
+}
+html.dark .dark\:text-blue-400 {
+  color: #93c5fd !important; /* blue-300 for better contrast */
+}
+html.dark .dark\:text-blue-300 {
+  color: #bfdbfe !important; /* blue-200 */
+}
+html.dark .dark\:text-slate-600 {
+  color: #94a3b8 !important;
+}
+html.dark .dark\:text-slate-700 {
+  color: #cbd5e1 !important;
 }
 
 button,

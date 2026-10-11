@@ -40,12 +40,12 @@ export default function FinancialsBreakdown({ isDark }) {
               <div className="space-y-3 mb-5">
                 <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60">
                   <span className="text-[11px] font-medium text-slate-500 block">4-Year Total Tuition</span>
-                  <span className="text-sm font-bold tracking-tight tabular-nums text-slate-900 dark:text-white mt-0.5 block">{item.tuition}</span>
+                  <span className="text-sm font-bold tracking-tight font-mono-nums text-slate-900 dark:text-white mt-0.5 block">{item.tuition}</span>
                 </div>
 
                 <div className="p-3 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60">
                   <span className="text-[11px] font-medium text-slate-500 block">Est. Living Expenses (4 Yrs)</span>
-                  <span className="text-sm font-bold tracking-tight tabular-nums text-slate-900 dark:text-white mt-0.5 block">{item.living}</span>
+                  <span className="text-sm font-bold tracking-tight font-mono-nums text-slate-900 dark:text-white mt-0.5 block">{item.living}</span>
                   <span className="text-[10px] text-slate-500 mt-0.5 block">Estimated at ~NPR 10k/month (food + room)</span>
                 </div>
               </div>
@@ -53,7 +53,7 @@ export default function FinancialsBreakdown({ isDark }) {
 
             <div className="pt-3.5 border-t border-slate-100 dark:border-slate-800">
               <span className="text-[11px] font-medium text-slate-500 block mb-0.5">Total Estimated Investment</span>
-              <span className="text-base sm:text-lg font-bold tracking-tight tabular-nums text-blue-700 dark:text-blue-400">{item.total}</span>
+              <span className="text-base sm:text-lg font-bold tracking-tight font-mono-nums text-blue-700 dark:text-blue-400">{item.total}</span>
             </div>
           </div>
         ))}

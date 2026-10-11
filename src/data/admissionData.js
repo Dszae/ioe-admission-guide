@@ -403,17 +403,24 @@ export const FACULTY_DATA = {
 export const FINANCIALS = {
   Regular: { 
     type: "Regular (Government Subsidized)",
-    tuition: "≈ NPR 53,000", 
+    tuition: "Rs. 63,087", 
     living: "≈ NPR 4,80,000", 
-    total: "≈ NPR 5,33,000",
-    notes: "Tuition is heavily subsidized by the Government of Nepal across 4 years. Living cost estimated at ~NPR 10,000/month."
+    total: "≈ NPR 5,43,087",
+    notes: "Tuition per semester: Rs. 2,862 | All charges per semester: Rs. 6,974 | One-time charges: Rs. 7,295 | First admission payment: Rs. 17,669 (incl. deposits). Living cost estimated at ~NPR 10,000/month."
   },
   FullFee: { 
     type: "Full Fee (Constituent Paying)",
-    tuition: "≈ NPR 3,18,000 - 4,90,000", 
+    tuition: "Rs. 5,45,832", 
     living: "≈ NPR 4,80,000", 
-    total: "≈ NPR 7,98,000 - 9,70,000",
-    notes: "Paying category at TU constituent campuses. Tuition varies slightly depending on faculty (e.g. Architecture vs Civil)."
+    total: "≈ NPR 10,25,832",
+    notes: "Tuition per semester: Rs. 46,854 | All charges per semester: Rs. 52,766 | One-time charges: Rs. 1,23,704 | First admission payment: Rs. 2,16,470 (incl. deposits). Living cost estimated at ~NPR 10,000/month."
+  },
+  Foreign: { 
+    type: "Foreign Students",
+    tuition: "Rs. 14,50,761", 
+    living: "≈ NPR 4,80,000", 
+    total: "≈ NPR 19,30,761",
+    notes: "Fee structure for foreign nationals at IOE constituent campuses. Includes all tuition, charges, and one-time fees. Living cost estimated at ~NPR 10,000/month."
   },
   Affiliated: { 
     type: "Affiliated Private Colleges",
