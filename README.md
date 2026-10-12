@@ -9,11 +9,11 @@ A comprehensive, mobile-first, and accessible admission guidance platform for In
 
 ## 🎬 Product Demo
 
-<video controls width="100%" src="./brag-output-2026-10-12-093257/brag.mp4">
-	Your browser does not support embedded video. [Download the product demo](./brag-output-2026-10-12-093257/brag.mp4).
+<video controls width="100%" src="https://raw.githubusercontent.com/Dszae/ioe-admission-guide/main/brag-output-2026-10-12-093257/brag.mp4">
+	Your browser does not support embedded video. [Download the product demo](https://raw.githubusercontent.com/Dszae/ioe-admission-guide/main/brag-output-2026-10-12-093257/brag.mp4).
 </video>
 
-[Download the 16:9 launch video](./brag-output-2026-10-12-093257/brag.mp4)
+[Download the 16:9 launch video](https://raw.githubusercontent.com/Dszae/ioe-admission-guide/main/brag-output-2026-10-12-093257/brag.mp4)
 
 ---
 
