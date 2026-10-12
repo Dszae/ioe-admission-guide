@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #f8fafc; }
+      body { font-family: sans-serif; color: #0f172a; }
+      .stage { position: absolute; inset: 0; overflow: hidden; background: #f8fafc; }
+      .blue-wash { position: absolute; width: 940px; height: 940px; right: -420px; top: -240px; border-radius: 50%; background: #dbeafe; opacity: .72; }
+      .blue-line { position: absolute; left: 72px; right: 72px; bottom: 104px; height: 2px; background: #bfdbfe; }
+      .clip { position: absolute; inset: 0; overflow: hidden; }
+      .scene-surface { position: absolute; inset: 0; padding: 92px 72px; }
+      .eyebrow { color: #2563eb; font-size: 25px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+      .title { max-width: 900px; margin-top: 50px; color: #0f172a; font-size: 91px; line-height: 1.02; font-weight: 800; letter-spacing: -2px; }
+      .subtitle { max-width: 760px; margin-top: 30px; color: #475569; font-size: 34px; line-height: 1.28; }
+      .brand { display: flex; align-items: center; gap: 20px; color: #0f172a; font-size: 30px; font-weight: 800; }
+      .brand img { width: 70px; height: 70px; object-fit: contain; }
+      .phone { position: absolute; left: 72px; right: 72px; top: 410px; bottom: 150px; padding: 28px; border: 1px solid #cbd5e1; border-radius: 34px; background: rgba(255,255,255,.94); box-shadow: 0 28px 70px rgba(30,64,175,.14); }
+      .phone-top { display: flex; align-items: center; justify-content: space-between; color: #64748b; font-size: 19px; font-weight: 700; }
+      .nav-pill { padding: 14px 20px; border-radius: 14px; background: #eff6ff; color: #1d4ed8; font-size: 18px; font-weight: 700; }
+      .panel { margin-top: 34px; padding: 30px; border: 1px solid #e2e8f0; border-radius: 22px; background: #fff; }
+      .panel-title { font-size: 28px; font-weight: 800; }
+      .muted { margin-top: 12px; color: #64748b; font-size: 20px; line-height: 1.35; }
+      .field-label { display: block; margin: 24px 0 10px; color: #475569; font-size: 18px; font-weight: 700; }
+      .field { padding: 22px 24px; border: 2px solid #bfdbfe; border-radius: 15px; color: #0f172a; background: #fff; font-family: monospace; font-size: 30px; font-weight: 700; }
+      .select-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+      .select { padding: 18px; border: 1px solid #cbd5e1; border-radius: 14px; color: #334155; background: #f8fafc; font-size: 17px; font-weight: 700; }
+      .button { margin-top: 24px; padding: 22px; border-radius: 15px; color: #fff; background: #2563eb; text-align: center; font-size: 22px; font-weight: 800; }
+      .result { margin-top: 24px; padding: 25px; border: 2px solid #86efac; border-radius: 18px; background: #f0fdf4; }
+      .result-head { display: flex; align-items: center; justify-content: space-between; color: #166534; font-size: 20px; font-weight: 800; }
+      .result-message { margin-top: 14px; color: #14532d; font-size: 25px; font-weight: 800; }
+      .cutoff { margin-top: 18px; color: #166534; font-family: monospace; font-size: 58px; font-weight: 800; }
+      .matrix { margin-top: 32px; border: 1px solid #cbd5e1; border-radius: 18px; overflow: hidden; }
+      .matrix-head, .matrix-row { display: grid; grid-template-columns: 1.65fr .75fr .75fr; align-items: center; padding: 21px 24px; }
+      .matrix-head { color: #475569; background: #f1f5f9; font-size: 16px; font-weight: 800; }
+      .matrix-row { border-top: 1px solid #e2e8f0; color: #334155; font-size: 20px; }
+      .matrix-row strong { color: #0f172a; }
+      .seat-total { margin-top: 38px; padding: 32px; border-radius: 20px; background: #eff6ff; text-align: center; }
+      .seat-total-label { color: #1d4ed8; font-size: 22px; font-weight: 800; }
+      .seat-total-number { margin-top: 8px; color: #1e40af; font-family: monospace; font-size: 85px; font-weight: 800; }
+      .campus-pills { display: flex; gap: 10px; margin-top: 26px; }
+      .campus-pills span { padding: 13px 18px; border-radius: 13px; color: #475569; background: #f1f5f9; font-size: 17px; font-weight: 700; }
+      .campus-pills span.active { color: #fff; background: #2563eb; }
+      .tier { margin-top: 20px; padding: 24px 26px; border-left: 8px solid; border-radius: 15px; background: #fff; box-shadow: 0 10px 24px rgba(15,23,42,.07); }
+      .tier.reach { border-color: #10b981; }
+      .tier.target { border-color: #f59e0b; }
+      .tier.safety { border-color: #3b82f6; }
+      .tier-label { font-size: 23px; font-weight: 800; }
+      .tier-copy { margin-top: 8px; color: #64748b; font-size: 18px; }
+      .final-title { max-width: 900px; margin-top: 140px; color: #1e40af; font-size: 88px; line-height: 1.02; font-weight: 800; }
+      .final-copy { max-width: 740px; margin-top: 34px; color: #334155; font-size: 34px; line-height: 1.25; }
+      .disclaimer { position: absolute; left: 72px; right: 72px; bottom: 150px; color: #64748b; font-size: 17px; line-height: 1.35; }
+      .mono { font-family: monospace; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="20" data-width="1080" data-height="1920">
+      <div id="stage-background" class="stage clip" data-start="0" data-duration="20" data-track-index="0">
+        <div class="blue-wash" data-layout-allow-overflow="true"></div><div class="blue-line"></div>
+      </div>
+      <audio id="bg-music" src="assets/music/happy-beats-business-moves-vol-12-by-ende-dot-app.mp3" data-start="0" data-duration="20" data-track-index="10" data-volume="0.32"></audio>
+
+      <section id="scene-hook" class="clip" data-start="0" data-duration="2.5" data-track-index="1">
+        <div class="scene-surface">
+          <div class="brand"><img src="assets/ioe-logo.png" alt="IOE emblem" /><span>IOE Admission Hub</span></div>
+          <div class="eyebrow" style="margin-top: 150px">Admission, made legible.</div>
+          <div class="title">Your rank.<br />Your options.</div>
+          <div class="subtitle">One decision system for the IOE entrance journey.</div>
+        </div>
+      </section>
+
+      <section id="scene-predictor" class="clip" data-start="2.5" data-duration="3.5" data-track-index="2">
+        <div class="scene-surface">
+          <div class="eyebrow">01 / predict</div>
+          <div class="phone">
+            <div class="phone-top"><span>IOE Admission Hub</span><span class="nav-pill">Predictor</span></div>
+            <div class="panel">
+              <div class="panel-title">Admission Rank Probability Predictor</div>
+              <div class="muted">Estimate admission probability from historical closing merit ranks.</div>
+              <label class="field-label">Your IOE Entrance Merit Rank</label><div id="rank-field" class="field mono">240</div>
+              <div class="select-row"><div class="select">Pulchowk Campus</div><div class="select">Civil Engineering</div></div>
+              <div class="select-row"><div class="select">Regular</div><div class="select">Open Merit</div></div>
+              <div class="button">Calculate Admission Probability</div>
+              <div id="predictor-result" class="result"><div class="result-head"><span>HIGH PROBABILITY</span><span class="mono">PHASE 1</span></div><div class="result-message">Historical data gives you a clear signal.</div><div class="cutoff">CUTOFF 318</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-campuses" class="clip" data-start="6" data-duration="5" data-track-index="3">
+        <div class="scene-surface">
+          <div class="eyebrow">02 / explore</div>
+          <div class="title" style="font-size: 72px">The whole<br />campus network.</div>
+          <div class="campus-pills"><span class="active">Pulchowk</span><span>Thapathali</span><span>WRC</span><span>ERC</span></div>
+          <div class="phone" style="top: 670px; bottom: 190px; padding: 24px">
+            <div class="panel-title">Constituent Campuses &amp; Seat Matrix</div>
+            <div class="muted">Official seat capacities across TU IOE constituent colleges.</div>
+            <div class="matrix"><div class="matrix-head"><span>Discipline</span><span>Regular</span><span>Total</span></div><div class="matrix-row"><strong>Civil Engineering</strong><span>108</span><span>192</span></div><div class="matrix-row"><strong>Computer Engineering</strong><span>36</span><span>96</span></div><div class="matrix-row"><strong>Electrical Engineering</strong><span>24</span><span>72</span></div></div>
+            <div id="seat-total" class="seat-total"><div class="seat-total-label">TOTAL CONSTITUENT SEATS</div><div class="seat-total-number">2,040</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-priority" class="clip" data-start="11" data-duration="4" data-track-index="4">
+        <div class="scene-surface">
+          <div class="eyebrow">03 / sequence</div>
+          <div class="title" style="font-size: 72px">A preference list<br />with a strategy.</div>
+          <div class="phone" style="top: 520px; bottom: 170px">
+            <div class="phone-top"><span>Priority Form Sequence Optimizer</span><span class="nav-pill mono">#1450</span></div>
+            <div class="muted">A balanced multi-tier sequence for the IOE auto-upgrade algorithm.</div>
+            <div id="tier-reach" class="tier reach"><div class="tier-label">Tier 1: Ambitious (Reach)</div><div class="tier-copy">Place at the top.</div></div>
+            <div id="tier-target" class="tier target"><div class="tier-label">Tier 2: Realistic (Target)</div><div class="tier-copy">Place in the middle.</div></div>
+            <div id="tier-safety" class="tier safety"><div class="tier-label">Tier 3: Safety Backups</div><div class="tier-copy">Place at the bottom.</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scene-outro" class="clip" data-start="15" data-duration="5" data-track-index="5">
+        <div class="scene-surface"><div class="brand"><img src="assets/ioe-logo-outro.png" alt="IOE emblem" /><span>IOE Admission Hub</span></div><div class="final-title">Make the list<br />before the list<br />makes you.</div><div class="final-copy">Predict. Explore. Choose clearly.</div><div class="disclaimer">Independent educational toolkit. Historical data is a statistical reference; official admissions are governed by the IOE Entrance Examination Board.</div></div>
+      </section>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      const reveal = (selector, start, vars = {}) => tl.fromTo(selector, { opacity: 0, y: 30, ...vars.from }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out", ...vars.to }, start);
+      reveal("#scene-hook .brand", 0.1, { from: { y: -24 }, to: { duration: 0.45 } });
+      reveal("#scene-hook .eyebrow", 0.45);
+      reveal("#scene-hook .title", 0.65, { from: { y: 42 }, to: { duration: 0.7 } });
+      reveal("#scene-hook .subtitle", 1.35, { from: { y: 18 }, to: { duration: 0.5 } });
+      reveal("#scene-predictor .eyebrow", 2.65);
+      reveal("#scene-predictor .phone", 2.8, { from: { scale: 0.96, y: 42 }, to: { duration: 0.75, transformOrigin: "50% 0%" } });
+      reveal("#rank-field", 3.35, { from: { x: -22 }, to: { duration: 0.4 } });
+      reveal("#predictor-result", 4.35, { from: { scale: 0.96 }, to: { duration: 0.55, transformOrigin: "50% 50%" } });
+      reveal("#scene-campuses .eyebrow", 6.1);
+      reveal("#scene-campuses .title", 6.3, { from: { y: 38 }, to: { duration: 0.65 } });
+      reveal("#scene-campuses .campus-pills", 6.85, { from: { y: 16 }, to: { duration: 0.4 } });
+      reveal("#scene-campuses .phone", 7.1, { from: { y: 50, scale: 0.98 }, to: { duration: 0.75, transformOrigin: "50% 0%" } });
+      reveal("#seat-total", 8.35, { from: { scale: 0.9 }, to: { duration: 0.6, transformOrigin: "50% 50%" } });
+      reveal("#scene-priority .eyebrow", 11.1);
+      reveal("#scene-priority .title", 11.3, { from: { y: 38 }, to: { duration: 0.6 } });
+      reveal("#scene-priority .phone", 11.65, { from: { y: 44, scale: 0.98 }, to: { duration: 0.65, transformOrigin: "50% 0%" } });
+      reveal("#tier-reach", 12.55, { from: { x: -28 }, to: { duration: 0.42 } });
+      reveal("#tier-target", 13.15, { from: { x: -28 }, to: { duration: 0.42 } });
+      reveal("#tier-safety", 13.75, { from: { x: -28 }, to: { duration: 0.42 } });
+      reveal("#scene-outro .brand", 15.2, { from: { y: -20 }, to: { duration: 0.45 } });
+      reveal("#scene-outro .final-title", 15.65, { from: { y: 40 }, to: { duration: 0.8 } });
+      reveal("#scene-outro .final-copy", 16.65, { from: { y: 18 }, to: { duration: 0.5 } });
+      reveal("#scene-outro .disclaimer", 17.45, { from: { y: 12 }, to: { duration: 0.45 } });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

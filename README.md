@@ -7,6 +7,16 @@ A comprehensive, mobile-first, and accessible admission guidance platform for In
 
 ---
 
+## 🎬 Product Demo
+
+<video controls width="100%" src="./brag-output-2026-10-12-093257/brag.mp4">
+	Your browser does not support embedded video. [Download the product demo](./brag-output-2026-10-12-093257/brag.mp4).
+</video>
+
+[Download the 16:9 launch video](./brag-output-2026-10-12-093257/brag.mp4)
+
+---
+
 ## 🚀 Key Modules & Capabilities
 
 * **Statistical Rank Probability Predictor:** Evaluates admission odds by individual campus or across all constituent campuses using verified historical closing merit ranks (2082 BS benchmark). Features probabilistic tiers (High, Moderate, Competitive, Reach) without misleading guarantees.

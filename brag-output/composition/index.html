@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IOE Admission Hub — Brag Video</title>
+
+  <!-- Hyperframes composition metadata (on <meta> for static guard) -->
+  <meta name="hf:width"    content="1080" />
+  <meta name="hf:height"   content="1920" />
+  <meta name="hf:duration" content="20" />
+  <meta name="hf:fps"      content="30" />
+
+  <!-- Manrope font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #f8fafc;
+      --blue:      #2563eb;
+      --blue-50:   #eff6ff;
+      --blue-100:  #dbeafe;
+      --slate-50:  #f8fafc;
+      --slate-100: #f1f5f9;
+      --slate-200: #e2e8f0;
+      --slate-300: #cbd5e1;
+      --slate-500: #64748b;
+      --slate-600: #475569;
+      --slate-700: #334155;
+      --slate-900: #0f172a;
+      --emerald:   #059669;
+      --emerald-50:#ecfdf5;
+      --emerald-200:#6ee7b7;
+      --emerald-800:#065f46;
+      --amber:     #d97706;
+      --radius:    16px;
+      --font:      'Manrope', system-ui, -apple-system, sans-serif;
+    }
+
+    html, body {
+      width: 1080px;
+      height: 1920px;
+      overflow: hidden;
+      background: var(--bg);
+      font-family: var(--font);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── SCENE WRAPPER ─────────────────────── */
+    .scene {
+      position: absolute;
+      inset: 0;
+      width: 1080px;
+      height: 1920px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      opacity: 0;
+    }
+
+    /* ─── SCENE 1: HOOK ─────────────────────── */
+    #scene1 { background: var(--bg); }
+
+    #hook-rank {
+      font-size: 108px;
+      font-weight: 800;
+      color: var(--slate-900);
+      letter-spacing: -3px;
+      line-height: 1;
+      text-align: center;
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    #hook-question {
+      margin-top: 32px;
+      font-size: 60px;
+      font-weight: 700;
+      color: var(--slate-500);
+      text-align: center;
+      opacity: 0;
+    }
+
+    /* ─── SCENE 2: PREDICTOR ─────────────────── */
+    #scene2 { padding: 80px 60px; gap: 0; }
+
+    #pred-section-label {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 36px;
+      opacity: 0;
+    }
+    #pred-card {
+      width: 960px;
+      background: #fff;
+      border: 1.5px solid var(--slate-200);
+      border-radius: var(--radius);
+      padding: 52px 56px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .pred-label {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--slate-700);
+      margin-bottom: 20px;
+    }
+    .pred-input-row {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .pred-input {
+      flex: 1;
+      height: 76px;
+      padding: 0 28px;
+      border: 2px solid var(--slate-200);
+      border-radius: 14px;
+      font-family: var(--font);
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--slate-900);
+      background: #fff;
+      display: flex;
+      align-items: center;
+    }
+    .pred-btn {
+      height: 76px;
+      padding: 0 40px;
+      border-radius: 14px;
+      background: var(--blue);
+      color: #fff;
+      font-family: var(--font);
+      font-size: 24px;
+      font-weight: 700;
+      border: none;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+    }
+
+    #pred-result {
+      margin-top: 36px;
+      padding: 40px 48px;
+      border-radius: 14px;
+      background: var(--emerald-50);
+      border: 1.5px solid var(--emerald-200);
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      border: 1.5px solid var(--emerald-200);
+      border-radius: 40px;
+      padding: 10px 28px;
+      margin-bottom: 28px;
+    }
+    .badge-dot {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--emerald);
+    }
+    .badge-text {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--emerald-800);
+    }
+    .result-cutoff-label {
+      font-size: 22px;
+      color: var(--slate-600);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    #cutoff-number {
+      font-size: 80px;
+      font-weight: 800;
+      color: var(--slate-900);
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      margin-bottom: 16px;
+    }
+    .result-campus {
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--blue);
+    }
+
+    /* ─── SCENE 3: CAMPUS TABLE ─────────────── */
+    #scene3 {
+      padding: 80px 60px;
+      justify-content: flex-start;
+      padding-top: 200px;
+    }
+    #campus-banner {
+      width: 960px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 40px;
+      opacity: 0;
+    }
+    .campus-banner-badge {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--blue);
+      background: var(--blue-50);
+      border: 1.5px solid var(--blue-100);
+      border-radius: 40px;
+      padding: 10px 28px;
+    }
+    .campus-title-text {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--slate-900);
+    }
+    #seat-table {
+      width: 960px;
+      background: #fff;
+      border: 1.5px solid var(--slate-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    }
+    .seat-table-head {
+      display: grid;
+      grid-template-columns: 1fr 190px 190px 170px;
+      background: var(--slate-100);
+      border-bottom: 1.5px solid var(--slate-200);
+      padding: 26px 36px;
+    }
+    .seat-table-head span {
+      font-size: 21px;
+      font-weight: 700;
+      color: var(--slate-600);
+    }
+    .seat-table-head span:not(:first-child) { text-align: center; }
+    .seat-table-head span:last-child { text-align: right; }
+
+    .seat-row {
+      display: grid;
+      grid-template-columns: 1fr 190px 190px 170px;
+      padding: 26px 36px;
+      border-bottom: 1px solid var(--slate-100);
+      align-items: center;
+      opacity: 0;
+      transform: translateX(-24px);
+    }
+    .seat-row:last-child { border-bottom: none; }
+    .seat-prog {
+      font-size: 23px;
+      font-weight: 600;
+      color: var(--slate-900);
+    }
+    .seat-num {
+      font-size: 25px;
+      font-weight: 700;
+      color: var(--slate-700);
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+    .seat-total {
+      font-size: 25px;
+      font-weight: 800;
+      color: var(--slate-900);
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ─── SCENE 4: PRIORITY ─────────────────── */
+    #scene4 {
+      padding: 80px 60px;
+      justify-content: flex-start;
+      padding-top: 180px;
+    }
+    #priority-title {
+      width: 960px;
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin-bottom: 16px;
+      opacity: 0;
+    }
+    #priority-sub {
+      width: 960px;
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--slate-500);
+      margin-bottom: 48px;
+      opacity: 0;
+    }
+    .tier-card {
+      width: 960px;
+      background: #fff;
+      border: 1.5px solid var(--slate-200);
+      border-radius: var(--radius);
+      padding: 38px 48px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    .tier-left {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .tier-dot {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .tier-dot.ambitious { background: #16a34a; }
+    .tier-dot.realistic { background: var(--amber); }
+    .tier-dot.safety    { background: var(--blue); }
+    .tier-label-text {
+      font-size: 21px;
+      font-weight: 700;
+      color: var(--slate-500);
+      margin-bottom: 6px;
+    }
+    .tier-campus-name {
+      font-size: 27px;
+      font-weight: 700;
+      color: var(--slate-900);
+    }
+    .tier-prog-name {
+      font-size: 21px;
+      font-weight: 500;
+      color: var(--slate-500);
+      margin-top: 4px;
+    }
+    .tier-cutoff-badge {
+      background: var(--slate-100);
+      border: 1px solid var(--slate-200);
+      border-radius: 10px;
+      padding: 10px 24px;
+      font-size: 21px;
+      font-weight: 700;
+      color: var(--slate-600);
+      font-variant-numeric: tabular-nums;
+      flex-shrink: 0;
+    }
+
+    /* ─── SCENE 5: OUTRO ─────────────────────── */
+    #scene5 { background: var(--bg); }
+
+    #outro-logo {
+      width: 120px; height: 120px;
+      border-radius: 28px;
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 48px;
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    .outro-logo-inner {
+      font-size: 48px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1px;
+    }
+    #outro-title {
+      font-size: 68px;
+      font-weight: 800;
+      color: var(--blue);
+      letter-spacing: -2px;
+      text-align: center;
+      line-height: 1.05;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    #outro-tagline {
+      margin-top: 28px;
+      font-size: 34px;
+      font-weight: 500;
+      color: var(--slate-500);
+      text-align: center;
+      opacity: 0;
+    }
+    #outro-url {
+      margin-top: 40px;
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--slate-300);
+      text-align: center;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    Hyperframes root composition wrapper.
+    data-composition-id  — stable ID required by the static guard & Studio
+    data-width / data-height — canonical dimensions for the static guard
+    data-duration        — total video length in seconds
+  -->
+  <div id="ioe-brag-root"
+    data-composition-id="ioe-brag-root"
+    data-width="1080"
+    data-height="1920"
+    data-duration="20">
+
+  <!-- ─── AUDIO ─────────────────────────────── -->
+
+  <!-- Track 0: Music bed -->
+  <audio id="music-bed"
+    data-start="0"
+    data-track-index="0"
+    data-volume="0.55"
+    src="assets/music/happy-beats-business-moves-vol-9-by-ende-dot-app.mp3">
+  </audio>
+
+  <!-- Track 2: hook impact -->
+  <audio id="sfx-impact"
+    data-start="0.20"
+    data-track-index="2"
+    data-volume="0.50"
+    src="assets/sfx/switch1.ogg">
+  </audio>
+
+  <!-- Track 3: cursor click -->
+  <audio id="sfx-click"
+    data-start="7.30"
+    data-track-index="3"
+    data-volume="0.45"
+    src="assets/sfx/mouseclick1.ogg">
+  </audio>
+
+  <!-- Track 4: badge pop -->
+  <audio id="sfx-badge"
+    data-start="8.80"
+    data-track-index="4"
+    data-volume="0.40"
+    src="assets/sfx/click2.ogg">
+  </audio>
+
+  <!-- Track 5: table row 1 -->
+  <audio id="sfx-row1"
+    data-start="8.00"
+    data-track-index="5"
+    data-volume="0.30"
+    src="assets/sfx/click3.ogg">
+  </audio>
+
+  <!-- Track 6: table row 2 -->
+  <audio id="sfx-row2"
+    data-start="9.04"
+    data-track-index="6"
+    data-volume="0.30"
+    src="assets/sfx/click3.ogg">
+  </audio>
+
+  <!-- Track 7: table row 3 -->
+  <audio id="sfx-row3"
+    data-start="10.08"
+    data-track-index="7"
+    data-volume="0.30"
+    src="assets/sfx/click3.ogg">
+  </audio>
+
+  <!-- Track 8: table row 4 -->
+  <audio id="sfx-row4"
+    data-start="11.12"
+    data-track-index="8"
+    data-volume="0.30"
+    src="assets/sfx/click3.ogg">
+  </audio>
+
+  <!-- Track 9: tier card 1 — beat-locked: 12.65s -->
+  <audio id="sfx-tier1"
+    data-start="12.65"
+    data-track-index="9"
+    data-volume="0.35"
+    src="assets/sfx/click4.ogg">
+  </audio>
+
+  <!-- Track 10: tier card 2 — beat-grid: 13.70s -->
+  <audio id="sfx-tier2"
+    data-start="13.70"
+    data-track-index="10"
+    data-volume="0.35"
+    src="assets/sfx/click4.ogg">
+  </audio>
+
+  <!-- Track 11: tier card 3 — beat-grid: 14.76s -->
+  <audio id="sfx-tier3"
+    data-start="14.76"
+    data-track-index="11"
+    data-volume="0.35"
+    src="assets/sfx/click4.ogg">
+  </audio>
+
+  <!-- Music fade-out over last 1.5s -->
+  <div id="music-fadeout"
+    data-keyframe="18.5"
+    data-target="#music-bed"
+    data-volume="0"
+    data-easing="easeInQuad">
+  </div>
+
+  <!-- ─── SCENE 1: HOOK (0–2.5s) ─────────────────────────────────── -->
+  <section id="scene1" class="scene"
+    data-start="0"
+    data-duration="2.5">
+
+    <div id="hook-rank"
+      data-start="0.10"
+      data-duration="2.4"
+      data-animate="fadeUp"
+      data-easing="easeOutQuart"
+      data-animate-duration="0.35">
+      Rank 240.
+    </div>
+
+    <div id="hook-question"
+      data-start="0.70"
+      data-duration="1.8"
+      data-animate="fadeIn"
+      data-easing="easeOut"
+      data-animate-duration="0.40">
+      Now what?
+    </div>
+
+  </section>
+
+  <!-- ─── SCENE 2: RANK PREDICTOR (2.5–7.5s) ─────────────────────── -->
+  <!-- beat-locked: pred-result reveal at 4.23s strong cue -->
+  <section id="scene2" class="scene"
+    data-start="2.5"
+    data-duration="5">
+
+    <div id="pred-section-label"
+      data-start="2.60"
+      data-duration="4.90"
+      data-animate="fadeIn"
+      data-animate-duration="0.30">
+      Rank Predictor
+    </div>
+
+    <div id="pred-card"
+      data-start="2.70"
+      data-duration="4.80"
+      data-animate="fadeUp"
+      data-easing="easeOutQuart"
+      data-animate-duration="0.40">
+
+      <div class="pred-label">Your Merit Rank</div>
+      <div class="pred-input-row">
+        <div class="pred-input">240</div>
+        <div class="pred-btn">Predict Odds</div>
+      </div>
+
+      <!-- beat-locked: 4.23s (±0.15s) -->
+      <div id="pred-result"
+        data-start="4.20"
+        data-duration="3.30"
+        data-animate="fadeUp"
+        data-easing="easeOutQuart"
+        data-animate-duration="0.45">
+
+        <div class="result-badge">
+          <span class="badge-dot"></span>
+          <span class="badge-text">High Probability</span>
+        </div>
+
+        <div class="result-cutoff-label">Closing Cutoff — Regular · Open</div>
+
+        <div id="cutoff-number"
+          data-countup="true"
+          data-countup-start="0"
+          data-countup-end="27"
+          data-start="4.40"
+          data-duration="0.80">
+          27
+        </div>
+
+        <div id="result-campus-label" class="result-campus">
+          Pulchowk Campus — Computer Engineering
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ─── SCENE 3: CAMPUS SEAT MATRIX (7.5–11.5s) ─────────────────── -->
+  <!-- beat-locked: banner at 7.52s (near 7.40 beat), rows beat-grid every ~1.04s from 8.00s -->
+  <section id="scene3" class="scene"
+    data-start="7.5"
+    data-duration="4">
+
+    <div id="campus-banner"
+      data-start="7.52"
+      data-duration="3.98"
+      data-animate="fadeIn"
+      data-animate-duration="0.35">
+      <div class="campus-banner-badge">Pulchowk Campus</div>
+      <div class="campus-title-text">2,040 Verified Seats</div>
+    </div>
+
+    <div id="seat-table">
+      <div class="seat-table-head">
+        <span>Engineering Discipline</span>
+        <span>Regular</span>
+        <span>Full Fee</span>
+        <span>Total</span>
+      </div>
+
+      <!-- beat-grid: row1 at 8.00s -->
+      <div id="seat-row-comp" class="seat-row"
+        data-start="8.00"
+        data-duration="3.50"
+        data-animate="slideInLeft"
+        data-animate-duration="0.30">
+        <span class="seat-prog">Computer Engineering</span>
+        <span class="seat-num">24</span>
+        <span class="seat-num">72</span>
+        <span class="seat-total">96</span>
+      </div>
+
+      <!-- beat-grid: row2 at 9.04s -->
+      <div id="seat-row-civil" class="seat-row"
+        data-start="9.04"
+        data-duration="2.46"
+        data-animate="slideInLeft"
+        data-animate-duration="0.30">
+        <span class="seat-prog">Civil Engineering</span>
+        <span class="seat-num">48</span>
+        <span class="seat-num">144</span>
+        <span class="seat-total">192</span>
+      </div>
+
+      <!-- beat-grid: row3 at 10.08s -->
+      <div id="seat-row-elec" class="seat-row"
+        data-start="10.08"
+        data-duration="1.42"
+        data-animate="slideInLeft"
+        data-animate-duration="0.30">
+        <span class="seat-prog">Electrical Engineering</span>
+        <span class="seat-num">48</span>
+        <span class="seat-num">144</span>
+        <span class="seat-total">192</span>
+      </div>
+
+      <!-- beat-grid: row4 at 11.12s -->
+      <div id="seat-row-mech" class="seat-row"
+        data-start="11.12"
+        data-duration="0.38"
+        data-animate="slideInLeft"
+        data-animate-duration="0.30">
+        <span class="seat-prog">Mechanical Engineering</span>
+        <span class="seat-num">24</span>
+        <span class="seat-num">72</span>
+        <span class="seat-total">96</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ─── SCENE 4: PRIORITY OPTIMIZER (11.5–16.5s) ─────────────────── -->
+  <!-- beat-locked: tier cards cascade at 12.65s, 13.70s, 14.76s (strong cue + beat-grid) -->
+  <section id="scene4" class="scene"
+    data-start="11.5"
+    data-duration="5">
+
+    <div id="priority-title"
+      data-start="11.60"
+      data-duration="4.90"
+      data-animate="fadeIn"
+      data-animate-duration="0.30">
+      Priority Optimizer
+    </div>
+
+    <div id="priority-sub"
+      data-start="11.90"
+      data-duration="4.60"
+      data-animate="fadeIn"
+      data-animate-duration="0.30">
+      Sequence for Rank 240
+    </div>
+
+    <!-- beat-locked: 12.65s strong cue -->
+    <div id="tier-card-ambitious" class="tier-card"
+      data-start="12.65"
+      data-duration="3.85"
+      data-animate="fadeUp"
+      data-easing="easeOutQuart"
+      data-animate-duration="0.40">
+      <div class="tier-left">
+        <div class="tier-dot ambitious"></div>
+        <div>
+          <div class="tier-label-text">Tier 1 — Ambitious</div>
+          <div class="tier-campus-name">Pulchowk Campus</div>
+          <div class="tier-prog-name">Computer Engineering · Regular</div>
+        </div>
+      </div>
+      <div class="tier-cutoff-badge">Cutoff: 27</div>
+    </div>
+
+    <!-- beat-grid: 13.70s -->
+    <div id="tier-card-realistic" class="tier-card"
+      data-start="13.70"
+      data-duration="2.80"
+      data-animate="fadeUp"
+      data-easing="easeOutQuart"
+      data-animate-duration="0.40">
+      <div class="tier-left">
+        <div class="tier-dot realistic"></div>
+        <div>
+          <div class="tier-label-text">Tier 2 — Realistic</div>
+          <div class="tier-campus-name">Thapathali Campus</div>
+          <div class="tier-prog-name">Computer Engineering · Regular</div>
+        </div>
+      </div>
+      <div class="tier-cutoff-badge">Cutoff: 75</div>
+    </div>
+
+    <!-- beat-grid: 14.76s -->
+    <div id="tier-card-safety" class="tier-card"
+      data-start="14.76"
+      data-duration="1.74"
+      data-animate="fadeUp"
+      data-easing="easeOutQuart"
+      data-animate-duration="0.40">
+      <div class="tier-left">
+        <div class="tier-dot safety"></div>
+        <div>
+          <div class="tier-label-text">Tier 3 — Safety</div>
+          <div class="tier-campus-name">Pashchimanchal Campus (WRC)</div>
+          <div class="tier-prog-name">Computer Engineering · Regular</div>
+        </div>
+      </div>
+      <div class="tier-cutoff-badge">Cutoff: 164</div>
+    </div>
+
+  </section>
+
+  <!-- ─── SCENE 5: OUTRO / LOGO (16.5–20s) ────────────────────────── -->
+  <section id="scene5" class="scene"
+    data-start="16.5"
+    data-duration="3.5">
+
+    <div id="outro-logo"
+      data-start="16.60"
+      data-duration="3.40"
+      data-animate="scaleIn"
+      data-easing="easeOutBack"
+      data-animate-duration="0.45">
+      <div class="outro-logo-inner">IOE</div>
+    </div>
+
+    <div id="outro-title"
+      data-start="17.10"
+      data-duration="2.90"
+      data-animate="fadeUp"
+      data-easing="easeOutQuart"
+      data-animate-duration="0.40">
+      IOE Admission Hub
+    </div>
+
+    <div id="outro-tagline"
+      data-start="17.65"
+      data-duration="2.35"
+      data-animate="fadeIn"
+      data-animate-duration="0.35">
+      Know your rank. Know your plan.
+    </div>
+
+    <div id="outro-url"
+      data-start="18.30"
+      data-duration="1.70"
+      data-animate="fadeIn"
+      data-animate-duration="0.35">
+      ioe-admission.dipeshsapkota7.com.np
+    </div>
+
+  </section>
+
+  </div><!-- end #ioe-brag-root -->
+
+  <script>
+    // Register composition timelines as required by Hyperframes static guard
+    window.__timelines = window.__timelines || {};
+    window.__timelines['ioe-brag-root'] = {
+      duration: 20,
+      fps: 30,
+      width: 1080,
+      height: 1920,
+      scenes: [
+        { id: 'scene1', start: 0,    duration: 2.5 },
+        { id: 'scene2', start: 2.5,  duration: 5   },
+        { id: 'scene3', start: 7.5,  duration: 4   },
+        { id: 'scene4', start: 11.5, duration: 5   },
+        { id: 'scene5', start: 16.5, duration: 3.5 }
+      ]
+    };
+  </script>
+
+</body>
+</html>
+
