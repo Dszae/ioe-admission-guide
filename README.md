@@ -6,14 +6,12 @@ IOE Admission Hub is a mobile-first admission planning toolkit for Institute of 
 
 **Production:** [ioe-admission.dipeshsapkota7.com.np](https://ioe-admission.dipeshsapkota7.com.np/)
 
-## Product Demo
+## IOE Demo
 
 <video controls preload="metadata" width="100%">
-  <source src="https://cdn.jsdelivr.net/gh/Dszae/ioe-admission-guide@main/brag-output-2026-10-12-093257/brag.mp4" type="video/mp4">
+  <source src="https://cdn.jsdelivr.net/gh/Dszae/ioe-admission-guide@main/brag-output-2026-10-12-093257/ioe-demo.mp4" type="video/mp4">
   Your browser does not support embedded video.
 </video>
-
-[Download the 16:9 launch video](brag-output-2026-10-12-093257/brag.mp4)
 
 
 ## Features
