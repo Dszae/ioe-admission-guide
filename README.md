@@ -8,15 +8,13 @@ IOE Admission Hub is a mobile-first admission planning toolkit for Institute of 
 
 ## Product Demo
 
-GitHub does not reliably play MP4 files committed to a repository inside a README because raw repository binaries are served as downloads. For an inline player, upload `brag-output-2026-10-12-093257/brag.mp4` to a GitHub Issue or pull-request comment, then replace the placeholder URL below with the generated `github.com/user-attachments/assets/...` URL:
-
-```html
-<video controls width="100%" src="PASTE_GITHUB_VIDEO_ATTACHMENT_URL_HERE">
+<video controls preload="metadata" width="100%">
+  <source src="https://cdn.jsdelivr.net/gh/Dszae/ioe-admission-guide@main/brag-output-2026-10-12-093257/brag.mp4" type="video/mp4">
   Your browser does not support embedded video.
 </video>
-```
 
-The rendered video is also available as a repository download: [16:9 launch video](brag-output-2026-10-12-093257/brag.mp4).
+[Download the 16:9 launch video](brag-output-2026-10-12-093257/brag.mp4)
+
 
 ## Features
 
