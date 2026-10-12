@@ -15,6 +15,21 @@ const FacultyCompare = lazy(() => import('./components/FacultyCompare'));
 const AffiliatedColleges = lazy(() => import('./components/AffiliatedColleges'));
 const FinancialsBreakdown = lazy(() => import('./components/FinancialsBreakdown'));
 
+const SITE_ORIGIN = 'https://ioe-admission.dipeshsapkota7.com.np';
+const TAB_SEO = {
+  predictor: ['IOE Rank Predictor | IOE Admission Hub', 'Estimate IOE admission probability by merit rank, campus, program, fee category, quota, and merit-list phase using historical closing ranks.'],
+  calculator: ['IOE CBT Negative Marking Calculator | IOE Admission Hub', 'Calculate your IOE CBT net score out of 140 with the documented negative-marking rules and pass-threshold reference.'],
+  estimator: ['IOE Score-to-Rank Estimator | IOE Admission Hub', 'Estimate an IOE merit-rank bracket from your raw CBT score using historical score-to-rank reference curves.'],
+  campuses: ['IOE Campuses and Seat Matrix | IOE Admission Hub', 'Explore Pulchowk, Thapathali, WRC, ERC, and Chitwan Engineering Campus programs, facilities, and seat capacities.'],
+  affiliated: ['TU-Affiliated Engineering Colleges | IOE Admission Hub', 'Search TU-affiliated private engineering colleges, locations, programs, fee ranges, and reference cutoffs.'],
+  compare: ['Compare IOE Engineering Disciplines | IOE Admission Hub', 'Compare IOE engineering disciplines by curriculum overlap, technical domains, and career outcomes.'],
+  priority: ['IOE Priority Form Optimizer | IOE Admission Hub', 'Generate a balanced Reach, Target, and Safety preference sequence for IOE counseling from your merit rank.'],
+  guide: ['IOE Admission Guide and Counseling Handbook | IOE Admission Hub', 'Read the IOE admission roadmap, merit-list rounds, auto-upgrade rules, seat deposits, and document guidance.'],
+  checklist: ['IOE Admission Checklist | IOE Admission Hub', 'Track the IOE admission process from CBT registration through document verification with a private progress checklist.'],
+  notices: ['IOE Admission Notices and Circulars | IOE Admission Hub', 'Search IOE entrance notices, circulars, quota documents, merit lists, and campus admission updates.'],
+  financials: ['IOE Engineering Fees and Living Costs | IOE Admission Hub', 'Compare four-year tuition and estimated living costs across Regular, Full Fee, and affiliated engineering paths.']
+};
+
 function TabLoadingSkeleton() {
   return (
     <div className="py-12 px-4 text-center animate-pulse" role="status" aria-label="Loading section">
@@ -76,6 +91,32 @@ export default function App() {
       }
       window.history.replaceState({}, '', url.toString());
     } catch {}
+  }, [activeTab]);
+
+  useEffect(() => {
+    const [title, description] = TAB_SEO[activeTab] || TAB_SEO.predictor;
+    const tabUrl = activeTab === 'predictor' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}/?tab=${activeTab}`;
+    const setMeta = (selector, value) => {
+      const element = document.querySelector(selector);
+      if (element) element.setAttribute('content', value);
+    };
+
+    document.title = title;
+    setMeta('meta[name="description"]', description);
+    setMeta('meta[property="og:title"]', title);
+    setMeta('meta[property="og:description"]', description);
+    setMeta('meta[property="og:url"]', tabUrl);
+    setMeta('meta[property="twitter:title"]', title);
+    setMeta('meta[property="twitter:description"]', description);
+    setMeta('meta[property="twitter:url"]', tabUrl);
+
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', tabUrl);
   }, [activeTab]);
 
   const handleSendToEstimator = (score) => {

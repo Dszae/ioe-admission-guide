@@ -45,10 +45,16 @@ export default function Footer({ isDark, showOfficialPortals = false }) {
         </h2>
         <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
           <a href="/" className="text-blue-700 hover:text-blue-900 hover:underline">Predictor</a>
+          <a href="/?tab=estimator" className="text-blue-700 hover:text-blue-900 hover:underline">Score Estimator</a>
           <a href="/?tab=campuses" className="text-blue-700 hover:text-blue-900 hover:underline">Campuses</a>
+          <a href="/?tab=affiliated" className="text-blue-700 hover:text-blue-900 hover:underline">Affiliated Colleges</a>
+          <a href="/?tab=compare" className="text-blue-700 hover:text-blue-900 hover:underline">Compare Disciplines</a>
           <a href="/?tab=priority" className="text-blue-700 hover:text-blue-900 hover:underline">Priority</a>
           <a href="/?tab=calculator" className="text-blue-700 hover:text-blue-900 hover:underline">Calculator</a>
           <a href="/?tab=guide" className="text-blue-700 hover:text-blue-900 hover:underline">Guide</a>
+          <a href="/?tab=checklist" className="text-blue-700 hover:text-blue-900 hover:underline">Checklist</a>
+          <a href="/?tab=notices" className="text-blue-700 hover:text-blue-900 hover:underline">Notices</a>
+          <a href="/?tab=financials" className="text-blue-700 hover:text-blue-900 hover:underline">Financials</a>
         </div>
       </nav>
 
