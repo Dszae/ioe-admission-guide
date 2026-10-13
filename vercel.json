@@ -1,4 +1,17 @@
 {
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.ioe-admission.dipeshsapkota7.com.np"
+        }
+      ],
+      "destination": "https://ioe-admission.dipeshsapkota7.com.np/:path*",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
