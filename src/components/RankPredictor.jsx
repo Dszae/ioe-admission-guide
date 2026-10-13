@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CUTOFFS, CAMPUS_NAMES, ALL_PROGRAMS, ADMISSION_METADATA } from '../data/admissionData';
+import { CUTOFFS, CAMPUS_NAMES, ALL_PROGRAMS } from '../data/admissionData';
 import { getProbability, getPhaseCutoff } from '../utils/calculations';
 import InfoDisclaimer from './common/InfoDisclaimer';
 

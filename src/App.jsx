@@ -16,6 +16,19 @@ const AffiliatedColleges = lazy(() => import('./components/AffiliatedColleges'))
 const FinancialsBreakdown = lazy(() => import('./components/FinancialsBreakdown'));
 
 const SITE_ORIGIN = 'https://ioe-admission.dipeshsapkota7.com.np';
+const TAB_PATHS = {
+  predictor: '/',
+  calculator: '/calculator/',
+  estimator: '/estimator/',
+  campuses: '/campuses/',
+  affiliated: '/affiliated/',
+  compare: '/compare/',
+  priority: '/priority/',
+  guide: '/guide/',
+  checklist: '/checklist/',
+  notices: '/notices/',
+  financials: '/financials/'
+};
 const TAB_SEO = {
   predictor: ['IOE Rank Predictor | IOE Admission Hub', 'Estimate IOE admission probability by merit rank, campus, program, fee category, quota, and merit-list phase using historical closing ranks.'],
   calculator: ['IOE CBT Negative Marking Calculator | IOE Admission Hub', 'Calculate your IOE CBT net score out of 140 with the documented negative-marking rules and pass-threshold reference.'],
@@ -74,6 +87,8 @@ export default function App() {
       if (tabParam && validTabs.includes(tabParam)) {
         return tabParam;
       }
+      const pathTab = Object.entries(TAB_PATHS).find(([, path]) => path !== '/' && window.location.pathname === path)?.[0];
+      if (pathTab) return pathTab;
     } catch {}
     return 'predictor';
   });
@@ -84,18 +99,15 @@ export default function App() {
   useEffect(() => {
     try {
       const url = new URL(window.location.href);
-      if (activeTab === 'predictor') {
-        url.searchParams.delete('tab');
-      } else {
-        url.searchParams.set('tab', activeTab);
-      }
-      window.history.replaceState({}, '', url.toString());
+      url.pathname = TAB_PATHS[activeTab] || TAB_PATHS.predictor;
+      url.search = '';
+      window.history.replaceState({}, '', `${url.pathname}${url.hash}`);
     } catch {}
   }, [activeTab]);
 
   useEffect(() => {
     const [title, description] = TAB_SEO[activeTab] || TAB_SEO.predictor;
-    const tabUrl = activeTab === 'predictor' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}/?tab=${activeTab}`;
+    const tabUrl = `${SITE_ORIGIN}${TAB_PATHS[activeTab] || TAB_PATHS.predictor}`;
     const setMeta = (selector, value) => {
       const element = document.querySelector(selector);
       if (element) element.setAttribute('content', value);

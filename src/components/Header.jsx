@@ -43,7 +43,7 @@ const NAV_GROUPS = [
   }
 ];
 
-const tabHref = (tabId) => tabId === 'predictor' ? '/' : `/?tab=${tabId}`;
+const tabHref = (tabId) => tabId === 'predictor' ? '/' : `/${tabId}/`;
 
 export default function Header({ 
   activeTab = 'predictor', 

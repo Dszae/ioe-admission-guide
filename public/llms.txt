@@ -6,6 +6,19 @@
 - **Repository**: [https://github.com/dipeshsapkota7/ioe-predictor](https://github.com/dipeshsapkota7/ioe-predictor)
 - **Author**: Dipesh Sapkota
 
+## Direct HTML Pages
+- [IOE Rank Predictor](https://ioe-admission.dipeshsapkota7.com.np/predictor/)
+- [IOE Campuses and Seat Matrix](https://ioe-admission.dipeshsapkota7.com.np/campuses/)
+- [IOE CBT Calculator](https://ioe-admission.dipeshsapkota7.com.np/calculator/)
+- [IOE Score-to-Rank Estimator](https://ioe-admission.dipeshsapkota7.com.np/estimator/)
+- [IOE Priority Form Optimizer](https://ioe-admission.dipeshsapkota7.com.np/priority/)
+- [IOE Admission Guide](https://ioe-admission.dipeshsapkota7.com.np/guide/)
+- [IOE Admission Checklist](https://ioe-admission.dipeshsapkota7.com.np/checklist/)
+- [IOE Admission Notices](https://ioe-admission.dipeshsapkota7.com.np/notices/)
+- [TU-Affiliated Engineering Colleges](https://ioe-admission.dipeshsapkota7.com.np/affiliated/)
+- [Compare IOE Engineering Disciplines](https://ioe-admission.dipeshsapkota7.com.np/compare/)
+- [IOE Fees and Living Costs](https://ioe-admission.dipeshsapkota7.com.np/financials/)
+
 ## Overview
 IOE Admission Hub assists high school graduates (+2 / A-Level / Diploma in Engineering) in evaluating their admission probabilities into engineering programs across constituent campuses and affiliated colleges under Tribhuvan University.
 
