@@ -125,11 +125,14 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
       
       {/* Title */}
       <div className="mb-6">
-        <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white print:text-black">
+        <h1 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white print:text-black">
           Admission Rank Probability Predictor
-        </h2>
+        </h1>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
           Estimate your admission probability based on verified historical closing merit ranks across constituent engineering campuses.
+        </p>
+        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-2">
+          IOE Admission Hub is an independent tool created by <a href="https://www.dipeshsapkota7.com.np/" className="text-blue-700 hover:underline">Dipesh Sapkota</a>.
         </p>
       </div>
 
