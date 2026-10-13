@@ -15,7 +15,7 @@ import FinancialsBreakdown from './components/FinancialsBreakdown';
 
 const SITE_ORIGIN = 'https://ioe-admission.dipeshsapkota7.com.np';
 const TAB_PATHS = {
-  predictor: '/',
+  predictor: '/predictor/',
   calculator: '/calculator/',
   estimator: '/estimator/',
   campuses: '/campuses/',
@@ -83,6 +83,7 @@ export default function App() {
   useEffect(() => {
     try {
       const url = new URL(window.location.href);
+      if (activeTab === 'predictor' && url.pathname === '/') return;
       url.pathname = TAB_PATHS[activeTab] || TAB_PATHS.predictor;
       url.search = '';
       window.history.replaceState({}, '', `${url.pathname}${url.hash}`);
@@ -91,7 +92,8 @@ export default function App() {
 
   useEffect(() => {
     const [title, description] = TAB_SEO[activeTab] || TAB_SEO.predictor;
-    const tabUrl = `${SITE_ORIGIN}${TAB_PATHS[activeTab] || TAB_PATHS.predictor}`;
+    const isHomepage = activeTab === 'predictor' && window.location.pathname === '/';
+    const tabUrl = `${SITE_ORIGIN}${isHomepage ? '/' : (TAB_PATHS[activeTab] || TAB_PATHS.predictor)}`;
     const setMeta = (selector, value) => {
       const element = document.querySelector(selector);
       if (element) element.setAttribute('content', value);

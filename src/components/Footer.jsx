@@ -44,7 +44,7 @@ export default function Footer({ isDark, showOfficialPortals = false }) {
           Explore IOE Admission Hub
         </h2>
         <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
-          <a href="/" className="text-blue-700 hover:text-blue-900 hover:underline">Predictor</a>
+          <a href="/predictor/" className="text-blue-700 hover:text-blue-900 hover:underline">Predictor</a>
           <a href="/estimator/" className="text-blue-700 hover:text-blue-900 hover:underline">Score Estimator</a>
           <a href="/campuses/" className="text-blue-700 hover:text-blue-900 hover:underline">Campuses</a>
           <a href="/affiliated/" className="text-blue-700 hover:text-blue-900 hover:underline">Affiliated Colleges</a>
