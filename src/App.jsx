@@ -16,6 +16,7 @@ import FinancialsBreakdown from './components/FinancialsBreakdown';
 const SITE_ORIGIN = 'https://ioe-admission.dipeshsapkota7.com.np';
 const TAB_PATHS = {
   predictor: '/predictor/',
+  profile: '/profile/',
   calculator: '/calculator/',
   estimator: '/estimator/',
   campuses: '/campuses/',
@@ -29,6 +30,7 @@ const TAB_PATHS = {
 };
 const TAB_SEO = {
   predictor: ['IOE Rank Predictor | IOE Admission Hub', 'Estimate IOE admission probability by merit rank, campus, program, fee category, quota, and merit-list phase using historical closing ranks.'],
+  profile: ['IOE Admission Hub Profile | Dipesh Sapkota', 'Learn about IOE Admission Hub, an independent Institute of Engineering admission guide created and maintained by Dipesh Sapkota.'],
   calculator: ['IOE CBT Negative Marking Calculator | IOE Admission Hub', 'Calculate your IOE CBT net score out of 140 with the documented negative-marking rules and pass-threshold reference.'],
   estimator: ['IOE Score-to-Rank Estimator | IOE Admission Hub', 'Estimate an IOE merit-rank bracket from your raw CBT score using historical score-to-rank reference curves.'],
   campuses: ['IOE Campuses and Seat Matrix | IOE Admission Hub', 'Explore Pulchowk, Thapathali, WRC, ERC, and Chitwan Engineering Campus programs, facilities, and seat capacities.'],
@@ -63,7 +65,7 @@ export default function App() {
       const urlParams = new URLSearchParams(window.location.search);
       const tabParam = urlParams.get('tab');
       const validTabs = [
-        'predictor', 'calculator', 'estimator', 
+        'predictor', 'profile', 'calculator', 'estimator', 
         'campuses', 'affiliated', 'compare', 
         'priority', 
         'guide', 'checklist', 'notices', 'financials'
@@ -144,6 +146,15 @@ export default function App() {
         }`}>
           <main id="main-content" tabIndex="-1" className="min-w-0 focus:outline-none">
             {activeTab === 'predictor' && <RankPredictor isDark={isDark} onNavigateTab={setActiveTab} />}
+            {activeTab === 'profile' && (
+              <article className="animate-fadeIn">
+                <img src="/ioe-logo.png" alt="IOE Admission Hub profile image" className="w-20 h-20 object-contain rounded-xl bg-blue-50 p-2 mb-4" />
+                <h1 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">IOE Admission Hub Profile</h1>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2">IOE Admission Hub by Dipesh Sapkota is an independent educational toolkit for Institute of Engineering, Tribhuvan University applicants in Nepal.</p>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-3">It provides IOE rank prediction, campus seat matrices, CBT scoring, priority planning, admission notices, fee references, and counseling guidance.</p>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-3">Created and maintained by <a href="https://www.dipeshsapkota7.com.np/" className="text-blue-700 hover:underline">Dipesh Sapkota</a>. This platform is not officially operated, affiliated with, or endorsed by Tribhuvan University or the Institute of Engineering.</p>
+              </article>
+            )}
             
             {activeTab === 'campuses' && <CampusExplorer isDark={isDark} onNavigateTab={setActiveTab} />}
             {activeTab === 'notices' && <NoticeTracker isDark={isDark} />}

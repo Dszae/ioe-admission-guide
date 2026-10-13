@@ -6,6 +6,10 @@
 - **Repository**: [https://github.com/dipeshsapkota7/ioe-predictor](https://github.com/dipeshsapkota7/ioe-predictor)
 - **Author**: Dipesh Sapkota
 
+## Creator Profile
+- [IOE Admission Hub Profile](https://ioe-admission.dipeshsapkota7.com.np/profile/)
+- [Dipesh Sapkota portfolio](https://www.dipeshsapkota7.com.np/)
+
 ## Direct HTML Pages
 - [IOE Rank Predictor](https://ioe-admission.dipeshsapkota7.com.np/predictor/)
 - [IOE Campuses and Seat Matrix](https://ioe-admission.dipeshsapkota7.com.np/campuses/)

@@ -26,6 +26,7 @@ const list = (items) => `<ul>${items.map((item) => `<li>${item}</li>`).join('')}
 const objectList = (object) => list(Object.entries(object).map(([key, value]) => `<strong>${escapeHtml(key)}:</strong> ${escapeHtml(value)}`));
 const pageNav = list([
   link('/', 'IOE Admission Hub home'),
+  link('/profile/', 'IOE Admission Hub profile by Dipesh Sapkota'),
   link('/predictor/', 'IOE rank predictor and historical cutoffs'),
   link('/campuses/', 'IOE campuses and seat matrix'),
   link('/calculator/', 'IOE CBT score calculator'),
@@ -38,7 +39,10 @@ const pageNav = list([
   link('/compare/', 'Compare engineering disciplines'),
   link('/financials/', 'IOE fees and living costs')
 ]);
-const shellStyle = `body{margin:0;background:#f8fafc;color:#172033;font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}main{max-width:1080px;margin:auto;padding:32px 20px 64px}h1{font-size:clamp(1.8rem,4vw,3rem);line-height:1.15;color:#123b84}h2{margin-top:2rem;color:#183b70}h3{margin-bottom:.35rem}p{max-width:80ch}a{color:#1558b0}nav{padding:16px 20px;background:#fff;border:1px solid #d8e0ed;border-radius:10px}section{margin-top:20px;padding:20px;background:#fff;border:1px solid #d8e0ed;border-radius:10px}table{width:100%;border-collapse:collapse;margin:12px 0 20px;background:#fff}th,td{text-align:left;padding:9px;border:1px solid #d8e0ed;vertical-align:top}th{background:#edf4ff}small{color:#53657e}.meta{padding:12px 16px;background:#eef6ff;border-left:4px solid #2563eb}`;
+const shellStyle = `body{margin:0;background:#f8fafc;color:#172033;font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}main{max-width:1080px;margin:auto;padding:32px 20px 64px}h1{font-size:clamp(1.8rem,4vw,3rem);line-height:1.15;color:#123b84}h2{margin-top:2rem;color:#183b70}h3{margin-bottom:.35rem}p{max-width:80ch}a{color:#1558b0}nav{padding:16px 20px;background:#fff;border:1px solid #d8e0ed;border-radius:10px}section{margin-top:20px;padding:20px;background:#fff;border:1px solid #d8e0ed;border-radius:10px}table{width:100%;border-collapse:collapse;margin:12px 0 20px;background:#fff}th,td{text-align:left;padding:9px;border:1px solid #d8e0ed;vertical-align:top}th{background:#edf4ff}small{color:#53657e}.meta{padding:12px 16px;background:#eef6ff;border-left:4px solid #2563eb}.profile-strip{display:flex;align-items:center;gap:14px;margin:20px 0;padding:14px 18px;background:#fff;border:1px solid #d8e0ed;border-radius:10px}.profile-strip img{width:56px;height:56px;object-fit:contain;border-radius:10px;background:#eef4ff;padding:6px}.breadcrumbs{padding:0;background:transparent;border:0}.breadcrumbs ol{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}.breadcrumbs li:not(:last-child)::after{content:"/";margin-left:8px;color:#7a8aa3}`;
+const imageUrl = 'https://ioe-admission.dipeshsapkota7.com.np/ioe-logo.png';
+const profileStrip = `<aside class="profile-strip"><img src="/ioe-logo.png" alt="IOE Admission Hub profile image"><div><strong>IOE Admission Hub by Dipesh Sapkota</strong><br><span>Independent IOE admission guide and planning toolkit. <a href="/profile/">View profile</a></span></div></aside>`;
+const breadcrumbs = (heading, canonical) => `<nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li>${link('/', 'IOE Admission Hub')}</li><li>${link('/profile/', 'Profile: Dipesh Sapkota')}</li><li><a href="${escapeHtml(canonical)}" aria-current="page">${escapeHtml(heading)}</a></li></ol></nav>`;
 
 function campusContent() {
   return Object.entries(CAMPUS_DETAILS).map(([key, campus]) => {
@@ -79,6 +83,13 @@ function financialContent() {
 }
 
 const pages = {
+  profile: {
+    title: 'IOE Admission Hub Profile | Dipesh Sapkota',
+    description: 'Profile of IOE Admission Hub, an independent Institute of Engineering admission guide created and maintained by Dipesh Sapkota.',
+    heading: 'IOE Admission Hub Profile',
+    intro: 'A direct profile of the independent IOE admission information service and its creator.',
+    content: `<section><img src="/ioe-logo.png" alt="IOE Admission Hub profile image" width="112" height="112"><h2>IOE Admission Hub by Dipesh Sapkota</h2><p>IOE Admission Hub is an independent educational toolkit for Institute of Engineering (IOE), Tribhuvan University applicants in Nepal. It brings together rank prediction, campus seat matrices, CBT scoring, priority planning, notices, fees, and counseling guidance.</p><p>Created and maintained by ${link('https://www.dipeshsapkota7.com.np/', 'Dipesh Sapkota')}. The platform is not officially operated, affiliated with, or endorsed by Tribhuvan University or the Institute of Engineering.</p><p>Official verification: ${link('https://entrance.ioe.edu.np/', 'IOE Entrance Examination Board')} and ${link('https://admission.ioe.edu.np/', 'IOE Central Admission Committee')}.</p></section>`
+  },
   predictor: {
     title: 'IOE Rank Predictor and Historical Cutoffs | IOE Admission Hub',
     description: 'Searchable historical IOE admission closing ranks by campus, engineering program, fee category, and quota.',
@@ -165,13 +176,15 @@ if (!script || !stylesheet) throw new Error('Vite assets were not found in dist/
 
 for (const [slug, pageData] of Object.entries(pages)) {
   const canonical = `https://ioe-admission.dipeshsapkota7.com.np/${slug}/`;
+  const schemaType = slug === 'profile' ? 'ProfilePage' : 'WebPage';
   const structuredData = JSON.stringify({
     '@context': 'https://schema.org',
-    '@type': 'WebPage',
+    '@type': schemaType,
     '@id': `${canonical}#webpage`,
     url: canonical,
     name: pageData.title,
     description: pageData.description,
+    image: imageUrl,
     inLanguage: 'en',
     isPartOf: {
       '@type': 'WebSite',
@@ -183,6 +196,15 @@ for (const [slug, pageData] of Object.entries(pages)) {
       name: 'Dipesh Sapkota',
       url: 'https://www.dipeshsapkota7.com.np/'
     },
+    ...(slug === 'profile' ? {
+      mainEntity: {
+        '@type': 'Person',
+        name: 'Dipesh Sapkota',
+        url: 'https://www.dipeshsapkota7.com.np/',
+        image: imageUrl,
+        sameAs: ['https://github.com/Dszae', 'https://www.linkedin.com/in/dipesh-sapkota/']
+      }
+    } : {}),
     breadcrumb: {
       '@type': 'BreadcrumbList',
       itemListElement: [
@@ -191,7 +213,7 @@ for (const [slug, pageData] of Object.entries(pages)) {
       ]
     }
   }).replaceAll('<', '\\u003c');
-  const html = `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(pageData.title)}</title><meta name="description" content="${escapeHtml(pageData.description)}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="${canonical}"><link rel="alternate" type="text/plain" href="/llms.txt"><link rel="stylesheet" href="${stylesheet}"><script type="application/ld+json">${structuredData}</script><style>${shellStyle}</style></head><body><div id="root"><main><header><p><strong>IOE Admission Hub by Dipesh Sapkota</strong></p><h1>${escapeHtml(pageData.heading)}</h1><p>${escapeHtml(pageData.intro)}</p></header><nav aria-label="IOE Admission Hub sections"><h2>Explore IOE Admission Hub</h2>${pageNav}</nav>${pageData.content}<section><h2>Official sources and disclaimer</h2><p>This is an independent educational reference. Official admissions are governed by IOE and Tribhuvan University. ${OFFICIAL_PORTALS.slice(0, 2).map((portal) => link(portal.url, portal.name)).join(' | ')}.</p></section></main></div><script type="module" crossorigin src="${script}"></script></body></html>`;
+  const html = `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(pageData.title)}</title><meta name="description" content="${escapeHtml(pageData.description)}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="${canonical}"><link rel="alternate" type="text/plain" href="/llms.txt"><meta property="og:type" content="profile"><meta property="og:title" content="${escapeHtml(pageData.title)}"><meta property="og:description" content="${escapeHtml(pageData.description)}"><meta property="og:image" content="${imageUrl}"><link rel="stylesheet" href="${stylesheet}"><script type="application/ld+json">${structuredData}</script><style>${shellStyle}</style></head><body><div id="root"><main>${breadcrumbs(pageData.heading, canonical)}<header><p><strong>IOE Admission Hub by Dipesh Sapkota</strong></p><h1>${escapeHtml(pageData.heading)}</h1><p>${escapeHtml(pageData.intro)}</p></header>${profileStrip}<nav aria-label="IOE Admission Hub sections"><h2>Explore IOE Admission Hub</h2>${pageNav}</nav>${pageData.content}<section><h2>Official sources and disclaimer</h2><p>This is an independent educational reference. Official admissions are governed by IOE and Tribhuvan University. ${OFFICIAL_PORTALS.slice(0, 2).map((portal) => link(portal.url, portal.name)).join(' | ')}.</p></section></main></div><script type="module" crossorigin src="${script}"></script></body></html>`;
   const outputDir = join(DIST, slug);
   await mkdir(outputDir, { recursive: true });
   await writeFile(join(outputDir, 'index.html'), html);
