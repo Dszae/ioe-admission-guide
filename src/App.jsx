@@ -1,19 +1,17 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import RankPredictor from './components/RankPredictor';
-
-// Code-split secondary modules for optimal initial bundle
-const CampusExplorer = lazy(() => import('./components/CampusExplorer'));
-const NoticeTracker = lazy(() => import('./components/NoticeTracker'));
-const PriorityGenerator = lazy(() => import('./components/PriorityGenerator'));
-const StudentChecklist = lazy(() => import('./components/StudentChecklist'));
-const CBTCalculator = lazy(() => import('./components/CBTCalculator'));
-const ScoreEstimator = lazy(() => import('./components/ScoreEstimator'));
-const AdmissionGuide = lazy(() => import('./components/AdmissionGuide'));
-const FacultyCompare = lazy(() => import('./components/FacultyCompare'));
-const AffiliatedColleges = lazy(() => import('./components/AffiliatedColleges'));
-const FinancialsBreakdown = lazy(() => import('./components/FinancialsBreakdown'));
+import CampusExplorer from './components/CampusExplorer';
+import NoticeTracker from './components/NoticeTracker';
+import PriorityGenerator from './components/PriorityGenerator';
+import StudentChecklist from './components/StudentChecklist';
+import CBTCalculator from './components/CBTCalculator';
+import ScoreEstimator from './components/ScoreEstimator';
+import AdmissionGuide from './components/AdmissionGuide';
+import FacultyCompare from './components/FacultyCompare';
+import AffiliatedColleges from './components/AffiliatedColleges';
+import FinancialsBreakdown from './components/FinancialsBreakdown';
 
 const SITE_ORIGIN = 'https://ioe-admission.dipeshsapkota7.com.np';
 const TAB_PATHS = {
@@ -42,20 +40,6 @@ const TAB_SEO = {
   notices: ['IOE Admission Notices and Circulars | IOE Admission Hub', 'Search IOE entrance notices, circulars, quota documents, merit lists, and campus admission updates.'],
   financials: ['IOE Engineering Fees and Living Costs | IOE Admission Hub', 'Compare four-year tuition and estimated living costs across Regular, Full Fee, and affiliated engineering paths.']
 };
-
-function TabLoadingSkeleton() {
-  return (
-    <div className="py-12 px-4 text-center animate-pulse" role="status" aria-label="Loading section">
-      <div className="h-4 w-36 bg-slate-200 dark:bg-slate-700 rounded mx-auto mb-2.5"></div>
-      <div className="h-3 w-56 bg-slate-100 dark:bg-slate-700 rounded mx-auto mb-6"></div>
-      <div className="grid sm:grid-cols-2 gap-3 max-w-lg mx-auto">
-        <div className="h-24 bg-slate-100 dark:bg-slate-700/60 rounded-lg"></div>
-        <div className="h-24 bg-slate-100 dark:bg-slate-700/60 rounded-lg"></div>
-      </div>
-      <span className="sr-only">Loading section content...</span>
-    </div>
-  );
-}
 
 export default function App() {
   const isDark = false;
@@ -159,18 +143,16 @@ export default function App() {
           <main id="main-content" tabIndex="-1" className="min-w-0 focus:outline-none">
             {activeTab === 'predictor' && <RankPredictor isDark={isDark} onNavigateTab={setActiveTab} />}
             
-            <Suspense fallback={<TabLoadingSkeleton />}>
-              {activeTab === 'campuses' && <CampusExplorer isDark={isDark} onNavigateTab={setActiveTab} />}
-              {activeTab === 'notices' && <NoticeTracker isDark={isDark} />}
-              {activeTab === 'priority' && <PriorityGenerator isDark={isDark} onNavigateTab={setActiveTab} />}
-              {activeTab === 'checklist' && <StudentChecklist isDark={isDark} />}
-              {activeTab === 'calculator' && <CBTCalculator isDark={isDark} onSendToEstimator={handleSendToEstimator} onNavigateTab={setActiveTab} />}
-              {activeTab === 'estimator' && <ScoreEstimator isDark={isDark} initialScore={estimatorPreScore} onNavigateTab={setActiveTab} />}
-              {activeTab === 'guide' && <AdmissionGuide isDark={isDark} onNavigateTab={setActiveTab} />}
-              {activeTab === 'compare' && <FacultyCompare isDark={isDark} />}
-              {activeTab === 'affiliated' && <AffiliatedColleges isDark={isDark} />}
-              {activeTab === 'financials' && <FinancialsBreakdown isDark={isDark} onNavigateTab={setActiveTab} />}
-            </Suspense>
+            {activeTab === 'campuses' && <CampusExplorer isDark={isDark} onNavigateTab={setActiveTab} />}
+            {activeTab === 'notices' && <NoticeTracker isDark={isDark} />}
+            {activeTab === 'priority' && <PriorityGenerator isDark={isDark} onNavigateTab={setActiveTab} />}
+            {activeTab === 'checklist' && <StudentChecklist isDark={isDark} />}
+            {activeTab === 'calculator' && <CBTCalculator isDark={isDark} onSendToEstimator={handleSendToEstimator} onNavigateTab={setActiveTab} />}
+            {activeTab === 'estimator' && <ScoreEstimator isDark={isDark} initialScore={estimatorPreScore} onNavigateTab={setActiveTab} />}
+            {activeTab === 'guide' && <AdmissionGuide isDark={isDark} onNavigateTab={setActiveTab} />}
+            {activeTab === 'compare' && <FacultyCompare isDark={isDark} />}
+            {activeTab === 'affiliated' && <AffiliatedColleges isDark={isDark} />}
+            {activeTab === 'financials' && <FinancialsBreakdown isDark={isDark} onNavigateTab={setActiveTab} />}
           </main>
         </div>
 
