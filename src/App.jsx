@@ -42,6 +42,20 @@ const TAB_SEO = {
   notices: ['IOE Admission Notices and Circulars | IOE Admission Hub', 'Search IOE entrance notices, circulars, quota documents, merit lists, and campus admission updates.'],
   financials: ['IOE Engineering Fees and Living Costs | IOE Admission Hub', 'Compare four-year tuition and estimated living costs across Regular, Full Fee, and affiliated engineering paths.']
 };
+const TAB_LABELS = {
+  predictor: 'Rank Predictor',
+  profile: 'Profile',
+  calculator: 'CBT Calculator',
+  estimator: 'Score-to-Rank Estimator',
+  campuses: 'Campuses and Seat Matrix',
+  affiliated: 'Affiliated Colleges',
+  compare: 'Compare Disciplines',
+  priority: 'Priority Optimizer',
+  guide: 'Admission Guide',
+  checklist: 'Admission Checklist',
+  notices: 'Admission Notices',
+  financials: 'Fees and Living Costs'
+};
 
 export default function App() {
   const isDark = false;
@@ -145,6 +159,19 @@ export default function App() {
             : 'bg-white border-slate-200/90 shadow-2xs'
         }`}>
           <main id="main-content" tabIndex="-1" className="min-w-0 focus:outline-none">
+            <nav aria-label="Breadcrumb" className="mb-5 text-[11px] text-slate-500 dark:text-slate-400">
+              <ol className="flex flex-wrap items-center gap-1.5">
+                <li><a href="/" className="text-blue-700 hover:underline">IOE Admission Hub</a></li>
+                <li aria-hidden="true">/</li>
+                <li><a href="/profile/" className="text-blue-700 hover:underline">Dipesh Sapkota profile</a></li>
+                <li aria-hidden="true">/</li>
+                <li aria-current="page">{TAB_LABELS[activeTab] || 'Admission Tools'}</li>
+              </ol>
+            </nav>
+            <div className="flex items-center gap-3 mb-5 p-3 rounded-xl border border-slate-200 bg-slate-50 dark:bg-slate-800 dark:border-slate-700">
+              <img src="/ioe-logo.png" alt="IOE Admission Hub profile image" className="w-10 h-10 object-contain rounded-lg bg-white p-1" />
+              <p className="text-xs text-slate-600 dark:text-slate-300">IOE Admission Hub by <a href="/profile/" className="font-semibold text-blue-700 hover:underline">Dipesh Sapkota</a></p>
+            </div>
             {activeTab === 'predictor' && <RankPredictor isDark={isDark} onNavigateTab={setActiveTab} />}
             {activeTab === 'profile' && (
               <article className="animate-fadeIn">
