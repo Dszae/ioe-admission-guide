@@ -50,7 +50,7 @@ export default function Footer({ isDark = false, showOfficialPortals = false }: 
         <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
           <a href="/" className="text-blue-700 hover:text-blue-900 hover:underline font-semibold">Home</a>
           <a href="/predictor/" className="text-blue-700 hover:text-blue-900 hover:underline">Rank Predictor</a>
-          <a href="/profile/" className="text-blue-700 hover:text-blue-900 hover:underline font-medium">Dipesh Sapkota Profile</a>
+          <a href="/profile/" className="text-blue-700 hover:text-blue-900 hover:underline font-medium">Dipesh Sapkota</a>
           <a href="/estimator/" className="text-blue-700 hover:text-blue-900 hover:underline">Score Estimator</a>
           <a href="/campuses/" className="text-blue-700 hover:text-blue-900 hover:underline">Campuses & Seats</a>
           <a href="/affiliated/" className="text-blue-700 hover:text-blue-900 hover:underline">Affiliated Colleges</a>
@@ -86,14 +86,11 @@ export default function Footer({ isDark = false, showOfficialPortals = false }: 
             <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
               Historical benchmark data referenced from IOE Archives (2082 BS). Created and engineered by{' '}
               <a 
-                href="https://www.dipeshsapkota7.com.np/" 
-                target="_blank" 
-                rel="noopener noreferrer home author"
+                href="/profile/" 
                 className="font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-colors"
               >
                 Dipesh Sapkota
-              </a>{' '}
-              (<a href="/profile/" className="text-blue-600 dark:text-blue-400 hover:underline">Profile</a>).
+              </a>.
             </p>
           </div>
 
