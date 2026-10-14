@@ -100,14 +100,18 @@ const structuredData: {
       '@type': 'WebSite',
       '@id': `${site}/#website`,
       url: `${site}/`,
-      name: 'IOE Admission Hub by Dipesh Sapkota',
+      name: 'IOE Admission Hub',
       alternateName: [
+        'IOE',
+        'IOE Admission',
         'IOE Admission Hub',
-        'IOE Rank Predictor by Dipesh Sapkota',
-        'Dipesh Sapkota IOE Guide',
-        'IOE Predictor'
+        'IOE Admission Hub by Dipesh Sapkota',
+        'IOE Rank Predictor',
+        'IOE Predictor',
+        'IOE Guide',
+        'TU IOE Admission'
       ],
-      description: 'Comprehensive admission toolkit, rank predictor, and counseling handbook for TU Institute of Engineering applicants in Nepal by Dipesh Sapkota.',
+      description: 'Central admission guide, rank predictor, and counseling intelligence hub for Tribhuvan University Institute of Engineering (IOE) applicants in Nepal by Dipesh Sapkota.',
       isPartOf: {
         '@type': 'WebSite',
         '@id': 'https://www.dipeshsapkota7.com.np/#website',
@@ -134,21 +138,27 @@ const structuredData: {
       hasPart: [
         {
           '@type': 'WebPage',
-          '@id': `${site}/profile/#webpage`,
-          name: 'Dipesh Sapkota',
-          url: `${site}/profile/`
-        },
-        {
-          '@type': 'WebPage',
           '@id': `${site}/predictor/#webpage`,
           name: 'IOE Rank Predictor & Historical Cutoffs',
           url: `${site}/predictor/`
         },
         {
           '@type': 'WebPage',
+          '@id': `${site}/guide/#webpage`,
+          name: 'IOE Admission Guide & Counseling Handbook',
+          url: `${site}/guide/`
+        },
+        {
+          '@type': 'WebPage',
           '@id': `${site}/campuses/#webpage`,
-          name: 'IOE Constituent Campuses & Seat Matrix',
+          name: 'IOE Constituent Campuses & 2,040 Seat Matrix',
           url: `${site}/campuses/`
+        },
+        {
+          '@type': 'WebPage',
+          '@id': `${site}/financials/#webpage`,
+          name: 'IOE Engineering Tuition Fees & Living Costs',
+          url: `${site}/financials/`
         },
         {
           '@type': 'WebPage',
@@ -158,70 +168,136 @@ const structuredData: {
         },
         {
           '@type': 'WebPage',
-          '@id': `${site}/estimator/#webpage`,
-          name: 'IOE Score-to-Rank Estimator',
-          url: `${site}/estimator/`
-        },
-        {
-          '@type': 'WebPage',
           '@id': `${site}/priority/#webpage`,
           name: 'IOE Priority Form Optimizer',
           url: `${site}/priority/`
         },
         {
           '@type': 'WebPage',
-          '@id': `${site}/guide/#webpage`,
-          name: 'IOE Admission Guide & Counseling Handbook',
-          url: `${site}/guide/`
+          '@id': `${site}/estimator/#webpage`,
+          name: 'IOE Score-to-Rank Estimator',
+          url: `${site}/estimator/`
+        },
+        {
+          '@type': 'WebPage',
+          '@id': `${site}/affiliated/#webpage`,
+          name: 'TU-Affiliated Engineering Colleges Directory',
+          url: `${site}/affiliated/`
+        },
+        {
+          '@type': 'WebPage',
+          '@id': `${site}/compare/#webpage`,
+          name: 'Compare IOE Engineering Disciplines & Scope',
+          url: `${site}/compare/`
+        },
+        {
+          '@type': 'WebPage',
+          '@id': `${site}/checklist/#webpage`,
+          name: 'IOE Admission & Verification Checklist',
+          url: `${site}/checklist/`
+        },
+        {
+          '@type': 'WebPage',
+          '@id': `${site}/notices/#webpage`,
+          name: 'IOE Official Admission Notices & Circulars',
+          url: `${site}/notices/`
+        },
+        {
+          '@type': 'WebPage',
+          '@id': `${site}/profile/#webpage`,
+          name: 'Dipesh Sapkota',
+          url: `${site}/profile/`
         }
       ]
     },
     {
       '@type': 'ItemList',
       '@id': `${site}/#site-navigation`,
-      name: 'IOE Admission Hub Main Sitelinks Navigation',
+      name: 'IOE Admission Hub Sitelinks Navigation',
       itemListElement: [
         {
           '@type': 'SiteNavigationElement',
           position: 1,
           name: 'IOE Rank Predictor',
-          description: 'Compare merit rank against historical closing ranks across constituent campuses.',
+          description: 'Compare merit rank against official historical closing ranks across constituent campuses.',
           url: `${site}/predictor/`
         },
         {
           '@type': 'SiteNavigationElement',
           position: 2,
-          name: 'Dipesh Sapkota',
-          description: 'Personal profile and background of Dipesh Sapkota, creator and builder of IOE Admission Hub.',
-          url: `${site}/profile/`
+          name: 'IOE Admission Guide',
+          description: 'Step-by-step IOE counseling rules, merit-list rounds, auto-upgrades, and document verification.',
+          url: `${site}/guide/`
         },
         {
           '@type': 'SiteNavigationElement',
           position: 3,
-          name: 'IOE CBT Calculator',
-          description: 'Calculate exact CBT score out of 140 with official negative marking rules.',
-          url: `${site}/calculator/`
-        },
-        {
-          '@type': 'SiteNavigationElement',
-          position: 4,
-          name: 'Campuses & Seat Matrix',
-          description: 'Constituent campus profiles and 2,040 seat matrix breakdown.',
+          name: 'IOE Campuses & Seats',
+          description: 'Constituent campus profiles and 2,040 seat matrix capacities for Pulchowk, Thapathali, WRC, ERC, and Chitwan.',
           url: `${site}/campuses/`
         },
         {
           '@type': 'SiteNavigationElement',
+          position: 4,
+          name: 'IOE Fee Structure & Living Costs',
+          description: 'Official 4-year tuition fee breakdown across Regular, Full Fee, Foreign, and hostel estimates.',
+          url: `${site}/financials/`
+        },
+        {
+          '@type': 'SiteNavigationElement',
           position: 5,
-          name: 'Priority Optimizer',
-          description: 'Build optimal Reach, Target, and Safety counseling preferences.',
-          url: `${site}/priority/`
+          name: 'IOE CBT Calculator',
+          description: 'Calculate exact CBT score out of 140 with official 10% negative marking penalty rules.',
+          url: `${site}/calculator/`
         },
         {
           '@type': 'SiteNavigationElement',
           position: 6,
-          name: 'Admission Guide',
-          description: 'Step-by-step IOE counseling, auto-upgrade rules, and document verification.',
-          url: `${site}/guide/`
+          name: 'IOE Priority Form Optimizer',
+          description: 'Build algorithmic Reach, Target, and Safety counseling preferences with cutoff benchmarks.',
+          url: `${site}/priority/`
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 7,
+          name: 'IOE Score-to-Rank Estimator',
+          description: 'Estimate historical IOE entrance merit-rank brackets from raw CBT entrance scores.',
+          url: `${site}/estimator/`
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 8,
+          name: 'TU-Affiliated Colleges',
+          description: 'Directory, programs, and estimated fee comparisons for 10 TU-affiliated private engineering colleges.',
+          url: `${site}/affiliated/`
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 9,
+          name: 'Compare Engineering Disciplines',
+          description: 'In-depth syllabus, core subject overlap, lab workshops, and career pathways across 12 disciplines.',
+          url: `${site}/compare/`
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 10,
+          name: 'Admission Checklist',
+          description: 'Step-by-step interactive checklist from entrance application to physical campus verification.',
+          url: `${site}/checklist/`
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 11,
+          name: 'Official Notices & Circulars',
+          description: 'Direct links and summaries of authentic IOE entrance examination notices, circulars, and merit lists.',
+          url: `${site}/notices/`
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 12,
+          name: 'Dipesh Sapkota',
+          description: 'Profile and background of Dipesh Sapkota, creator and builder of IOE Admission Hub.',
+          url: `${site}/profile/`
         }
       ]
     },
@@ -351,7 +427,7 @@ if (isGuide) {
     <meta name="author" content="Dipesh Sapkota" />
     <meta name="creator" content="Dipesh Sapkota" />
     <meta name="publisher" content="Dipesh Sapkota" />
-    <meta name="keywords" content="Dipesh Sapkota, Dipesh Sapkota IOE, IOE predictor Dipesh Sapkota, IOE admission hub Dipesh Sapkota, IOE rank predictor, IOE entrance 2081 2082, Pulchowk campus cutoffs, IOE CBT calculator, TU engineering admission Nepal" />
+    <meta name="keywords" content="IOE, IOE Admission, IOE Admission Hub, IOE Entrance, IOE Rank Predictor, IOE Pulchowk, IOE Cutoff, IOE CBT Calculator, IOE Fee Structure, IOE Syllabus, IOE Counseling, Institute of Engineering Nepal, Tribhuvan University IOE, Dipesh Sapkota" />
     <meta name="geo.region" content="NP" />
     <meta name="geo.placename" content="Kathmandu, Nepal" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -361,7 +437,7 @@ if (isGuide) {
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="IOE Admission Hub by Dipesh Sapkota" />
+    <meta property="og:site_name" content="IOE Admission Hub" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />

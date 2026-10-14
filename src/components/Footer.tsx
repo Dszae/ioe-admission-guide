@@ -48,19 +48,19 @@ export default function Footer({ isDark = false, showOfficialPortals = false }: 
           Explore IOE Admission Hub
         </h2>
         <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
-          <a href="/" className="text-blue-700 hover:text-blue-900 hover:underline font-semibold">Home</a>
-          <a href="/predictor/" className="text-blue-700 hover:text-blue-900 hover:underline">Rank Predictor</a>
-          <a href="/profile/" className="text-blue-700 hover:text-blue-900 hover:underline font-medium">Dipesh Sapkota</a>
-          <a href="/estimator/" className="text-blue-700 hover:text-blue-900 hover:underline">Score Estimator</a>
-          <a href="/campuses/" className="text-blue-700 hover:text-blue-900 hover:underline">Campuses & Seats</a>
-          <a href="/affiliated/" className="text-blue-700 hover:text-blue-900 hover:underline">Affiliated Colleges</a>
+          <a href="/" className="text-blue-700 hover:text-blue-900 hover:underline font-semibold">IOE Admission Hub Home</a>
+          <a href="/predictor/" className="text-blue-700 hover:text-blue-900 hover:underline font-medium">IOE Rank Predictor</a>
+          <a href="/guide/" className="text-blue-700 hover:text-blue-900 hover:underline">IOE Admission Guide</a>
+          <a href="/campuses/" className="text-blue-700 hover:text-blue-900 hover:underline">IOE Campuses & Seats</a>
+          <a href="/financials/" className="text-blue-700 hover:text-blue-900 hover:underline">IOE Fee Structure</a>
+          <a href="/calculator/" className="text-blue-700 hover:text-blue-900 hover:underline">IOE CBT Calculator</a>
+          <a href="/priority/" className="text-blue-700 hover:text-blue-900 hover:underline">IOE Priority Optimizer</a>
+          <a href="/estimator/" className="text-blue-700 hover:text-blue-900 hover:underline">Score-to-Rank Curve</a>
+          <a href="/affiliated/" className="text-blue-700 hover:text-blue-900 hover:underline">TU-Affiliated Colleges</a>
           <a href="/compare/" className="text-blue-700 hover:text-blue-900 hover:underline">Compare Disciplines</a>
-          <a href="/priority/" className="text-blue-700 hover:text-blue-900 hover:underline">Priority Optimizer</a>
-          <a href="/calculator/" className="text-blue-700 hover:text-blue-900 hover:underline">CBT Calculator</a>
-          <a href="/guide/" className="text-blue-700 hover:text-blue-900 hover:underline">Admission Guide</a>
-          <a href="/checklist/" className="text-blue-700 hover:text-blue-900 hover:underline">Checklist</a>
-          <a href="/notices/" className="text-blue-700 hover:text-blue-900 hover:underline">Notices</a>
-          <a href="/financials/" className="text-blue-700 hover:text-blue-900 hover:underline">Financials</a>
+          <a href="/checklist/" className="text-blue-700 hover:text-blue-900 hover:underline">Admission Checklist</a>
+          <a href="/notices/" className="text-blue-700 hover:text-blue-900 hover:underline">Official Notices</a>
+          <a href="/profile/" className="text-blue-700 hover:text-blue-900 hover:underline">Dipesh Sapkota</a>
         </div>
       </nav>
 

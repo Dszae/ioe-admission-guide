@@ -183,17 +183,18 @@ export default function Header({
           {/* Center: Desktop Shortcut Navigation with More Dropdown */}
           <nav className="hidden lg:flex items-center gap-1" aria-label="Quick Navigation">
             {([
-              { id: 'predictor', label: 'Predictor' },
-              { id: 'campuses', label: 'Campuses' },
-              { id: 'priority', label: 'Priority' },
-              { id: 'calculator', label: 'Calculator' },
-              { id: 'guide', label: 'Guide' }
+              { id: 'predictor', label: 'Predictor', title: 'IOE Rank Predictor & Cutoffs' },
+              { id: 'campuses', label: 'Campuses', title: 'IOE Constituent Campuses & 2,040 Seats' },
+              { id: 'priority', label: 'Priority', title: 'IOE Priority Form Optimizer' },
+              { id: 'calculator', label: 'Calculator', title: 'IOE CBT Score Calculator' },
+              { id: 'guide', label: 'Guide', title: 'IOE Admission Guide & Handbook' }
             ] as const).map(tab => {
               const isActive = activeTab === tab.id;
               return (
                 <a
                   key={tab.id}
                   href={tabHref(tab.id)}
+                  title={tab.title}
                   onClick={(event) => handleTabLinkClick(event, tab.id)}
                   className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                     isActive

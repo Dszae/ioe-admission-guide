@@ -45,18 +45,18 @@ const TAB_PATHS: Record<TabId, string> = {
 };
 
 const TAB_SEO: Record<TabId, [string, string]> = {
-  predictor: ['IOE Rank Predictor & Historical Cutoffs | Dipesh Sapkota', 'Compare IOE entrance merit ranks with historical closing ranks by campus, program, fee category, and quota by Dipesh Sapkota.'],
+  predictor: ['IOE Rank Predictor & Historical Cutoffs | IOE Admission Hub', 'Compare IOE entrance merit ranks with official historical closing ranks by campus, program, fee category, and quota on IOE Admission Hub.'],
   profile: ['Dipesh Sapkota | Creator of IOE Admission Hub', 'Learn about Dipesh Sapkota, the creator and builder of IOE Admission Hub, an independent entrance guide and rank intelligence platform in Nepal.'],
-  calculator: ['IOE CBT Score Calculator | Negative Marking Formula by Dipesh Sapkota', 'Calculate IOE CBT marks, duration, 40% pass threshold, and exact 10% negative-marking penalty rules by Dipesh Sapkota.'],
-  estimator: ['IOE Score-to-Rank Estimator | Merit Curves by Dipesh Sapkota', 'Estimate historical IOE entrance merit-rank brackets from raw CBT exam scores using benchmark percentile curves.'],
+  calculator: ['IOE CBT Score Calculator (Negative Marking) | IOE Admission Hub', 'Calculate IOE CBT marks, duration, 40% pass threshold, and exact 10% negative-marking penalty rules on IOE Admission Hub.'],
+  estimator: ['IOE Score-to-Rank Estimator & Merit Curves | IOE Admission Hub', 'Estimate historical IOE entrance merit-rank brackets from raw CBT exam scores using benchmark percentile curves on IOE Admission Hub.'],
   campuses: ['IOE Constituent Campuses & 2,040 Seat Matrix | IOE Admission Hub', 'IOE constituent campus profiles, programs, facilities, and 2,040 seat matrix capacities for Pulchowk, Thapathali, WRC, ERC, and Chitwan.'],
   affiliated: ['TU-Affiliated Engineering Colleges Directory & Fees | IOE Admission Hub', 'Comprehensive reference directory and fee comparisons for 10 TU-affiliated private engineering colleges in Nepal.'],
-  compare: ['Compare IOE Engineering Disciplines & Career Scope | IOE Admission Hub', 'Compare IOE engineering discipline focus areas, curriculum overlap, and industry career directions.'],
-  priority: ['IOE Priority Form Optimizer | Counseling Strategy by Dipesh Sapkota', 'Build an algorithmic Reach, Target, and Safety IOE counseling preference sequence using historical cutoff data.'],
+  compare: ['Compare IOE Engineering Disciplines & Career Scope | IOE Admission Hub', 'Compare IOE engineering discipline focus areas, curriculum overlap, and industry career directions on IOE Admission Hub.'],
+  priority: ['IOE Priority Form Optimizer & Counseling Strategy | IOE Admission Hub', 'Build an algorithmic Reach, Target, and Safety IOE counseling preference sequence using historical cutoff data on IOE Admission Hub.'],
   guide: ['IOE Admission Guide & Counseling Handbook (2083/084) | IOE Admission Hub', 'Comprehensive IOE counseling handbook: merit-list rounds, auto-upgrade rules, physical document verification, and affirmative action quotas.'],
   checklist: ['IOE Admission Checklist & Document Verification | IOE Admission Hub', 'Track the complete IOE admission process from CBT registration through document verification with an interactive checklist.'],
   notices: ['IOE Admission Notices, Quota Circulars & Merit Lists | IOE Admission Hub', 'Browse authentic and source-linked IOE entrance and admission notices, circulars, and campus merit lists.'],
-  financials: ['IOE Engineering Fees & Living Costs Breakdown | IOE Admission Hub', 'Compare 4-year tuition costs between IOE Regular and Full Fee schemes, hostel expenses, and living cost estimates.']
+  financials: ['IOE Engineering Tuition Fees & Living Costs Breakdown | IOE Admission Hub', 'Compare 4-year tuition costs between IOE Regular and Full Fee schemes, hostel expenses, and living cost estimates on IOE Admission Hub.']
 };
 
 const TAB_LABELS: Record<TabId, string> = {
@@ -131,8 +131,14 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
   }, [activeTab]);
 
   useEffect(() => {
-    const [title, description] = TAB_SEO[activeTab] || TAB_SEO.predictor;
-    const isHomepage = activeTab === 'predictor' && window.location.pathname === '/';
+    const isHomepage = activeTab === 'predictor' && (typeof window !== 'undefined' && window.location.pathname === '/');
+    const [tabTitle, tabDesc] = TAB_SEO[activeTab] || TAB_SEO.predictor;
+    const title = isHomepage
+      ? 'IOE Admission Hub | Central IOE Admission Guide, Rank Predictor & CBT Calculator'
+      : tabTitle;
+    const description = isHomepage
+      ? 'IOE Admission Hub: the premier central admission portal for Tribhuvan University Institute of Engineering (IOE) applicants in Nepal. Predict entrance ranks, explore 2,040 constituent seats, calculate CBT negative marking scores, and optimize counseling priority.'
+      : tabDesc;
     const tabUrl = `${SITE_ORIGIN}${isHomepage ? '/' : (TAB_PATHS[activeTab] || TAB_PATHS.predictor)}`;
     const setMeta = (selector: string, value: string) => {
       const element = document.querySelector(selector);
