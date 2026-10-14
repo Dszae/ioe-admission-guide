@@ -46,7 +46,7 @@ const TAB_PATHS: Record<TabId, string> = {
 
 const TAB_SEO: Record<TabId, [string, string]> = {
   predictor: ['IOE Rank Predictor 2081/2082 | Historical Cutoffs by Dipesh Sapkota', 'Compare IOE entrance merit ranks with historical closing ranks by campus, program, fee category, and quota by Dipesh Sapkota.'],
-  profile: ['Dipesh Sapkota | Creator of IOE Admission Hub & Software Engineer', 'Official profile of Dipesh Sapkota, software engineer and creator of IOE Admission Hub for Tribhuvan University engineering applicants in Nepal.'],
+  profile: ['Dipesh Sapkota | Creator of IOE Admission Hub', 'Learn about Dipesh Sapkota, the creator and builder of IOE Admission Hub, an independent entrance guide and rank intelligence platform in Nepal.'],
   calculator: ['IOE CBT Score Calculator | Negative Marking Formula by Dipesh Sapkota', 'Calculate IOE CBT marks, duration, 40% pass threshold, and exact 10% negative-marking penalty rules by Dipesh Sapkota.'],
   estimator: ['IOE Score-to-Rank Estimator | Merit Curves by Dipesh Sapkota', 'Estimate historical IOE entrance merit-rank brackets from raw CBT exam scores using benchmark percentile curves.'],
   campuses: ['IOE Constituent Campuses & 2,040 Seat Matrix | IOE Admission Hub', 'IOE constituent campus profiles, programs, facilities, and 2,040 seat matrix capacities for Pulchowk, Thapathali, WRC, ERC, and Chitwan.'],
@@ -185,210 +185,263 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
           <main id="main-content" tabIndex={-1} className="min-w-0 focus:outline-none">
             <nav aria-label="Breadcrumb" className="mb-5 text-[11px] text-slate-500 dark:text-slate-400">
               <ol className="flex flex-wrap items-center gap-1.5">
-                <li><a href="/" className="text-blue-700 hover:underline">IOE Admission Hub</a></li>
+                <li><a href="/" className="text-blue-700 dark:text-blue-400 hover:underline">IOE Admission Hub</a></li>
                 <li aria-hidden="true">/</li>
-                <li><a href="/profile/" className="text-blue-700 hover:underline">Dipesh Sapkota profile</a></li>
-                <li aria-hidden="true">/</li>
-                <li aria-current="page">{TAB_LABELS[activeTab] || 'Admission Tools'}</li>
+                {activeTab === 'profile' ? (
+                  <li aria-current="page" className="font-semibold text-slate-700 dark:text-slate-200">Dipesh Sapkota</li>
+                ) : (
+                  <>
+                    <li><a href="/profile/" className="text-blue-700 dark:text-blue-400 hover:underline">Dipesh Sapkota</a></li>
+                    <li aria-hidden="true">/</li>
+                    <li aria-current="page">{TAB_LABELS[activeTab] || 'Admission Tools'}</li>
+                  </>
+                )}
               </ol>
             </nav>
             <div className="flex items-center gap-3 mb-5 p-3 rounded-xl border border-slate-200 bg-slate-50 dark:bg-slate-800 dark:border-slate-700">
-              <img src="/ioe-logo.png" alt="IOE Admission Hub profile emblem" className="w-10 h-10 object-contain rounded-lg bg-white p-1" />
+              <img 
+                src="/dipesh-sapkota-profile.webp" 
+                alt="Dipesh Sapkota — Creator of IOE Admission Hub" 
+                className="w-10 h-10 object-cover rounded-lg shadow-2xs border border-slate-200 dark:border-slate-600 shrink-0" 
+              />
               <div className="min-w-0 flex-1">
-                <p className="text-xs text-slate-600 dark:text-slate-300">
-                  <a href="/" className="font-semibold text-blue-700 dark:text-blue-400 hover:underline">IOE Admission Hub</a> created & maintained by{' '}
+                <p className="text-xs text-slate-700 dark:text-slate-200">
+                  <a href="/" className="font-semibold text-blue-700 dark:text-blue-400 hover:underline">IOE Admission Hub</a> created by{' '}
                   <a href="/profile/" className="font-semibold text-blue-700 dark:text-blue-400 hover:underline">Dipesh Sapkota</a>
                 </p>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate">Independent Engineering Admission & Rank Intelligence Platform</p>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate">Independent Admission Guide, CBT Calculator & Rank Matrix</p>
               </div>
             </div>
             {activeTab === 'predictor' && <RankPredictor isDark={isDark} onNavigateTab={setActiveTab} />}
             {activeTab === 'profile' && (
-              <article className="animate-fadeIn space-y-6">
-                {/* Author Header Card */}
-                <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-blue-50 via-white to-slate-50 dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 border border-blue-100 dark:border-slate-700 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white dark:bg-slate-700 border border-blue-200 dark:border-slate-600 p-2 shadow-2xs shrink-0 flex items-center justify-center">
-                    <img src="/ioe-logo.png" alt="Dipesh Sapkota — IOE Admission Hub" className="w-full h-full object-contain" />
+              <article className="animate-fadeIn space-y-7 max-w-3xl mx-auto">
+                {/* Hero Profile Card */}
+                <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-50 via-white to-blue-50/40 dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 border border-slate-200/90 dark:border-slate-700 shadow-2xs flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-5 sm:gap-6">
+                  <div className="relative shrink-0">
+                    <img
+                      src="/dipesh-sapkota-profile.webp"
+                      alt="Dipesh Sapkota"
+                      className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover border-2 border-white dark:border-slate-700 shadow-md ring-4 ring-blue-500/10"
+                    />
+                    <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-blue-600 border-2 border-white dark:border-slate-800 flex items-center justify-center text-white text-[10px]" title="Creator verified">
+                      ✓
+                    </span>
                   </div>
-                  <div className="space-y-1 flex-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                  <div className="space-y-1.5 flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                      <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
                         Dipesh Sapkota
                       </h1>
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-600 text-white uppercase tracking-wider">
-                        Creator & Engineer
+                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-200 border border-blue-200 dark:border-blue-700">
+                        Creator & Builder
                       </span>
                     </div>
-                    <p className="text-xs sm:text-sm font-medium text-blue-800 dark:text-blue-300">
-                      Software Engineer • Full-Stack Developer • IOE Admission Intelligence
+                    <p className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300">
+                      Creator of IOE Admission Hub & Git Visualizer
                     </p>
-                    <p className="text-xs text-slate-600 dark:text-slate-300 pt-0.5">
-                      Kathmandu, Nepal • Creator of IOE Admission Hub & Git Visualizer
+                    <p className="text-xs text-slate-500 dark:text-slate-400 flex items-center justify-center sm:justify-start gap-1.5 pt-0.5">
+                      <svg className="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      <span>Kathmandu, Nepal</span>
                     </p>
                   </div>
                 </div>
 
-                {/* Sitelinks to Mainpage & Primary Admission Tools */}
+                {/* First-Person Bio */}
+                <div className="space-y-4 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed bg-white dark:bg-slate-800/60 p-5 sm:p-7 rounded-2xl border border-slate-200/90 dark:border-slate-700">
+                  <h2 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-blue-600"></span>
+                    Why I Built IOE Admission Hub
+                  </h2>
+                  <p>
+                    When preparing for and navigating the Institute of Engineering (IOE) entrance admissions under Tribhuvan University, I experienced first-hand how fragmented, confusing, and stressful the whole journey could be. Critical information — such as past cutoff ranks, how negative marking actually reduces net scores, how campus seat quotas are distributed, and how auto-upgrade counseling works — was scattered across buried notices and unofficial social media groups.
+                  </p>
+                  <p>
+                    I built <strong>IOE Admission Hub</strong> to fix that. My mission was to create a single, clean, fast, and completely free platform where any applicant can calculate their CBT score with official negative marking rules, explore seat matrices across all 5 constituent campuses, and make confident, informed counseling decisions.
+                  </p>
+                  <p>
+                    This is an independent, non-commercial initiative built for high school graduates and engineering aspirants across Nepal. Every tool, calculation formula, and historical dataset on this site is maintained with care and transparency.
+                  </p>
+                </div>
+
+                {/* Sitelinks to Core Tools */}
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <h2 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
                       <svg className="w-4 h-4 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                       </svg>
-                      Direct Sitelinks to IOE Admission Hub Tools
+                      Explore the Tools I Created
                     </h2>
-                    <span className="text-[11px] text-slate-500 dark:text-slate-400">Core Navigation</span>
+                    <span className="text-[11px] text-slate-500 dark:text-slate-400">Direct Sitelinks</span>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 text-xs">
                     <a
                       href="/"
                       onClick={(e) => { e.preventDefault(); setActiveTab('predictor'); }}
-                      className="p-3 rounded-xl border border-blue-200 dark:border-blue-900/60 bg-blue-50/50 dark:bg-blue-950/30 hover:bg-blue-100/70 dark:hover:bg-blue-900/40 transition-colors group flex flex-col justify-between"
+                      className="p-3.5 rounded-xl border border-blue-200 dark:border-blue-900/60 bg-blue-50/50 dark:bg-blue-950/30 hover:bg-blue-100/70 dark:hover:bg-blue-900/40 transition-colors group flex flex-col justify-between"
                     >
                       <div className="font-semibold text-blue-900 dark:text-blue-200 group-hover:text-blue-700 dark:group-hover:text-blue-100 flex items-center justify-between">
-                        <span>IOE Admission Hub Mainpage</span>
-                        <span aria-hidden="true">→</span>
+                        <span>IOE Admission Hub Home</span>
+                        <span aria-hidden="true" className="group-hover:translate-x-0.5 transition-transform">→</span>
                       </div>
                       <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1">
-                        Go to the official home & IOE merit rank predictor tool.
-                      </p>
-                    </a>
-
-                    <a
-                      href="/predictor/"
-                      onClick={(e) => { e.preventDefault(); setActiveTab('predictor'); }}
-                      className="p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-blue-400 dark:hover:border-blue-500 transition-colors group flex flex-col justify-between"
-                    >
-                      <div className="font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 flex items-center justify-between">
-                        <span>IOE Rank Predictor</span>
-                        <span aria-hidden="true">→</span>
-                      </div>
-                      <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1">
-                        Evaluate admission probability against historical closing ranks.
+                        Mainpage & IOE merit rank predictor tool.
                       </p>
                     </a>
 
                     <a
                       href="/calculator/"
                       onClick={(e) => { e.preventDefault(); setActiveTab('calculator'); }}
-                      className="p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-blue-400 dark:hover:border-blue-500 transition-colors group flex flex-col justify-between"
+                      className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-blue-400 dark:hover:border-blue-500 transition-colors group flex flex-col justify-between"
                     >
                       <div className="font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 flex items-center justify-between">
                         <span>CBT Score Calculator</span>
-                        <span aria-hidden="true">→</span>
+                        <span aria-hidden="true" className="group-hover:translate-x-0.5 transition-transform">→</span>
                       </div>
                       <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1">
-                        Calculate marks with exact 10% negative marking penalty rules.
+                        Exact 10% negative marking penalty calculator.
                       </p>
                     </a>
 
                     <a
                       href="/campuses/"
                       onClick={(e) => { e.preventDefault(); setActiveTab('campuses'); }}
-                      className="p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-blue-400 dark:hover:border-blue-500 transition-colors group flex flex-col justify-between"
+                      className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-blue-400 dark:hover:border-blue-500 transition-colors group flex flex-col justify-between"
                     >
                       <div className="font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 flex items-center justify-between">
                         <span>Campuses & Seat Matrix</span>
-                        <span aria-hidden="true">→</span>
+                        <span aria-hidden="true" className="group-hover:translate-x-0.5 transition-transform">→</span>
                       </div>
                       <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1">
-                        Explore all 2,040 seats across Pulchowk, Thapathali, WRC, ERC, and ChEC.
+                        All 2,040 constituent campus seats and programs.
                       </p>
                     </a>
 
                     <a
                       href="/priority/"
                       onClick={(e) => { e.preventDefault(); setActiveTab('priority'); }}
-                      className="p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-blue-400 dark:hover:border-blue-500 transition-colors group flex flex-col justify-between"
+                      className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-blue-400 dark:hover:border-blue-500 transition-colors group flex flex-col justify-between"
                     >
                       <div className="font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 flex items-center justify-between">
                         <span>Priority Optimizer</span>
-                        <span aria-hidden="true">→</span>
+                        <span aria-hidden="true" className="group-hover:translate-x-0.5 transition-transform">→</span>
                       </div>
                       <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1">
-                        Generate optimal Reach, Target, and Safety counseling preferences.
+                        Build Reach, Target, and Safety counseling preferences.
+                      </p>
+                    </a>
+
+                    <a
+                      href="/estimator/"
+                      onClick={(e) => { e.preventDefault(); setActiveTab('estimator'); }}
+                      className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-blue-400 dark:hover:border-blue-500 transition-colors group flex flex-col justify-between"
+                    >
+                      <div className="font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 flex items-center justify-between">
+                        <span>Score-to-Rank Curve</span>
+                        <span aria-hidden="true" className="group-hover:translate-x-0.5 transition-transform">→</span>
+                      </div>
+                      <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1">
+                        Map CBT scores to empirical rank brackets.
                       </p>
                     </a>
 
                     <a
                       href="/guide/"
                       onClick={(e) => { e.preventDefault(); setActiveTab('guide'); }}
-                      className="p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-blue-400 dark:hover:border-blue-500 transition-colors group flex flex-col justify-between"
+                      className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-blue-400 dark:hover:border-blue-500 transition-colors group flex flex-col justify-between"
                     >
                       <div className="font-semibold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 flex items-center justify-between">
                         <span>Admission Guide</span>
-                        <span aria-hidden="true">→</span>
+                        <span aria-hidden="true" className="group-hover:translate-x-0.5 transition-transform">→</span>
                       </div>
                       <p className="text-[11px] text-slate-600 dark:text-slate-300 mt-1">
-                        Complete counseling, auto-upgrade rules, and document handbook.
+                        Counseling roadmap, auto-upgrades, and documents.
                       </p>
                     </a>
                   </div>
                 </div>
 
-                {/* About Dipesh Sapkota */}
-                <div className="space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200 dark:border-slate-700 pt-5">
-                  <h2 className="text-sm font-bold text-slate-900 dark:text-white">
-                    About Dipesh Sapkota & IOE Admission Hub
-                  </h2>
-                  <p>
-                    <strong>Dipesh Sapkota</strong> is a software engineer and developer dedicated to engineering transparent, accessible, and fast web applications for students in Nepal. As the creator and maintainer of <strong>IOE Admission Hub</strong>, Dipesh compiled historical entrance examination closing ranks, empirical percentile curves, and official counseling protocols to demystify the admission journey for thousands of high-school graduates.
-                  </p>
-                  <p>
-                    The platform provides prospective applicants with interactive rank predictions, real-time CBT negative-marking simulations, constituent seat matrices (2,040 seats), priority form generation, and step-by-step document verification roadmaps.
-                  </p>
-                </div>
+                {/* Social Links at Bottom (Icons Only) */}
+                <div className="pt-2 border-t border-slate-200/90 dark:border-slate-700">
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700">
+                    <div className="text-center sm:text-left">
+                      <p className="text-xs font-semibold text-slate-900 dark:text-white">Connect with Dipesh</p>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400">Personal links & profiles</p>
+                    </div>
 
-                {/* Verified Author Channels */}
-                <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 space-y-2.5">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                    Verified Creator Links
-                  </h3>
-                  <div className="flex flex-wrap gap-2 text-xs">
-                    <a
-                      href="https://www.dipeshsapkota7.com.np/"
-                      target="_blank"
-                      rel="noopener noreferrer home author"
-                      className="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-blue-700 dark:text-blue-300 font-semibold hover:border-blue-400 hover:text-blue-900 transition-colors inline-flex items-center gap-1.5"
-                    >
-                      <span>Personal Portfolio (dipeshsapkota7.com.np)</span>
-                      <span aria-hidden="true">↗</span>
-                    </a>
-                    <a
-                      href="https://github.com/Dszae"
-                      target="_blank"
-                      rel="noopener noreferrer me"
-                      className="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold hover:border-slate-400 transition-colors inline-flex items-center gap-1.5"
-                    >
-                      <span>GitHub (@Dszae)</span>
-                      <span aria-hidden="true">↗</span>
-                    </a>
-                    <a
-                      href="https://www.linkedin.com/in/dipesh-sapkota/"
-                      target="_blank"
-                      rel="noopener noreferrer me"
-                      className="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold hover:border-slate-400 transition-colors inline-flex items-center gap-1.5"
-                    >
-                      <span>LinkedIn (Dipesh Sapkota)</span>
-                      <span aria-hidden="true">↗</span>
-                    </a>
-                    <a
-                      href="https://git-visualizer.dipeshsapkota7.com.np/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-orange-700 dark:text-orange-300 font-semibold hover:border-orange-400 transition-colors inline-flex items-center gap-1.5"
-                    >
-                      <span>Git Visualizer</span>
-                      <span aria-hidden="true">↗</span>
-                    </a>
+                    {/* Icons Only Social Links */}
+                    <div className="flex items-center gap-2" aria-label="Dipesh Sapkota social profiles">
+                      {/* Personal Website */}
+                      <a
+                        href="https://www.dipeshsapkota7.com.np/"
+                        target="_blank"
+                        rel="noopener noreferrer home author"
+                        title="Personal Website"
+                        aria-label="Dipesh Sapkota Personal Website"
+                        className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-300 dark:hover:border-blue-500 transition-all shadow-2xs hover:scale-105"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <circle cx="12" cy="12" r="10" strokeWidth="2" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+                        </svg>
+                      </a>
+
+                      {/* GitHub */}
+                      <a
+                        href="https://github.com/Dszae"
+                        target="_blank"
+                        rel="noopener noreferrer me"
+                        title="GitHub (@Dszae)"
+                        aria-label="GitHub Profile"
+                        className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white hover:border-slate-400 transition-all shadow-2xs hover:scale-105"
+                      >
+                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                          <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                        </svg>
+                      </a>
+
+                      {/* LinkedIn */}
+                      <a
+                        href="https://www.linkedin.com/in/dipesh-sapkota/"
+                        target="_blank"
+                        rel="noopener noreferrer me"
+                        title="LinkedIn"
+                        aria-label="LinkedIn Profile"
+                        className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:text-[#0077b5] dark:hover:text-[#0077b5] hover:border-[#0077b5]/50 transition-all shadow-2xs hover:scale-105"
+                      >
+                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                        </svg>
+                      </a>
+
+                      {/* Git Visualizer */}
+                      <a
+                        href="https://git-visualizer.dipeshsapkota7.com.np/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Git Visualizer"
+                        aria-label="Git Visualizer Platform"
+                        className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:text-orange-600 dark:hover:text-orange-400 hover:border-orange-300 dark:hover:border-orange-500 transition-all shadow-2xs hover:scale-105"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <line x1="6" y1="3" x2="6" y2="15" strokeWidth="2" strokeLinecap="round" />
+                          <circle cx="18" cy="6" r="3" strokeWidth="2" />
+                          <circle cx="6" cy="18" r="3" strokeWidth="2" />
+                          <path d="M18 9a9 9 0 0 1-9 9" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
                 </div>
 
-                {/* Provenance and Disclaimer */}
-                <div className="p-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-[11px] text-slate-500 dark:text-slate-400">
+                {/* Independent Attribution Disclaimer */}
+                <div className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed text-center sm:text-left">
                   <p>
-                    <strong>Independent Attribution:</strong> IOE Admission Hub is an independent engineering project conceived and built by Dipesh Sapkota. It is not an official portal of Tribhuvan University (TU) or the Institute of Engineering (IOE). For legal and official counseling notices, consult the IOE Entrance Examination Board at <a href="https://entrance.ioe.edu.np" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline">entrance.ioe.edu.np</a>.
+                    <strong>Disclaimer:</strong> IOE Admission Hub is an independent personal project created by Dipesh Sapkota. It is not an official portal of Tribhuvan University or IOE. All official procedures and final merit allocations are administered exclusively by the IOE Entrance Examination Board at <a href="https://entrance.ioe.edu.np" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline">entrance.ioe.edu.np</a>.
                   </p>
                 </div>
               </article>

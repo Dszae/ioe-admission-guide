@@ -2,7 +2,7 @@
 
 > An independent educational guidance portal for prospective engineering undergraduates applying to the Institute of Engineering (IOE), Tribhuvan University (TU), Nepal.
 > Canonical URL: https://ioe-admission.dipeshsapkota7.com.np/
-> Author & Creator: Dipesh Sapkota (Software Engineer)
+> Author & Creator: Dipesh Sapkota (Creator & Builder)
 > Author Profile: https://ioe-admission.dipeshsapkota7.com.np/profile/
 > Author Website: https://www.dipeshsapkota7.com.np/
 > Author GitHub: https://github.com/Dszae
