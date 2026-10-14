@@ -330,28 +330,54 @@ export const FINANCIALS: Record<string, FinancialPlan> = {
     tuition: "Rs. 63,087", 
     living: "≈ NPR 4,80,000", 
     total: "≈ NPR 5,43,087",
-    notes: "Tuition per semester: Rs. 2,862 | All charges per semester: Rs. 6,974 | One-time charges: Rs. 7,295 | First admission payment: Rs. 17,669 (incl. deposits). Living cost estimated at ~NPR 10,000/month."
+    notes: "Tuition per semester: Rs. 2,862 | All charges per semester: Rs. 6,974 | One-time charges: Rs. 7,295 | Refundable deposits: Rs. 3,400 | First admission payment: Rs. 17,669 (including deposits).",
+    totalFootnote: "Including estimated living expenses, excluding refundable deposits.",
+    semBreakdown: {
+      tuitionPerSem: "Rs. 2,862",
+      allChargesPerSem: "Rs. 6,974",
+      oneTimeCharges: "Rs. 7,295",
+      refundableDeposits: "Rs. 3,400",
+      firstPayment: "Rs. 17,669"
+    }
   },
   FullFee: { 
-    type: "Full Fee (Constituent Paying)",
+    type: "Full Fee (Constituent Campus Paying)",
     tuition: "Rs. 5,45,832", 
     living: "≈ NPR 4,80,000", 
     total: "≈ NPR 10,25,832",
-    notes: "Tuition per semester: Rs. 46,854 | All charges per semester: Rs. 52,766 | One-time charges: Rs. 1,23,704 | First admission payment: Rs. 2,16,470 (incl. deposits). Living cost estimated at ~NPR 10,000/month."
+    notes: "Tuition per semester: Rs. 46,854 | All charges per semester: Rs. 52,766 | One-time charges: Rs. 1,23,704 | Refundable deposits: Rs. 40,000 | First admission payment: Rs. 2,16,470 (including deposits).",
+    totalFootnote: "Including estimated living expenses, excluding refundable deposits.",
+    semBreakdown: {
+      tuitionPerSem: "Rs. 46,854",
+      allChargesPerSem: "Rs. 52,766",
+      oneTimeCharges: "Rs. 1,23,704",
+      refundableDeposits: "Rs. 40,000",
+      firstPayment: "Rs. 2,16,470"
+    }
   },
   Foreign: { 
     type: "Foreign Students",
     tuition: "Rs. 14,50,761", 
     living: "≈ NPR 4,80,000", 
     total: "≈ NPR 19,30,761",
-    notes: "Fee structure for foreign nationals at IOE constituent campuses. Includes all tuition, charges, and one-time fees. Living cost estimated at ~NPR 10,000/month."
+    notes: "Fee structure for foreign nationals at IOE constituent campuses. Includes semester charges and one-time fees, with refundable deposits listed separately. Tuition per semester: Rs. 1,34,754 | All charges per semester: Rs. 1,47,166 | One-time charges: Rs. 2,73,433 | Refundable deposits: Rs. 1,15,000 | First admission payment: Rs. 5,35,599 (including deposits).",
+    totalFootnote: "Including estimated living expenses, excluding refundable deposits.",
+    semBreakdown: {
+      tuitionPerSem: "Rs. 1,34,754",
+      allChargesPerSem: "Rs. 1,47,166",
+      oneTimeCharges: "Rs. 2,73,433",
+      refundableDeposits: "Rs. 1,15,000",
+      firstPayment: "Rs. 5,35,599"
+    }
   },
   Affiliated: { 
     type: "Affiliated Private Colleges",
-    tuition: "≈ NPR 10,00,000 - 16,00,000", 
+    tuition: "≈ NPR 10,00,000–16,00,000", 
+    tuitionSubtext: "provisional estimate; verify with the specific college",
     living: "≈ NPR 4,80,000", 
-    total: "≈ NPR 14,80,000 - 20,80,000",
-    notes: "Private engineering institutions affiliated with TU IOE. Tuition fees are set according to institutional fee structures."
+    total: "≈ NPR 14,80,000–20,80,000",
+    notes: "Private engineering institutions affiliated with Tribhuvan University or other universities have institution-specific fee structures. Total costs vary by college, engineering program, scholarships, and applicable admission-year rules.",
+    totalFootnote: "Indicative estimate only; not an official uniform fee range."
   }
 };
 

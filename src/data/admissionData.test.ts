@@ -6,7 +6,8 @@ import {
   CAMPUS_SEATS, 
   ALL_PROGRAMS, 
   ADMISSION_METADATA, 
-  OFFICIAL_PORTALS 
+  OFFICIAL_PORTALS,
+  FINANCIALS 
 } from './admissionData';
 import type { CampusKey } from '../types';
 
@@ -63,6 +64,17 @@ describe('Admission Data Integrity', () => {
       expect(details.website.startsWith('https://')).toBe(true);
       expect(details.totalSeats).toBeGreaterThan(0);
     });
+  });
+
+  it('verifies 4-year financial investment categories including 2083/084 fee data', () => {
+    const keys = Object.keys(FINANCIALS);
+    expect(keys).toEqual(['Regular', 'FullFee', 'Foreign', 'Affiliated']);
+    expect(FINANCIALS.Regular.tuition).toBe('Rs. 63,087');
+    expect(FINANCIALS.FullFee.tuition).toBe('Rs. 5,45,832');
+    expect(FINANCIALS.Foreign.tuition).toBe('Rs. 14,50,761');
+    expect(FINANCIALS.Regular.semBreakdown?.firstPayment).toBe('Rs. 17,669');
+    expect(FINANCIALS.FullFee.semBreakdown?.firstPayment).toBe('Rs. 2,16,470');
+    expect(FINANCIALS.Foreign.semBreakdown?.firstPayment).toBe('Rs. 5,35,599');
   });
 });
 

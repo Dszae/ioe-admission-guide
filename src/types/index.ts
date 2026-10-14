@@ -77,6 +77,15 @@ export interface FinancialPlan {
   living: string;
   total: string;
   notes: string;
+  tuitionSubtext?: string;
+  totalFootnote?: string;
+  semBreakdown?: {
+    tuitionPerSem?: string;
+    allChargesPerSem?: string;
+    oneTimeCharges?: string;
+    refundableDeposits?: string;
+    firstPayment?: string;
+  };
 }
 
 export interface OfficialPortal {
