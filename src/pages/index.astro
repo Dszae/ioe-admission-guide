@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AdmissionWorkspace from '../components/AdmissionWorkspace';
+const title = 'IOE Admission Hub | Rank Predictor, Guides and Admission Tools';
+const description = 'Independent IOE admission guide with a historical rank predictor, CBT calculator, campus seat data, notices, fees, and counseling tools.';
+---
+<Layout title={title} description={description} canonical="https://ioe-admission.dipeshsapkota7.com.np/" heading="IOE admission tools">
+  <section class="intro">
+    <p class="eyebrow">Independent IOE admission reference</p>
+    <h1>Plan your Institute of Engineering admission with clearer evidence.</h1>
+    <p>Explore historical closing ranks, CBT scoring rules, constituent campus seats, admission steps, notices, and cost references. Interactive calculators are layered onto this public HTML without hiding the essential information.</p>
+  </section>
+  <section aria-labelledby="tools-heading" class="content-section">
+    <h2 id="tools-heading">Admission tools and guides</h2>
+    <div class="link-grid">
+      <a href="/predictor/"><strong>Rank predictor</strong><span>Compare a merit rank with historical campus and program closing ranks.</span></a>
+      <a href="/calculator/"><strong>CBT calculator</strong><span>Apply the documented negative-marking rules to a score.</span></a>
+      <a href="/campuses/"><strong>Campus seat matrix</strong><span>Review constituent campuses, programs, and reference capacities.</span></a>
+      <a href="/guide/"><strong>Admission guide</strong><span>Follow counseling, document, and verification steps.</span></a>
+      <a href="/notices/"><strong>Official notices</strong><span>Find source-linked entrance and admission updates.</span></a>
+      <a href="/financials/"><strong>Fees and living costs</strong><span>Compare reference costs and understand their limitations.</span></a>
+    </div>
+  </section>
+  <section class="interactive-shell" aria-labelledby="interactive-heading">
+    <h2 id="interactive-heading">Interactive admission workspace</h2>
+    <p>These tools use the existing application calculations and browser-only state. Results are estimates, not official admission decisions.</p>
+    <AdmissionWorkspace client:load />
+  </section>
+</Layout>
