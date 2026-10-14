@@ -183,38 +183,16 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
             : 'bg-white border-slate-200/90 shadow-2xs'
         }`}>
           <main id="main-content" tabIndex={-1} className="min-w-0 focus:outline-none">
-            <nav aria-label="Breadcrumb" className="mb-5 text-[11px] text-slate-500 dark:text-slate-400">
-              <ol className="flex flex-wrap items-center gap-1.5">
-                <li><a href="/" className="text-blue-700 dark:text-blue-400 hover:underline">IOE Admission Hub</a></li>
-                <li aria-hidden="true">/</li>
-                {activeTab === 'profile' ? (
-                  <li aria-current="page" className="font-semibold text-slate-700 dark:text-slate-200">Dipesh Sapkota</li>
-                ) : (
-                  <>
-                    <li><a href="/profile/" className="text-blue-700 dark:text-blue-400 hover:underline">Dipesh Sapkota</a></li>
-                    <li aria-hidden="true">/</li>
-                    <li aria-current="page">{TAB_LABELS[activeTab] || 'Admission Tools'}</li>
-                  </>
-                )}
-              </ol>
-            </nav>
-            <div className="flex items-center gap-3 mb-5 p-3 rounded-xl border border-slate-200 bg-slate-50 dark:bg-slate-800 dark:border-slate-700">
-              <img 
-                src="/dipesh-sapkota-profile.webp" 
-                alt="Dipesh Sapkota — Creator of IOE Admission Hub" 
-                className="w-10 h-10 object-cover rounded-lg shadow-2xs border border-slate-200 dark:border-slate-600 shrink-0" 
-              />
-              <div className="min-w-0 flex-1">
-                <p className="text-xs text-slate-700 dark:text-slate-200">
-                  <a href="/" className="font-semibold text-blue-700 dark:text-blue-400 hover:underline">IOE Admission Hub</a> created by{' '}
-                  <a href="/profile/" className="font-semibold text-blue-700 dark:text-blue-400 hover:underline">Dipesh Sapkota</a>
-                </p>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate">Independent Admission Guide, CBT Calculator & Rank Matrix</p>
-              </div>
-            </div>
             {activeTab === 'predictor' && <RankPredictor isDark={isDark} onNavigateTab={setActiveTab} />}
             {activeTab === 'profile' && (
               <article className="animate-fadeIn space-y-7 max-w-3xl mx-auto">
+                <nav aria-label="Breadcrumb" className="text-[11px] text-slate-500 dark:text-slate-400">
+                  <ol className="flex flex-wrap items-center gap-1.5">
+                    <li><a href="/" className="text-blue-700 dark:text-blue-400 hover:underline">IOE Admission Hub</a></li>
+                    <li aria-hidden="true">/</li>
+                    <li aria-current="page" className="font-semibold text-slate-700 dark:text-slate-200">Dipesh Sapkota</li>
+                  </ol>
+                </nav>
                 {/* Hero Profile Card */}
                 <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-50 via-white to-blue-50/40 dark:from-slate-800 dark:via-slate-800 dark:to-slate-900 border border-slate-200/90 dark:border-slate-700 shadow-2xs flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-5 sm:gap-6">
                   <div className="relative shrink-0">
@@ -457,6 +435,36 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
             {activeTab === 'compare' && <FacultyCompare isDark={isDark} />}
             {activeTab === 'affiliated' && <AffiliatedColleges isDark={isDark} />}
             {activeTab === 'financials' && <FinancialsBreakdown isDark={isDark} />}
+
+            {/* Bottom Breadcrumbs & Author Attribution */}
+            {activeTab !== 'profile' && (
+              <div className="mt-8 pt-5 border-t border-slate-200/90 dark:border-slate-700/80 space-y-3 print:hidden">
+                <nav aria-label="Breadcrumb" className="text-[11px] text-slate-500 dark:text-slate-400">
+                  <ol className="flex flex-wrap items-center gap-1.5">
+                    <li><a href="/" className="text-blue-700 dark:text-blue-400 hover:underline">IOE Admission Hub</a></li>
+                    <li aria-hidden="true">/</li>
+                    <li><a href="/profile/" className="text-blue-700 dark:text-blue-400 hover:underline">Dipesh Sapkota</a></li>
+                    <li aria-hidden="true">/</li>
+                    <li aria-current="page" className="text-slate-700 dark:text-slate-300 font-medium">{TAB_LABELS[activeTab] || 'Admission Tools'}</li>
+                  </ol>
+                </nav>
+
+                <div className="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-slate-50 dark:bg-slate-800 dark:border-slate-700">
+                  <img 
+                    src="/dipesh-sapkota-profile.webp" 
+                    alt="Dipesh Sapkota — Creator of IOE Admission Hub" 
+                    className="w-10 h-10 object-cover rounded-lg shadow-2xs border border-slate-200 dark:border-slate-600 shrink-0" 
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs text-slate-700 dark:text-slate-200">
+                      <a href="/" className="font-semibold text-blue-700 dark:text-blue-400 hover:underline">IOE Admission Hub</a> created by{' '}
+                      <a href="/profile/" className="font-semibold text-blue-700 dark:text-blue-400 hover:underline">Dipesh Sapkota</a>
+                    </p>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate">Independent Admission Guide, CBT Calculator & Rank Matrix</p>
+                  </div>
+                </div>
+              </div>
+            )}
           </main>
         </div>
 
