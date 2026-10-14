@@ -249,20 +249,17 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
                               <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
                             </svg>
                           </a>
-                          {/* Git Visualizer */}
+                          {/* Instagram */}
                           <a
-                            href="https://git-visualizer.dipeshsapkota7.com.np/"
+                            href="https://instagram.com/dsz.ae"
                             target="_blank"
-                            rel="noopener noreferrer"
-                            title="Git Visualizer"
-                            aria-label="Git Visualizer Platform"
-                            className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white/15 hover:bg-white text-white hover:text-orange-600 flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-xs"
+                            rel="noopener noreferrer me"
+                            title="Instagram (@dsz.ae)"
+                            aria-label="Instagram Profile"
+                            className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white/15 hover:bg-white text-white hover:text-pink-600 flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-xs"
                           >
-                            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                              <line x1="6" y1="3" x2="6" y2="15" strokeWidth="2" strokeLinecap="round" />
-                              <circle cx="18" cy="6" r="3" strokeWidth="2" />
-                              <circle cx="6" cy="18" r="3" strokeWidth="2" />
-                              <path d="M18 9a9 9 0 0 1-9 9" strokeWidth="2" strokeLinecap="round" />
+                            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                             </svg>
                           </a>
                         </div>
@@ -282,7 +279,7 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
                       </span>
                     </div>
                     <p className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300">
-                      Creator of IOE Admission Hub & Git Visualizer
+                      Creator of IOE Admission Hub
                     </p>
                     <p className="text-xs text-slate-500 dark:text-slate-400 flex items-center justify-center sm:justify-start gap-1.5 pt-0.5">
                       <svg className="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -463,20 +460,17 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
                         </svg>
                       </a>
 
-                      {/* Git Visualizer */}
+                      {/* Instagram */}
                       <a
-                        href="https://git-visualizer.dipeshsapkota7.com.np/"
+                        href="https://instagram.com/dsz.ae"
                         target="_blank"
-                        rel="noopener noreferrer"
-                        title="Git Visualizer"
-                        aria-label="Git Visualizer Platform"
-                        className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:text-orange-600 dark:hover:text-orange-400 hover:border-orange-300 dark:hover:border-orange-500 transition-all shadow-2xs hover:scale-105"
+                        rel="noopener noreferrer me"
+                        title="Instagram (@dsz.ae)"
+                        aria-label="Instagram Profile"
+                        className="p-2.5 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:text-pink-600 dark:hover:text-pink-400 hover:border-pink-300 dark:hover:border-pink-500 transition-all shadow-2xs hover:scale-105"
                       >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                          <line x1="6" y1="3" x2="6" y2="15" strokeWidth="2" strokeLinecap="round" />
-                          <circle cx="18" cy="6" r="3" strokeWidth="2" />
-                          <circle cx="6" cy="18" r="3" strokeWidth="2" />
-                          <path d="M18 9a9 9 0 0 1-9 9" strokeWidth="2" strokeLinecap="round" />
+                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                         </svg>
                       </a>
                     </div>
