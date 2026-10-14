@@ -224,102 +224,614 @@ export const AFFILIATED_COLLEGES: AffiliatedCollege[] = [
 
 export const FACULTY_DATA: Record<string, FacultyInfo> = {
   "Computer Engineering": {
-    tags: ["Software Engineering", "Algorithms", "AI & ML", "Systems Architecture"],
-    description: "Focuses on software design, computer systems architecture, embedded computing, algorithms, database engineering, and artificial intelligence.",
-    careers: ["Software Engineer", "Systems Architect", "Machine Learning Engineer", "DevOps Specialist", "Cybersecurity Analyst"],
+    degree: "B.E. (Bachelor of Computer Engineering)",
+    duration: "4 Years (8 Semesters)",
+    tags: ["Software Engineering", "Algorithms & DSA", "AI & Machine Learning", "Computer Networks", "Cybersecurity", "Database Systems"],
+    description: "Focuses on software engineering, computer system architecture, embedded computing, algorithms, database systems, distributed networks, cloud computing, and artificial intelligence. Prepares graduates to design scalable software products, intelligent algorithms, and mission-critical digital systems.",
+    coreSubjects: [
+      "Data Structures & Algorithms (DSA)",
+      "Digital Logic & Microprocessors (8085/8086)",
+      "Object Oriented Programming (C++/Java)",
+      "Operating Systems & Systems Programming",
+      "Database Management Systems (DBMS)",
+      "Computer Networks & Network Security",
+      "Theory of Computation & Compiler Design",
+      "Software Engineering & Agile Methodologies",
+      "Computer Architecture & Organization",
+      "Artificial Intelligence & Machine Learning"
+    ],
+    careers: [
+      "Software Engineer / Full-Stack Developer",
+      "Machine Learning & AI Research Engineer",
+      "Cloud Solutions & DevOps Architect",
+      "Cybersecurity Analyst & Penetration Tester",
+      "Database Administrator (DBA)",
+      "Systems Programmer / Kernel Developer"
+    ],
+    industries: [
+      "Global Software & Tech Product Companies",
+      "Fintech, Banking & Digital Payment Gateways",
+      "Government Digital Services (NITC, DoIT)",
+      "Telecommunication & Cloud Infrastructure Providers",
+      "Research Institutes & AI Startups"
+    ],
+    labWorkshops: [
+      "Microprocessor & Embedded Systems Lab",
+      "High-Performance Computing & AI Cluster",
+      "Computer Networking & Packet Analysis Lab",
+      "Database Management & Cloud Sandbox"
+    ],
+    furtherStudies: [
+      "M.Sc. in Computer Systems & Knowledge Engineering",
+      "M.Sc. in Information & Communication Engineering",
+      "M.Sc. / Ph.D. in Artificial Intelligence & Data Science",
+      "M.Sc. in Cybersecurity & Cryptography"
+    ],
     overlap: {
       "Electronics, Communication and Information Engineering": "45%",
-      "Electrical Engineering": "25%"
+      "Electrical Engineering": "25%",
+      "Industrial Engineering": "35%",
+      "Geomatics Engineering": "35%"
     }
   },
   "Civil Engineering": {
-    tags: ["Structures", "Hydropower & Water Resources", "Transportation", "Geotechnical"],
-    description: "Covers the design, construction, and maintenance of public infrastructure including highways, bridges, dams, irrigation tunnels, and high-rise structural foundations.",
-    careers: ["Structural Engineer", "Hydropower Project Engineer", "Transportation Planner", "Geotechnical Consultant"],
+    degree: "B.E. (Bachelor of Civil Engineering)",
+    duration: "4 Years (8 Semesters)",
+    tags: ["Structural Engineering", "Hydropower & Water Resources", "Geotechnical & Soil Mechanics", "Transportation & Highways", "Surveying"],
+    description: "Encompasses the planning, analysis, design, construction, and maintenance of public infrastructure. Spans structural engineering, hydropower projects, geotechnical exploration, bridge design, road networks, tunneling, and environmental water resource systems.",
+    coreSubjects: [
+      "Surveying I & II (including 15-Day Survey Camp)",
+      "Strength of Materials & Mechanics of Solids",
+      "Fluid Mechanics & Hydraulics",
+      "Structural Analysis I & II (Indeterminate Structures)",
+      "Soil Mechanics & Foundation Engineering",
+      "Design of Reinforced Concrete (RCC) Structures",
+      "Design of Steel & Timber Structures",
+      "Transportation Engineering I & II (Highway & Pavement)",
+      "Hydropower Engineering & Water Resources",
+      "Estimating, Costing & Construction Project Management"
+    ],
+    careers: [
+      "Structural Design Engineer",
+      "Hydropower & Dam Project Engineer",
+      "Highway & Transportation Planner",
+      "Geotechnical / Tunneling Consultant",
+      "Water Resource & Irrigation Engineer",
+      "Government Civil Engineer (Lok Sewa / NEA / MoUD)"
+    ],
+    industries: [
+      "Hydropower Generation Companies (NEA & Private IPPs)",
+      "Department of Roads (DoR) & Infrastructure Ministries",
+      "National & International Civil Consulting Firms",
+      "Tunnel & Bridge Construction Contractors",
+      "Disaster Risk Mitigation & Urban Municipalities"
+    ],
+    labWorkshops: [
+      "Heavy Structures & Concrete Testing Lab",
+      "Soil Mechanics & Triaxial Shear Lab",
+      "Hydraulics & Fluid Mechanics Flume Lab",
+      "Transportation & Bitumen Materials Lab",
+      "15-Day On-Field Practical Survey Camp"
+    ],
+    furtherStudies: [
+      "M.Sc. in Structural Engineering",
+      "M.Sc. in Water Resources Engineering / Hydropower",
+      "M.Sc. in Geotechnical Engineering / Tunnel Engineering",
+      "M.Sc. in Transportation Engineering"
+    ],
     overlap: {
-      "Mechanical Engineering": "20%",
-      "Architecture": "35%"
+      "Architecture": "35%",
+      "Geomatics Engineering": "40%",
+      "Agricultural Engineering": "30%",
+      "Mechanical Engineering": "20%"
     }
   },
   "Electronics, Communication and Information Engineering": {
-    tags: ["Telecommunication", "Signal Processing", "VLSI Design", "Embedded Systems"],
-    description: "Encompasses hardware-software integration, communications systems, microwave engineering, microprocessors, digital signal processing, and IoT systems.",
-    careers: ["Telecom Engineer (NTC/Ncell)", "Embedded Systems Developer", "Network Architect", "Hardware Design Engineer"],
+    degree: "B.E. (Bachelor of Electronics, Communication & Information Engineering)",
+    duration: "4 Years (8 Semesters)",
+    tags: ["Telecommunications", "Signal Processing", "VLSI & Chip Design", "Embedded Systems & IoT", "RF & Microwave", "Wireless Networks"],
+    description: "Blends electronic hardware design with communication systems and information engineering. Focuses on semiconductor devices, wireless networks (4G/5G), optical communications, embedded systems, microcontrollers, digital signal processing, and antenna systems.",
+    coreSubjects: [
+      "Electronic Devices & Circuits (EDC I & II)",
+      "Signals & Systems & Digital Signal Processing (DSP)",
+      "Electromagnetic Fields & Wave Propagation",
+      "Microprocessors, Microcontrollers & Interfacing",
+      "Analog & Digital Communication Systems",
+      "RF, Microwave & Antenna Engineering",
+      "VLSI Design & Hardware Description Languages (VHDL/Verilog)",
+      "Computer Networks & Telecommunication Switching",
+      "Embedded Systems & Internet of Things (IoT)",
+      "Wireless & Mobile Communications (Cellular & Satellite)"
+    ],
+    careers: [
+      "Telecommunication Engineer (NTC, Ncell, ISPs)",
+      "Embedded Systems & Firmware Developer",
+      "VLSI / FPGA Hardware Design Engineer",
+      "Network Infrastructure & Wireless Systems Architect",
+      "RF & Satellite Communications Engineer",
+      "IoT Systems Specialist & Robotics Engineer"
+    ],
+    industries: [
+      "Telecom Operators & Internet Service Providers",
+      "Hardware R&D and Chip Design Laboratories",
+      "Aerospace & Defense Electronics (Civil Aviation)",
+      "Smart Grid & Industrial Automation Firms",
+      "Broadcasting Stations & Satellite Transponders"
+    ],
+    labWorkshops: [
+      "Electronics Circuit Prototyping & Oscilloscope Lab",
+      "Communication Systems & Spectrum Analyzer Lab",
+      "Microwave & Antenna Radiation Pattern Lab",
+      "VLSI Design, FPGA Synthesis & Embedded IoT Lab"
+    ],
+    furtherStudies: [
+      "M.Sc. in Information & Communication Engineering",
+      "M.Sc. in Telecommunication Engineering",
+      "M.Sc. in Electronics System & VLSI Design",
+      "Ph.D. in Next-Generation Wireless & Signal Processing"
+    ],
     overlap: {
       "Computer Engineering": "45%",
-      "Electrical Engineering": "40%"
+      "Electrical Engineering": "40%",
+      "Aerospace Engineering": "30%",
+      "Mechanical Engineering": "20%"
     }
   },
   "Electrical Engineering": {
-    tags: ["Power Systems", "Grid Transmission", "Renewable Energy", "High Voltage"],
-    description: "Specializes in electrical generation, substation management, transmission networks, motor drives, power electronics, and power market operations.",
-    careers: ["Power Grid Engineer (NEA)", "Substation Engineer", "Renewable Energy Specialist", "Industrial Automation Engineer"],
+    degree: "B.E. (Bachelor of Electrical Engineering)",
+    duration: "4 Years (8 Semesters)",
+    tags: ["Power Systems", "Grid Transmission", "Hydroelectric Generation", "High Voltage", "Power Electronics", "Renewable Energy"],
+    description: "Centers on electrical power generation, high-voltage transmission, smart grid distribution, hydroelectric turbines, generators, power electronic drives, switchgear protection, and renewable solar/wind integration. Crucial for Nepal's massive hydropower sector.",
+    coreSubjects: [
+      "Electric Circuit Theory & Network Analysis",
+      "Electrical Machines I & II (Transformers, Induction & Synchronous)",
+      "Instrumentation I & II & Transducers",
+      "Power System Analysis I & II (Fault & Stability)",
+      "Control Systems Engineering",
+      "Power Electronics & Industrial Motor Drives",
+      "Switchgear & Protective Relaying",
+      "High Voltage Engineering & Testing",
+      "Transmission & Distribution Line Design",
+      "Power Plant Engineering & Hydroelectric Auxiliary Systems"
+    ],
+    careers: [
+      "Power Grid & Substation Engineer (NEA)",
+      "Hydropower Electrical Plant Engineer",
+      "Renewable Energy & Solar Project Developer",
+      "Industrial Automation & SCADA Engineer",
+      "Transmission Line & Protection Specialist",
+      "Electrical Safety & Energy Auditor"
+    ],
+    industries: [
+      "Nepal Electricity Authority (NEA) & Generation Plants",
+      "Hydropower Independent Power Producers (IPPs)",
+      "Substation & High-Voltage Transmission Contractors",
+      "Heavy Manufacturing & Cement Processing Plants",
+      "Solar & Alternative Energy Engineering Companies"
+    ],
+    labWorkshops: [
+      "Electrical Machines & Dynamo Testing Lab",
+      "High Voltage & Dielectric Breakdown Lab",
+      "Power System Simulation & SCADA Workstation",
+      "Power Electronics & Variable Frequency Drive Lab"
+    ],
+    furtherStudies: [
+      "M.Sc. in Power System Engineering",
+      "M.Sc. in Renewable Energy Engineering",
+      "M.Sc. in Control & Automation Engineering",
+      "Ph.D. in Smart Grids & Energy Economics"
+    ],
     overlap: {
       "Electronics, Communication and Information Engineering": "40%",
-      "Mechanical Engineering": "30%"
+      "Mechanical Engineering": "30%",
+      "Computer Engineering": "25%",
+      "Automobile Engineering": "25%"
     }
   },
   "Mechanical Engineering": {
-    tags: ["Thermodynamics", "Hydraulic Turbines", "Manufacturing", "Automotive"],
-    description: "Encompasses mechanics, thermodynamics, fluid dynamics, turbine engineering, heating/cooling systems, CAD/CAM manufacturing, and machine design.",
-    careers: ["Turbine Engineer (Hydropower)", "HVAC Project Engineer", "Manufacturing Supervisor", "Energy Auditor"],
+    degree: "B.E. (Bachelor of Mechanical Engineering)",
+    duration: "4 Years (8 Semesters)",
+    tags: ["Thermodynamics", "Hydraulic Turbines", "Manufacturing & CAD/CAM", "Machine Design", "HVAC", "Fluid Mechanics"],
+    description: "Spans mechanics, thermodynamics, fluid machinery (hydraulic turbines for hydropower), heat transfer, machine design, heating/cooling (HVAC), materials science, and advanced CAD/CAM automation. Powers Nepal's hydropower mechanical sector, manufacturing, and industrial plants.",
+    coreSubjects: [
+      "Engineering Thermodynamics I & II",
+      "Fluid Mechanics & Fluid Machinery (Pelton, Francis, Kaplan Turbines)",
+      "Mechanics of Materials & Stress Analysis",
+      "Theory of Mechanisms & Kinematics of Machines",
+      "Manufacturing Processes & Workshop Technology",
+      "Heat Transfer & Thermal System Design",
+      "Design of Machine Elements & Mechanical Components",
+      "Internal Combustion (IC) Engines",
+      "Refrigeration & Air Conditioning (HVAC)",
+      "CAD/CAM, CNC Machining & Industrial Robotics"
+    ],
+    careers: [
+      "Hydropower Turbine & Mechanical Plant Engineer",
+      "HVAC & Building Mechanical Systems Engineer",
+      "Manufacturing & Industrial Plant Supervisor",
+      "Machine Design & Finite Element Analysis (FEA) Specialist",
+      "Energy Auditor & Thermal Power Specialist",
+      "Automotive & Heavy Equipment Engineer"
+    ],
+    industries: [
+      "Hydropower Projects (Hydro Turbine Manufacturing & Erection)",
+      "Cement, Steel, Beverage & Food Manufacturing Plants",
+      "HVAC & Cleanroom Construction Firms",
+      "Aviation & Heavy Earthmoving Equipment Companies",
+      "Automotive Assembly & Tooling Workshops"
+    ],
+    labWorkshops: [
+      "Hydraulic Turbines & Hydro-Machinery Testing Lab",
+      "Thermal Engineering & Heat Engine Test Beds",
+      "Machine Shop, Lathe, Milling & CNC Machining Lab",
+      "Metrology, Material Testing & Metallurgical Lab"
+    ],
+    furtherStudies: [
+      "M.Sc. in Renewable Energy Engineering",
+      "M.Sc. in Mechanical Systems Design & Engineering",
+      "M.Sc. in Technology & Innovation Management",
+      "Ph.D. in Turbine Fluid Dynamics & Aerodynamics"
+    ],
     overlap: {
       "Automobile Engineering": "65%",
-      "Industrial Engineering": "50%"
+      "Aerospace Engineering": "55%",
+      "Industrial Engineering": "50%",
+      "Electrical Engineering": "30%",
+      "Civil Engineering": "20%"
+    }
+  },
+  "Architecture": {
+    degree: "B.Arch. (Bachelor of Architecture)",
+    duration: "5 Years (10 Semesters)",
+    tags: ["Architectural Design Studio", "Urban Planning", "Building Science", "Historic Preservation", "Interior Architecture", "Sustainable Design"],
+    description: "A comprehensive 5-year professional program bridging art, aesthetics, spatial design, structural principles, urban settlement planning, climatology, and sustainable building technologies. Regulated under Nepal Engineering Council (NEC) guidelines for registered professional architects.",
+    coreSubjects: [
+      "Architectural Design Studio I through IX",
+      "History of Architecture I & II (Eastern, Western & Traditional Nepalese)",
+      "Building Construction Materials & Techniques I to IV",
+      "Building Science (Acoustics, Daylighting, Thermal Comfort & Climatology)",
+      "Structural Systems for Architects (RCC, Steel & Masonry)",
+      "Working Drawings & Building Bye-Laws",
+      "Urban Design & Settlement Planning",
+      "Landscape Architecture & Site Planning",
+      "Professional Practice, Ethics & Building Contracts",
+      "Terminal Architectural Thesis Project (Semester 10)"
+    ],
+    careers: [
+      "Licensed / Registered Architect (NEC Certified)",
+      "Urban & Town Planning Consultant",
+      "Interior & Spatial Designer",
+      "Conservation & Heritage Restoration Specialist",
+      "Landscape Architect & Environmental Designer",
+      "Real Estate Development & Construction Project Manager"
+    ],
+    industries: [
+      "Architectural Design & Planning Studios",
+      "Urban Municipalities & Town Planning Authorities (KVDA, MoUD)",
+      "Real Estate Developers & Housing Corporations",
+      "Heritage Conservation Trusts & UNESCO Projects",
+      "Commercial Interior & Exhibition Design Firms"
+    ],
+    labWorkshops: [
+      "Architectural Drafting Studios & Model Making Workshop",
+      "Climatology, Lighting & Acoustic Simulation Lab",
+      "Building Materials & Traditional Joinery Workshop",
+      "Digital Visualization & 3D CAD/BIM Computing Studio"
+    ],
+    furtherStudies: [
+      "M.Sc. in Urban Planning",
+      "M.Sc. in Energy for Sustainable Buildings",
+      "M.Sc. in Disaster Risk Management",
+      "Ph.D. in Architecture, Urban Morphology & Sustainable Cities"
+    ],
+    overlap: {
+      "Civil Engineering": "35%",
+      "Geomatics Engineering": "20%",
+      "Industrial Engineering": "15%"
     }
   },
   "Aerospace Engineering": {
-    tags: ["Aerodynamics", "Propulsion Systems", "Avionics", "Flight Dynamics"],
-    description: "Deals with the design, flight mechanics, structural dynamics, navigation electronics, and maintenance protocols of aircraft and aeronautical equipment.",
-    careers: ["Aeronautical Maintenance Engineer (CAAN)", "Avionics Specialist", "Drone/UAV Developer", "Aerodynamic Analyst"],
+    degree: "B.E. (Bachelor of Aerospace Engineering)",
+    duration: "4 Years (8 Semesters)",
+    tags: ["Aerodynamics", "Flight Propulsion", "Avionics Systems", "Flight Mechanics", "UAV & Drones", "Aircraft Structures"],
+    description: "Deals with the design, fluid aerodynamics, propulsion systems, flight mechanics, structural dynamics, navigation electronics, and maintenance protocols of aircraft, unmanned aerial vehicles (UAVs), and aerospace vehicles.",
+    coreSubjects: [
+      "Incompressible & Compressible Aerodynamics",
+      "Aircraft Propulsion & Gas Turbine Engines",
+      "Flight Mechanics & Aircraft Performance",
+      "Aircraft Structural Analysis & Composite Materials",
+      "Avionics, Flight Instruments & Radar Systems",
+      "Flight Dynamics & Automatic Control Systems",
+      "Space Mechanics & Orbital Dynamics",
+      "Computational Fluid Dynamics (CFD)",
+      "Aircraft Maintenance Engineering (DGCA / CAAN Norms)",
+      "Unmanned Aerial Systems (UAS / Drones) Design"
+    ],
+    careers: [
+      "Aeronautical Maintenance Engineer (CAAN Certified)",
+      "Aerodynamic Design & CFD Analyst",
+      "Avionics Systems Engineer",
+      "Drone / UAV Systems Developer",
+      "Flight Operations & Airworthiness Inspector",
+      "Aero-Structural Test Engineer"
+    ],
+    industries: [
+      "Civil Aviation Authority of Nepal (CAAN) & Commercial Airlines",
+      "Aircraft Maintenance & Repair Organizations (MRO)",
+      "Drone Manufacturing, Survey & Geospatial Startups",
+      "International Aerospace & Defense Contractors",
+      "Renewable Wind Turbine Aerodynamics Firms"
+    ],
+    labWorkshops: [
+      "Subsonic Wind Tunnel Aerodynamics Lab",
+      "Avionics & Flight Navigation Simulation Lab",
+      "Aerospace Composite Materials & Structures Lab",
+      "Aircraft Engine & Propulsion Test Bench"
+    ],
+    furtherStudies: [
+      "M.Sc. in Aerospace / Aeronautical Engineering",
+      "M.Sc. in Computational Fluid Dynamics & Thermal Engineering",
+      "M.Sc. in Robotics & Autonomous Systems",
+      "Ph.D. in Hypersonic Flight & Space Systems"
+    ],
     overlap: {
       "Mechanical Engineering": "55%",
-      "Electronics, Communication and Information Engineering": "30%"
+      "Electronics, Communication and Information Engineering": "30%",
+      "Automobile Engineering": "30%"
     }
   },
   "Chemical Engineering": {
-    tags: ["Process Chemistry", "Thermodynamics", "Materials Synthesis", "Biochemical"],
-    description: "Applies chemical, biochemical, and physical principles to transform raw materials into valuable industrial products safely and sustainably.",
-    careers: ["Process Engineer", "Polymer & Cement Specialist", "Environmental Safety Officer", "Quality Assurance Lead"],
+    degree: "B.E. (Bachelor of Chemical Engineering)",
+    duration: "4 Years (8 Semesters)",
+    tags: ["Process Chemistry", "Thermodynamics", "Mass Transfer", "Reaction Engineering", "Polymer & Cement", "Bioprocess"],
+    description: "Applies chemical, biochemical, and physical principles to transform raw materials into valuable industrial products safely, sustainably, and cost-effectively. Encompasses reactor design, separation processes, distillation, petroleum refining, cement chemistry, and pharmaceuticals.",
+    coreSubjects: [
+      "Chemical Process Calculations (Stoichiometry)",
+      "Fluid Flow Operations in Chemical Processing",
+      "Heat Transfer Operations & Heat Exchanger Design",
+      "Mass Transfer Operations I & II (Distillation, Absorption, Extraction)",
+      "Chemical Engineering Thermodynamics",
+      "Chemical Reaction Engineering (Reactor Kinetics & Catalysis)",
+      "Transport Phenomena (Momentum, Heat & Mass)",
+      "Process Dynamics & Industrial Process Control",
+      "Plant Design, Process Safety & Economics",
+      "Polymer Science, Cement Chemistry & Bio-processing"
+    ],
+    careers: [
+      "Chemical Process Engineer",
+      "Cement & Heavy Materials Quality Specialist",
+      "Pharmaceutical Production Manager",
+      "Environmental Safety & Waste Treatment Officer",
+      "Petroleum & Chemical Plant Operations Lead",
+      "Quality Assurance & R&D Chemist"
+    ],
+    industries: [
+      "Cement Manufacturing & Construction Materials",
+      "Pharmaceutical & Healthcare Product Laboratories",
+      "Food, Dairy, Brewing & Distillation Plants",
+      "Pulp, Paper, Polymers & Plastic Manufacturing",
+      "Water Treatment & Environmental Protection Agencies"
+    ],
+    labWorkshops: [
+      "Unit Operations & Distillation Column Lab",
+      "Chemical Reaction Kinetics & Catalyst Lab",
+      "Heat & Mass Transfer Pilot Equipment Lab",
+      "Process Simulation & Aspen Plus / ChemCAD Suite"
+    ],
+    furtherStudies: [
+      "M.Sc. in Chemical Process Engineering",
+      "M.Sc. in Environmental & Biochemical Engineering",
+      "M.Sc. in Materials Science & Nanotechnology",
+      "Ph.D. in Green Catalysis & Industrial Sustainable Processes"
+    ],
     overlap: {
       "Mechanical Engineering": "25%",
-      "Civil Engineering": "15%"
+      "Civil Engineering": "15%",
+      "Industrial Engineering": "20%"
     }
   },
   "Automobile Engineering": {
-    tags: ["Internal Combustion", "Electric Vehicles (EV)", "Chassis Design", "Diagnostics"],
-    description: "Focuses on vehicle propulsion, powertrain design, braking systems, battery technology, EV conversion, and vehicle safety electronics.",
-    careers: ["Automotive Design Engineer", "EV Fleet Operations Manager", "Vehicle Certification Inspector", "Workshop Director"],
+    degree: "B.E. (Bachelor of Automobile Engineering)",
+    duration: "4 Years (8 Semesters)",
+    tags: ["Electric Vehicles (EV)", "Powertrain Design", "Vehicle Dynamics", "Internal Combustion", "Automotive Electronics", "Chassis Design"],
+    description: "Focuses on automotive propulsion, vehicle chassis design, braking systems, suspension dynamics, powertrain engineering, internal combustion engines, battery technology, EV conversion, motor controllers, and automotive safety electronics.",
+    coreSubjects: [
+      "Automotive Engines (Spark & Compression Ignition)",
+      "Automotive Chassis, Suspension & Steering Systems",
+      "Vehicle Dynamics & Handling Analysis",
+      "Automotive Transmission & Driveline Engineering",
+      "Automotive Electrical & Electronic Systems",
+      "Electric & Hybrid Electric Vehicles (EV/HEV)",
+      "Automotive Safety, Crashworthiness & Ergonomics",
+      "Emission Control Technologies & Environmental Standards",
+      "Vehicle Maintenance, Diagnostics & Fleet Management",
+      "CAD/CAM in Automotive Component Design"
+    ],
+    careers: [
+      "Automotive Design & Development Engineer",
+      "Electric Vehicle (EV) Powertrain Specialist",
+      "Automobile Workshop & Dealership Technical Director",
+      "Vehicle Homologation & Certification Inspector",
+      "Automotive Fleet Operations & Maintenance Manager",
+      "Motorsport & Performance Vehicle Specialist"
+    ],
+    industries: [
+      "Automotive OEMs & EV Assembly Plants in Nepal",
+      "Automobile Importers, Distributors & Authorized Service Centers",
+      "Battery Storage & EV Charging Infrastructure Providers",
+      "Public Transport Corporations & Heavy Equipment Fleets",
+      "Vehicle Inspection & Transport Management Authority (DoTM)"
+    ],
+    labWorkshops: [
+      "Automotive Engine Test Bed & Dyno Lab",
+      "Chassis, Braking & Alignment Workshop",
+      "EV Battery Testing, BMS & Electric Motor Lab",
+      "Automotive Computerized OBD-II Diagnostics Station"
+    ],
+    furtherStudies: [
+      "M.Sc. in Automotive / Vehicle Engineering",
+      "M.Sc. in E-Mobility & Battery Systems",
+      "M.Sc. in Mechanical Systems Engineering",
+      "Ph.D. in Advanced Powertrains & Autonomous Driving"
+    ],
     overlap: {
       "Mechanical Engineering": "65%",
-      "Electrical Engineering": "25%"
+      "Electrical Engineering": "25%",
+      "Aerospace Engineering": "30%",
+      "Industrial Engineering": "30%"
     }
   },
   "Industrial Engineering": {
-    tags: ["Operations Research", "Supply Chain", "Quality Control", "Ergonomics"],
-    description: "Optimizes complex processes, factory workflows, manufacturing assembly lines, ergonomic environments, and industrial supply logistics.",
-    careers: ["Operations Manager", "Supply Chain Analyst", "Quality Control Specialist (ISO)", "Lean Production Consultant"],
+    degree: "B.E. (Bachelor of Industrial Engineering)",
+    duration: "4 Years (8 Semesters)",
+    tags: ["Operations Research", "Supply Chain Management", "Six Sigma & Quality", "Ergonomics", "Plant Layout", "Production Planning"],
+    description: "Dedicated to optimizing complex production processes, manufacturing systems, human-machine workflows, factory layouts, supply chain logistics, and quality assurance. Combines engineering rigor with management science.",
+    coreSubjects: [
+      "Work Study, Method Engineering & Ergonomics",
+      "Operations Research & Optimization Techniques",
+      "Production Planning & Inventory Control (PPC)",
+      "Total Quality Management (TQM) & Six Sigma",
+      "Facility Layout & Material Handling Systems",
+      "Supply Chain & Logistics Management",
+      "Manufacturing Systems & Industrial Automation",
+      "Human Factors Engineering & Safety",
+      "Reliability, Maintainability & Plant Engineering",
+      "Engineering Economics & Cost Accounting"
+    ],
+    careers: [
+      "Industrial / Operations Manager",
+      "Supply Chain & Logistics Director",
+      "Quality Assurance & Six Sigma Black Belt Specialist",
+      "Process Optimization & Lean Consultant",
+      "Manufacturing Plant Workflow Engineer",
+      "Inventory & Production Planning Controller"
+    ],
+    industries: [
+      "FMCG, Food & Beverage Production Factories",
+      "Apparel, Textile & Manufacturing Conglomerates",
+      "E-Commerce Fulfillment Centers & Logistics Hubs",
+      "Healthcare Systems & Hospital Operations Management",
+      "Management Consulting & ISO Certification Firms"
+    ],
+    labWorkshops: [
+      "Ergonomics & Work Measurement Laboratory",
+      "Operations Research Simulation & Arena Workstation",
+      "Quality Control & Metrology Equipment Lab",
+      "Flexible Manufacturing & Automation Demo Line"
+    ],
+    furtherStudies: [
+      "M.Sc. in Industrial & Systems Engineering",
+      "M.Sc. in Supply Chain & Logistics Engineering",
+      "M.Sc. in Engineering Management",
+      "Ph.D. in Operations Research & Stochastic Systems"
+    ],
     overlap: {
       "Mechanical Engineering": "50%",
-      "Computer Engineering": "35%"
+      "Computer Engineering": "35%",
+      "Automobile Engineering": "30%",
+      "Civil Engineering": "15%"
     }
   },
   "Geomatics Engineering": {
-    tags: ["GIS & Remote Sensing", "Cartography", "Geodesy", "Cadastral Survey"],
-    description: "Integrates geospatial measurement, surveying, satellite imagery, GPS mapping, and geographical information systems.",
-    careers: ["GIS Specialist", "Survey Officer (Survey Dept.)", "Geospatial Analyst", "Remote Sensing Scientist"],
+    degree: "B.E. (Bachelor of Geomatics Engineering)",
+    duration: "4 Years (8 Semesters)",
+    tags: ["GIS & Remote Sensing", "Geodesy & GNSS", "Photogrammetry", "Cadastral Survey", "Digital Cartography", "Spatial Big Data"],
+    description: "Integrates geospatial measurement, satellite positioning (GPS/GNSS), satellite remote sensing, photogrammetry (drone mapping), digital cartography, and Geographic Information Systems (GIS) to model land, territory, and infrastructure.",
+    coreSubjects: [
+      "Fundamentals of Geomatics & Geodetic Surveying",
+      "Geodesy & Satellite Positioning (GNSS/GPS)",
+      "Digital Photogrammetry & UAV / Drone Mapping",
+      "Remote Sensing Principles & Satellite Image Processing",
+      "Geographic Information Systems (GIS) & Spatial Analysis",
+      "Cadastral Surveying & Land Administration Systems",
+      "Spatial Database Management & Web GIS",
+      "Cartography & Map Production Systems",
+      "Adjustment Computations & Error Analysis",
+      "Hydrographic Surveying & Laser Scanning (LiDAR)"
+    ],
+    careers: [
+      "Geomatics / GIS Specialist",
+      "Survey Officer (Nepal Government Survey Department)",
+      "Remote Sensing & Satellite Imagery Analyst",
+      "Drone Survey & LiDAR Mapping Engineer",
+      "Cadastral / Land Administration Consultant",
+      "Spatial Data Scientist / Web GIS Developer"
+    ],
+    industries: [
+      "Ministry of Land Management, Cooperatives and Poverty Alleviation",
+      "Department of Survey, Forest & Disaster Risk Authorities",
+      "Infrastructure Mega-Projects (Highways, Hydropower, Railways)",
+      "Commercial GIS & Satellite Earth Observation Firms",
+      "Urban Municipalities & Smart City Mapping Wings"
+    ],
+    labWorkshops: [
+      "High-Precision GNSS, Total Station & Theodolite Grounds",
+      "Photogrammetry, LiDAR & Drone Image Processing Lab",
+      "ArcGIS, QGIS & Spatial Big Data Computing Center",
+      "Digital Cartography & Precision Map Plotting Facility"
+    ],
+    furtherStudies: [
+      "M.Sc. in Geospatial Engineering",
+      "M.Sc. in Remote Sensing & Geographic Information Science",
+      "M.Sc. in Land Administration & Geoinformatics",
+      "Ph.D. in Earth Observation & Spatial Big Data"
+    ],
     overlap: {
       "Civil Engineering": "40%",
-      "Computer Engineering": "35%"
+      "Computer Engineering": "35%",
+      "Architecture": "20%",
+      "Agricultural Engineering": "25%"
     }
   },
   "Agricultural Engineering": {
-    tags: ["Farm Machinery", "Irrigation & Soil", "Post-Harvest Processing", "Agri-Tech"],
-    description: "Applies engineering principles to agricultural production, machinery, post-harvest processing, and natural resource conservation.",
-    careers: ["Agri-Tech Engineer", "Irrigation Officer", "Farm Equipment Designer", "Agricultural Project Consultant"],
+    degree: "B.E. (Bachelor of Agricultural Engineering)",
+    duration: "4 Years (8 Semesters)",
+    tags: ["Farm Machinery", "Irrigation & Drainage", "Post-Harvest Processing", "Agri-Tech & Smart Farming", "Soil Conservation", "Food Engineering"],
+    description: "Applies mechanical, civil, chemical, and biological engineering principles to agricultural production, mechanization, irrigation canal design, soil conservation, post-harvest crop preservation, food processing, and climate-smart farm structures.",
+    coreSubjects: [
+      "Farm Power, Tractor Systems & Prime Movers",
+      "Soil & Water Conservation Engineering",
+      "Irrigation Engineering & Drainage Systems Design",
+      "Farm Machinery & Tillage Implements",
+      "Post-Harvest Technology & Storage Structures",
+      "Dairy & Food Engineering Operations",
+      "Design of Farm Structures & Greenhouses",
+      "Renewable Energy in Agriculture (Biogas & Solar Pumps)",
+      "Hydrology & Watershed Management",
+      "Precision Agriculture & Agri-IoT Automation"
+    ],
+    careers: [
+      "Agricultural Engineer (Ministry of Agriculture / NARC)",
+      "Irrigation & Water Resource Project Engineer",
+      "Farm Equipment & Tractor Design Specialist",
+      "Post-Harvest & Food Processing Plant Manager",
+      "Watershed & Soil Conservation Consultant",
+      "Agri-Tech Startup Founder / Automation Lead"
+    ],
+    industries: [
+      "Ministry of Agriculture and Livestock Development",
+      "Nepal Agricultural Research Council (NARC)",
+      "Commercial Agro-Industrial & Food Processing Enterprises",
+      "Irrigation Canal Networks & Deep Tube-well Projects",
+      "Agricultural Machinery Manufacturers & Importers"
+    ],
+    labWorkshops: [
+      "Farm Machinery, Tractor & Tillage Implements Workshop",
+      "Irrigation Flume & Soil Conservation Lab",
+      "Post-Harvest Grain Testing & Drying Demonstration Facility",
+      "Dairy & Food Processing Pilot Plant"
+    ],
+    furtherStudies: [
+      "M.Sc. in Land & Water Engineering",
+      "M.Sc. in Post-Harvest & Food Engineering",
+      "M.Sc. in Renewable Energy in Agriculture",
+      "Ph.D. in Smart Agriculture & Precision Biosystems"
+    ],
     overlap: {
       "Civil Engineering": "30%",
-      "Mechanical Engineering": "35%"
+      "Mechanical Engineering": "35%",
+      "Geomatics Engineering": "25%",
+      "Industrial Engineering": "20%"
     }
   }
 };

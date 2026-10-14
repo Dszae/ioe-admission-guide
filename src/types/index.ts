@@ -65,9 +65,15 @@ export interface AffiliatedCollege {
 }
 
 export interface FacultyInfo {
+  degree?: string;
+  duration?: string;
   tags: string[];
   description: string;
+  coreSubjects?: string[];
   careers: string[];
+  industries?: string[];
+  labWorkshops?: string[];
+  furtherStudies?: string[];
   overlap: Record<string, string>;
 }
 

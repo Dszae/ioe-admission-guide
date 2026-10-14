@@ -210,6 +210,41 @@ All 10 colleges include safe rank zone estimates and direct links to their insti
 
 ---
 
+## 8.1 Official Curriculum & Syllabus Audit across All 12 Engineering Disciplines
+
+The undergraduate engineering curriculum was audited across all 12 degree programs offered by IOE:
+
+1. **Common First-Year Engineering Foundation:**
+   - **Mathematics:** Calculus, Linear Algebra, Ordinary Differential Equations, Vector Calculus, Partial Differential Equations, Complex Variables.
+   - **Basic Sciences & Foundations:** Engineering Physics, Engineering Chemistry, Applied Mechanics, Fundamental of Thermodynamics & Heat Transfer, Basic Electrical Engineering, Basic Electronics Engineering, Engineering Drawing I & II, Workshop Technology, and Computer Programming (C).
+2. **Discipline-Specific Curricula (Semesters 3–8 / 10):**
+   - **Computer Engineering (BCT):** DSA, OOP (C++), Digital Logic, Microprocessors (8085/8086), Discrete Structures, Operating Systems, DBMS, Computer Networks, Theory of Computation, Computer Architecture, Software Engineering, AI & Machine Learning.
+   - **Civil Engineering (BCE):** Surveying I & II (+ 15-Day Survey Camp), Fluid Mechanics, Strength of Materials, Structural Analysis I & II, Soil Mechanics & Foundation Engineering, Design of RCC Structures, Steel & Timber Design, Transportation I & II, Hydropower Engineering, Estimating & Project Management.
+   - **Electronics, Communication & Information (BEI):** Electronic Devices & Circuits, Signals & Systems, Electromagnetics, Microprocessors & Microcontrollers, Analog & Digital Communications, RF & Microwave, VLSI Design, Embedded IoT Systems, Wireless Cellular & Satellite Communications.
+   - **Electrical Engineering (BEL):** Electric Circuits, Electrical Machines I & II, Instrumentation, Power System Analysis I & II, Control Systems, Power Electronics & Drives, Switchgear & Protection, High Voltage Engineering, Transmission & Distribution Line Design, Hydroelectric Power Plants.
+   - **Mechanical Engineering (BME):** Thermodynamics I & II, Fluid Mechanics & Hydraulic Turbines (Pelton, Francis, Kaplan), Mechanics of Materials, Machine Kinematics & Dynamics, Heat Transfer, Machine Element Design, IC Engines, HVAC Systems, CAD/CAM & Robotics.
+   - **Architecture (B.Arch - 5 Years):** Design Studio I to IX, History of Architecture, Building Construction I to IV, Building Science (Acoustics, Daylighting, Thermal Comfort), Structural Systems, Urban Settlement Planning, Landscape Design, Professional Practice & Ethics, Terminal Thesis Project (Semester 10).
+   - **Aerospace Engineering (BAE):** Incompressible & Compressible Aerodynamics, Flight Propulsion & Gas Turbines, Aircraft Performance & Flight Mechanics, Aircraft Composite Structures, Avionics & Radar, Automatic Flight Controls, CFD, CAAN Airworthiness Regulations, Drone/UAV Design.
+   - **Chemical Engineering (BChE):** Stoichiometry, Fluid Flow, Heat & Mass Transfer Operations, Chemical Thermodynamics, Chemical Reaction Kinetics & Reactor Design, Process Control, Plant Safety & Economics, Polymer & Cement Chemistry.
+   - **Automobile Engineering (BAM):** SI & CI Engines, Vehicle Chassis & Suspension Dynamics, Transmission Drivelines, Automotive Electronics, Electric & Hybrid Vehicles (EV/HEV), Battery Management Systems, Emission Control, OBD-II Diagnostics.
+   - **Industrial Engineering (BIE):** Work Study & Ergonomics, Operations Research, Production Planning & Inventory Control, Six Sigma & TQM, Facility Layout & Material Handling, Supply Chain Logistics, Human Factors, Plant Economics.
+   - **Geomatics Engineering (BGE):** Geodesy & GNSS/GPS, Digital Photogrammetry & Drone Mapping, Remote Sensing & Satellite Image Processing, GIS & Spatial Analysis, Cadastral Surveying, Spatial Databases & Web GIS, LiDAR & Hydrographic Surveying.
+   - **Agricultural Engineering (BAG):** Farm Power & Tractor Technology, Soil & Water Conservation, Irrigation & Drainage Networks, Farm Machinery, Post-Harvest Processing & Crop Storage, Dairy & Food Engineering, Farm Structures & Greenhouses.
+
+All 12 disciplines were fully incorporated into the interactive **Faculty & Detailed Syllabus Comparator** (`FacultyCompare.tsx`), featuring live discipline swapping, curriculum overlap percentages, laboratory workshops, career outcomes, and industry sectors.
+
+---
+
+## 8.2 Mobile-Optimized Financial Breakdown Architecture
+
+To eliminate visual congestion and improve usability on mobile viewports:
+- **Interactive Segmented Control:** Replaced dense, multi-column cards with responsive, touch-accessible category tabs (`Regular (Subsidized)`, `Full Fee (Paying)`, `Foreign Students`, `Affiliated Colleges`, and `Side-by-Side Comparison`).
+- **Focused View Stat Grid:** Each category renders 4 prominent stat cards displaying 4-Year Tuition & Campus Charges, First Admission Payment, Estimated 4-Year Living Cost, and Total Estimated Investment.
+- **Itemized Payment Schedule:** Distinguishes Initial Admission Dues (Semester 1 charges + one-time fees + refundable deposits) from subsequent semester charges (Semesters 2 through 8) to provide clear budgeting guidance.
+- **Side-by-Side Comparison Mode:** Provides a clean comparison view across all 4 admission schemes with horizontal scrolling and card-based responsive design.
+
+---
+
 ## 9. Quality Assurance & Verification Testing Results
 
 | Test / Audit Command | Target | Expected Result | Actual Result | Status |
