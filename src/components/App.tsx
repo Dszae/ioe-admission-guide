@@ -130,6 +130,17 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
     } catch {}
   }, [activeTab]);
 
+  // Scroll window to top whenever active section changes
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      } catch {
+        window.scrollTo(0, 0);
+      }
+    }
+  }, [activeTab]);
+
   useEffect(() => {
     const isHomepage = activeTab === 'predictor' && (typeof window !== 'undefined' && window.location.pathname === '/');
     const [tabTitle, tabDesc] = TAB_SEO[activeTab] || TAB_SEO.predictor;

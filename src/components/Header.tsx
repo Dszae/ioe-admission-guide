@@ -118,6 +118,13 @@ export default function Header({
     }
     setMenuOpen(false);
     setMoreOpen(false);
+    if (typeof window !== 'undefined') {
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      } catch {
+        window.scrollTo(0, 0);
+      }
+    }
   };
 
   const handleTabLinkClick = (event: ReactMouseEvent<HTMLAnchorElement>, tabId: TabId) => {
