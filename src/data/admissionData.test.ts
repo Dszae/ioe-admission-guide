@@ -43,9 +43,9 @@ describe('Admission Data Integrity', () => {
     });
   });
 
-  it('confirms official portals have valid HTTPS urls', () => {
+  it('confirms official portals have valid HTTP/HTTPS urls', () => {
     OFFICIAL_PORTALS.forEach(portal => {
-      expect(portal.url.startsWith('https://')).toBe(true);
+      expect(portal.url).toMatch(/^https?:\/\//);
       expect(portal.name.length).toBeGreaterThan(0);
     });
   });

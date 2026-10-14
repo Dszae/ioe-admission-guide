@@ -175,7 +175,7 @@ export default function Header({
                 IOE Admission Hub
               </span>
               <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/50 hidden md:inline-block">
-                2081/2082 BS
+                2083/084 BS
               </span>
             </a>
           </div>

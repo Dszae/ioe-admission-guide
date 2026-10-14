@@ -45,7 +45,7 @@ const TAB_PATHS: Record<TabId, string> = {
 };
 
 const TAB_SEO: Record<TabId, [string, string]> = {
-  predictor: ['IOE Rank Predictor 2081/2082 | Historical Cutoffs by Dipesh Sapkota', 'Compare IOE entrance merit ranks with historical closing ranks by campus, program, fee category, and quota by Dipesh Sapkota.'],
+  predictor: ['IOE Rank Predictor & Historical Cutoffs | Dipesh Sapkota', 'Compare IOE entrance merit ranks with historical closing ranks by campus, program, fee category, and quota by Dipesh Sapkota.'],
   profile: ['Dipesh Sapkota | Creator of IOE Admission Hub', 'Learn about Dipesh Sapkota, the creator and builder of IOE Admission Hub, an independent entrance guide and rank intelligence platform in Nepal.'],
   calculator: ['IOE CBT Score Calculator | Negative Marking Formula by Dipesh Sapkota', 'Calculate IOE CBT marks, duration, 40% pass threshold, and exact 10% negative-marking penalty rules by Dipesh Sapkota.'],
   estimator: ['IOE Score-to-Rank Estimator | Merit Curves by Dipesh Sapkota', 'Estimate historical IOE entrance merit-rank brackets from raw CBT exam scores using benchmark percentile curves.'],
@@ -53,7 +53,7 @@ const TAB_SEO: Record<TabId, [string, string]> = {
   affiliated: ['TU-Affiliated Engineering Colleges Directory & Fees | IOE Admission Hub', 'Comprehensive reference directory and fee comparisons for 10 TU-affiliated private engineering colleges in Nepal.'],
   compare: ['Compare IOE Engineering Disciplines & Career Scope | IOE Admission Hub', 'Compare IOE engineering discipline focus areas, curriculum overlap, and industry career directions.'],
   priority: ['IOE Priority Form Optimizer | Counseling Strategy by Dipesh Sapkota', 'Build an algorithmic Reach, Target, and Safety IOE counseling preference sequence using historical cutoff data.'],
-  guide: ['IOE Admission Guide & Counseling Handbook 2081/2082 | IOE Admission Hub', 'Comprehensive IOE counseling handbook: merit-list rounds, auto-upgrade rules, physical document verification, and affirmative action quotas.'],
+  guide: ['IOE Admission Guide & Counseling Handbook (2083/084) | IOE Admission Hub', 'Comprehensive IOE counseling handbook: merit-list rounds, auto-upgrade rules, physical document verification, and affirmative action quotas.'],
   checklist: ['IOE Admission Checklist & Document Verification | IOE Admission Hub', 'Track the complete IOE admission process from CBT registration through document verification with an interactive checklist.'],
   notices: ['IOE Admission Notices, Quota Circulars & Merit Lists | IOE Admission Hub', 'Browse authentic and source-linked IOE entrance and admission notices, circulars, and campus merit lists.'],
   financials: ['IOE Engineering Fees & Living Costs Breakdown | IOE Admission Hub', 'Compare 4-year tuition costs between IOE Regular and Full Fee schemes, hostel expenses, and living cost estimates.']

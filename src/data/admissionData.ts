@@ -24,7 +24,7 @@ import type {
  */
 
 export const ADMISSION_METADATA: AdmissionMetadata = {
-  academicYear: "2082 BS",
+  academicYear: "2083/084 (2083 BS)",
   governingBody: "Institute of Engineering (IOE), Tribhuvan University",
   examFormat: "Computer Based Test (CBT)",
   totalMarks: 140,
@@ -32,8 +32,8 @@ export const ADMISSION_METADATA: AdmissionMetadata = {
   passPercentage: 40, // 56 marks
   negativeMarking: "10% per incorrect answer (-0.1 for 1-mark, -0.2 for 2-mark)",
   totalConstituentSeats: 2040,
-  sourceUrl: "https://entrance.ioe.edu.np/",
-  disclaimer: "This platform is an independent educational guide for Nepalese students. Predictions and priority recommendations are statistical heuristics derived from historical data. Official admissions are solely governed by the IOE Entrance Examination Board."
+  sourceUrl: "https://admission.ioe.edu.np/be/2083/public/guideline",
+  disclaimer: "This platform is an independent educational guide for Nepalese students. Fee structures and rules are verified against IOE B.E./B.Arch Booklet 2083 (2083/084 Intake). Cutoff predictions and priority recommendations are statistical heuristics derived from historical admission archives. Official admissions are solely governed by the IOE Entrance Examination Board."
 };
 
 export const CAMPUS_NAMES: Record<CampusKey, string> = {
@@ -213,9 +213,9 @@ export const AFFILIATED_COLLEGES: AffiliatedCollege[] = [
   { name: "Advanced College of Engineering and Management (ACEM)", location: "Kupondole, Lalitpur", programs: "Civil, Computer, Electrical, Electronics", fee: "NPR 11,50,000 - 13,00,000", cutoff: "Rank ~4,500", website: "https://acem.edu.np" },
   { name: "Kathmandu Engineering College (KEC)", location: "Kalimati, Kathmandu", programs: "Civil, Computer, Electrical, Electronics, Architecture", fee: "NPR 12,00,000 - 14,50,000", cutoff: "Rank ~4,200", website: "https://kecktm.edu.np" },
   { name: "Himalaya College of Engineering (HCOE)", location: "Chyasal, Lalitpur", programs: "Civil, Computer, Electronics, Architecture", fee: "NPR 10,50,000 - 12,50,000", cutoff: "Rank ~4,800", website: "https://hcoe.edu.np" },
-  { name: "Kantipur Engineering College (KEC Dhapakhel)", location: "Dhapakhel, Lalitpur", programs: "Civil, Computer, Electrical", fee: "NPR 11,00,000 - 13,00,000", cutoff: "Rank ~4,400", website: "https://kec.edu.np" },
+  { name: "Kantipur Engineering College (KEC Dhapakhel)", location: "Dhapakhel, Lalitpur", programs: "Civil, Computer, Electronics", fee: "NPR 11,00,000 - 13,00,000", cutoff: "Rank ~4,400", website: "https://kec.edu.np" },
   { name: "National College of Engineering (NCE)", location: "Talchhikhel, Lalitpur", programs: "Civil, Computer, Electrical, Electronics", fee: "NPR 10,00,000 - 12,00,000", cutoff: "Rank ~5,200", website: "https://nce.edu.np" },
-  { name: "Thapathali/Kathford International College", location: "Balkumari, Lalitpur", programs: "Civil, Computer, Electronics", fee: "NPR 10,50,000 - 12,50,000", cutoff: "Rank ~5,000", website: "https://kathford.edu.np" },
+  { name: "Kathford International College of Engineering and Management (KIC)", location: "Balkumari, Lalitpur", programs: "Civil, Computer, Electronics", fee: "NPR 10,50,000 - 12,50,000", cutoff: "Rank ~5,000", website: "https://kathford.edu.np" },
   { name: "Janakpur Engineering College (JEC)", location: "Tathali, Bhaktapur", programs: "Civil, Computer, Electronics", fee: "NPR 9,50,000 - 11,50,000", cutoff: "Rank ~5,500", website: "https://jec.edu.np" },
   { name: "Sagarmatha Engineering College", location: "Sanpa, Lalitpur", programs: "Civil, Computer, Electronics", fee: "NPR 11,00,000 - 12,80,000", cutoff: "Rank ~4,700", website: "https://sagarmatha.edu.np" },
   { name: "Lalitpur Engineering College", location: "Chakupat, Lalitpur", programs: "Civil, Computer", fee: "NPR 9,80,000 - 11,50,000", cutoff: "Rank ~5,300", website: "https://lec.edu.np" },
@@ -382,13 +382,15 @@ export const FINANCIALS: Record<string, FinancialPlan> = {
 };
 
 export const OFFICIAL_PORTALS: OfficialPortal[] = [
-  { name: "IOE Central Official Portal", url: "https://www.ioe.tu.edu.np/", type: "Official University Site", authority: "Tribhuvan University" },
-  { name: "IOE Entrance Examination Board", url: "https://entrance.ioe.edu.np/", type: "Application & Results Portal", authority: "IOE Entrance Board" },
-  { name: "Pulchowk Campus", url: "https://pcampus.edu.np/", type: "Constituent Campus", authority: "Lalitpur" },
-  { name: "Thapathali Campus", url: "https://tcioe.edu.np/", type: "Constituent Campus", authority: "Kathmandu" },
-  { name: "Pashchimanchal Campus (WRC)", url: "https://wrc.edu.np/", type: "Constituent Campus", authority: "Pokhara" },
-  { name: "Purwanchal Campus (ERC)", url: "https://ioeerc.edu.np/", type: "Constituent Campus", authority: "Dharan" },
-  { name: "Chitwan Engineering Campus", url: "https://chec.edu.np/", type: "Constituent Campus", authority: "Chitwan" },
-  { name: "IOE Official Notices Board", url: "https://www.ioe.tu.edu.np/notices", type: "Circulars & Notices", authority: "Dean's Office" }
+  { name: "IOE Central Admission Portal (2083)", url: "https://admission.ioe.edu.np/be/2083/public/guideline", type: "Official Central Admission Portal", authority: "Central Admission Committee" },
+  { name: "IOE Official Downloads (Booklet & Syllabus)", url: "https://ioe.tu.edu.np/downloads", type: "Official Downloads Repository", authority: "Tribhuvan University" },
+  { name: "IOE Entrance Examination Portal", url: "https://entrance.ioe.edu.np/", type: "Application & Results Portal", authority: "IOE Entrance Board" },
+  { name: "IOE Central Official Portal", url: "https://ioe.tu.edu.np/", type: "Official University Site", authority: "Tribhuvan University" },
+  { name: "IOE Official Notices Board", url: "https://ioe.tu.edu.np/notices", type: "Circulars & Notices", authority: "Dean's Office" },
+  { name: "Pulchowk Campus Admission Portal", url: "https://admission.pcampus.edu.np/be/2083", type: "Constituent Campus Portal", authority: "Lalitpur" },
+  { name: "Thapathali Campus Admission Portal", url: "https://admission.tcioe.edu.np", type: "Constituent Campus Portal", authority: "Kathmandu" },
+  { name: "Pashchimanchal Campus (WRC) Admission Portal", url: "https://admission.ioepas.edu.np/", type: "Constituent Campus Portal", authority: "Pokhara" },
+  { name: "Purwanchal Campus (ERC) Admission Portal", url: "http://ioepc.edu.np/", type: "Constituent Campus Portal", authority: "Dharan" },
+  { name: "Chitwan Engineering Campus Admission Portal", url: "https://admission.ioecc.edu.np/", type: "Constituent Campus Portal", authority: "Chitwan" }
 ];
 

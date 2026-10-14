@@ -84,7 +84,7 @@ export default function Footer({ isDark = false, showOfficialPortals = false }: 
               © {new Date().getFullYear()} <a href="/" className="hover:text-blue-600 transition-colors">IOE Admission Hub</a>. All rights reserved.
             </p>
             <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
-              Historical benchmark data referenced from IOE Archives (2082 BS). Created and engineered by{' '}
+              Official fees & guidelines referenced from IOE Booklet 2083 (2083/084 intake). Historical cutoff benchmarks referenced from IOE Archives. Created and engineered by{' '}
               <a 
                 href="/profile/" 
                 className="font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-colors"

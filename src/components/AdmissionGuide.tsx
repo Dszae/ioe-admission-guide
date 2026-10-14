@@ -9,15 +9,85 @@ export default function AdmissionGuide({ isDark = false }: AdmissionGuideProps) 
     <div className="animate-fadeIn">
       
       <div className="mb-5 sm:mb-6">
-        <h2 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white print:text-black">
-          IOE Engineering Admission Handbook & Counseling Procedure
-        </h2>
-        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
-          The comprehensive official procedure, seat rules, quota verifications, and counseling timeline for Tribhuvan University Institute of Engineering.
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+          <h2 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white print:text-black">
+            IOE Engineering Admission Handbook & Counseling Procedure
+          </h2>
+          <span className="text-[11px] font-semibold px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/50">
+            Verified 2083/084 Cycle
+          </span>
+        </div>
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+          The comprehensive official procedure, seat rules, quota verifications, and central counseling timeline for Tribhuvan University Institute of Engineering.
         </p>
       </div>
 
       <div className="space-y-3.5 sm:space-y-4">
+
+        {/* Official 2083 Admission Timeline & Schedule */}
+        <div className="p-4 sm:p-5 rounded-xl border border-blue-200 dark:border-blue-800/60 bg-blue-50/30 dark:bg-blue-950/20 shadow-2xs">
+          <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-blue-600 text-white shadow-2xs">
+                Official Schedule
+              </span>
+              <h3 className="font-bold text-sm sm:text-base text-slate-900 dark:text-white">
+                IOE Central Admission Schedule (2083/084 Intake)
+              </h3>
+            </div>
+            <a
+              href="https://admission.ioe.edu.np/be/2083/public/guideline"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1 font-medium"
+            >
+              <span>Source: Central Admission Portal</span>
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+            Published under the authority of the Central Admission Committee, IOE TU. All candidates verify their status on <code className="px-1.5 py-0.5 rounded bg-white dark:bg-slate-800 border text-blue-600 dark:text-blue-400 font-mono text-[11px]">admission.ioe.edu.np</code> and download their official Admission Confirmation Page.
+          </p>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2.5 text-xs">
+            <div className="p-2.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+              <span className="text-[10px] uppercase font-bold text-blue-600 dark:text-blue-400 block mb-0.5">Priority Applications</span>
+              <strong className="text-slate-900 dark:text-white block">2083-04-29 to 2083-05-02</strong>
+              <span className="text-slate-500 text-[11px]">Online priority form submission</span>
+            </div>
+            <div className="p-2.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+              <span className="text-[10px] uppercase font-bold text-blue-600 dark:text-blue-400 block mb-0.5">1st Admission List</span>
+              <strong className="text-slate-900 dark:text-white block">Published: 2083-05-07</strong>
+              <span className="text-slate-500 text-[11px]">Enrollment: 2083-05-08 to 2083-05-11</span>
+            </div>
+            <div className="p-2.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+              <span className="text-[10px] uppercase font-bold text-blue-600 dark:text-blue-400 block mb-0.5">2nd Admission List</span>
+              <strong className="text-slate-900 dark:text-white block">Published: 2083-05-14</strong>
+              <span className="text-slate-500 text-[11px]">Enrollment: 2083-05-15 to 2083-05-17</span>
+            </div>
+            <div className="p-2.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+              <span className="text-[10px] uppercase font-bold text-blue-600 dark:text-blue-400 block mb-0.5">3rd Admission List</span>
+              <strong className="text-slate-900 dark:text-white block">Published: 2083-05-21</strong>
+              <span className="text-slate-500 text-[11px]">Enrollment: 2083-05-22 to 2083-05-23</span>
+            </div>
+            <div className="p-2.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+              <span className="text-[10px] uppercase font-bold text-emerald-600 dark:text-emerald-400 block mb-0.5">Unique IOE Roll No.</span>
+              <strong className="text-slate-900 dark:text-white block">2083-07-20 (Kartik 20)</strong>
+              <span className="text-slate-500 text-[11px]">Issued for admissions till Kartik 17</span>
+            </div>
+            <div className="p-2.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+              <span className="text-[10px] uppercase font-bold text-emerald-600 dark:text-emerald-400 block mb-0.5">Class Commencement</span>
+              <strong className="text-slate-900 dark:text-white block">2083-08-01 (Mangsir 1)</strong>
+              <span className="text-slate-500 text-[11px]">Final vacancy cutoff: 2083-08-17</span>
+            </div>
+          </div>
+
+          <div className="mt-3 p-2.5 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-800/40 text-xs text-amber-900 dark:text-amber-200">
+            <strong>Critical Policy Note:</strong> Once a Unique IOE Roll Number is distributed, changing engineering programs (e.g., Computer to Civil) is strictly prohibited. Shifting from Full Fee to Regular within the same program is permitted if regular seats become vacant. To switch to another campus, prior admission must be officially cancelled first.
+          </div>
+        </div>
         
         {/* Step 1: Phase-Wise Counseling */}
         <div className="p-4 sm:p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/60 shadow-2xs">
@@ -164,7 +234,7 @@ export default function AdmissionGuide({ isDark = false }: AdmissionGuideProps) 
       <InfoDisclaimer
         isDark={isDark}
         title="Official Rule Reference"
-        text="All procedural guidelines are synthesized directly from the official IOE B.E./B.Arch Information Booklet and Tribhuvan University Academic Ordinances. Campuses maintain specific operational guidelines regarding local bank vouchers and office hours."
+        text="All procedural guidelines are synthesized directly from the official IOE B.E./B.Arch Information Booklet 2083 and Central Admission Portal (admission.ioe.edu.np). Individual campuses maintain specific operational guidelines regarding local bank vouchers and office hours."
       />
 
     </div>
