@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -12,9 +12,10 @@ body,
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Monospace font for numbers and financial data */
+/* Clean, modern tabular numeric font (pure open zero without dots or slashes) */
+.font-mono,
 .font-mono-nums {
-  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: 'Plus Jakarta Sans', 'Manrope', system-ui, -apple-system, sans-serif !important;
   font-variant-numeric: tabular-nums;
 }
 

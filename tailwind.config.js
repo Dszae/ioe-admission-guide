@@ -9,7 +9,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Manrope', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        mono: ['IBM Plex Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+        mono: ['Plus Jakarta Sans', 'Manrope', 'ui-sans-serif', 'system-ui', '-apple-system', 'sans-serif'],
       },
     },
   },
