@@ -4,13 +4,17 @@
 
 - **Website**: [https://ioe-admission.dipeshsapkota7.com.np/](https://ioe-admission.dipeshsapkota7.com.np/)
 - **Repository**: [https://github.com/dipeshsapkota7/ioe-predictor](https://github.com/dipeshsapkota7/ioe-predictor)
-- **Author**: Dipesh Sapkota
+- **Author & Creator**: Dipesh Sapkota (Software Engineer)
+- **Author Portfolio**: [https://www.dipeshsapkota7.com.np/](https://www.dipeshsapkota7.com.np/)
+- **Author GitHub**: [https://github.com/Dszae](https://github.com/Dszae)
+- **Author LinkedIn**: [https://www.linkedin.com/in/dipesh-sapkota/](https://www.linkedin.com/in/dipesh-sapkota/)
 
 ## Creator Profile
-- [IOE Admission Hub Profile](https://ioe-admission.dipeshsapkota7.com.np/profile/)
-- [Dipesh Sapkota portfolio](https://www.dipeshsapkota7.com.np/)
+- [Dipesh Sapkota Profile & Bio](https://ioe-admission.dipeshsapkota7.com.np/profile/)
+- [Dipesh Sapkota Personal Website](https://www.dipeshsapkota7.com.np/)
 
-## Direct HTML Pages
+## Direct Sitelinks & HTML Pages
+- [IOE Admission Hub Mainpage](https://ioe-admission.dipeshsapkota7.com.np/)
 - [IOE Rank Predictor](https://ioe-admission.dipeshsapkota7.com.np/predictor/)
 - [IOE Campuses and Seat Matrix](https://ioe-admission.dipeshsapkota7.com.np/campuses/)
 - [IOE CBT Calculator](https://ioe-admission.dipeshsapkota7.com.np/calculator/)

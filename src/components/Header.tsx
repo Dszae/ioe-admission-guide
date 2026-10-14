@@ -17,7 +17,8 @@ const SECONDARY_TABS: NavItem[] = [
   { id: 'compare', label: 'Compare Disciplines' },
   { id: 'checklist', label: 'Checklist' },
   { id: 'notices', label: 'Official Notices' },
-  { id: 'financials', label: 'Fee Breakdown' }
+  { id: 'financials', label: 'Fee Breakdown' },
+  { id: 'profile', label: 'Dipesh Sapkota Profile' }
 ];
 
 const NAV_GROUPS: NavGroup[] = [
@@ -50,6 +51,12 @@ const NAV_GROUPS: NavGroup[] = [
       { id: 'checklist', label: 'Checklist' },
       { id: 'notices', label: 'Official Notices' },
       { id: 'financials', label: 'Fee Breakdown' }
+    ]
+  },
+  {
+    title: 'Creator & Platform',
+    items: [
+      { id: 'profile', label: 'Dipesh Sapkota (Creator)' }
     ]
   }
 ];

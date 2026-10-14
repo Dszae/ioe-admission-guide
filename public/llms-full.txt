@@ -2,7 +2,11 @@
 
 > An independent educational guidance portal for prospective engineering undergraduates applying to the Institute of Engineering (IOE), Tribhuvan University (TU), Nepal.
 > Canonical URL: https://ioe-admission.dipeshsapkota7.com.np/
-> Author: Dipesh Sapkota (https://www.dipeshsapkota7.com.np/)
+> Author & Creator: Dipesh Sapkota (Software Engineer)
+> Author Profile: https://ioe-admission.dipeshsapkota7.com.np/profile/
+> Author Website: https://www.dipeshsapkota7.com.np/
+> Author GitHub: https://github.com/Dszae
+> Author LinkedIn: https://www.linkedin.com/in/dipesh-sapkota/
 > Academic Cycle: 2081/2082 BS (B.E. / B.Arch)
 
 ---
@@ -11,7 +15,7 @@
 - Official Entrance Examination Board: https://entrance.ioe.edu.np/
 - IOE Central Admission Committee: https://admission.ioe.edu.np/
 - IOE Dean's Office & Notices: https://www.ioe.tu.edu.np/notices
-- Disclaimer: IOE Admission Hub is an independent planning aid created by Dipesh Sapkota. It is NOT operated or endorsed by Tribhuvan University. All allocations, cutoffs, and regulations are exclusively governed by the IOE Entrance Examination Board.
+- Disclaimer: IOE Admission Hub is an independent planning aid conceived, engineered, and maintained by Dipesh Sapkota. It is NOT operated or endorsed by Tribhuvan University. All allocations, cutoffs, and regulations are exclusively governed by the IOE Entrance Examination Board.
 
 ---
 

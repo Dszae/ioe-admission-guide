@@ -15,6 +15,52 @@ const site = 'https://ioe-admission.dipeshsapkota7.com.np';
 const isCalculator = canonical.includes('/calculator/');
 const isPredictor = canonical.includes('/predictor/') || canonical === `${site}/`;
 const isGuide = canonical.includes('/guide/');
+const isProfile = schemaType === 'ProfilePage' || canonical.includes('/profile/');
+
+const breadcrumbElements = canonical === `${site}/`
+  ? [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'IOE Admission Hub by Dipesh Sapkota',
+        item: `${site}/`
+      }
+    ]
+  : canonical === `${site}/profile/`
+  ? [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'IOE Admission Hub',
+        item: `${site}/`
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Dipesh Sapkota Profile',
+        item: `${site}/profile/`
+      }
+    ]
+  : [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'IOE Admission Hub',
+        item: `${site}/`
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Dipesh Sapkota Profile',
+        item: `${site}/profile/`
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: heading,
+        item: canonical
+      }
+    ];
 
 const structuredData: {
   '@context': string;
@@ -26,19 +72,42 @@ const structuredData: {
       '@type': 'Person',
       '@id': 'https://www.dipeshsapkota7.com.np/#author',
       name: 'Dipesh Sapkota',
+      alternateName: ['Dipesh Sapkota', 'Dszae'],
       url: 'https://www.dipeshsapkota7.com.np/',
       image: `${site}/ioe-logo.png`,
+      jobTitle: 'Software Engineer & Creator',
+      worksFor: {
+        '@type': 'Organization',
+        name: 'IOE Admission Hub',
+        url: `${site}/`
+      },
       sameAs: [
         'https://github.com/Dszae',
-        'https://www.linkedin.com/in/dipesh-sapkota/'
+        'https://www.linkedin.com/in/dipesh-sapkota/',
+        'https://git-visualizer.dipeshsapkota7.com.np/',
+        'https://www.dipeshsapkota7.com.np/'
+      ],
+      knowsAbout: [
+        'Tribhuvan University IOE Entrance Examination',
+        'IOE Merit Rank Prediction & Counseling',
+        'Software Engineering',
+        'Full-Stack Web Development',
+        'Algorithm Optimization',
+        'Computer-Based Testing (CBT)'
       ]
     },
     {
       '@type': 'WebSite',
       '@id': `${site}/#website`,
       url: `${site}/`,
-      name: 'IOE Admission Hub',
-      alternateName: 'IOE Admission Guide and Rank Predictor by Dipesh Sapkota',
+      name: 'IOE Admission Hub by Dipesh Sapkota',
+      alternateName: [
+        'IOE Admission Hub',
+        'IOE Rank Predictor by Dipesh Sapkota',
+        'Dipesh Sapkota IOE Guide',
+        'IOE Predictor'
+      ],
+      description: 'Comprehensive admission toolkit, rank predictor, and counseling handbook for TU Institute of Engineering applicants in Nepal by Dipesh Sapkota.',
       isPartOf: {
         '@type': 'WebSite',
         '@id': 'https://www.dipeshsapkota7.com.np/#website',
@@ -46,11 +115,115 @@ const structuredData: {
         url: 'https://www.dipeshsapkota7.com.np/'
       },
       publisher: {
-        '@type': 'Person',
-        '@id': 'https://www.dipeshsapkota7.com.np/#author',
-        name: 'Dipesh Sapkota',
-        url: 'https://www.dipeshsapkota7.com.np/'
-      }
+        '@id': 'https://www.dipeshsapkota7.com.np/#author'
+      },
+      author: {
+        '@id': 'https://www.dipeshsapkota7.com.np/#author'
+      },
+      creator: {
+        '@id': 'https://www.dipeshsapkota7.com.np/#author'
+      },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: `${site}/predictor/?rank={search_term_string}`
+        },
+        'query-input': 'required name=search_term_string'
+      },
+      hasPart: [
+        {
+          '@type': 'WebPage',
+          '@id': `${site}/profile/#webpage`,
+          name: 'Dipesh Sapkota Profile & Creator Information',
+          url: `${site}/profile/`
+        },
+        {
+          '@type': 'WebPage',
+          '@id': `${site}/predictor/#webpage`,
+          name: 'IOE Rank Predictor & Historical Cutoffs',
+          url: `${site}/predictor/`
+        },
+        {
+          '@type': 'WebPage',
+          '@id': `${site}/campuses/#webpage`,
+          name: 'IOE Constituent Campuses & Seat Matrix',
+          url: `${site}/campuses/`
+        },
+        {
+          '@type': 'WebPage',
+          '@id': `${site}/calculator/#webpage`,
+          name: 'IOE CBT Negative Marking Calculator',
+          url: `${site}/calculator/`
+        },
+        {
+          '@type': 'WebPage',
+          '@id': `${site}/estimator/#webpage`,
+          name: 'IOE Score-to-Rank Estimator',
+          url: `${site}/estimator/`
+        },
+        {
+          '@type': 'WebPage',
+          '@id': `${site}/priority/#webpage`,
+          name: 'IOE Priority Form Optimizer',
+          url: `${site}/priority/`
+        },
+        {
+          '@type': 'WebPage',
+          '@id': `${site}/guide/#webpage`,
+          name: 'IOE Admission Guide & Counseling Handbook',
+          url: `${site}/guide/`
+        }
+      ]
+    },
+    {
+      '@type': 'ItemList',
+      '@id': `${site}/#site-navigation`,
+      name: 'IOE Admission Hub Main Sitelinks Navigation',
+      itemListElement: [
+        {
+          '@type': 'SiteNavigationElement',
+          position: 1,
+          name: 'IOE Rank Predictor',
+          description: 'Compare merit rank against historical closing ranks across constituent campuses.',
+          url: `${site}/predictor/`
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 2,
+          name: 'Dipesh Sapkota Profile',
+          description: 'Creator profile and independent documentation by software engineer Dipesh Sapkota.',
+          url: `${site}/profile/`
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 3,
+          name: 'IOE CBT Calculator',
+          description: 'Calculate exact CBT score out of 140 with official negative marking rules.',
+          url: `${site}/calculator/`
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 4,
+          name: 'Campuses & Seat Matrix',
+          description: 'Constituent campus profiles and 2,040 seat matrix breakdown.',
+          url: `${site}/campuses/`
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 5,
+          name: 'Priority Optimizer',
+          description: 'Build optimal Reach, Target, and Safety counseling preferences.',
+          url: `${site}/priority/`
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 6,
+          name: 'Admission Guide',
+          description: 'Step-by-step IOE counseling, auto-upgrade rules, and document verification.',
+          url: `${site}/guide/`
+        }
+      ]
     },
     {
       '@type': schemaType,
@@ -65,6 +238,17 @@ const structuredData: {
       author: {
         '@id': 'https://www.dipeshsapkota7.com.np/#author'
       },
+      creator: {
+        '@id': 'https://www.dipeshsapkota7.com.np/#author'
+      },
+      ...(isProfile ? {
+        mainEntity: {
+          '@id': 'https://www.dipeshsapkota7.com.np/#author'
+        },
+        about: {
+          '@id': 'https://www.dipeshsapkota7.com.np/#author'
+        }
+      } : {}),
       breadcrumb: {
         '@id': `${canonical}#breadcrumbs`
       }
@@ -72,26 +256,7 @@ const structuredData: {
     {
       '@type': 'BreadcrumbList',
       '@id': `${canonical}#breadcrumbs`,
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'IOE Admission Hub',
-          item: `${site}/`
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Profile: Dipesh Sapkota',
-          item: `${site}/profile/`
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: heading,
-          item: canonical
-        }
-      ]
+      itemListElement: breadcrumbElements
     }
   ]
 };
@@ -111,6 +276,12 @@ if (isPredictor || isCalculator) {
       priceCurrency: 'NPR'
     },
     author: {
+      '@id': 'https://www.dipeshsapkota7.com.np/#author'
+    },
+    creator: {
+      '@id': 'https://www.dipeshsapkota7.com.np/#author'
+    },
+    publisher: {
       '@id': 'https://www.dipeshsapkota7.com.np/#author'
     }
   });
@@ -173,6 +344,11 @@ if (isGuide) {
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <meta name="author" content="Dipesh Sapkota" />
+    <meta name="creator" content="Dipesh Sapkota" />
+    <meta name="publisher" content="Dipesh Sapkota" />
+    <meta name="keywords" content="Dipesh Sapkota, Dipesh Sapkota IOE, IOE predictor Dipesh Sapkota, IOE admission hub Dipesh Sapkota, IOE rank predictor, IOE entrance 2081 2082, Pulchowk campus cutoffs, IOE CBT calculator, TU engineering admission Nepal" />
+    <meta name="geo.region" content="NP" />
+    <meta name="geo.placename" content="Kathmandu, Nepal" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -180,7 +356,7 @@ if (isGuide) {
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="IOE Admission Hub" />
+    <meta property="og:site_name" content="IOE Admission Hub by Dipesh Sapkota" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
@@ -198,7 +374,7 @@ if (isGuide) {
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={`${site}/og-image.png`} />
-    <meta property="twitter:image:alt" content="IOE Admission Hub Preview" />
+    <meta property="twitter:image:alt" content="IOE Admission Hub by Dipesh Sapkota" />
 
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
