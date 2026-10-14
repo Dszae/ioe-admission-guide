@@ -1,26 +1,57 @@
-import React, { useState } from 'react';
+import { useState, type SyntheticEvent } from 'react';
 import { CUTOFFS, CAMPUS_NAMES, ALL_PROGRAMS } from '../data/admissionData';
 import { getProbability, getPhaseCutoff } from '../utils/calculations';
 import InfoDisclaimer from './common/InfoDisclaimer';
+import type { TabId } from './App';
+import type { CampusKey, FeeType, QuotaType } from '../types';
 
-export default function RankPredictor({ isDark, onNavigateTab }) {
-  const [mode, setMode] = useState('campus');
-  const [phase, setPhase] = useState(1);
-  const [form, setForm] = useState({ 
+export interface RankPredictorProps {
+  isDark?: boolean;
+  onNavigateTab?: (tab: TabId) => void;
+}
+
+interface FormState {
+  rank: string;
+  college: CampusKey;
+  program: string;
+  feeType: FeeType;
+  quota: QuotaType;
+}
+
+interface SinglePredictionResult {
+  status: string;
+  message: string;
+  color?: 'emerald' | 'amber' | 'orange' | 'red' | 'slate';
+  cutoff?: number;
+  input?: number;
+}
+
+interface MultiPredictionItem {
+  campus: string;
+  status: string;
+  message?: string;
+  color?: 'emerald' | 'amber' | 'orange' | 'red' | 'slate';
+  cutoff?: number;
+}
+
+export default function RankPredictor({ isDark = false, onNavigateTab }: RankPredictorProps) {
+  const [mode, setMode] = useState<'campus' | 'cross'>('campus');
+  const [phase, setPhase] = useState<number>(1);
+  const [form, setForm] = useState<FormState>({ 
     rank: '', 
     college: 'Pulchowk', 
     program: 'Civil Engineering', 
     feeType: 'Regular', 
     quota: 'Open' 
   });
-  const [singleResult, setSingleResult] = useState(null);
-  const [multiResult, setMultiResult] = useState(null);
+  const [singleResult, setSingleResult] = useState<SinglePredictionResult | null>(null);
+  const [multiResult, setMultiResult] = useState<MultiPredictionItem[] | null>(null);
 
   const availablePrograms = mode === 'campus' 
     ? Object.keys(CUTOFFS[form.college] || {}) 
     : ALL_PROGRAMS;
 
-  const handleModeChange = (newMode) => {
+  const handleModeChange = (newMode: 'campus' | 'cross') => {
     setMode(newMode);
     setSingleResult(null);
     setMultiResult(null);
@@ -35,7 +66,7 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
     }
   };
 
-  const handleCollegeChange = (newCollege) => {
+  const handleCollegeChange = (newCollege: CampusKey) => {
     const campusPrograms = Object.keys(CUTOFFS[newCollege] || {});
     setForm(prev => ({
       ...prev,
@@ -44,7 +75,7 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
     }));
   };
 
-  const runPrediction = (rankNum, targetForm = form, targetMode = mode, targetPhase = phase) => {
+  const runPrediction = (rankNum: string, targetForm = form, targetMode = mode, targetPhase = phase) => {
     const rank = parseInt(rankNum, 10);
     if (!rank || rank < 1) return;
 
@@ -59,6 +90,14 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
         return;
       }
       const baseCutoff = feeData[targetForm.quota] || feeData['Open'];
+      if (!baseCutoff) {
+        setSingleResult({ 
+          status: 'UNAVAILABLE', 
+          message: `Cutoff data not available for ${targetForm.program} under ${targetForm.feeType} (${targetForm.quota}).` 
+        });
+        setMultiResult(null);
+        return;
+      }
       const finalCutoff = getPhaseCutoff(baseCutoff, targetForm.feeType, targetPhase);
       setSingleResult({ 
         ...getProbability(rank, finalCutoff, targetPhase), 
@@ -67,12 +106,16 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
       });
       setMultiResult(null);
     } else {
-      const resultsAcrossCampuses = Object.keys(CUTOFFS).map(campusName => {
+      const resultsAcrossCampuses: MultiPredictionItem[] = (Object.keys(CUTOFFS) as CampusKey[]).map(campusName => {
         const programData = CUTOFFS[campusName]?.[targetForm.program];
         if (!programData || !programData[targetForm.feeType]) {
           return { campus: campusName, status: 'NOT OFFERED' };
         }
-        const baseCutoff = programData[targetForm.feeType][targetForm.quota] || programData[targetForm.feeType]['Open'];
+        const feeCategoryData = programData[targetForm.feeType];
+        const baseCutoff = feeCategoryData ? (feeCategoryData[targetForm.quota] || feeCategoryData['Open']) : undefined;
+        if (!baseCutoff) {
+          return { campus: campusName, status: 'NOT OFFERED' };
+        }
         const finalCutoff = getPhaseCutoff(baseCutoff, targetForm.feeType, targetPhase);
         return { 
           campus: campusName, 
@@ -85,12 +128,12 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
     }
   };
 
-  const handlePredict = (e) => {
+  const handlePredict = (e: SyntheticEvent) => {
     e.preventDefault();
     runPrediction(form.rank);
   };
 
-  const resultTheme = (color) => {
+  const resultTheme = (color?: string) => {
     switch (color) {
       case 'emerald':
         return {
@@ -224,7 +267,7 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
               id="pred-college"
               className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors shadow-2xs"
               value={form.college} 
-              onChange={(e) => handleCollegeChange(e.target.value)}
+              onChange={(e) => handleCollegeChange(e.target.value as CampusKey)}
             >
               <option value="Pulchowk">Pulchowk Campus (Lalitpur)</option>
               <option value="Thapathali">Thapathali Campus (Kathmandu)</option>
@@ -261,7 +304,7 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
             id="pred-fee"
             className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors shadow-2xs"
             value={form.feeType} 
-            onChange={(e) => setForm({ ...form, feeType: e.target.value })}
+            onChange={(e) => setForm({ ...form, feeType: e.target.value as FeeType })}
           >
             <option value="Regular">Regular (Subsidized Scholarship)</option>
             <option value="FullFee">Full Fee (Paying Category)</option>
@@ -277,7 +320,7 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
             id="pred-quota"
             className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors shadow-2xs"
             value={form.quota} 
-            onChange={(e) => setForm({ ...form, quota: e.target.value })}
+            onChange={(e) => setForm({ ...form, quota: e.target.value as QuotaType })}
           >
             <option value="Open">Open Merit Category</option>
             <option value="Janajati">Adivasi / Janajati Quota</option>
@@ -368,7 +411,7 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
               if (res.status === 'NOT OFFERED') {
                 return (
                   <div key={idx} className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/30 flex justify-between items-center text-slate-400 text-xs">
-                    <span className="font-medium text-slate-600 dark:text-slate-400">{CAMPUS_NAMES[res.campus]}</span>
+                    <span className="font-medium text-slate-600 dark:text-slate-400">{CAMPUS_NAMES[res.campus as CampusKey] || res.campus}</span>
                     <span className="px-2 py-0.5 rounded bg-slate-200/60 dark:bg-slate-800 text-slate-500 font-medium">Not Offered</span>
                   </div>
                 );
@@ -378,7 +421,7 @@ export default function RankPredictor({ isDark, onNavigateTab }) {
                 <div key={idx} className={`p-4 rounded-xl border flex flex-col justify-between transition-all ${theme.container}`}>
                   <div className="flex justify-between items-start mb-3 gap-2">
                     <h4 className="font-semibold text-sm leading-snug">
-                      {CAMPUS_NAMES[res.campus]}
+                      {CAMPUS_NAMES[res.campus as CampusKey] || res.campus}
                     </h4>
                     <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-full border whitespace-nowrap ${theme.badge}`}>
                       {res.status}

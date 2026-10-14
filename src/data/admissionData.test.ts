@@ -7,7 +7,8 @@ import {
   ALL_PROGRAMS, 
   ADMISSION_METADATA, 
   OFFICIAL_PORTALS 
-} from './admissionData.js';
+} from './admissionData';
+import type { CampusKey } from '../types';
 
 describe('Admission Data Integrity', () => {
   it('contains all 5 constituent engineering campuses', () => {
@@ -29,12 +30,12 @@ describe('Admission Data Integrity', () => {
 
   it('verifies all constituent campus cutoffs have positive numerical values', () => {
     Object.entries(CUTOFFS).forEach(([campusName, programMap]) => {
-      expect(CAMPUS_NAMES[campusName]).toBeDefined();
+      expect(CAMPUS_NAMES[campusName as CampusKey]).toBeDefined();
       Object.entries(programMap).forEach(([programName, feeMap]) => {
         expect(ALL_PROGRAMS).toContain(programName);
-        ['Regular', 'FullFee'].forEach(feeType => {
+        (['Regular', 'FullFee'] as const).forEach(feeType => {
           if (feeMap[feeType]) {
-            expect(feeMap[feeType].Open).toBeGreaterThan(0);
+            expect(feeMap[feeType]?.Open).toBeGreaterThan(0);
           }
         });
       });
@@ -64,3 +65,4 @@ describe('Admission Data Integrity', () => {
     });
   });
 });
+

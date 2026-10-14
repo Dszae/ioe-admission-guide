@@ -1,3 +1,9 @@
+import type { 
+  DetailedCbtScoreResult, 
+  ScoreToRankResult, 
+  ProbabilityResult 
+} from '../types';
+
 /**
  * IOE Entrance Examination and Admission Calculations
  * Based on official IOE Examination Guidelines & Historical Cutoff Benchmarks
@@ -9,32 +15,40 @@
  * Each wrong 1-mark question deducts 0.1 mark.
  * Each wrong 2-mark question deducts 0.2 mark.
  * 
- * @param {number} correctMarks - Total positive marks scored
- * @param {number} wrongMarks - Total raw mark value of questions answered incorrectly
- * @returns {number} Net score rounded to 2 decimal places
+ * @param correctMarks - Total positive marks scored
+ * @param wrongMarks - Total raw mark value of questions answered incorrectly
+ * @returns Net score rounded to 2 decimal places
  */
-export function calculateNetCbtScore(correctMarks, wrongMarks) {
-  const c = Math.max(0, Math.min(140, parseFloat(correctMarks) || 0));
-  const w = Math.max(0, Math.min(140, parseFloat(wrongMarks) || 0));
+export function calculateNetCbtScore(correctMarks: number | string, wrongMarks: number | string): number {
+  const c = Math.max(0, Math.min(140, parseFloat(String(correctMarks)) || 0));
+  const w = Math.max(0, Math.min(140, parseFloat(String(wrongMarks)) || 0));
   const net = Math.max(0, c - (w * 0.1));
   return Number(net.toFixed(2));
+}
+
+export interface DetailedCbtScoreParams {
+  correct1?: number | string;
+  wrong1?: number | string;
+  correct2?: number | string;
+  wrong2?: number | string;
 }
 
 /**
  * Detailed CBT Calculator with distinct 1-mark and 2-mark questions
  * 
- * @param {Object} params
- * @param {number} params.correct1 - Correct 1-mark questions
- * @param {number} params.wrong1 - Wrong 1-mark questions (-0.1 penalty each)
- * @param {number} params.correct2 - Correct 2-mark questions
- * @param {number} params.wrong2 - Wrong 2-mark questions (-0.2 penalty each)
- * @returns {Object} Score breakdown
+ * @param params - Question counters for 1-mark and 2-mark questions
+ * @returns Score breakdown
  */
-export function calculateDetailedCbtScore({ correct1 = 0, wrong1 = 0, correct2 = 0, wrong2 = 0 }) {
-  const c1 = Math.max(0, parseInt(correct1, 10) || 0);
-  const w1 = Math.max(0, parseInt(wrong1, 10) || 0);
-  const c2 = Math.max(0, parseInt(correct2, 10) || 0);
-  const w2 = Math.max(0, parseInt(wrong2, 10) || 0);
+export function calculateDetailedCbtScore({ 
+  correct1 = 0, 
+  wrong1 = 0, 
+  correct2 = 0, 
+  wrong2 = 0 
+}: DetailedCbtScoreParams): DetailedCbtScoreResult {
+  const c1 = Math.max(0, parseInt(String(correct1), 10) || 0);
+  const w1 = Math.max(0, parseInt(String(wrong1), 10) || 0);
+  const c2 = Math.max(0, parseInt(String(correct2), 10) || 0);
+  const w2 = Math.max(0, parseInt(String(wrong2), 10) || 0);
 
   const score1 = Math.max(0, (c1 * 1.0) - (w1 * 0.1));
   const score2 = Math.max(0, (c2 * 2.0) - (w2 * 0.2));
@@ -58,11 +72,11 @@ export function calculateDetailedCbtScore({ correct1 = 0, wrong1 = 0, correct2 =
  * Score-to-rank estimator based on recent years' difficulty curve
  * Total marks: 140. Pass mark: 40% (56 marks)
  * 
- * @param {number} score
- * @returns {Object} Estimated bracket, message, styling token, and qualification status
+ * @param score - Raw CBT test score
+ * @returns Estimated bracket, message, styling token, and qualification status
  */
-export function getScoreToRankEstimate(score) {
-  const s = parseFloat(score);
+export function getScoreToRankEstimate(score: number | string): ScoreToRankResult {
+  const s = parseFloat(String(score));
   if (isNaN(s) || s < 1 || s > 140) {
     return {
       range: "Invalid Score",
@@ -133,12 +147,12 @@ export function getScoreToRankEstimate(score) {
  * Calculates phase-adjusted cutoff
  * Later lists (Phase 2/3) historically see higher cutoff ranks
  * 
- * @param {number} baseCutoff
- * @param {string} feeType
- * @param {number} phase
- * @returns {number}
+ * @param baseCutoff - Historical baseline closing rank
+ * @param feeType - Regular or FullFee
+ * @param phase - Counseling phase list number (1, 2, 3...)
+ * @returns Phase-adjusted cutoff rank
  */
-export function getPhaseCutoff(baseCutoff, feeType, phase = 1) {
+export function getPhaseCutoff(baseCutoff: number, feeType?: string, phase: number = 1): number {
   if (phase === 1 || !baseCutoff) return baseCutoff;
   const multiplier = feeType === 'FullFee' ? 1.45 : 1.15;
   return Math.round(baseCutoff * multiplier);
@@ -148,12 +162,12 @@ export function getPhaseCutoff(baseCutoff, feeType, phase = 1) {
  * Returns probabilistic outlook for a given rank and cutoff
  * Never labels a candidate as "guaranteed".
  * 
- * @param {number} rank
- * @param {number} cutoff
- * @param {number} phase
- * @returns {Object}
+ * @param rank - Candidate entrance merit rank
+ * @param cutoff - Target benchmark cutoff rank
+ * @param phase - Counseling list phase
+ * @returns ProbabilityResult
  */
-export function getProbability(rank, cutoff, phase = 1) {
+export function getProbability(rank: number, cutoff: number, phase: number = 1): ProbabilityResult {
   if (!rank || !cutoff) return { status: 'UNKNOWN', message: 'Cutoff data not available.', color: 'slate' };
   
   if (rank <= cutoff * 0.8) {
@@ -183,3 +197,4 @@ export function getProbability(rank, cutoff, phase = 1) {
     color: 'red'
   };
 }
+

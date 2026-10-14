@@ -1,13 +1,28 @@
-import React, { useState } from 'react';
+import { useState, type SyntheticEvent } from 'react';
 import { calculateNetCbtScore, calculateDetailedCbtScore } from '../utils/calculations';
 import InfoDisclaimer from './common/InfoDisclaimer';
+import type { TabId } from './App';
+import type { DetailedCbtScoreResult } from '../types';
 
-export default function CBTCalculator({ isDark, onSendToEstimator, onNavigateTab }) {
-  const [mode, setMode] = useState('quick'); // 'quick' | 'detailed'
+export interface CBTCalculatorProps {
+  isDark?: boolean;
+  onSendToEstimator?: (score: number | string) => void;
+  onNavigateTab?: (tab: TabId) => void;
+}
+
+interface QuickResult {
+  net: number;
+  penalty: number;
+  isQualified: boolean;
+  percentage: number;
+}
+
+export default function CBTCalculator({ isDark = false, onSendToEstimator, onNavigateTab }: CBTCalculatorProps) {
+  const [mode, setMode] = useState<'quick' | 'detailed'>('quick');
   
   // Quick mode state
   const [quickForm, setQuickForm] = useState({ correct: '', wrong: '' });
-  const [quickResult, setQuickResult] = useState(null);
+  const [quickResult, setQuickResult] = useState<QuickResult | null>(null);
 
   // Detailed mode state
   const [detailedForm, setDetailedForm] = useState({
@@ -16,9 +31,9 @@ export default function CBTCalculator({ isDark, onSendToEstimator, onNavigateTab
     correct2: '',
     wrong2: ''
   });
-  const [detailedResult, setDetailedResult] = useState(null);
+  const [detailedResult, setDetailedResult] = useState<DetailedCbtScoreResult | null>(null);
 
-  const handleQuickCalc = (e) => {
+  const handleQuickCalc = (e: SyntheticEvent) => {
     e.preventDefault();
     const c = parseFloat(quickForm.correct) || 0;
     const w = parseFloat(quickForm.wrong) || 0;
@@ -28,7 +43,7 @@ export default function CBTCalculator({ isDark, onSendToEstimator, onNavigateTab
     setQuickResult({ net, penalty, isQualified, percentage: Number(((net / 140) * 100).toFixed(1)) });
   };
 
-  const handleDetailedCalc = (e) => {
+  const handleDetailedCalc = (e: SyntheticEvent) => {
     e.preventDefault();
     const res = calculateDetailedCbtScore({
       correct1: detailedForm.correct1,
@@ -227,8 +242,9 @@ export default function CBTCalculator({ isDark, onSendToEstimator, onNavigateTab
       {/* Result Display */}
       {((mode === 'quick' && quickResult) || (mode === 'detailed' && detailedResult)) && (
         (() => {
-          const res = mode === 'quick' ? quickResult : detailedResult;
-          const scoreValue = mode === 'quick' ? res.net : res.totalNet;
+          const res = mode === 'quick' ? quickResult! : detailedResult!;
+          const scoreValue = mode === 'quick' ? (res as QuickResult).net : (res as DetailedCbtScoreResult).totalNet;
+          const penaltyValue = mode === 'quick' ? (res as QuickResult).penalty : (res as DetailedCbtScoreResult).totalPenalty;
           return (
             <div className="mt-6 p-5 sm:p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800 text-center animate-fadeIn shadow-2xs">
               <span className="text-xs font-medium text-slate-500 dark:text-slate-400 block mb-1">
@@ -239,7 +255,7 @@ export default function CBTCalculator({ isDark, onSendToEstimator, onNavigateTab
               </div>
               
               <div className="flex justify-center items-center gap-3 text-xs font-medium text-slate-600 dark:text-slate-400 my-3 flex-wrap">
-                <span>Penalty Deducted: <strong>-{res.penalty || res.totalPenalty}</strong></span>
+                <span>Penalty Deducted: <strong>-{penaltyValue}</strong></span>
                 <span>•</span>
                 <span>Score: <strong>{res.percentage}%</strong></span>
                 <span>•</span>

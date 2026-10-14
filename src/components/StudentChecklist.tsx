@@ -1,17 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ADMISSION_CHECKLIST_ITEMS } from '../data/checklistData';
 import InfoDisclaimer from './common/InfoDisclaimer';
 
 const STORAGE_KEY = 'ioe_admission_hub_checklist_v1';
 
-export default function StudentChecklist({ isDark }) {
-  const [completedSteps, setCompletedSteps] = useState(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      return saved ? JSON.parse(saved) : {};
-    } catch {
-      return {};
+export interface StudentChecklistProps {
+  isDark?: boolean;
+}
+
+export default function StudentChecklist({ isDark = false }: StudentChecklistProps) {
+  const [completedSteps, setCompletedSteps] = useState<Record<string, boolean>>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        return saved ? JSON.parse(saved) : {};
+      } catch {
+        return {};
+      }
     }
+    return {};
   });
 
   useEffect(() => {
@@ -22,7 +29,7 @@ export default function StudentChecklist({ isDark }) {
     }
   }, [completedSteps]);
 
-  const toggleStep = (stepId) => {
+  const toggleStep = (stepId: string) => {
     setCompletedSteps(prev => ({
       ...prev,
       [stepId]: !prev[stepId]

@@ -1,7 +1,14 @@
-import React from 'react';
 
-export default function StatusBadge({ label, color = 'blue', isDark }) {
-  const colorMap = {
+export type StatusBadgeColor = 'emerald' | 'blue' | 'cyan' | 'teal' | 'amber' | 'orange' | 'red' | 'slate';
+
+export interface StatusBadgeProps {
+  label: string;
+  color?: StatusBadgeColor;
+  isDark?: boolean;
+}
+
+export default function StatusBadge({ label, color = 'blue', isDark = false }: StatusBadgeProps) {
+  const colorMap: Record<StatusBadgeColor, string> = {
     emerald: isDark 
       ? 'bg-emerald-950/50 text-emerald-300 border-emerald-800/60' 
       : 'bg-emerald-50 text-emerald-800 border-emerald-200',

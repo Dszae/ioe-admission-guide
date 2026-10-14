@@ -1,0 +1,189 @@
+# IOE Admission Hub — Full Reference Documentation for AI & Crawlers
+
+> An independent educational guidance portal for prospective engineering undergraduates applying to the Institute of Engineering (IOE), Tribhuvan University (TU), Nepal.
+> Canonical URL: https://ioe-admission.dipeshsapkota7.com.np/
+> Author: Dipesh Sapkota (https://www.dipeshsapkota7.com.np/)
+> Academic Cycle: 2081/2082 BS (B.E. / B.Arch)
+
+---
+
+## 1. Official Data Provenance & Disclaimers
+- Official Entrance Examination Board: https://entrance.ioe.edu.np/
+- IOE Central Admission Committee: https://admission.ioe.edu.np/
+- IOE Dean's Office & Notices: https://www.ioe.tu.edu.np/notices
+- Disclaimer: IOE Admission Hub is an independent planning aid created by Dipesh Sapkota. It is NOT operated or endorsed by Tribhuvan University. All allocations, cutoffs, and regulations are exclusively governed by the IOE Entrance Examination Board.
+
+---
+
+## 2. CBT Entrance Examination Structure
+- Total Test Marks: 140
+- Test Duration: 2 Hours (120 minutes)
+- Format: Computer-Based Test (CBT) with Multiple Choice Questions
+- Mark Distribution:
+  - Mathematics: 50 Marks
+  - Physics: 45 Marks
+  - Chemistry: 25 Marks
+  - English: 20 Marks
+- Question Levels:
+  - 1-mark questions: 60 questions
+  - 2-mark questions: 40 questions
+- Negative Marking Rule:
+  - 10% penalty for incorrect responses.
+  - -0.1 mark deducted per wrong 1-mark question.
+  - -0.2 mark deducted per wrong 2-mark question.
+  - Unattempted (blank) questions incur 0 penalty.
+- Qualifying Threshold:
+  - 40% minimum passing mark = 56 marks out of 140.
+  - Scores below 56 are disqualified from merit ranking.
+
+---
+
+## 3. Constituent Campuses & Seat Matrix (Total: 2,040 Seats)
+
+### 3.1 Pulchowk Campus (Central Campus, Lalitpur) — 624 Total Seats
+- Civil Engineering: Regular 108 | Full Fee 84 | Total 192
+- Computer Engineering: Regular 36 | Full Fee 60 | Total 96
+- Electrical Engineering: Regular 24 | Full Fee 48 | Total 72
+- Electronics, Communication & Information Engineering: Regular 24 | Full Fee 48 | Total 72
+- Mechanical Engineering: Regular 24 | Full Fee 48 | Total 72
+- Architecture (B.Arch): Regular 24 | Full Fee 24 | Total 48
+- Aerospace Engineering: Regular 12 | Full Fee 12 | Total 24
+- Chemical Engineering: Regular 12 | Full Fee 36 | Total 48
+
+### 3.2 Thapathali Campus (Kathmandu) — 432 Total Seats
+- Civil Engineering: Regular 36 | Full Fee 108 | Total 144
+- Computer Engineering: Regular 12 | Full Fee 36 | Total 48
+- Electronics, Communication & Information: Regular 12 | Full Fee 36 | Total 48
+- Mechanical Engineering: Regular 12 | Full Fee 36 | Total 48
+- Automobile Engineering: Regular 12 | Full Fee 36 | Total 48
+- Industrial Engineering: Regular 12 | Full Fee 36 | Total 48
+- Architecture (B.Arch): Regular 12 | Full Fee 36 | Total 48
+
+### 3.3 Pashchimanchal Campus (WRC, Pokhara) — 432 Total Seats
+- Civil Engineering: Regular 36 | Full Fee 108 | Total 144
+- Electrical Engineering: Regular 12 | Full Fee 36 | Total 48
+- Electronics, Communication & Information: Regular 12 | Full Fee 36 | Total 48
+- Mechanical Engineering: Regular 12 | Full Fee 36 | Total 48
+- Computer Engineering: Regular 12 | Full Fee 36 | Total 48
+- Automobile Engineering: Regular 12 | Full Fee 36 | Total 48
+- Geomatics Engineering: Regular 12 | Full Fee 36 | Total 48
+
+### 3.4 Purwanchal Campus (ERC, Dharan) — 528 Total Seats
+- Civil Engineering: Regular 36 | Full Fee 108 | Total 144
+- Electrical Engineering: Regular 12 | Full Fee 36 | Total 48
+- Mechanical Engineering: Regular 24 | Full Fee 72 | Total 96
+- Computer Engineering: Regular 24 | Full Fee 72 | Total 96
+- Electronics, Communication & Information: Regular 12 | Full Fee 36 | Total 48
+- Agricultural Engineering: Regular 12 | Full Fee 36 | Total 48
+- Architecture (B.Arch): Regular 12 | Full Fee 36 | Total 48
+
+### 3.5 Chitwan Engineering Campus (ChEC, Rampur) — 24 Total Seats
+- Architecture (B.Arch): Regular 6 | Full Fee 18 | Total 24
+
+---
+
+## 4. 4-Year Financial Structure & Fees
+
+### 4.1 Regular (Government Subsidized Scholarship)
+- 4-Year Tuition: Rs. 63,087
+- Estimated 4-Year Living: ≈ NPR 4,80,000 (estimated ~NPR 10k/month)
+- Total Estimated Investment: ≈ NPR 5,43,087
+- Semester tuition: Rs. 2,862 | Semester charges: Rs. 6,974 | One-time admission: Rs. 7,295
+
+### 4.2 Full Fee (Constituent Paying Scheme)
+- 4-Year Tuition: Rs. 5,45,832
+- Estimated 4-Year Living: ≈ NPR 4,80,000
+- Total Estimated Investment: ≈ NPR 10,25,832
+- Semester tuition: Rs. 46,854 | Semester charges: Rs. 52,766 | One-time charges: Rs. 1,23,704
+
+### 4.3 Foreign Students Quota
+- 4-Year Tuition: Rs. 14,50,761
+- Total Estimated Investment: ≈ NPR 19,30,761
+
+### 4.4 Affiliated Private Engineering Colleges
+- 4-Year Tuition Range: NPR 10,00,000 - 16,00,000
+- Total Estimated Investment: ≈ NPR 14,80,000 - 20,80,000
+
+---
+
+## 5. Historical Closing Cutoffs Benchmark (2082 BS Cycle)
+
+### Pulchowk Campus:
+- Computer Engineering: Regular Open Rank 27 | Full Fee Open Rank 193
+- Electronics, Comm & Info: Regular Open Rank 84 | Full Fee Open Rank 330
+- Aerospace Engineering: Regular Open Rank 210 | Full Fee Open Rank 640
+- Civil Engineering: Regular Open Rank 318 | Full Fee Open Rank 787
+- Mechanical Engineering: Regular Open Rank 334 | Full Fee Open Rank 943
+- Electrical Engineering: Regular Open Rank 370 | Full Fee Open Rank 1009
+- Chemical Engineering: Regular Open Rank 520 | Full Fee Open Rank 1850
+- Architecture: Regular Open Rank 1270 | Full Fee Open Rank 2114
+
+### Thapathali Campus:
+- Computer Engineering: Regular Open Rank 75 | Full Fee Open Rank 273
+- Electronics, Comm & Info: Regular Open Rank 224 | Full Fee Open Rank 718
+- Civil Engineering: Regular Open Rank 387 | Full Fee Open Rank 1200
+- Mechanical Engineering: Regular Open Rank 463 | Full Fee Open Rank 1860
+- Industrial Engineering: Regular Open Rank 880 | Full Fee Open Rank 2900
+- Automobile Engineering: Regular Open Rank 950 | Full Fee Open Rank 3100
+- Architecture: Regular Open Rank 1018 | Full Fee Open Rank 2581
+
+### Pashchimanchal Campus (WRC):
+- Computer Engineering: Regular Open Rank 164 | Full Fee Open Rank 647
+- Electronics, Comm & Info: Regular Open Rank 408 | Full Fee Open Rank 1703
+- Mechanical Engineering: Regular Open Rank 620 | Full Fee Open Rank 2980
+- Civil Engineering: Regular Open Rank 693 | Full Fee Open Rank 2448
+- Electrical Engineering: Regular Open Rank 695 | Full Fee Open Rank 3120
+- Geomatics Engineering: Regular Open Rank 1180 | Full Fee Open Rank 3450
+- Automobile Engineering: Regular Open Rank 1200 | Full Fee Open Rank 4100
+
+### Purwanchal Campus (ERC):
+- Computer Engineering: Regular Open Rank 240 | Full Fee Open Rank 1150
+- Electronics, Comm & Info: Regular Open Rank 650 | Full Fee Open Rank 2800
+- Mechanical Engineering: Regular Open Rank 890 | Full Fee Open Rank 3600
+- Civil Engineering: Regular Open Rank 920 | Full Fee Open Rank 3800
+- Electrical Engineering: Regular Open Rank 980 | Full Fee Open Rank 3900
+- Architecture: Regular Open Rank 1350 | Full Fee Open Rank 3400
+- Agricultural Engineering: Regular Open Rank 1450 | Full Fee Open Rank 4800
+
+### Chitwan Engineering Campus:
+- Architecture: Regular Open Rank 1150 | Full Fee Open Rank 2950
+
+---
+
+## 6. IOE Counseling & Auto-Upgrade Regulations
+1. Priority Form Submission: Qualified applicants submit a single prioritized list of campus and program combinations.
+2. Directionality of Upgrades: Auto-upgrades only move upward towards lower numbered priorities (Choice 1 being highest). A student cannot downgrade to a lower choice after being upgraded.
+3. Fee Voucher Transfer: Deposited admission vouchers automatically transfer to the new campus/faculty upon upward auto-upgrade.
+4. Freeze Option: A candidate who does not wish to be auto-upgraded further must submit a written freeze declaration before subsequent list deadlines.
+5. Dabi Birodh (Claim & Objection Window): A 24-48 hour window opens following each list publication to resolve merit discrepancies.
+
+---
+
+## 7. 9-Step Admission Roadmap
+1. Online Entrance Registration at entrance.ioe.edu.np
+2. Entrance Examination Fee Payment (ConnectIPS, eSewa, Khalti, Bank Voucher)
+3. Download & Print Colored Admit Card with ICTC Shift & Seat details
+4. Appear for 2-hour CBT Examination at ICTC Pulchowk
+5. Verify Entrance Merit Rank Card PDF
+6. Submit Online Campus & Program Priority Form
+7. Check Merit Admission Lists & Claim / Objection Window (Dabi Birodh)
+8. Deposit Campus Admission Fee Voucher within 3-4 working days
+9. Physical Document Verification & Enrollment at Allocated Campus
+
+---
+
+## 8. Sitelink Directory
+- Home: https://ioe-admission.dipeshsapkota7.com.np/
+- Predictor: https://ioe-admission.dipeshsapkota7.com.np/predictor/
+- Profile: https://ioe-admission.dipeshsapkota7.com.np/profile/
+- Campuses: https://ioe-admission.dipeshsapkota7.com.np/campuses/
+- Calculator: https://ioe-admission.dipeshsapkota7.com.np/calculator/
+- Estimator: https://ioe-admission.dipeshsapkota7.com.np/estimator/
+- Priority Optimizer: https://ioe-admission.dipeshsapkota7.com.np/priority/
+- Admission Guide: https://ioe-admission.dipeshsapkota7.com.np/guide/
+- Student Checklist: https://ioe-admission.dipeshsapkota7.com.np/checklist/
+- Official Notices: https://ioe-admission.dipeshsapkota7.com.np/notices/
+- Affiliated Colleges: https://ioe-admission.dipeshsapkota7.com.np/affiliated/
+- Compare Disciplines: https://ioe-admission.dipeshsapkota7.com.np/compare/
+- Fee Breakdown: https://ioe-admission.dipeshsapkota7.com.np/financials/
+

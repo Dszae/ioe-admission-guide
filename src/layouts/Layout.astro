@@ -11,7 +11,15 @@ interface Props {
 
 const { title, description, canonical, heading, schemaType = 'WebPage' } = Astro.props;
 const site = 'https://ioe-admission.dipeshsapkota7.com.np';
-const structuredData = {
+
+const isCalculator = canonical.includes('/calculator/');
+const isPredictor = canonical.includes('/predictor/') || canonical === `${site}/`;
+const isGuide = canonical.includes('/guide/');
+
+const structuredData: {
+  '@context': string;
+  '@graph': Array<Record<string, unknown>>;
+} = {
   '@context': 'https://schema.org',
   '@graph': [
     {
@@ -30,7 +38,7 @@ const structuredData = {
       '@id': `${site}/#website`,
       url: `${site}/`,
       name: 'IOE Admission Hub',
-      alternateName: 'IOE Admission Guide by Dipesh Sapkota',
+      alternateName: 'IOE Admission Guide and Rank Predictor by Dipesh Sapkota',
       isPartOf: {
         '@type': 'WebSite',
         '@id': 'https://www.dipeshsapkota7.com.np/#website',
@@ -87,6 +95,59 @@ const structuredData = {
     }
   ]
 };
+
+if (isPredictor || isCalculator) {
+  structuredData['@graph'].push({
+    '@type': 'WebApplication',
+    '@id': `${canonical}#app`,
+    name: title,
+    url: canonical,
+    applicationCategory: 'EducationalApplication',
+    operatingSystem: 'Any',
+    browserRequirements: 'Requires JavaScript. Requires HTML5.',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'NPR'
+    },
+    author: {
+      '@id': 'https://www.dipeshsapkota7.com.np/#author'
+    }
+  });
+}
+
+if (isGuide) {
+  structuredData['@graph'].push({
+    '@type': 'FAQPage',
+    '@id': `${canonical}#faq`,
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'How does the IOE entrance CBT negative marking system work?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The IOE CBT entrance exam totals 140 marks with a 10% penalty for incorrect answers: -0.1 mark per wrong 1-mark question and -0.2 mark per wrong 2-mark question. Unattempted questions incur no penalty. A minimum of 40% (56 marks) is strictly required to pass.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'How does the IOE auto-upgrade counseling system work?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'When a candidate is allotted a seat of a lower priority preference in an earlier merit list round, any seat vacancy in their higher priority choices automatically shifts them upward in subsequent rounds. Downgrading to a lower preference is not permitted.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'What documents are required for IOE physical campus verification?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Candidates must submit their IOE entrance admit card, original citizenship or national ID, SLC/SEE grade sheet & character certificate, +2/diploma transcript & migration certificate, 4 passport photos, and official quota endorsement letters if claiming affirmative action seats.'
+        }
+      }
+    ]
+  });
+}
 ---
 <!doctype html>
 <html lang="en">
@@ -100,7 +161,8 @@ const structuredData = {
     <link rel="apple-touch-icon" href="/ioe-logo.png" />
     <link rel="author" href="https://www.dipeshsapkota7.com.np/" />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" type="text/plain" href="/llms.txt" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM summary" />
+    <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full context for AI agents" />
 
     <!-- Google Font: Manrope -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -111,8 +173,9 @@ const structuredData = {
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <meta name="author" content="Dipesh Sapkota" />
-    <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow, max-image-preview:large" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="google-site-verification" content="wtQe5iJTyPSo0Nrj7GN4IteUky0stRBG7tIB1Lu92P8" />
 
     <!-- Open Graph / Facebook -->
@@ -123,13 +186,19 @@ const structuredData = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={`${site}/og-image.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="IOE Admission Hub by Dipesh Sapkota" />
 
     <!-- Twitter Card -->
     <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:site" content="@Dszae" />
+    <meta property="twitter:creator" content="@Dszae" />
     <meta property="twitter:url" content={canonical} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={`${site}/og-image.png`} />
+    <meta property="twitter:image:alt" content="IOE Admission Hub Preview" />
 
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>

@@ -1,7 +1,10 @@
-import React from 'react';
 import InfoDisclaimer from './common/InfoDisclaimer';
 
-export default function AdmissionGuide({ isDark }) {
+export interface AdmissionGuideProps {
+  isDark?: boolean;
+}
+
+export default function AdmissionGuide({ isDark = false }: AdmissionGuideProps) {
   return (
     <div className="animate-fadeIn">
       

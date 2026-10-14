@@ -1,27 +1,35 @@
-import React, { useState } from 'react';
+import { useState, type SyntheticEvent } from 'react';
 import { CUTOFFS, CAMPUS_NAMES } from '../data/admissionData';
 import { getPhaseCutoff } from '../utils/calculations';
 import InfoDisclaimer from './common/InfoDisclaimer';
+import type { TabId } from './App';
+import type { CampusKey, FeeType, PriorityOption, PriorityLists } from '../types';
 
-export default function PriorityGenerator({ isDark, onNavigateTab }) {
+export interface PriorityGeneratorProps {
+  isDark?: boolean;
+  onNavigateTab?: (tab: TabId) => void;
+}
+
+export default function PriorityGenerator({ isDark = false, onNavigateTab }: PriorityGeneratorProps) {
   const [priorityRank, setPriorityRank] = useState('');
-  const [priorityLists, setPriorityLists] = useState(null);
+  const [priorityLists, setPriorityLists] = useState<PriorityLists | null>(null);
   const [copied, setCopied] = useState(false);
 
-  const calculatePriorities = (rankInput) => {
+  const calculatePriorities = (rankInput: string) => {
     const r = parseInt(rankInput, 10);
     if (!r || r < 1) return;
     
-    let allOptions = [];
-    Object.keys(CUTOFFS).forEach(campus => {
+    const allOptions: PriorityOption[] = [];
+    (Object.keys(CUTOFFS) as CampusKey[]).forEach(campus => {
       Object.keys(CUTOFFS[campus]).forEach(prog => {
-        ['Regular', 'FullFee'].forEach(fee => {
-          if (CUTOFFS[campus][prog]?.[fee]?.['Open']) {
+        (['Regular', 'FullFee'] as FeeType[]).forEach(fee => {
+          const openCutoff = CUTOFFS[campus][prog]?.[fee]?.['Open'];
+          if (openCutoff) {
             allOptions.push({
               campus, 
               prog, 
               fee,
-              cutoff: getPhaseCutoff(CUTOFFS[campus][prog][fee]['Open'], fee, 1)
+              cutoff: getPhaseCutoff(openCutoff, fee, 1)
             });
           }
         });
@@ -38,7 +46,7 @@ export default function PriorityGenerator({ isDark, onNavigateTab }) {
     setPriorityLists({ ambitious, match, safety });
   };
 
-  const generatePriority = (e) => {
+  const generatePriority = (e: SyntheticEvent) => {
     e.preventDefault();
     calculatePriorities(priorityRank);
   };

@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CAMPUS_DETAILS, CAMPUS_SEATS, ALL_PROGRAMS, CAMPUS_NAMES } from '../data/admissionData';
 import InfoDisclaimer from './common/InfoDisclaimer';
+import type { TabId } from './App';
+import type { CampusKey } from '../types';
 
-export default function CampusExplorer({ isDark, onNavigateTab }) {
-  const [selectedCampus, setSelectedCampus] = useState('Pulchowk');
+export interface CampusExplorerProps {
+  isDark?: boolean;
+  onNavigateTab?: (tab: TabId) => void;
+}
+
+export default function CampusExplorer({ isDark = false, onNavigateTab }: CampusExplorerProps) {
+  const [selectedCampus, setSelectedCampus] = useState<CampusKey>('Pulchowk');
   const [searchQuery, setSearchQuery] = useState('');
   const [programFilter, setProgramFilter] = useState('All');
 
@@ -33,7 +40,7 @@ export default function CampusExplorer({ isDark, onNavigateTab }) {
 
       {/* Campus Selector Pills */}
       <div className="flex gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pb-1 mb-5" role="tablist" aria-label="Campus Selection">
-        {Object.keys(CAMPUS_DETAILS).map((cKey) => {
+        {(Object.keys(CAMPUS_DETAILS) as CampusKey[]).map((cKey) => {
           const isSelected = selectedCampus === cKey;
           return (
             <button
@@ -184,7 +191,7 @@ export default function CampusExplorer({ isDark, onNavigateTab }) {
               ))
             ) : (
               <tr>
-                <td colSpan="4" className="p-6 text-center text-slate-500 text-xs">
+                <td colSpan={4} className="p-6 text-center text-slate-500 text-xs">
                   No programs found matching "{searchQuery}" at {CAMPUS_NAMES[selectedCampus]}.
                 </td>
               </tr>

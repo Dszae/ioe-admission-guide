@@ -1,24 +1,30 @@
-import React, { useState } from 'react';
+import { useState, type SyntheticEvent } from 'react';
 import { getScoreToRankEstimate } from '../utils/calculations';
 import InfoDisclaimer from './common/InfoDisclaimer';
+import type { ScoreToRankResult } from '../types';
 
-export default function ScoreEstimator({ isDark, initialScore = '' }) {
-  const [scoreInput, setScoreInput] = useState(initialScore ? String(initialScore) : '');
-  const [estimateResult, setEstimateResult] = useState(
+export interface ScoreEstimatorProps {
+  isDark?: boolean;
+  initialScore?: string | number;
+}
+
+export default function ScoreEstimator({ isDark = false, initialScore = '' }: ScoreEstimatorProps) {
+  const [scoreInput, setScoreInput] = useState<string>(initialScore ? String(initialScore) : '');
+  const [estimateResult, setEstimateResult] = useState<ScoreToRankResult | null>(
     initialScore ? getScoreToRankEstimate(initialScore) : null
   );
 
-  const calculateEstimate = (scoreVal) => {
+  const calculateEstimate = (scoreVal: string | number) => {
     const res = getScoreToRankEstimate(scoreVal);
     setEstimateResult(res);
   };
 
-  const handleEstimate = (e) => {
+  const handleEstimate = (e: SyntheticEvent) => {
     e.preventDefault();
     calculateEstimate(scoreInput);
   };
 
-  const getResultStyle = (color) => {
+  const getResultStyle = (color?: string) => {
     switch (color) {
       case 'emerald':
         return isDark ? 'bg-emerald-900/50 border-emerald-500 text-emerald-50' : 'bg-emerald-50 border-emerald-300 text-emerald-950';

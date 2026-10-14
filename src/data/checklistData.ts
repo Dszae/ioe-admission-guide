@@ -1,9 +1,11 @@
+import type { ChecklistItem } from '../types';
+
 /**
  * IOE Engineering Admission Roadmap & Interactive Student Checklist
  * Stored locally in student's browser (no sensitive tracking)
  */
 
-export const ADMISSION_CHECKLIST_ITEMS = [
+export const ADMISSION_CHECKLIST_ITEMS: ChecklistItem[] = [
   {
     id: "step-1",
     phase: "Phase 1: Pre-Examination",
@@ -58,29 +60,23 @@ export const ADMISSION_CHECKLIST_ITEMS = [
     title: "Check Merit List & Dabi Birodh (Claim Window)",
     description: "Check whether your name appears in the 1st or subsequent admission lists. If an eligible lower-ranked candidate is placed above you, file an objection within 48 hours.",
     portalLink: "https://entrance.ioe.edu.np",
-    requiredDocs: ["Merit list roll number comparison"]
+    requiredDocs: ["Entrance Score Card", "Printed Priority Confirmation Sheet"]
   },
   {
     id: "step-8",
     phase: "Phase 4: Allocation & Admission",
-    title: "Deposit Seat Confirmation Fee",
-    description: "Pay the required initial installment at the designated campus bank within the strict 3-to-4-day deadline to confirm your seat. Failure to pay permanently forfeits your seat.",
+    title: "Deposit Admission Seat Confirmation Voucher",
+    description: "If allocated a seat, deposit the campus-mandated admission fee voucher within the strict deadline (typically 3-4 working days) to confirm admission or retain upgrade rights.",
     portalLink: "https://pcampus.edu.np",
-    requiredDocs: ["Bank Voucher / Online Payment Proof", "Seat Allotment Letter"]
+    requiredDocs: ["Bank Deposit Voucher (Original)", "Campus Admission Application"]
   },
   {
     id: "step-9",
     phase: "Phase 4: Allocation & Admission",
-    title: "In-Person Campus Document Verification",
-    description: "Visit the respective campus admission department with original certificates, character certificates, quota recommendation letters (if applicable), and 4 passport photos.",
-    portalLink: "https://www.ioe.tu.edu.np",
-    requiredDocs: [
-      "Original Citizenship / NID",
-      "SEE Marksheet & Character Certificate",
-      "+2 Transcript, Migration & Character Certificates",
-      "Quota Verification Letter (if quota applicant)",
-      "4 Recent Passport-size Photos"
-    ]
+    title: "Physical Verification at Allocated Campus",
+    description: "Visit the administration office of your allocated constituent campus or affiliated college with original certificates, transcripts, migration card, character certificate, and photographs.",
+    portalLink: "https://entrance.ioe.edu.np",
+    requiredDocs: ["Original Academic Transcripts", "Character Certificates", "Migration Certificate", "Passport Photos (4 copies)", "Quota Endorsement Letters"]
   }
 ];
 

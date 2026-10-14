@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { NOTICES_DATA, NOTICE_CATEGORIES } from '../data/noticesData';
 import InfoDisclaimer from './common/InfoDisclaimer';
 
-export default function NoticeTracker({ isDark }) {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
+export interface NoticeTrackerProps {
+  isDark?: boolean;
+}
+
+export default function NoticeTracker({ isDark = false }: NoticeTrackerProps) {
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   const filteredNotices = NOTICES_DATA.filter(notice => {
     const matchesCategory = selectedCategory === 'All' || notice.category === selectedCategory;

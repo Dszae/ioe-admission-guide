@@ -157,8 +157,8 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
     canonical.setAttribute('href', tabUrl);
   }, [activeTab]);
 
-  const handleSendToEstimator = (score: string) => {
-    setEstimatorPreScore(score);
+  const handleSendToEstimator = (score: string | number) => {
+    setEstimatorPreScore(String(score));
     setActiveTab('estimator');
   };
 

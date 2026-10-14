@@ -1,6 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, type MouseEvent as ReactMouseEvent } from 'react';
+import type { TabId } from './App';
 
-const SECONDARY_TABS = [
+interface NavItem {
+  id: TabId;
+  label: string;
+}
+
+interface NavGroup {
+  title: string;
+  items: NavItem[];
+}
+
+const SECONDARY_TABS: NavItem[] = [
   { id: 'estimator', label: 'Score Curve' },
   { id: 'affiliated', label: 'Affiliated Colleges' },
   { id: 'compare', label: 'Compare Disciplines' },
@@ -9,7 +20,7 @@ const SECONDARY_TABS = [
   { id: 'financials', label: 'Fee Breakdown' }
 ];
 
-const NAV_GROUPS = [
+const NAV_GROUPS: NavGroup[] = [
   {
     title: 'Rank & Admission Odds',
     items: [
@@ -43,20 +54,25 @@ const NAV_GROUPS = [
   }
 ];
 
-const tabHref = (tabId) => tabId === 'predictor' ? '/predictor/' : `/${tabId}/`;
+const tabHref = (tabId: TabId): string => tabId === 'predictor' ? '/predictor/' : `/${tabId}/`;
+
+export interface HeaderProps {
+  activeTab?: TabId;
+  setActiveTab?: (tab: TabId) => void;
+}
 
 export default function Header({ 
   activeTab = 'predictor', 
   setActiveTab 
-}) {
+}: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
-  const moreRef = useRef(null);
+  const moreRef = useRef<HTMLDivElement>(null);
 
   // Close More dropdown when clicking outside
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (moreRef.current && !moreRef.current.contains(e.target)) {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
         setMoreOpen(false);
       }
     };
@@ -79,7 +95,7 @@ export default function Header({
 
   // Close menus on Escape key
   useEffect(() => {
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         if (moreOpen) setMoreOpen(false);
         if (menuOpen) setMenuOpen(false);
@@ -89,7 +105,7 @@ export default function Header({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [menuOpen, moreOpen]);
 
-  const handleSelectTab = (tabId) => {
+  const handleSelectTab = (tabId: TabId) => {
     if (setActiveTab) {
       setActiveTab(tabId);
     }
@@ -97,7 +113,7 @@ export default function Header({
     setMoreOpen(false);
   };
 
-  const handleTabLinkClick = (event, tabId) => {
+  const handleTabLinkClick = (event: ReactMouseEvent<HTMLAnchorElement>, tabId: TabId) => {
     event.preventDefault();
     handleSelectTab(tabId);
   };
@@ -133,7 +149,7 @@ export default function Header({
                 alt="Tribhuvan University IOE Emblem" 
                 className="w-full h-full object-contain"
                 onError={(e) => {
-                  e.currentTarget.src = "/ioe logo.png";
+                  (e.currentTarget as HTMLImageElement).src = "/ioe logo.png";
                 }}
               />
             </a>
@@ -159,13 +175,13 @@ export default function Header({
 
           {/* Center: Desktop Shortcut Navigation with More Dropdown */}
           <nav className="hidden lg:flex items-center gap-1" aria-label="Quick Navigation">
-            {[
+            {([
               { id: 'predictor', label: 'Predictor' },
               { id: 'campuses', label: 'Campuses' },
               { id: 'priority', label: 'Priority' },
               { id: 'calculator', label: 'Calculator' },
               { id: 'guide', label: 'Guide' }
-            ].map(tab => {
+            ] as const).map(tab => {
               const isActive = activeTab === tab.id;
               return (
                 <a

@@ -1,7 +1,11 @@
-import React from 'react';
 import { OFFICIAL_PORTALS } from '../data/admissionData';
 
-export default function Footer({ isDark, showOfficialPortals = false }) {
+export interface FooterProps {
+  isDark?: boolean;
+  showOfficialPortals?: boolean;
+}
+
+export default function Footer({ isDark = false, showOfficialPortals = false }: FooterProps) {
   return (
     <footer className="w-full max-w-5xl mt-10 sm:mt-12 mb-6 sm:mb-8 relative z-10 print:hidden text-slate-600 dark:text-slate-300">
       

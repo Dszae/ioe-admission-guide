@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FACULTY_DATA } from '../data/admissionData';
 import InfoDisclaimer from './common/InfoDisclaimer';
 
-export default function FacultyCompare({ isDark }) {
-  const [compA, setCompA] = useState('Computer Engineering');
-  const [compB, setCompB] = useState('Electronics, Communication and Information Engineering');
+export interface FacultyCompareProps {
+  isDark?: boolean;
+}
 
-  const facultyA = FACULTY_DATA[compA] || {};
-  const facultyB = FACULTY_DATA[compB] || {};
+export default function FacultyCompare({ isDark = false }: FacultyCompareProps) {
+  const [compA, setCompA] = useState<string>('Computer Engineering');
+  const [compB, setCompB] = useState<string>('Electronics, Communication and Information Engineering');
+
+  const facultyA = FACULTY_DATA[compA] || { tags: [], description: '', careers: [], overlap: {} };
+  const facultyB = FACULTY_DATA[compB] || { tags: [], description: '', careers: [], overlap: {} };
 
   const overlapAB = facultyA.overlap?.[compB] || '< 15%';
 

@@ -5,7 +5,7 @@ import {
   getScoreToRankEstimate, 
   getPhaseCutoff, 
   getProbability 
-} from './calculations.js';
+} from './calculations';
 
 describe('CBT Score Calculation', () => {
   it('correctly calculates net score with standard 10% penalty', () => {

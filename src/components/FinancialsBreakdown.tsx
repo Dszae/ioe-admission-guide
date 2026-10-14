@@ -1,8 +1,11 @@
-import React from 'react';
 import { FINANCIALS } from '../data/admissionData';
 import InfoDisclaimer from './common/InfoDisclaimer';
 
-export default function FinancialsBreakdown({ isDark }) {
+export interface FinancialsBreakdownProps {
+  isDark?: boolean;
+}
+
+export default function FinancialsBreakdown({ isDark = false }: FinancialsBreakdownProps) {
   return (
     <div className="animate-fadeIn">
       

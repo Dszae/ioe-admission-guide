@@ -1,9 +1,22 @@
-import React from 'react';
+
+export interface InfoDisclaimerProps {
+  title: string;
+  text: string;
+  isDark?: boolean;
+  type?: 'info' | 'alert' | 'warning';
+  headingLevel?: 'h2' | 'h3' | 'h4' | 'h5';
+}
 
 /**
  * Standard accessible disclaimer & notice box
  */
-export default function InfoDisclaimer({ title, text, isDark, type = 'info', headingLevel = 'h3' }) {
+export default function InfoDisclaimer({ 
+  title, 
+  text, 
+  isDark = false, 
+  type = 'info', 
+  headingLevel = 'h3' 
+}: InfoDisclaimerProps) {
   const isAlert = type === 'alert' || type === 'warning';
   const HeadingTag = headingLevel;
 

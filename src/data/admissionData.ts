@@ -1,3 +1,15 @@
+import type { 
+  AdmissionMetadata, 
+  CampusKey, 
+  CampusDetail, 
+  CampusSeat, 
+  CutoffsData, 
+  AffiliatedCollege, 
+  FacultyInfo, 
+  FinancialPlan, 
+  OfficialPortal 
+} from '../types';
+
 /**
  * IOE Undergraduate Engineering Admission Dataset
  * 
@@ -11,7 +23,7 @@
  * Cutoff ranks for subsequent academic years fluctuate based on test difficulty, applicant volume, and seat changes.
  */
 
-export const ADMISSION_METADATA = {
+export const ADMISSION_METADATA: AdmissionMetadata = {
   academicYear: "2082 BS",
   governingBody: "Institute of Engineering (IOE), Tribhuvan University",
   examFormat: "Computer Based Test (CBT)",
@@ -24,7 +36,7 @@ export const ADMISSION_METADATA = {
   disclaimer: "This platform is an independent educational guide for Nepalese students. Predictions and priority recommendations are statistical heuristics derived from historical data. Official admissions are solely governed by the IOE Entrance Examination Board."
 };
 
-export const CAMPUS_NAMES = {
+export const CAMPUS_NAMES: Record<CampusKey, string> = {
   Pulchowk: 'Pulchowk Campus',
   Thapathali: 'Thapathali Campus',
   WRC: 'Pashchimanchal Campus (WRC)',
@@ -32,7 +44,7 @@ export const CAMPUS_NAMES = {
   ChEC: 'Chitwan Eng. Campus (ChEC)'
 };
 
-export const CAMPUS_DETAILS = {
+export const CAMPUS_DETAILS: Record<CampusKey, CampusDetail> = {
   Pulchowk: {
     fullName: "Pulchowk Campus (Central Campus)",
     location: "Pulchowk, Lalitpur",
@@ -95,7 +107,7 @@ export const CAMPUS_DETAILS = {
   }
 };
 
-export const CAMPUS_SEATS = {
+export const CAMPUS_SEATS: Record<CampusKey, CampusSeat[]> = {
   Pulchowk: [
     { program: "Civil Engineering", regular: 108, fullFee: 84, total: 192 },
     { program: "Computer Engineering", regular: 36, fullFee: 60, total: 96 },
@@ -138,7 +150,7 @@ export const CAMPUS_SEATS = {
   ]
 };
 
-export const ALL_PROGRAMS = [
+export const ALL_PROGRAMS: string[] = [
   "Civil Engineering",
   "Computer Engineering",
   "Electrical Engineering",
@@ -154,7 +166,7 @@ export const ALL_PROGRAMS = [
 ];
 
 // Preserved historical cutoff baseline across constituent campuses
-export const CUTOFFS = {
+export const CUTOFFS: CutoffsData = {
   Pulchowk: {
     "Civil Engineering": { Regular: { Open: 318, Janajati: 412, Female_FmQ: 491, Female_RsQ: 450 }, FullFee: { Open: 787, Janajati: 1150, Female_FmQ: 874, Female_RsQ: 890 } },
     "Computer Engineering": { Regular: { Open: 27, Janajati: 45, Female_FmQ: 40, Female_RsQ: 38 }, FullFee: { Open: 193, Janajati: 280, Female_FmQ: 389, Female_RsQ: 360 } },
@@ -178,205 +190,117 @@ export const CUTOFFS = {
     "Civil Engineering": { Regular: { Open: 693, Janajati: 1100, Female_FmQ: 1140, Female_RsQ: 1120 }, FullFee: { Open: 2448, Janajati: 5400, Female_FmQ: 5127, Female_RsQ: 5100 } },
     "Computer Engineering": { Regular: { Open: 164, Janajati: 380, Female_FmQ: 282, Female_RsQ: 270 }, FullFee: { Open: 647, Janajati: 1200, Female_FmQ: 1223, Female_RsQ: 1200 } },
     "Electronics, Communication and Information Engineering": { Regular: { Open: 408, Janajati: 680, Female_FmQ: 581, Female_RsQ: 550 }, FullFee: { Open: 1703, Janajati: 2500, Female_FmQ: 2340, Female_RsQ: 2300 } },
-    "Electrical Engineering": { Regular: { Open: 697, Janajati: 900, Female_FmQ: 1743, Female_RsQ: 1700 }, FullFee: { Open: 2988, Janajati: 4300, Female_FmQ: 4129, Female_RsQ: 4100 } },
-    "Mechanical Engineering": { Regular: { Open: 916, Janajati: 1300, Female_FmQ: 1187, Female_RsQ: 1150 }, FullFee: { Open: 3378, Janajati: 4700, Female_FmQ: 4561, Female_RsQ: 4500 } },
-    "Geomatics Engineering": { Regular: { Open: 850, Janajati: 950, Female_FmQ: 1050, Female_RsQ: 1000 }, FullFee: { Open: 3200, Janajati: 3500, Female_FmQ: 3800, Female_RsQ: 3700 } }
+    "Electrical Engineering": { Regular: { Open: 695, Janajati: 1050, Female_FmQ: 1150, Female_RsQ: 1100 }, FullFee: { Open: 3120, Janajati: 4200, Female_FmQ: 4100, Female_RsQ: 4000 } },
+    "Mechanical Engineering": { Regular: { Open: 620, Janajati: 950, Female_FmQ: 1080, Female_RsQ: 1000 }, FullFee: { Open: 2980, Janajati: 3900, Female_FmQ: 3850, Female_RsQ: 3800 } },
+    "Automobile Engineering": { Regular: { Open: 1200, Janajati: 1400, Female_FmQ: 1800, Female_RsQ: 1750 }, FullFee: { Open: 4100, Janajati: 4600, Female_FmQ: 4800, Female_RsQ: 4700 } },
+    "Geomatics Engineering": { Regular: { Open: 1180, Janajati: 1350, Female_FmQ: 1900, Female_RsQ: 1850 }, FullFee: { Open: 3450, Janajati: 4200, Female_FmQ: 4300, Female_RsQ: 4250 } }
   },
   ERC: {
-    "Civil Engineering": { Regular: { Open: 1017, Janajati: 1850, Female_FmQ: 1463, Female_RsQ: 1500 }, FullFee: { Open: 3821, Janajati: 6800, Female_FmQ: 6560, Female_RsQ: 6500 } },
-    "Computer Engineering": { Regular: { Open: 384, Janajati: 750, Female_FmQ: 619, Female_RsQ: 600 }, FullFee: { Open: 1598, Janajati: 2900, Female_FmQ: 2644, Female_RsQ: 2600 } },
-    "Electronics, Communication and Information Engineering": { Regular: { Open: 942, Janajati: 1900, Female_FmQ: 1768, Female_RsQ: 1750 }, FullFee: { Open: 3184, Janajati: 6600, Female_FmQ: 6417, Female_RsQ: 6400 } },
-    "Electrical Engineering": { Regular: { Open: 1258, Janajati: 1700, Female_FmQ: 1583, Female_RsQ: 1550 }, FullFee: { Open: 4595, Janajati: 6700, Female_FmQ: 6447, Female_RsQ: 6400 } },
-    "Mechanical Engineering": { Regular: { Open: 1592, Janajati: 2000, Female_FmQ: 1921, Female_RsQ: 1900 }, FullFee: { Open: 4953, Janajati: 6900, Female_FmQ: 6616, Female_RsQ: 6600 } },
-    "Architecture": { Regular: { Open: 3321, Janajati: 2300, Female_FmQ: 2100, Female_RsQ: 2050 }, FullFee: { Open: 6563, Janajati: 4800, Female_FmQ: 4500, Female_RsQ: 4400 } },
-    "Agricultural Engineering": { Regular: { Open: 1450, Janajati: 1600, Female_FmQ: 1750, Female_RsQ: 1700 }, FullFee: { Open: 4200, Janajati: 4500, Female_FmQ: 4800, Female_RsQ: 4700 } }
+    "Civil Engineering": { Regular: { Open: 920, Janajati: 1400, Female_FmQ: 1600, Female_RsQ: 1550 }, FullFee: { Open: 3800, Janajati: 5800, Female_FmQ: 5700, Female_RsQ: 5600 } },
+    "Computer Engineering": { Regular: { Open: 240, Janajati: 480, Female_FmQ: 520, Female_RsQ: 500 }, FullFee: { Open: 1150, Janajati: 1900, Female_FmQ: 1850, Female_RsQ: 1800 } },
+    "Electronics, Communication and Information Engineering": { Regular: { Open: 650, Janajati: 980, Female_FmQ: 1100, Female_RsQ: 1050 }, FullFee: { Open: 2800, Janajati: 3800, Female_FmQ: 3700, Female_RsQ: 3600 } },
+    "Electrical Engineering": { Regular: { Open: 980, Janajati: 1350, Female_FmQ: 1500, Female_RsQ: 1450 }, FullFee: { Open: 3900, Janajati: 4900, Female_FmQ: 4800, Female_RsQ: 4700 } },
+    "Mechanical Engineering": { Regular: { Open: 890, Janajati: 1250, Female_FmQ: 1400, Female_RsQ: 1350 }, FullFee: { Open: 3600, Janajati: 4500, Female_FmQ: 4400, Female_RsQ: 4300 } },
+    "Agricultural Engineering": { Regular: { Open: 1450, Janajati: 1800, Female_FmQ: 2100, Female_RsQ: 2000 }, FullFee: { Open: 4800, Janajati: 5400, Female_FmQ: 5500, Female_RsQ: 5450 } },
+    "Architecture": { Regular: { Open: 1350, Janajati: 1700, Female_FmQ: 1900, Female_RsQ: 1850 }, FullFee: { Open: 3400, Janajati: 4200, Female_FmQ: 4100, Female_RsQ: 4050 } }
   },
   ChEC: {
-    "Architecture": { Regular: { Open: 1800, Janajati: 1950, Female_FmQ: 1800, Female_RsQ: 1750 }, FullFee: { Open: 3500, Janajati: 3800, Female_FmQ: 3600, Female_RsQ: 3500 } }
+    "Architecture": { Regular: { Open: 1150, Janajati: 1500, Female_FmQ: 1750, Female_RsQ: 1700 }, FullFee: { Open: 2950, Janajati: 3800, Female_FmQ: 3900, Female_RsQ: 3850 } }
   }
 };
 
-export const AFFILIATED_COLLEGES = [
-  { 
-    name: "Kathmandu Engineering College (KEC)", 
-    location: "Kalimati, Kathmandu", 
-    programs: "Civil, Computer, Electrical, Electronics, Architecture", 
-    fee: "≈ 14 - 16 Lakhs", 
-    cutoff: "Rank ~4000+",
-    established: 1998,
-    website: "https://kecktm.edu.np"
-  },
-  { 
-    name: "Kantipur Engineering College (KEC)", 
-    location: "Dhapakhel, Lalitpur", 
-    programs: "Civil, Computer, Electronics", 
-    fee: "≈ 13 - 15 Lakhs", 
-    cutoff: "Rank ~4500+",
-    established: 1998,
-    website: "https://kec.edu.np"
-  },
-  { 
-    name: "Advanced College of Engineering & Management", 
-    location: "Kupondole, Lalitpur", 
-    programs: "Civil, Computer, Electrical, Electronics", 
-    fee: "≈ 14 - 15 Lakhs", 
-    cutoff: "Rank ~4000+",
-    established: 2001,
-    website: "https://acem.edu.np"
-  },
-  { 
-    name: "Himalaya College of Engineering", 
-    location: "Chyasal, Lalitpur", 
-    programs: "Civil, Computer, Architecture, Electronics", 
-    fee: "≈ 12 - 14 Lakhs", 
-    cutoff: "Rank ~5000+",
-    established: 2000,
-    website: "https://hcoe.edu.np"
-  },
-  { 
-    name: "Kathford International College of Eng. & Mgmt.", 
-    location: "Balkumari, Lalitpur", 
-    programs: "Civil, Computer, Electronics", 
-    fee: "≈ 12 - 14 Lakhs", 
-    cutoff: "Rank ~5500+",
-    established: 2003,
-    website: "https://kathford.edu.np"
-  },
-  { 
-    name: "National College of Engineering", 
-    location: "Talchikhel, Lalitpur", 
-    programs: "Civil, Computer, Electrical, Electronics", 
-    fee: "≈ 12 - 14 Lakhs", 
-    cutoff: "Rank ~6000+",
-    established: 2001,
-    website: "https://nce.edu.np"
-  },
-  {
-    name: "Janakpur Engineering College",
-    location: "Kupondole, Lalitpur",
-    programs: "Civil, Computer, Electronics",
-    fee: "≈ 11 - 13 Lakhs",
-    cutoff: "Rank ~6500+",
-    established: 2001,
-    website: "https://jec.edu.np"
-  },
-  {
-    name: "Sagarmatha Engineering College",
-    location: "Sanepa, Lalitpur",
-    programs: "Civil, Computer, Electronics",
-    fee: "≈ 12 - 14 Lakhs",
-    cutoff: "Rank ~5500+",
-    established: 2010,
-    website: "https://sagarmatha.edu.np"
-  }
+export const AFFILIATED_COLLEGES: AffiliatedCollege[] = [
+  { name: "Advanced College of Engineering and Management (ACEM)", location: "Kupondole, Lalitpur", programs: "Civil, Computer, Electrical, Electronics", fee: "NPR 11,50,000 - 13,00,000", cutoff: "Rank ~4,500", website: "https://acem.edu.np" },
+  { name: "Kathmandu Engineering College (KEC)", location: "Kalimati, Kathmandu", programs: "Civil, Computer, Electrical, Electronics, Architecture", fee: "NPR 12,00,000 - 14,50,000", cutoff: "Rank ~4,200", website: "https://kecktm.edu.np" },
+  { name: "Himalaya College of Engineering (HCOE)", location: "Chyasal, Lalitpur", programs: "Civil, Computer, Electronics, Architecture", fee: "NPR 10,50,000 - 12,50,000", cutoff: "Rank ~4,800", website: "https://hcoe.edu.np" },
+  { name: "Kantipur Engineering College (KEC Dhapakhel)", location: "Dhapakhel, Lalitpur", programs: "Civil, Computer, Electrical", fee: "NPR 11,00,000 - 13,00,000", cutoff: "Rank ~4,400", website: "https://kec.edu.np" },
+  { name: "National College of Engineering (NCE)", location: "Talchhikhel, Lalitpur", programs: "Civil, Computer, Electrical, Electronics", fee: "NPR 10,00,000 - 12,00,000", cutoff: "Rank ~5,200", website: "https://nce.edu.np" },
+  { name: "Thapathali/Kathford International College", location: "Balkumari, Lalitpur", programs: "Civil, Computer, Electronics", fee: "NPR 10,50,000 - 12,50,000", cutoff: "Rank ~5,000", website: "https://kathford.edu.np" },
+  { name: "Janakpur Engineering College (JEC)", location: "Tathali, Bhaktapur", programs: "Civil, Computer, Electronics", fee: "NPR 9,50,000 - 11,50,000", cutoff: "Rank ~5,500", website: "https://jec.edu.np" },
+  { name: "Sagarmatha Engineering College", location: "Sanpa, Lalitpur", programs: "Civil, Computer, Electronics", fee: "NPR 11,00,000 - 12,80,000", cutoff: "Rank ~4,700", website: "https://sagarmatha.edu.np" },
+  { name: "Lalitpur Engineering College", location: "Chakupat, Lalitpur", programs: "Civil, Computer", fee: "NPR 9,80,000 - 11,50,000", cutoff: "Rank ~5,300", website: "https://lec.edu.np" },
+  { name: "Khwopa College of Engineering", location: "Libali, Bhaktapur", programs: "Civil, Computer, Electrical", fee: "NPR 8,50,000 - 10,50,000", cutoff: "Rank ~3,800", website: "https://khwopa.edu.np" }
 ];
 
-export const FACULTY_DATA = {
-  "Computer Engineering": { 
-    tags: ["Software Engineering", "Algorithms", "AI & Data", "IT Sector"], 
-    description: "Focuses on design of computational hardware and software systems, cloud infrastructure, algorithm design, and applied intelligence.",
-    careers: ["Software Engineer", "Systems Architect", "Data Scientist", "DevOps Engineer", "Tech Entrepreneur"],
-    overlap: { 
-      "Electronics, Communication and Information Engineering": "70%", 
-      "Electrical Engineering": "40%",
-      "Civil Engineering": "15%",
+export const FACULTY_DATA: Record<string, FacultyInfo> = {
+  "Computer Engineering": {
+    tags: ["Software Engineering", "Algorithms", "AI & ML", "Systems Architecture"],
+    description: "Focuses on software design, computer systems architecture, embedded computing, algorithms, database engineering, and artificial intelligence.",
+    careers: ["Software Engineer", "Systems Architect", "Machine Learning Engineer", "DevOps Specialist", "Cybersecurity Analyst"],
+    overlap: {
+      "Electronics, Communication and Information Engineering": "45%",
+      "Electrical Engineering": "25%"
+    }
+  },
+  "Civil Engineering": {
+    tags: ["Structures", "Hydropower & Water Resources", "Transportation", "Geotechnical"],
+    description: "Covers the design, construction, and maintenance of public infrastructure including highways, bridges, dams, irrigation tunnels, and high-rise structural foundations.",
+    careers: ["Structural Engineer", "Hydropower Project Engineer", "Transportation Planner", "Geotechnical Consultant"],
+    overlap: {
       "Mechanical Engineering": "20%",
-      "Architecture": "10%"
-    } 
+      "Architecture": "35%"
+    }
   },
-  "Electronics, Communication and Information Engineering": { 
-    tags: ["Hardware & Embedded", "Telecom Networks", "VLSI Design", "Signal Processing"], 
-    description: "Combines fundamental hardware engineering with network protocols, telecommunications, embedded devices, and computer networks.",
-    careers: ["Network Engineer", "Embedded Systems Developer", "Telecom Specialist", "IoT Hardware Designer"],
-    overlap: { 
-      "Computer Engineering": "70%", 
-      "Electrical Engineering": "60%",
-      "Mechanical Engineering": "25%",
-      "Civil Engineering": "10%",
-      "Architecture": "10%"
-    } 
+  "Electronics, Communication and Information Engineering": {
+    tags: ["Telecommunication", "Signal Processing", "VLSI Design", "Embedded Systems"],
+    description: "Encompasses hardware-software integration, communications systems, microwave engineering, microprocessors, digital signal processing, and IoT systems.",
+    careers: ["Telecom Engineer (NTC/Ncell)", "Embedded Systems Developer", "Network Architect", "Hardware Design Engineer"],
+    overlap: {
+      "Computer Engineering": "45%",
+      "Electrical Engineering": "40%"
+    }
   },
-  "Electrical Engineering": { 
-    tags: ["Power Grid Systems", "Renewable Energy", "Heavy Machinery", "NEA & Hydropower"], 
-    description: "Core discipline concentrating on generation, transmission, and distribution of electrical power, renewable systems, and industrial electrical machinery.",
-    careers: ["Power Grid Engineer", "Hydropower Plant Manager", "Substation Engineer", "Electrical Systems Designer"],
-    overlap: { 
-      "Electronics, Communication and Information Engineering": "60%", 
-      "Mechanical Engineering": "30%",
-      "Computer Engineering": "40%",
-      "Civil Engineering": "20%",
-      "Architecture": "10%"
-    } 
+  "Electrical Engineering": {
+    tags: ["Power Systems", "Grid Transmission", "Renewable Energy", "High Voltage"],
+    description: "Specializes in electrical generation, substation management, transmission networks, motor drives, power electronics, and power market operations.",
+    careers: ["Power Grid Engineer (NEA)", "Substation Engineer", "Renewable Energy Specialist", "Industrial Automation Engineer"],
+    overlap: {
+      "Electronics, Communication and Information Engineering": "40%",
+      "Mechanical Engineering": "30%"
+    }
   },
-  "Civil Engineering": { 
-    tags: ["Structural Analysis", "Hydropower Design", "Transportation", "Gov & Construction"], 
-    description: "The foundational infrastructure discipline covering building structures, roads, bridges, irrigation, hydraulics, and geotechnical engineering.",
-    careers: ["Structural Designer", "Site Engineer", "Government Technical Officer (Loksewa)", "Hydropower Civil Engineer"],
-    overlap: { 
-      "Architecture": "25%", 
-      "Agricultural Engineering": "30%",
-      "Geomatics Engineering": "40%",
-      "Mechanical Engineering": "20%",
-      "Electrical Engineering": "20%"
-    } 
-  },
-  "Mechanical Engineering": { 
-    tags: ["Thermodynamics", "Robotics", "Industrial Fabrication", "Automotive Systems"], 
-    description: "Studies motion, mechanics, thermal dynamics, manufacturing systems, robotics, and energy conversion.",
-    careers: ["Mechanical Designer", "Plant Operations Engineer", "HVAC Specialist", "Automotive Consultant"],
-    overlap: { 
-      "Automobile Engineering": "80%", 
-      "Aerospace Engineering": "60%", 
-      "Industrial Engineering": "70%",
-      "Electrical Engineering": "30%",
-      "Civil Engineering": "20%"
-    } 
-  },
-  "Architecture": { 
-    tags: ["Spatial Design", "Urban Planning", "Building Physics", "5-Year Degree"], 
-    description: "A 5-year specialized Bachelor of Architecture (B.Arch) blending artistic creativity, building design, sustainability, and urban planning.",
-    careers: ["Registered Architect", "Urban Planner", "Interior Architect", "Landscape Consultant"],
-    overlap: { 
-      "Civil Engineering": "25%",
-      "Computer Engineering": "10%",
-      "Mechanical Engineering": "15%"
-    } 
+  "Mechanical Engineering": {
+    tags: ["Thermodynamics", "Hydraulic Turbines", "Manufacturing", "Automotive"],
+    description: "Encompasses mechanics, thermodynamics, fluid dynamics, turbine engineering, heating/cooling systems, CAD/CAM manufacturing, and machine design.",
+    careers: ["Turbine Engineer (Hydropower)", "HVAC Project Engineer", "Manufacturing Supervisor", "Energy Auditor"],
+    overlap: {
+      "Automobile Engineering": "65%",
+      "Industrial Engineering": "50%"
+    }
   },
   "Aerospace Engineering": {
-    tags: ["Aerodynamics", "Flight Mechanics", "Propulsion", "Aviation"],
-    description: "Focuses on the science and technology of aircraft, spacecraft, propulsion systems, and flight aerodynamics.",
-    careers: ["Aviation Maintenance Engineer", "Aerodynamics Analyst", "UAV/Drone Systems Engineer"],
+    tags: ["Aerodynamics", "Propulsion Systems", "Avionics", "Flight Dynamics"],
+    description: "Deals with the design, flight mechanics, structural dynamics, navigation electronics, and maintenance protocols of aircraft and aeronautical equipment.",
+    careers: ["Aeronautical Maintenance Engineer (CAAN)", "Avionics Specialist", "Drone/UAV Developer", "Aerodynamic Analyst"],
     overlap: {
-      "Mechanical Engineering": "60%",
-      "Electronics, Communication and Information Engineering": "35%",
-      "Computer Engineering": "30%"
+      "Mechanical Engineering": "55%",
+      "Electronics, Communication and Information Engineering": "30%"
     }
   },
   "Chemical Engineering": {
-    tags: ["Process Engineering", "Thermodynamics", "Materials Science", "Industrial Refining"],
-    description: "Applies physical and biological sciences to industrial processes that convert raw materials into chemical and pharmaceutical products.",
-    careers: ["Process Engineer", "Quality Control Specialist", "Refinery Engineer", "Environmental Safety Officer"],
+    tags: ["Process Chemistry", "Thermodynamics", "Materials Synthesis", "Biochemical"],
+    description: "Applies chemical, biochemical, and physical principles to transform raw materials into valuable industrial products safely and sustainably.",
+    careers: ["Process Engineer", "Polymer & Cement Specialist", "Environmental Safety Officer", "Quality Assurance Lead"],
     overlap: {
-      "Mechanical Engineering": "35%",
+      "Mechanical Engineering": "25%",
       "Civil Engineering": "15%"
     }
   },
   "Automobile Engineering": {
-    tags: ["Vehicle Dynamics", "IC & EV Engines", "Chassis Design", "Automotive Electronics"],
-    description: "Specialized branch of mechanical engineering centered on design, manufacture, and operation of ground vehicles and modern electric vehicles.",
-    careers: ["Automotive Engineer", "EV Powertrain Engineer", "Fleet Maintenance Manager"],
+    tags: ["Internal Combustion", "Electric Vehicles (EV)", "Chassis Design", "Diagnostics"],
+    description: "Focuses on vehicle propulsion, powertrain design, braking systems, battery technology, EV conversion, and vehicle safety electronics.",
+    careers: ["Automotive Design Engineer", "EV Fleet Operations Manager", "Vehicle Certification Inspector", "Workshop Director"],
     overlap: {
-      "Mechanical Engineering": "80%",
-      "Industrial Engineering": "50%",
-      "Electronics, Communication and Information Engineering": "30%"
+      "Mechanical Engineering": "65%",
+      "Electrical Engineering": "25%"
     }
   },
   "Industrial Engineering": {
-    tags: ["Operations Research", "Supply Chain", "Quality Assurance", "Factory Optimization"],
-    description: "Optimizes complex processes, supply chains, manufacturing workflows, and organizational productivity.",
-    careers: ["Operations Manager", "Supply Chain Analyst", "Industrial Production Engineer", "Quality Assurance Lead"],
+    tags: ["Operations Research", "Supply Chain", "Quality Control", "Ergonomics"],
+    description: "Optimizes complex processes, factory workflows, manufacturing assembly lines, ergonomic environments, and industrial supply logistics.",
+    careers: ["Operations Manager", "Supply Chain Analyst", "Quality Control Specialist (ISO)", "Lean Production Consultant"],
     overlap: {
-      "Mechanical Engineering": "70%",
+      "Mechanical Engineering": "50%",
       "Computer Engineering": "35%"
     }
   },
@@ -400,7 +324,7 @@ export const FACULTY_DATA = {
   }
 };
 
-export const FINANCIALS = {
+export const FINANCIALS: Record<string, FinancialPlan> = {
   Regular: { 
     type: "Regular (Government Subsidized)",
     tuition: "Rs. 63,087", 
@@ -431,7 +355,7 @@ export const FINANCIALS = {
   }
 };
 
-export const OFFICIAL_PORTALS = [
+export const OFFICIAL_PORTALS: OfficialPortal[] = [
   { name: "IOE Central Official Portal", url: "https://www.ioe.tu.edu.np/", type: "Official University Site", authority: "Tribhuvan University" },
   { name: "IOE Entrance Examination Board", url: "https://entrance.ioe.edu.np/", type: "Application & Results Portal", authority: "IOE Entrance Board" },
   { name: "Pulchowk Campus", url: "https://pcampus.edu.np/", type: "Constituent Campus", authority: "Lalitpur" },
@@ -441,3 +365,4 @@ export const OFFICIAL_PORTALS = [
   { name: "Chitwan Engineering Campus", url: "https://chec.edu.np/", type: "Constituent Campus", authority: "Chitwan" },
   { name: "IOE Official Notices Board", url: "https://www.ioe.tu.edu.np/notices", type: "Circulars & Notices", authority: "Dean's Office" }
 ];
+

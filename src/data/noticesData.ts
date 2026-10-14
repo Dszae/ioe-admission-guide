@@ -1,3 +1,5 @@
+import type { NoticeItem } from '../types';
+
 /**
  * IOE Entrance & Admission Notices Directory
  * 
@@ -7,7 +9,7 @@
  * Official Source: https://www.ioe.tu.edu.np/notices & https://entrance.ioe.edu.np/
  */
 
-export const NOTICES_DATA = [
+export const NOTICES_DATA: NoticeItem[] = [
   {
     id: "notice-2081-01",
     title: "IOE B.E. / B.Arch Entrance Examination Guidelines & CBT Information Booklet",
@@ -82,7 +84,7 @@ export const NOTICES_DATA = [
   }
 ];
 
-export const NOTICE_CATEGORIES = [
+export const NOTICE_CATEGORIES: string[] = [
   "All",
   "Admission List",
   "Quota Verification",
