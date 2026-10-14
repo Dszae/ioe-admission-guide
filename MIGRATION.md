@@ -2,7 +2,7 @@
 
 ## Architecture
 
-The project now uses Astro 7 with the official React and sitemap integrations, TypeScript 6 strict checking, and static output for all public routes. Public headings, explanations, tables, navigation, titles, canonical URLs, and JSON-LD are rendered by Astro in the initial response. Interactive predictor, calculator, and estimator controls are implemented in the new `AdmissionWorkspace.tsx` React island.
+The project now uses Astro 7 with the official React and sitemap integrations, TypeScript 6 strict checking, and static output for all public routes. Public headings, explanations, tables, navigation, titles, canonical URLs, and JSON-LD are rendered by Astro in the initial response. Interactive predictor, calculator, and admission tools are mounted in `App.tsx` React islands preserving the original visual UI and theme.
 
 The migration branch is `migrate/astro-react-typescript`. The original Vite implementation remains recoverable from `main` and the existing git history.
 

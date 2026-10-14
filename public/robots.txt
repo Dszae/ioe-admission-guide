@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ioe-admission.dipeshsapkota7.com.np/sitemap.xml
+User-agent: Googlebot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+Sitemap: https://ioe-admission.dipeshsapkota7.com.np/sitemap-index.xml
+Sitemap: https://ioe-admission.dipeshsapkota7.com.np/sitemap-0.xml

@@ -1,0 +1,230 @@
+import { useState, useEffect } from 'react';
+import Header from './Header';
+import Footer from './Footer';
+import RankPredictor from './RankPredictor';
+import CampusExplorer from './CampusExplorer';
+import NoticeTracker from './NoticeTracker';
+import PriorityGenerator from './PriorityGenerator';
+import StudentChecklist from './StudentChecklist';
+import CBTCalculator from './CBTCalculator';
+import ScoreEstimator from './ScoreEstimator';
+import AdmissionGuide from './AdmissionGuide';
+import FacultyCompare from './FacultyCompare';
+import AffiliatedColleges from './AffiliatedColleges';
+import FinancialsBreakdown from './FinancialsBreakdown';
+
+export type TabId = 
+  | 'predictor'
+  | 'profile'
+  | 'calculator'
+  | 'estimator'
+  | 'campuses'
+  | 'affiliated'
+  | 'compare'
+  | 'priority'
+  | 'guide'
+  | 'checklist'
+  | 'notices'
+  | 'financials';
+
+const SITE_ORIGIN = 'https://ioe-admission.dipeshsapkota7.com.np';
+
+const TAB_PATHS: Record<TabId, string> = {
+  predictor: '/predictor/',
+  profile: '/profile/',
+  calculator: '/calculator/',
+  estimator: '/estimator/',
+  campuses: '/campuses/',
+  affiliated: '/affiliated/',
+  compare: '/compare/',
+  priority: '/priority/',
+  guide: '/guide/',
+  checklist: '/checklist/',
+  notices: '/notices/',
+  financials: '/financials/'
+};
+
+const TAB_SEO: Record<TabId, [string, string]> = {
+  predictor: ['IOE Rank Predictor | IOE Admission Hub', 'Estimate IOE admission probability by merit rank, campus, program, fee category, quota, and merit-list phase using historical closing ranks.'],
+  profile: ['IOE Admission Hub Profile | Dipesh Sapkota', 'Learn about IOE Admission Hub, an independent Institute of Engineering admission guide created and maintained by Dipesh Sapkota.'],
+  calculator: ['IOE CBT Negative Marking Calculator | IOE Admission Hub', 'Calculate your IOE CBT net score out of 140 with the documented negative-marking rules and pass-threshold reference.'],
+  estimator: ['IOE Score-to-Rank Estimator | IOE Admission Hub', 'Estimate an IOE merit-rank bracket from your raw CBT score using historical score-to-rank reference curves.'],
+  campuses: ['IOE Campuses and Seat Matrix | IOE Admission Hub', 'Explore Pulchowk, Thapathali, WRC, ERC, and Chitwan Engineering Campus programs, facilities, and seat capacities.'],
+  affiliated: ['TU-Affiliated Engineering Colleges | IOE Admission Hub', 'Search TU-affiliated private engineering colleges, locations, programs, fee ranges, and reference cutoffs.'],
+  compare: ['Compare IOE Engineering Disciplines | IOE Admission Hub', 'Compare IOE engineering disciplines by curriculum overlap, technical domains, and career outcomes.'],
+  priority: ['IOE Priority Form Optimizer | IOE Admission Hub', 'Generate a balanced Reach, Target, and Safety preference sequence for IOE counseling from your merit rank.'],
+  guide: ['IOE Admission Guide and Counseling Handbook | IOE Admission Hub', 'Read the IOE admission roadmap, merit-list rounds, auto-upgrade rules, seat deposits, and document guidance.'],
+  checklist: ['IOE Admission Checklist | IOE Admission Hub', 'Track the IOE admission process from CBT registration through document verification with a private progress checklist.'],
+  notices: ['IOE Admission Notices and Circulars | IOE Admission Hub', 'Search IOE entrance notices, circulars, quota documents, merit lists, and campus admission updates.'],
+  financials: ['IOE Engineering Fees and Living Costs | IOE Admission Hub', 'Compare four-year tuition and estimated living costs across Regular, Full Fee, and affiliated engineering paths.']
+};
+
+const TAB_LABELS: Record<TabId, string> = {
+  predictor: 'Rank Predictor',
+  profile: 'Profile',
+  calculator: 'CBT Calculator',
+  estimator: 'Score-to-Rank Estimator',
+  campuses: 'Campuses and Seat Matrix',
+  affiliated: 'Affiliated Colleges',
+  compare: 'Compare Disciplines',
+  priority: 'Priority Optimizer',
+  guide: 'Admission Guide',
+  checklist: 'Admission Checklist',
+  notices: 'Admission Notices',
+  financials: 'Fees and Living Costs'
+};
+
+interface AppProps {
+  initialTab?: TabId;
+}
+
+export default function App({ initialTab = 'predictor' }: AppProps) {
+  const isDark = false;
+
+  useEffect(() => {
+    try {
+      const root = document.documentElement;
+      const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+      root.classList.remove('dark');
+      document.body.classList.remove('dark');
+      root.style.colorScheme = 'light';
+      if (themeColorMeta) themeColorMeta.setAttribute('content', '#1e40af');
+      localStorage.removeItem('theme');
+    } catch {}
+  }, []);
+
+  const [activeTab, setActiveTab] = useState<TabId>(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const tabParam = urlParams.get('tab') as TabId;
+        const validTabs: TabId[] = [
+          'predictor', 'profile', 'calculator', 'estimator', 
+          'campuses', 'affiliated', 'compare', 
+          'priority', 
+          'guide', 'checklist', 'notices', 'financials'
+        ];
+        if (tabParam && validTabs.includes(tabParam)) {
+          return tabParam;
+        }
+        const pathname = window.location.pathname;
+        const pathTab = (Object.entries(TAB_PATHS) as [TabId, string][]).find(
+          ([, path]) => path !== '/' && pathname === path
+        )?.[0];
+        if (pathTab) return pathTab;
+      } catch {}
+    }
+    return initialTab;
+  });
+
+  const [estimatorPreScore, setEstimatorPreScore] = useState('');
+
+  // Sync tab change with URL query parameter for shareable sitelinks
+  useEffect(() => {
+    try {
+      const url = new URL(window.location.href);
+      if (activeTab === 'predictor' && url.pathname === '/') return;
+      url.pathname = TAB_PATHS[activeTab] || TAB_PATHS.predictor;
+      url.search = '';
+      window.history.replaceState({}, '', `${url.pathname}${url.hash}`);
+    } catch {}
+  }, [activeTab]);
+
+  useEffect(() => {
+    const [title, description] = TAB_SEO[activeTab] || TAB_SEO.predictor;
+    const isHomepage = activeTab === 'predictor' && window.location.pathname === '/';
+    const tabUrl = `${SITE_ORIGIN}${isHomepage ? '/' : (TAB_PATHS[activeTab] || TAB_PATHS.predictor)}`;
+    const setMeta = (selector: string, value: string) => {
+      const element = document.querySelector(selector);
+      if (element) element.setAttribute('content', value);
+    };
+
+    document.title = title;
+    setMeta('meta[name="description"]', description);
+    setMeta('meta[property="og:title"]', title);
+    setMeta('meta[property="og:description"]', description);
+    setMeta('meta[property="og:url"]', tabUrl);
+    setMeta('meta[property="twitter:title"]', title);
+    setMeta('meta[property="twitter:description"]', description);
+    setMeta('meta[property="twitter:url"]', tabUrl);
+
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', tabUrl);
+  }, [activeTab]);
+
+  const handleSendToEstimator = (score: string) => {
+    setEstimatorPreScore(score);
+    setActiveTab('estimator');
+  };
+
+  return (
+    <div className={`min-h-screen flex flex-col items-center justify-between transition-colors duration-200 ${
+      isDark ? 'dark bg-slate-900 text-slate-100' : 'bg-slate-50 text-slate-800'
+    } pt-20 sm:pt-24 lg:pt-28 px-3 sm:px-6 lg:px-8 pb-8 sm:pb-12 font-sans print:bg-white print:text-black print:p-0`}>
+
+      {/* Fixed Navbar at Top */}
+      <Header 
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
+
+      {/* Main Container */}
+      <div className="w-full max-w-5xl relative z-10 flex-1 flex flex-col mt-2 sm:mt-4">
+
+        {/* Card Surface for Content */}
+        <div className={`w-full rounded-xl sm:rounded-2xl border transition-colors duration-200 p-3.5 sm:p-7 lg:p-8 print:border-none print:shadow-none print:bg-transparent print:p-0 ${
+          isDark 
+            ? 'bg-slate-800 border-slate-600 shadow-sm' 
+            : 'bg-white border-slate-200/90 shadow-2xs'
+        }`}>
+          <main id="main-content" tabIndex={-1} className="min-w-0 focus:outline-none">
+            <nav aria-label="Breadcrumb" className="mb-5 text-[11px] text-slate-500 dark:text-slate-400">
+              <ol className="flex flex-wrap items-center gap-1.5">
+                <li><a href="/" className="text-blue-700 hover:underline">IOE Admission Hub</a></li>
+                <li aria-hidden="true">/</li>
+                <li><a href="/profile/" className="text-blue-700 hover:underline">Dipesh Sapkota profile</a></li>
+                <li aria-hidden="true">/</li>
+                <li aria-current="page">{TAB_LABELS[activeTab] || 'Admission Tools'}</li>
+              </ol>
+            </nav>
+            <div className="flex items-center gap-3 mb-5 p-3 rounded-xl border border-slate-200 bg-slate-50 dark:bg-slate-800 dark:border-slate-700">
+              <img src="/ioe-logo.png" alt="IOE Admission Hub profile image" className="w-10 h-10 object-contain rounded-lg bg-white p-1" />
+              <p className="text-xs text-slate-600 dark:text-slate-300">IOE Admission Hub by <a href="/profile/" className="font-semibold text-blue-700 hover:underline">Dipesh Sapkota</a></p>
+            </div>
+            {activeTab === 'predictor' && <RankPredictor isDark={isDark} onNavigateTab={setActiveTab} />}
+            {activeTab === 'profile' && (
+              <article className="animate-fadeIn">
+                <img src="/ioe-logo.png" alt="IOE Admission Hub profile image" className="w-20 h-20 object-contain rounded-xl bg-blue-50 p-2 mb-4" />
+                <h1 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">IOE Admission Hub Profile</h1>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2">IOE Admission Hub by Dipesh Sapkota is an independent educational toolkit for Institute of Engineering, Tribhuvan University applicants in Nepal.</p>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-3">It provides IOE rank prediction, campus seat matrices, CBT scoring, priority planning, admission notices, fee references, and counseling guidance.</p>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-3">Created and maintained by <a href="https://www.dipeshsapkota7.com.np/" className="text-blue-700 hover:underline">Dipesh Sapkota</a>. This platform is not officially operated, affiliated with, or endorsed by Tribhuvan University or the Institute of Engineering.</p>
+              </article>
+            )}
+            
+            {activeTab === 'campuses' && <CampusExplorer isDark={isDark} onNavigateTab={setActiveTab} />}
+            {activeTab === 'notices' && <NoticeTracker isDark={isDark} />}
+            {activeTab === 'priority' && <PriorityGenerator isDark={isDark} onNavigateTab={setActiveTab} />}
+            {activeTab === 'checklist' && <StudentChecklist isDark={isDark} />}
+            {activeTab === 'calculator' && <CBTCalculator isDark={isDark} onSendToEstimator={handleSendToEstimator} onNavigateTab={setActiveTab} />}
+            {activeTab === 'estimator' && <ScoreEstimator isDark={isDark} initialScore={estimatorPreScore} />}
+            {activeTab === 'guide' && <AdmissionGuide isDark={isDark} />}
+            {activeTab === 'compare' && <FacultyCompare isDark={isDark} />}
+            {activeTab === 'affiliated' && <AffiliatedColleges isDark={isDark} />}
+            {activeTab === 'financials' && <FinancialsBreakdown isDark={isDark} />}
+          </main>
+        </div>
+
+      </div>
+
+      {/* Footer */}
+      <Footer isDark={isDark} showOfficialPortals={activeTab === 'predictor'} />
+
+    </div>
+  );
+}

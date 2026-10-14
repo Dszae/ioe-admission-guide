@@ -1,11 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import AdmissionWorkspace from '../components/AdmissionWorkspace';
-import { ADMISSION_METADATA, CAMPUS_DETAILS, CAMPUS_NAMES, CAMPUS_SEATS, CUTOFFS, OFFICIAL_PORTALS, AFFILIATED_COLLEGES, FACULTY_DATA, FINANCIALS } from '../data/admissionData.js';
-import { ADMISSION_CHECKLIST_ITEMS } from '../data/checklistData.js';
-import { NOTICES_DATA } from '../data/noticesData.js';
+import App, { type TabId } from '../components/App';
 
-const pages = {
+const pages: Record<string, [string, string, string]> = {
   profile: ['IOE Admission Hub Profile | Dipesh Sapkota', 'Profile of the independent IOE admission guide created by Dipesh Sapkota.', 'IOE Admission Hub profile'],
   predictor: ['IOE Rank Predictor and Historical Cutoffs | IOE Admission Hub', 'Compare IOE merit ranks with historical closing ranks by campus, program, fee category, and quota.', 'IOE rank predictor and historical closing ranks'],
   campuses: ['IOE Campuses and Seat Matrix | IOE Admission Hub', 'IOE constituent campus profiles, programs, facilities, and reference seat capacities.', 'IOE constituent campuses and seat matrix'],
@@ -19,36 +16,30 @@ const pages = {
   compare: ['Compare IOE Engineering Disciplines | IOE Admission Hub', 'Compare IOE engineering discipline focus areas and career directions.', 'Compare IOE engineering disciplines'],
   financials: ['IOE Engineering Fees and Living Costs | IOE Admission Hub', 'Compare reference tuition and living costs across IOE engineering paths.', 'IOE engineering fees and living costs']
 };
+
 export function getStaticPaths() {
-  return ['profile', 'predictor', 'campuses', 'calculator', 'estimator', 'priority', 'guide', 'checklist', 'notices', 'affiliated', 'compare', 'financials']
-    .map((slug) => ({ params: { slug }, props: { slug } }));
+  return [
+    'profile',
+    'predictor',
+    'campuses',
+    'calculator',
+    'estimator',
+    'priority',
+    'guide',
+    'checklist',
+    'notices',
+    'affiliated',
+    'compare',
+    'financials'
+  ].map((slug) => ({ params: { slug }, props: { slug } }));
 }
+
 const { slug } = Astro.props;
-const page = pages[slug as keyof typeof pages];
+const page = pages[slug] || pages.predictor;
 const [title, description, heading] = page;
-const campuses = Object.entries(CAMPUS_DETAILS) as [keyof typeof CAMPUS_DETAILS, (typeof CAMPUS_DETAILS)[keyof typeof CAMPUS_DETAILS]][];
-const cutoffs = Object.entries(CUTOFFS) as [keyof typeof CUTOFFS, (typeof CUTOFFS)[keyof typeof CUTOFFS]][];
 const site = 'https://ioe-admission.dipeshsapkota7.com.np';
-const interactiveTools = ['predictor', 'calculator', 'estimator'].includes(slug);
+const canonical = `${site}/${slug}/`;
 ---
-<Layout title={title} description={description} canonical={`${site}/${slug}/`} heading={heading} schemaType={slug === 'profile' ? 'ProfilePage' : 'WebPage'}>
-  <article class="public-page">
-    <p class="eyebrow">IOE Admission Hub</p>
-    <h1>{heading}</h1>
-    <p class="lede">{description} Verify current dates, fees, seats, and decisions with the official portals.</p>
-    {slug === 'profile' && <><h2>Independent educational toolkit</h2><p>IOE Admission Hub brings together rank prediction, campus seat references, CBT scoring, priority planning, notices, fees, and counseling guidance for Institute of Engineering applicants in Nepal. It is not officially operated, affiliated with, or endorsed by IOE or Tribhuvan University.</p></>}
-    {slug === 'calculator' && <><h2>Documented calculation rules</h2><p>{ADMISSION_METADATA.totalMarks}-mark, {ADMISSION_METADATA.durationHours}-hour CBT reference with a {ADMISSION_METADATA.passPercentage}% pass benchmark. Negative marking is {ADMISSION_METADATA.negativeMarking}. Blank answers do not add marks or penalty.</p></>}
-    {slug === 'estimator' && <><h2>Historical estimate, not an official rank</h2><p>Use the interactive estimator for a broad bracket only. Official results and merit ranks come from the IOE Entrance Examination Board.</p></>}
-    {slug === 'guide' && <><h2>Verify every deadline</h2><p>Prepare identity, academic, migration, character, and quota documents where applicable. Follow the current merit list, claim window, deposit, and campus verification notice published by IOE.</p></>}
-    {slug === 'checklist' && <><h2>Admission roadmap</h2><ol>{ADMISSION_CHECKLIST_ITEMS.map((item) => <li><strong>{item.title}</strong>: {item.description}</li>)}</ol></>}
-    {slug === 'notices' && <><h2>Source-linked notice directory</h2>{NOTICES_DATA.map((notice) => <section class="data-section"><h3>{notice.title}</h3><p>{notice.summary}</p><p><strong>{notice.authority}</strong> | {notice.academicYear} | {notice.publishedDate} | {notice.status}</p><a href={notice.sourceUrl}>View official source</a></section>)}</>}
-    {slug === 'campuses' && <><h2>Constituent campuses</h2>{campuses.map(([key, campus]) => <section class="data-section"><h3>{campus.fullName}</h3><p>{campus.description}</p><p>{campus.location} | {campus.totalSeats} reference seats | <a href={campus.website}>Campus portal</a></p><table><caption>{CAMPUS_NAMES[key]} seats</caption><thead><tr><th>Program</th><th>Regular</th><th>Full fee</th><th>Total</th></tr></thead><tbody>{CAMPUS_SEATS[key].map((seat) => <tr><td>{seat.program}</td><td>{seat.regular}</td><td>{seat.fullFee}</td><td>{seat.total}</td></tr>)}</tbody></table></section>)}</>}
-    {slug === 'predictor' && <><h2>Historical closing rank reference</h2><p>Historical cutoffs are benchmarks, not guarantees. They may change with demand, exam difficulty, quotas, and available seats.</p>{cutoffs.map(([campus, programs]) => <section class="data-section"><h3>{CAMPUS_NAMES[campus]}</h3><p>{Object.keys(programs).join(', ')}</p></section>)}</>}
-    {slug === 'priority' && <><h2>Preference planning</h2><p>Order choices by genuine preference. The optimizer groups historical options into planning bands; it cannot predict allocation or guarantee a seat.</p></>}
-    {slug === 'affiliated' && <><h2>Reference college list</h2><p>Confirm current affiliation, fees, and admission terms with each college.</p><ul>{AFFILIATED_COLLEGES.map((college) => <li><a href={college.website}>{college.name}</a> - {college.location}, {college.programs}</li>)}</ul></>}
-    {slug === 'compare' && <><h2>Discipline comparison</h2>{Object.entries(FACULTY_DATA).map(([name, faculty]) => <section class="data-section"><h3>{name}</h3><p>{faculty.description}</p><p><strong>Careers:</strong> {faculty.careers.join(', ')}</p></section>)}</>}
-    {slug === 'financials' && <><h2>Reference financials</h2><p>These are estimates and must be verified against current IOE or college notices.</p><table><thead><tr><th>Path</th><th>Tuition</th><th>Living</th><th>Total</th></tr></thead><tbody>{Object.values(FINANCIALS).map((item) => <tr><td>{item.type}</td><td>{item.tuition}</td><td>{item.living}</td><td>{item.total}</td></tr>)}</tbody></table></>}
-    <section class="source-note"><strong>Official verification:</strong> {OFFICIAL_PORTALS.map((portal) => <a href={portal.url}>{portal.name}</a>)}</section>
-  </article>
-  {interactiveTools && <section class="interactive-shell"><h2>Interactive tool</h2><p>Use the focused tool below. Results are estimates and remain in your browser.</p><AdmissionWorkspace client:load initialTool={slug as 'predictor' | 'calculator' | 'estimator'} /></section>}
+<Layout title={title} description={description} canonical={canonical} heading={heading} schemaType={slug === 'profile' ? 'ProfilePage' : 'WebPage'}>
+  <App client:load initialTab={slug as TabId} />
 </Layout>
