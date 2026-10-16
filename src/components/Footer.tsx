@@ -13,57 +13,96 @@ export default function Footer({ isDark = false, showOfficialPortals = false }: 
       <div className={`p-4 sm:p-6 rounded-xl border mb-5 transition-colors ${
         isDark ? 'bg-slate-800 border-slate-600' : 'bg-white border-slate-200 shadow-2xs'
       }`}>
-        <h2 className="text-xs font-semibold text-slate-800 dark:text-slate-100 mb-3 flex items-center gap-2">
+        <h2 className="text-xs font-semibold text-slate-800 dark:text-slate-100 mb-3.5 flex items-center gap-2">
           <svg className="w-4 h-4 text-blue-600 dark:text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
           </svg>
           Direct Links to Official Portals
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
-          {OFFICIAL_PORTALS.map((portal) => (
-            <a
-              key={portal.name}
-              href={portal.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 hover:bg-white dark:hover:bg-slate-700 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-xs transition-all flex items-center justify-between gap-3 group min-h-[52px]"
-            >
-              <div className="min-w-0">
-                <span className="font-medium text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 truncate block">
-                  {portal.name}
-                </span>
-                <span className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 block truncate">
-                  {portal.authority}
-                </span>
-              </div>
-              <svg className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </a>
-          ))}
+
+        <div className="space-y-4">
+          {/* Central Portals */}
+          <div>
+            <h3 className="text-xs font-semibold text-slate-600 dark:text-slate-400 mb-2">
+              Central &amp; Examination Portals
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 text-xs">
+              {OFFICIAL_PORTALS.slice(0, 5).map((portal) => (
+                <a
+                  key={portal.name}
+                  href={portal.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 hover:bg-white dark:hover:bg-slate-700 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-xs transition-all flex items-center justify-between gap-3 group min-h-[52px]"
+                >
+                  <div className="min-w-0">
+                    <span className="font-medium text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 truncate block">
+                      {portal.name}
+                    </span>
+                    <span className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 block truncate">
+                      {portal.authority}
+                    </span>
+                  </div>
+                  <svg className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Constituent Campus Portals */}
+          <div>
+            <h3 className="text-xs font-semibold text-slate-600 dark:text-slate-400 mb-2">
+              Constituent Campus Admission Portals
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 text-xs">
+              {OFFICIAL_PORTALS.slice(5).map((portal) => (
+                <a
+                  key={portal.name}
+                  href={portal.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 hover:bg-white dark:hover:bg-slate-700 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-xs transition-all flex items-center justify-between gap-3 group min-h-[52px]"
+                >
+                  <div className="min-w-0">
+                    <span className="font-medium text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 truncate block">
+                      {portal.name}
+                    </span>
+                    <span className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 block truncate">
+                      {portal.authority}
+                    </span>
+                  </div>
+                  <svg className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
       )}
 
       <nav aria-label="IOE Admission Hub sections" className="mb-5 border-y border-slate-200 dark:border-slate-800 py-4">
-        <h2 className="text-xs font-semibold text-slate-800 dark:text-slate-200 mb-2.5">
+        <h2 className="text-xs font-semibold text-slate-800 dark:text-slate-200 mb-3">
           Explore IOE Admission Hub
         </h2>
-        <div className="flex flex-wrap gap-x-5 gap-y-2.5 text-xs leading-normal">
-          <a href="/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline font-semibold">IOE Admission Hub Home</a>
-          <a href="/predictor/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline font-bold">IOE Predictor</a>
-          <a href="/syllabus/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline font-medium">IOE Entrance Syllabus</a>
-          <a href="/guide/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">IOE Admission Guide</a>
-          <a href="/campuses/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">IOE Campuses &amp; Seats</a>
-          <a href="/financials/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">IOE Fee Structure</a>
-          <a href="/calculator/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">IOE CBT Calculator</a>
-          <a href="/priority/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">IOE Priority Optimizer</a>
-          <a href="/estimator/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">Score-to-Rank Curve</a>
-          <a href="/affiliated/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">TU-Affiliated Colleges</a>
-          <a href="/compare/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">Compare Disciplines</a>
-          <a href="/checklist/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">Admission Checklist</a>
-          <a href="/notices/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">Official Notices</a>
-          <a href="/profile/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">Dipesh Sapkota</a>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-6 gap-y-2 text-xs leading-normal">
+          <a href="/" className="py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline font-semibold truncate">IOE Admission Hub Home</a>
+          <a href="/predictor/" className="py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline font-bold truncate">IOE Predictor</a>
+          <a href="/syllabus/" className="py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline font-medium truncate">IOE Entrance Syllabus</a>
+          <a href="/calculator/" className="py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline truncate">IOE CBT Calculator</a>
+          <a href="/estimator/" className="py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline truncate">Score-to-Rank Curve</a>
+          <a href="/priority/" className="py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline truncate">IOE Priority Optimizer</a>
+          <a href="/campuses/" className="py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline truncate">IOE Campuses &amp; Seats</a>
+          <a href="/financials/" className="py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline truncate">IOE Fee Structure</a>
+          <a href="/guide/" className="py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline truncate">IOE Admission Guide</a>
+          <a href="/affiliated/" className="py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline truncate">TU-Affiliated Colleges</a>
+          <a href="/compare/" className="py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline truncate">Compare Disciplines</a>
+          <a href="/checklist/" className="py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline truncate">Admission Checklist</a>
+          <a href="/notices/" className="py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline truncate">Official Notices</a>
+          <a href="/profile/" className="py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline truncate">Dipesh Sapkota</a>
         </div>
       </nav>
 

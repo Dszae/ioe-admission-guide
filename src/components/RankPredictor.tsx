@@ -194,13 +194,13 @@ export default function RankPredictor({ isDark = false, onNavigateTab }: RankPre
       </div>
 
       {/* Mode & Phase Switches */}
-      <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 mb-5 sm:mb-6 print:hidden">
+      <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 p-3.5 sm:p-4 rounded-2xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-700/80 mb-5 sm:mb-6 print:hidden">
         {/* Scope Segmented Control */}
         <div>
           <span id="scope-control-label" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-            Prediction Scope
+            1. Prediction Scope
           </span>
-          <div className="grid grid-cols-2 p-1 rounded-xl bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-500" role="group" aria-labelledby="scope-control-label">
+          <div className="grid grid-cols-2 p-1 rounded-xl bg-slate-200/80 dark:bg-slate-700 border border-slate-300/80 dark:border-slate-600" role="group" aria-labelledby="scope-control-label">
             <button 
               type="button"
               onClick={() => handleModeChange('campus')} 
@@ -208,7 +208,7 @@ export default function RankPredictor({ isDark = false, onNavigateTab }: RankPre
               className={`px-3 py-1.5 text-xs rounded-lg transition-all text-center ${
                 mode === 'campus' 
                   ? 'bg-blue-600 text-white font-bold shadow-xs' 
-                  : 'font-medium text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-slate-600/50'
+                  : 'font-medium text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-600/50'
               }`}
             >
               By Specific Campus
@@ -220,7 +220,7 @@ export default function RankPredictor({ isDark = false, onNavigateTab }: RankPre
               className={`px-3 py-1.5 text-xs rounded-lg transition-all text-center ${
                 mode === 'cross' 
                   ? 'bg-blue-600 text-white font-bold shadow-xs' 
-                  : 'font-medium text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-slate-600/50'
+                  : 'font-medium text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-600/50'
               }`}
             >
               Compare All
@@ -229,11 +229,11 @@ export default function RankPredictor({ isDark = false, onNavigateTab }: RankPre
         </div>
 
         {/* Phase Round Segmented Control */}
-        <div>
+        <div className="sm:border-l sm:border-slate-200 dark:sm:border-slate-700 sm:pl-6">
           <span id="phase-control-label" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-            Merit List Round
+            2. Merit List Round
           </span>
-          <div className="grid grid-cols-2 p-1 rounded-xl bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-500" role="group" aria-labelledby="phase-control-label">
+          <div className="grid grid-cols-2 p-1 rounded-xl bg-slate-200/80 dark:bg-slate-700 border border-slate-300/80 dark:border-slate-600" role="group" aria-labelledby="phase-control-label">
             <button 
               type="button"
               onClick={() => setPhase(1)} 
@@ -241,7 +241,7 @@ export default function RankPredictor({ isDark = false, onNavigateTab }: RankPre
               className={`px-3 py-1.5 text-xs rounded-lg transition-all text-center ${
                 phase === 1 
                   ? 'bg-blue-600 text-white font-bold shadow-xs' 
-                  : 'font-medium text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-slate-600/50'
+                  : 'font-medium text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-600/50'
               }`}
             >
               Phase 1 First List
@@ -253,7 +253,7 @@ export default function RankPredictor({ isDark = false, onNavigateTab }: RankPre
               className={`px-3 py-1.5 text-xs rounded-lg transition-all text-center ${
                 phase === 2 
                   ? 'bg-blue-600 text-white font-bold shadow-xs' 
-                  : 'font-medium text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-slate-600/50'
+                  : 'font-medium text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-600/50'
               }`}
             >
               Final List (Estimated)
