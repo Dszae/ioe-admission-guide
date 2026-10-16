@@ -2,6 +2,8 @@ import { describe, it, expect } from 'vitest';
 import { 
   calculateNetCbtScore, 
   calculateDetailedCbtScore, 
+  validateQuickCbtMarks,
+  validateDetailedCbtQuestions,
   getScoreToRankEstimate, 
   getPhaseCutoff, 
   getProbability 
@@ -15,6 +17,21 @@ describe('CBT Score Calculation', () => {
     expect(calculateNetCbtScore(0, 10)).toBe(0);
     // max capping at 140
     expect(calculateNetCbtScore(150, 0)).toBe(140);
+  });
+
+  it('rejects impossible marks where sum exceeds 140 full marks (e.g. 130 correct + 30 wrong)', () => {
+    const val = validateQuickCbtMarks(130, 30);
+    expect(val.isValid).toBe(false);
+    expect(val.error).toContain('Mathematical impossibility');
+
+    expect(() => calculateNetCbtScore(130, 30)).toThrow('Attempted marks sum (160) exceeds the exam full marks of 140');
+  });
+
+  it('rejects negative marks or marks > 140 in Quick mode', () => {
+    expect(validateQuickCbtMarks(-5, 10).isValid).toBe(false);
+    expect(validateQuickCbtMarks(10, -2).isValid).toBe(false);
+    expect(validateQuickCbtMarks(145, 0).isValid).toBe(false);
+    expect(validateQuickCbtMarks(0, 145).isValid).toBe(false);
   });
 
   it('correctly computes detailed 1-mark and 2-mark question penalty', () => {
@@ -31,6 +48,47 @@ describe('CBT Score Calculation', () => {
     expect(res.totalPenalty).toBe(2);
     expect(res.isQualified).toBe(true);
     expect(res.totalAttempted).toBe(80);
+  });
+
+  it('validates 1-mark (max 60) and 2-mark (max 40) question boundaries', () => {
+    // 50 correct + 20 wrong = 70 questions in Section A (limit is 60)
+    const valSec1 = validateDetailedCbtQuestions({ correct1: 50, wrong1: 20 });
+    expect(valSec1.isValid).toBe(false);
+    expect(valSec1.error).toContain('Section A limit exceeded');
+
+    // 35 correct + 15 wrong = 50 questions in Section B (limit is 40)
+    const valSec2 = validateDetailedCbtQuestions({ correct2: 35, wrong2: 15 });
+    expect(valSec2.isValid).toBe(false);
+    expect(valSec2.error).toContain('Section B limit exceeded');
+  });
+
+  it('handles absolute worst-case scenario: all 100 questions incorrect', () => {
+    // 0 correct, 60 incorrect 1-mark, 40 incorrect 2-mark
+    const res = calculateDetailedCbtScore({
+      correct1: 0,
+      wrong1: 60,
+      correct2: 0,
+      wrong2: 40
+    });
+    // Total penalty = 60 * 0.1 + 40 * 0.2 = 6 + 8 = 14
+    expect(res.totalPenalty).toBe(14);
+    expect(res.totalNet).toBe(0); // non-negative floor
+    expect(res.totalAttempted).toBe(100);
+    expect(res.isQualified).toBe(false);
+  });
+
+  it('handles perfect score: all 100 questions correct', () => {
+    const res = calculateDetailedCbtScore({
+      correct1: 60,
+      wrong1: 0,
+      correct2: 40,
+      wrong2: 0
+    });
+    expect(res.totalNet).toBe(140);
+    expect(res.totalPenalty).toBe(0);
+    expect(res.totalAttempted).toBe(100);
+    expect(res.isQualified).toBe(true);
+    expect(res.percentage).toBe(100);
   });
 
   it('detects disqualification when score is below 40% (56 marks)', () => {

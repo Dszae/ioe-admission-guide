@@ -9,6 +9,47 @@ import type {
  * Based on official IOE Examination Guidelines & Historical Cutoff Benchmarks
  */
 
+export interface ValidationResult {
+  isValid: boolean;
+  error?: string;
+}
+
+/**
+ * Validates raw positive and negative marks for Quick Marks Mode.
+ * Total marks in the IOE CBT exam is 140.
+ */
+export function validateQuickCbtMarks(correctMarks: number | string, wrongMarks: number | string): ValidationResult {
+  const cStr = String(correctMarks).trim();
+  const wStr = String(wrongMarks).trim();
+
+  if (cStr === '' || wStr === '') {
+    return { isValid: false, error: 'Please enter both positive marks and incorrect marks.' };
+  }
+
+  const c = parseFloat(cStr);
+  const w = parseFloat(wStr);
+
+  if (isNaN(c) || isNaN(w)) {
+    return { isValid: false, error: 'Please enter valid numeric values for marks.' };
+  }
+  if (c < 0 || w < 0) {
+    return { isValid: false, error: 'Marks cannot be negative. Please enter values of 0 or greater.' };
+  }
+  if (c > 140) {
+    return { isValid: false, error: `Positive marks (${c}) cannot exceed total exam full marks of 140.` };
+  }
+  if (w > 140) {
+    return { isValid: false, error: `Incorrect marks (${w}) cannot exceed total exam full marks of 140.` };
+  }
+  if (c + w > 140) {
+    return { 
+      isValid: false, 
+      error: `Mathematical impossibility: Sum of correct marks (${c}) + incorrect marks (${w}) is ${Number((c + w).toFixed(2))}, which exceeds the total exam marks (140). Attempted marks cannot exceed full marks.` 
+    };
+  }
+  return { isValid: true };
+}
+
 /**
  * Calculates net score for IOE Computer Based Test (CBT)
  * 10% negative marking penalty:
@@ -22,6 +63,13 @@ import type {
 export function calculateNetCbtScore(correctMarks: number | string, wrongMarks: number | string): number {
   const c = Math.max(0, Math.min(140, parseFloat(String(correctMarks)) || 0));
   const w = Math.max(0, Math.min(140, parseFloat(String(wrongMarks)) || 0));
+
+  if (c + w > 140) {
+    throw new Error(
+      `Attempted marks sum (${c + w}) exceeds the exam full marks of 140.`
+    );
+  }
+
   const net = Math.max(0, c - (w * 0.1));
   return Number(net.toFixed(2));
 }
@@ -31,6 +79,55 @@ export interface DetailedCbtScoreParams {
   wrong1?: number | string;
   correct2?: number | string;
   wrong2?: number | string;
+}
+
+/**
+ * Validates question counts for Section A (60 1-mark questions) and Section B (40 2-mark questions)
+ */
+export function validateDetailedCbtQuestions({
+  correct1 = 0,
+  wrong1 = 0,
+  correct2 = 0,
+  wrong2 = 0
+}: DetailedCbtScoreParams): ValidationResult {
+  const parseVal = (v: number | string) => {
+    const s = String(v).trim();
+    return s === '' ? 0 : Number(s);
+  };
+
+  const c1 = parseVal(correct1);
+  const w1 = parseVal(wrong1);
+  const c2 = parseVal(correct2);
+  const w2 = parseVal(wrong2);
+
+  if (isNaN(c1) || isNaN(w1) || isNaN(c2) || isNaN(w2)) {
+    return { isValid: false, error: 'Please enter valid integer numbers for question counts.' };
+  }
+  if (c1 < 0 || w1 < 0 || c2 < 0 || w2 < 0) {
+    return { isValid: false, error: 'Question counts cannot be negative.' };
+  }
+  if (!Number.isInteger(c1) || !Number.isInteger(w1) || !Number.isInteger(c2) || !Number.isInteger(w2)) {
+    return { isValid: false, error: 'Question counts must be whole integers (no fractional questions).' };
+  }
+  if (c1 + w1 > 60) {
+    return { 
+      isValid: false, 
+      error: `Section A limit exceeded: ${c1} correct + ${w1} incorrect = ${c1 + w1} questions. Section A only has 60 1-mark questions.` 
+    };
+  }
+  if (c2 + w2 > 40) {
+    return { 
+      isValid: false, 
+      error: `Section B limit exceeded: ${c2} correct + ${w2} incorrect = ${c2 + w2} questions. Section B only has 40 2-mark questions.` 
+    };
+  }
+  if (c1 + w1 + c2 + w2 > 100) {
+    return {
+      isValid: false,
+      error: `Total exam question limit exceeded: Attempted ${c1 + w1 + c2 + w2} questions out of maximum 100 questions.`
+    };
+  }
+  return { isValid: true };
 }
 
 /**
@@ -45,16 +142,27 @@ export function calculateDetailedCbtScore({
   correct2 = 0, 
   wrong2 = 0 
 }: DetailedCbtScoreParams): DetailedCbtScoreResult {
+  const validation = validateDetailedCbtQuestions({ correct1, wrong1, correct2, wrong2 });
+  if (!validation.isValid) {
+    throw new Error(validation.error);
+  }
+
   const c1 = Math.max(0, parseInt(String(correct1), 10) || 0);
   const w1 = Math.max(0, parseInt(String(wrong1), 10) || 0);
   const c2 = Math.max(0, parseInt(String(correct2), 10) || 0);
   const w2 = Math.max(0, parseInt(String(wrong2), 10) || 0);
 
-  const score1 = Math.max(0, (c1 * 1.0) - (w1 * 0.1));
-  const score2 = Math.max(0, (c2 * 2.0) - (w2 * 0.2));
-  const totalNet = Math.max(0, Math.min(140, score1 + score2));
+  const rawPositive = (c1 * 1.0) + (c2 * 2.0);
+  const penalty1 = w1 * 0.1;
+  const penalty2 = w2 * 0.2;
+  const totalPenalty = penalty1 + penalty2;
+
+  const score1 = Math.max(0, (c1 * 1.0) - penalty1);
+  const score2 = Math.max(0, (c2 * 2.0) - penalty2);
+
+  // Overall examination net score
+  const totalNet = Math.max(0, Math.min(140, rawPositive - totalPenalty));
   const totalAttempted = c1 + w1 + c2 + w2;
-  const totalPenalty = (w1 * 0.1) + (w2 * 0.2);
   const isQualified = totalNet >= 56; // 40% minimum passing mark (56 / 140)
 
   return {

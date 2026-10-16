@@ -148,10 +148,12 @@ export interface ProbabilityResult {
 }
 
 export interface PriorityOption {
-  campus: CampusKey;
+  campus: CampusKey | 'Affiliated';
   prog: string;
-  fee: FeeType;
+  fee: FeeType | 'Affiliated' | 'Private';
   cutoff: number;
+  campusName?: string;
+  notes?: string;
 }
 
 export interface PriorityLists {

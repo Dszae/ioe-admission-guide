@@ -77,7 +77,15 @@ export default function RankPredictor({ isDark = false, onNavigateTab }: RankPre
 
   const runPrediction = (rankNum: string, targetForm = form, targetMode = mode, targetPhase = phase) => {
     const rank = parseInt(rankNum, 10);
-    if (!rank || rank < 1) return;
+    if (!rank || rank < 1 || rank > 20000) {
+      setSingleResult({ 
+        status: 'INVALID RANK', 
+        message: 'Please enter a valid entrance merit rank between 1 and 20,000.',
+        color: 'red'
+      });
+      setMultiResult(null);
+      return;
+    }
 
     if (targetMode === 'campus') {
       const feeData = CUTOFFS[targetForm.college]?.[targetForm.program]?.[targetForm.feeType];
