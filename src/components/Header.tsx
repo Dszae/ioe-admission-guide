@@ -12,7 +12,6 @@ interface NavGroup {
 }
 
 const SECONDARY_TABS: NavItem[] = [
-  { id: 'syllabus', label: 'Entrance Syllabus' },
   { id: 'estimator', label: 'Score Curve' },
   { id: 'affiliated', label: 'Affiliated Colleges' },
   { id: 'compare', label: 'Compare Disciplines' },
