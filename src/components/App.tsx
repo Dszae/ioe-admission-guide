@@ -46,7 +46,7 @@ const TAB_PATHS: Record<TabId, string> = {
 
 const TAB_SEO: Record<TabId, [string, string]> = {
   predictor: ['IOE Rank Predictor & Historical Cutoffs | IOE Admission Hub', 'Compare IOE entrance merit ranks with official historical closing ranks by campus, program, fee category, and quota on IOE Admission Hub.'],
-  profile: ['Dipesh Sapkota | Creator of IOE Admission Hub', 'Learn about Dipesh Sapkota, the creator and builder of IOE Admission Hub, an independent entrance guide and rank intelligence platform in Nepal.'],
+  profile: ['Dipesh Sapkota | Creator of IOE Predictor & IOE Admission Hub', 'Learn about Dipesh Sapkota, the software developer and creator of IOE Predictor and IOE Admission Hub in Nepal. Explore his background, developer story, and engineering tools.'],
   calculator: ['IOE CBT Score Calculator (Negative Marking) | IOE Admission Hub', 'Calculate IOE CBT marks, duration, 40% pass threshold, and exact 10% negative-marking penalty rules on IOE Admission Hub.'],
   estimator: ['IOE Score-to-Rank Estimator & Merit Curves | IOE Admission Hub', 'Estimate historical IOE entrance merit-rank brackets from raw CBT exam scores using benchmark percentile curves on IOE Admission Hub.'],
   campuses: ['IOE Constituent Campuses & 2,040 Seat Matrix | IOE Admission Hub', 'IOE constituent campus profiles, programs, facilities, and 2,040 seat matrix capacities for Pulchowk, Thapathali, WRC, ERC, and Chitwan.'],
@@ -292,11 +292,11 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
                         Dipesh Sapkota
                       </h1>
                       <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-200 border border-blue-200 dark:border-blue-700">
-                        Creator & Builder
+                        Creator of IOE Predictor
                       </span>
                     </div>
-                    <p className="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300">
-                      Creator of IOE Admission Hub
+                    <p className="text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400">
+                      Software Developer &amp; Creator of IOE Predictor (IOE Admission Hub)
                     </p>
                     <p className="text-xs text-slate-500 dark:text-slate-400 flex items-center justify-center sm:justify-start gap-1.5 pt-0.5">
                       <svg className="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -304,25 +304,106 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
                       <span>Kathmandu, Nepal</span>
+                      <span className="text-slate-300 dark:text-slate-600">•</span>
+                      <a href="https://www.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer author" className="text-blue-600 dark:text-blue-400 hover:underline">
+                        dipeshsapkota7.com.np
+                      </a>
                     </p>
                   </div>
                 </div>
 
-                {/* First-Person Bio */}
+                {/* Knowledge Graph / Fact Matrix for Search Engines */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                  <div className="p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/90 dark:border-slate-700 shadow-2xs">
+                    <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Creator</p>
+                    <p className="font-bold text-slate-900 dark:text-white mt-1 text-sm">Dipesh Sapkota</p>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400">Developer &amp; Engineer</p>
+                  </div>
+                  <div className="p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/90 dark:border-slate-700 shadow-2xs">
+                    <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Flagship Project</p>
+                    <p className="font-bold text-blue-600 dark:text-blue-400 mt-1 text-sm">IOE Predictor</p>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400">IOE Admission Hub</p>
+                  </div>
+                  <div className="p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/90 dark:border-slate-700 shadow-2xs">
+                    <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Focus Area</p>
+                    <p className="font-bold text-slate-900 dark:text-white mt-1 text-sm">IOE Entrance</p>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400">CBT &amp; Rank Analytics</p>
+                  </div>
+                  <div className="p-3.5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/90 dark:border-slate-700 shadow-2xs">
+                    <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Official Links</p>
+                    <p className="font-bold text-slate-900 dark:text-white mt-1 text-sm">Portfolio &amp; GitHub</p>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400">@Dszae</p>
+                  </div>
+                </div>
+
+                {/* About Dipesh Sapkota & Why IOE Predictor Was Built */}
                 <div className="space-y-4 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed bg-white dark:bg-slate-800/60 p-5 sm:p-7 rounded-2xl border border-slate-200/90 dark:border-slate-700">
                   <h2 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-blue-600"></span>
-                    Why I Built IOE Admission Hub
+                    About Dipesh Sapkota &amp; The IOE Predictor Story
                   </h2>
                   <p>
-                    When preparing for and navigating the Institute of Engineering (IOE) entrance admissions under Tribhuvan University, I experienced first-hand how fragmented, confusing, and stressful the whole journey could be. Critical information — such as past cutoff ranks, how negative marking actually reduces net scores, how campus seat quotas are distributed, and how auto-upgrade counseling works — was scattered across buried notices and unofficial social media groups.
+                    Hi, I'm <strong>Dipesh Sapkota</strong>, a software developer and technology enthusiast based in Kathmandu, Nepal. I built and maintain <strong>IOE Predictor</strong> (also known as <strong>IOE Admission Hub</strong>) — the dedicated, free platform built to help thousands of engineering aspirants navigate the Institute of Engineering (IOE) entrance exam under Tribhuvan University.
                   </p>
                   <p>
-                    I built <strong>IOE Admission Hub</strong> to fix that. My mission was to create a single, clean, fast, and completely free platform where any applicant can calculate their CBT score with official negative marking rules, explore seat matrices across all 5 constituent campuses, and make confident, informed counseling decisions.
+                    When navigating IOE entrance preparation myself, I observed a huge information gap. Aspirants faced extreme uncertainty:
+                  </p>
+                  <ul className="list-disc pl-5 space-y-1.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
+                    <li>How negative marking (10% penalty on 1-mark and 2-mark questions) truly impacts final merit scores.</li>
+                    <li>How past cutoff ranks across Pulchowk, Thapathali, WRC (Paschimanchal), ERC (Purwanchal), and Chitwan Campus actually correlate with entrance marks.</li>
+                    <li>How the strict <strong>upward-only auto-upgrade system</strong> during IOE counseling works, and why submitting an unoptimized priority order can lock a student out of their dream faculty.</li>
+                  </ul>
+                  <p>
+                    To solve this, I designed and engineered IOE Predictor with mathematical rigor, empirical cutoff modeling, and transparent student-friendly tools: the <em>CBT Score Calculator</em>, <em>IOE Rank Predictor</em>, and <em>Smart Priority Sequence Optimizer</em>.
                   </p>
                   <p>
-                    This is an independent, non-commercial initiative built for high school graduates and engineering aspirants across Nepal. Every tool, calculation formula, and historical dataset on this site is maintained with care and transparency.
+                    This is an independent open-web initiative designed for Nepalese students. Every algorithm, cutoff dataset, and validation rule is developed and continuously audited by me.
                   </p>
+                </div>
+
+                {/* Search Engine FAQ Section */}
+                <div className="space-y-3 p-5 sm:p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/90 dark:border-slate-700">
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <svg className="w-4 h-4 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Frequently Asked Questions about IOE Predictor &amp; Dipesh Sapkota
+                  </h3>
+                  <div className="space-y-3 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                    <div>
+                      <h4 className="font-bold text-slate-800 dark:text-slate-100">Who created the IOE Predictor?</h4>
+                      <p className="mt-0.5">
+                        IOE Predictor was created and developed by <strong>Dipesh Sapkota</strong>, a software developer from Nepal, to provide free, accurate CBT scoring, rank forecasting, and counseling priority tools for Tribhuvan University engineering applicants.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-800 dark:text-slate-100">What is IOE Predictor (IOE Admission Hub)?</h4>
+                      <p className="mt-0.5">
+                        It is an analytical web application featuring a 140-mark CBT exam score calculator with exact 10% negative marking penalty checks, an empirical score-to-rank curve estimator, and an automated priority setting sequence generator.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-800 dark:text-slate-100">Where can I find Dipesh Sapkota's official profiles?</h4>
+                      <p className="mt-0.5">
+                        You can visit Dipesh Sapkota's official personal website at{' '}
+                        <a href="https://www.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer author" className="text-blue-600 dark:text-blue-400 underline">
+                          dipeshsapkota7.com.np
+                        </a>
+                        , his GitHub at{' '}
+                        <a href="https://github.com/Dszae" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline">
+                          github.com/Dszae
+                        </a>
+                        , LinkedIn at{' '}
+                        <a href="https://www.linkedin.com/in/dipesh-sapkota/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline">
+                          linkedin.com/in/dipesh-sapkota
+                        </a>
+                        , or Instagram at{' '}
+                        <a href="https://instagram.com/dsz.ae" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline">
+                          @dsz.ae
+                        </a>.
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Sitelinks to Core Tools */}

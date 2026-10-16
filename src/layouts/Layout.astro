@@ -72,11 +72,21 @@ const structuredData: {
       '@type': 'Person',
       '@id': 'https://www.dipeshsapkota7.com.np/#author',
       name: 'Dipesh Sapkota',
-      alternateName: ['Dipesh Sapkota', 'Dszae'],
+      alternateName: [
+        'Dipesh Sapkota',
+        'Dszae',
+        'Dipesh Sapkota IOE',
+        'Dipesh Sapkota IOE Predictor',
+        'Dipesh Sapkota Nepal'
+      ],
       url: 'https://www.dipeshsapkota7.com.np/',
       image: `${site}/dipesh-sapkota-profile.webp`,
-      jobTitle: 'Creator & Builder of IOE Admission Hub',
-      description: 'Creator and builder of IOE Admission Hub, an independent entrance and admission guide for Institute of Engineering (TU) applicants in Nepal.',
+      jobTitle: 'Software Developer & Creator of IOE Predictor',
+      description: 'Dipesh Sapkota is the software developer, creator, and builder of IOE Predictor and IOE Admission Hub, Nepal\'s premier entrance score and rank prediction intelligence platform for Tribhuvan University engineering applicants.',
+      nationality: {
+        '@type': 'Country',
+        name: 'Nepal'
+      },
       worksFor: {
         '@type': 'Organization',
         name: 'IOE Admission Hub',
@@ -89,11 +99,14 @@ const structuredData: {
         'https://www.dipeshsapkota7.com.np/'
       ],
       knowsAbout: [
+        'IOE Predictor',
+        'IOE Rank Predictor',
+        'IOE Admission Hub',
         'Tribhuvan University IOE Entrance Examination',
-        'IOE Merit Rank Prediction & Counseling',
         'IOE CBT Scoring & Negative Marking Rules',
-        'IOE Campus Quotas & 2,040 Seats Matrix',
-        'Student Counseling Guidance & Verification'
+        'IOE Cutoff Predictions & Priority Counseling Optimization',
+        'Pulchowk Campus Admissions & Seat Matrices',
+        'Software Engineering and Web Development in Nepal'
       ]
     },
     {
@@ -400,6 +413,47 @@ if (isGuide) {
     ]
   });
 }
+
+if (isProfile) {
+  structuredData['@graph'].push({
+    '@type': 'FAQPage',
+    '@id': `${canonical}#faq`,
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Who created the IOE Predictor?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The IOE Predictor and IOE Admission Hub platform were created and developed by Dipesh Sapkota, a software developer from Kathmandu, Nepal, to provide transparent cutoff analytics, CBT score calculators, and counseling intelligence for Tribhuvan University engineering applicants.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'Who is Dipesh Sapkota?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Dipesh Sapkota is a software engineer, web developer, and the creator of IOE Admission Hub (IOE Predictor). He specializes in building accessible, data-driven web tools for education and open-source applications in Nepal.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'What tools has Dipesh Sapkota built for IOE applicants?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Dipesh Sapkota developed the IOE Merit Rank Predictor, CBT Negative Marking Calculator (140-mark test engine), Priority Form Sequence Optimizer, Score-to-Rank Estimator, 2,040 Constituent Seat Matrix Explorer, and Fee Structure Breakdown.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'How can I connect with Dipesh Sapkota?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'You can connect with Dipesh Sapkota via his official website (https://www.dipeshsapkota7.com.np/), GitHub (@Dszae), LinkedIn (in/dipesh-sapkota), and Instagram (@dsz.ae).'
+        }
+      }
+    ]
+  });
+}
 ---
 <!doctype html>
 <html lang="en">
@@ -427,7 +481,7 @@ if (isGuide) {
     <meta name="author" content="Dipesh Sapkota" />
     <meta name="creator" content="Dipesh Sapkota" />
     <meta name="publisher" content="Dipesh Sapkota" />
-    <meta name="keywords" content="IOE, IOE Admission, IOE Admission Hub, IOE Entrance, IOE Rank Predictor, IOE Pulchowk, IOE Cutoff, IOE CBT Calculator, IOE Fee Structure, IOE Syllabus, IOE Counseling, Institute of Engineering Nepal, Tribhuvan University IOE, Dipesh Sapkota" />
+    <meta name="keywords" content={isProfile ? "Dipesh Sapkota, Dipesh Sapkota IOE, Dipesh Sapkota IOE Predictor, IOE Predictor Creator, Who created IOE Predictor, IOE Admission Hub Creator, Dipesh Sapkota Developer Nepal, Dszae, IOE Rank Predictor Dipesh" : "IOE, IOE Admission, IOE Admission Hub, IOE Entrance, IOE Rank Predictor, IOE Pulchowk, IOE Cutoff, IOE CBT Calculator, IOE Fee Structure, IOE Syllabus, IOE Counseling, Institute of Engineering Nepal, Tribhuvan University IOE, Dipesh Sapkota"} />
     <meta name="geo.region" content="NP" />
     <meta name="geo.placename" content="Kathmandu, Nepal" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
