@@ -26,7 +26,7 @@ const NAV_GROUPS: NavGroup[] = [
   {
     title: 'Rank, CBT & Syllabus',
     items: [
-      { id: 'predictor', label: 'Rank Predictor' },
+      { id: 'predictor', label: 'IOE Predictor' },
       { id: 'syllabus', label: 'IOE Entrance Syllabus' },
       { id: 'calculator', label: 'CBT Marks Calculator' },
       { id: 'estimator', label: 'Score-to-Rank Curve' }
@@ -192,7 +192,7 @@ export default function Header({
           {/* Center: Desktop Shortcut Navigation with More Dropdown */}
           <nav className="hidden lg:flex items-center gap-1" aria-label="Quick Navigation">
             {([
-              { id: 'predictor', label: 'Predictor', title: 'IOE Rank Predictor & Cutoffs' },
+              { id: 'predictor', label: 'IOE Predictor', title: 'IOE Predictor — Official Rank & Cutoff Intelligence' },
               { id: 'syllabus', label: 'Syllabus', title: 'IOE Entrance Exam Syllabus & Marks' },
               { id: 'calculator', label: 'Calculator', title: 'IOE CBT Score Calculator' },
               { id: 'campuses', label: 'Campuses', title: 'IOE Constituent Campuses & 2,040 Seats' },

@@ -175,15 +175,21 @@ export default function RankPredictor({ isDark = false, onNavigateTab }: RankPre
     <div className="animate-fadeIn">
       
       {/* Title */}
-      <div className="mb-6">
-        <h1 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white print:text-black">
-          Admission Rank Probability Predictor
+      <div className="mb-6 space-y-1.5">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+            Tribhuvan University • Institute of Engineering
+          </span>
+        </div>
+        <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white print:text-black">
+          IOE Predictor — Entrance Rank &amp; Cutoff Intelligence
         </h1>
-        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
-          Estimate your admission probability based on verified historical closing merit ranks across constituent engineering campuses.
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+          The dedicated <strong>IOE Predictor</strong> engine. Forecast your admission probability across Pulchowk, Thapathali, WRC, ERC, and Chitwan based on verified multi-round closing ranks.
         </p>
-        <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-2">
-          IOE Admission Hub is an independent tool created by <a href="https://www.dipeshsapkota7.com.np/" className="text-blue-700 hover:underline">Dipesh Sapkota</a>.
+        <p className="text-[11px] text-slate-500 dark:text-slate-400 pt-0.5">
+          Created and maintained by <a href="https://www.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer author" className="text-blue-700 dark:text-blue-400 hover:underline font-semibold">Dipesh Sapkota</a>.
         </p>
       </div>
 

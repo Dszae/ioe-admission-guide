@@ -49,7 +49,8 @@ export default function Footer({ isDark = false, showOfficialPortals = false }: 
         </h2>
         <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
           <a href="/" className="text-blue-700 hover:text-blue-900 hover:underline font-semibold">IOE Admission Hub Home</a>
-          <a href="/predictor/" className="text-blue-700 hover:text-blue-900 hover:underline font-medium">IOE Rank Predictor</a>
+          <a href="/predictor/" className="text-blue-700 hover:text-blue-900 hover:underline font-bold">IOE Predictor</a>
+          <a href="/syllabus/" className="text-blue-700 hover:text-blue-900 hover:underline font-medium">IOE Entrance Syllabus</a>
           <a href="/guide/" className="text-blue-700 hover:text-blue-900 hover:underline">IOE Admission Guide</a>
           <a href="/campuses/" className="text-blue-700 hover:text-blue-900 hover:underline">IOE Campuses & Seats</a>
           <a href="/financials/" className="text-blue-700 hover:text-blue-900 hover:underline">IOE Fee Structure</a>
