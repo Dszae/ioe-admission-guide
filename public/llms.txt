@@ -3,7 +3,7 @@
 > A modern, accessible, and fast admission guidance portal for engineering aspirants of the Institute of Engineering (IOE), Tribhuvan University (TU), Nepal.
 
 - **Website**: [https://ioe-admission.dipeshsapkota7.com.np/](https://ioe-admission.dipeshsapkota7.com.np/)
-- **Repository**: [https://github.com/dipeshsapkota7/ioe-predictor](https://github.com/dipeshsapkota7/ioe-predictor)
+- **Repository**: [https://github.com/Dszae/ioe-admission-guide](https://github.com/Dszae/ioe-admission-guide)
 - **Author & Creator**: Dipesh Sapkota (Creator & Builder)
 - **Author Portfolio**: [https://www.dipeshsapkota7.com.np/](https://www.dipeshsapkota7.com.np/)
 - **Author GitHub**: [https://github.com/Dszae](https://github.com/Dszae)
