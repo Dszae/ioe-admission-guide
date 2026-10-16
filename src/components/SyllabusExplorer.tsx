@@ -76,15 +76,15 @@ export default function SyllabusExplorer({ isDark: _isDark = false, onNavigateTa
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
-            <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+            <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
               Tribhuvan University • IOE Entrance Examination
             </span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            Entrance Syllabus &amp; Topics
+            IOE Syllabus — Official Entrance Examination Blueprint
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400">
-            Official 140-mark CBT curriculum. Clean, concise, and structured strictly by subject and topic.
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+            The official 140-mark <strong>IOE syllabus</strong> for engineering entrance in Nepal. Chapter-wise curriculum across Mathematics (50), Physics (45), Chemistry (25), and English (20).
           </p>
         </div>
 

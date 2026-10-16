@@ -17,6 +17,7 @@
 ## Direct Sitelinks & HTML Pages
 - [IOE Admission Hub Mainpage](https://ioe-admission.dipeshsapkota7.com.np/)
 - [IOE Rank Predictor](https://ioe-admission.dipeshsapkota7.com.np/predictor/)
+- [IOE Entrance Syllabus & Blueprint](https://ioe-admission.dipeshsapkota7.com.np/syllabus/)
 - [IOE Campuses and Seat Matrix](https://ioe-admission.dipeshsapkota7.com.np/campuses/)
 - [IOE CBT Calculator](https://ioe-admission.dipeshsapkota7.com.np/calculator/)
 - [IOE Score-to-Rank Estimator](https://ioe-admission.dipeshsapkota7.com.np/estimator/)

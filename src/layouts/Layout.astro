@@ -413,6 +413,63 @@ if (isPredictor || isCalculator) {
   });
 }
 
+if (canonical === `${site}/`) {
+  structuredData['@graph'].push({
+    '@type': 'FAQPage',
+    '@id': `${canonical}#faq`,
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What is IOE and IOE Admission?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'IOE stands for Institute of Engineering, Tribhuvan University, the premier engineering institution in Nepal. IOE Admission refers to the centralized merit-based counseling process for allocating 2,040 constituent seats across Pulchowk, Thapathali, Pashchimanchal (WRC), Purwanchal (ERC), and Chitwan campuses based on the entrance Computer-Based Test (CBT).'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'What is the IOE Predictor and how does it predict admission cutoffs?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The IOE Predictor (available at https://ioe-admission.dipeshsapkota7.com.np/predictor/) is an entrance rank forecasting algorithm created by Dipesh Sapkota. It compares an applicant\'s merit rank against verified historical closing ranks across all campuses, programs, and quotas to determine admission probability.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'What is IOE Admission Hub?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'IOE Admission Hub is a free, centralized educational portal by Dipesh Sapkota providing engineering aspirants in Nepal with the IOE Predictor, official IOE entrance syllabus, CBT marks calculator with negative marking, 2,040 campus seat matrices, fee structures, and priority counseling optimization.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'What is the official IOE Entrance Examination syllabus and question pattern?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The official IOE entrance examination is a 2-hour Computer-Based Test (CBT) carrying 140 full marks with 100 questions: Mathematics (50 marks), Physics (45 marks), Chemistry (25 marks), and English (20 marks). It features a 10% negative marking penalty (-0.1 for 1-mark and -0.2 for 2-mark questions) and requires 40% (56 marks) to pass.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'How can I calculate my IOE CBT marks and entrance rank?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'You can use the IOE CBT Calculator (https://ioe-admission.dipeshsapkota7.com.np/calculator/) to compute your exact net score with negative marking penalty, and the IOE Predictor (https://ioe-admission.dipeshsapkota7.com.np/predictor/) to estimate your admission chances into constituent campuses.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'Who built and maintains IOE Admission Hub and IOE Predictor?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'IOE Admission Hub and IOE Predictor were engineered and developed by Dipesh Sapkota, a software developer from Kathmandu, Nepal, to provide open-source, accurate entrance and cutoff intelligence for engineering students.'
+        }
+      }
+    ]
+  });
+}
+
 if (canonical.includes('/predictor/')) {
   structuredData['@graph'].push({
     '@type': 'FAQPage',
