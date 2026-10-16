@@ -1,18 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import RankPredictor from './RankPredictor';
-import CampusExplorer from './CampusExplorer';
-import NoticeTracker from './NoticeTracker';
-import PriorityGenerator from './PriorityGenerator';
-import StudentChecklist from './StudentChecklist';
-import CBTCalculator from './CBTCalculator';
-import ScoreEstimator from './ScoreEstimator';
-import AdmissionGuide from './AdmissionGuide';
-import FacultyCompare from './FacultyCompare';
-import AffiliatedColleges from './AffiliatedColleges';
-import FinancialsBreakdown from './FinancialsBreakdown';
-import SyllabusExplorer from './SyllabusExplorer';
+
+const CampusExplorer = lazy(() => import('./CampusExplorer'));
+const NoticeTracker = lazy(() => import('./NoticeTracker'));
+const PriorityGenerator = lazy(() => import('./PriorityGenerator'));
+const StudentChecklist = lazy(() => import('./StudentChecklist'));
+const CBTCalculator = lazy(() => import('./CBTCalculator'));
+const ScoreEstimator = lazy(() => import('./ScoreEstimator'));
+const AdmissionGuide = lazy(() => import('./AdmissionGuide'));
+const FacultyCompare = lazy(() => import('./FacultyCompare'));
+const AffiliatedColleges = lazy(() => import('./AffiliatedColleges'));
+const FinancialsBreakdown = lazy(() => import('./FinancialsBreakdown'));
+const SyllabusExplorer = lazy(() => import('./SyllabusExplorer'));
 
 export type TabId = 
   | 'predictor'
@@ -222,6 +223,9 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
                       <img
                         src="/dipesh-sapkota-profile.webp"
                         alt="Dipesh Sapkota"
+                        width="112"
+                        height="112"
+                        decoding="async"
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
                       {/* Interactive Social Links Overlay on Photo Hover */}
@@ -589,17 +593,24 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
               </article>
             )}
             
-            {activeTab === 'campuses' && <CampusExplorer isDark={isDark} onNavigateTab={setActiveTab} />}
-            {activeTab === 'notices' && <NoticeTracker isDark={isDark} />}
-            {activeTab === 'priority' && <PriorityGenerator isDark={isDark} onNavigateTab={setActiveTab} />}
-            {activeTab === 'checklist' && <StudentChecklist isDark={isDark} />}
-            {activeTab === 'calculator' && <CBTCalculator isDark={isDark} onSendToEstimator={handleSendToEstimator} onNavigateTab={setActiveTab} />}
-            {activeTab === 'estimator' && <ScoreEstimator isDark={isDark} initialScore={estimatorPreScore} />}
-            {activeTab === 'guide' && <AdmissionGuide isDark={isDark} />}
-            {activeTab === 'compare' && <FacultyCompare isDark={isDark} />}
-            {activeTab === 'affiliated' && <AffiliatedColleges isDark={isDark} />}
-            {activeTab === 'financials' && <FinancialsBreakdown isDark={isDark} />}
-            {activeTab === 'syllabus' && <SyllabusExplorer isDark={isDark} onNavigateTab={setActiveTab} />}
+            <Suspense fallback={
+              <div className="py-12 flex flex-col items-center justify-center gap-3 text-slate-500 dark:text-slate-400">
+                <div className="w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full animate-spin" />
+                <span className="text-xs font-medium">Loading admission module...</span>
+              </div>
+            }>
+              {activeTab === 'campuses' && <CampusExplorer isDark={isDark} onNavigateTab={setActiveTab} />}
+              {activeTab === 'notices' && <NoticeTracker isDark={isDark} />}
+              {activeTab === 'priority' && <PriorityGenerator isDark={isDark} onNavigateTab={setActiveTab} />}
+              {activeTab === 'checklist' && <StudentChecklist isDark={isDark} />}
+              {activeTab === 'calculator' && <CBTCalculator isDark={isDark} onSendToEstimator={handleSendToEstimator} onNavigateTab={setActiveTab} />}
+              {activeTab === 'estimator' && <ScoreEstimator isDark={isDark} initialScore={estimatorPreScore} />}
+              {activeTab === 'guide' && <AdmissionGuide isDark={isDark} />}
+              {activeTab === 'compare' && <FacultyCompare isDark={isDark} />}
+              {activeTab === 'affiliated' && <AffiliatedColleges isDark={isDark} />}
+              {activeTab === 'financials' && <FinancialsBreakdown isDark={isDark} />}
+              {activeTab === 'syllabus' && <SyllabusExplorer isDark={isDark} onNavigateTab={setActiveTab} />}
+            </Suspense>
 
             {/* Bottom Breadcrumbs & Author Attribution */}
             {activeTab !== 'profile' && (
@@ -616,9 +627,16 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
 
                 <div className="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-slate-50 dark:bg-slate-800 dark:border-slate-700">
                   <img 
-                    src="/dipesh-sapkota-profile.webp" 
+                    src="/dipesh-sapkota-thumb.webp" 
                     alt="Dipesh Sapkota — Creator of IOE Admission Hub" 
+                    width="40"
+                    height="40"
+                    loading="lazy"
+                    decoding="async"
                     className="w-10 h-10 object-cover rounded-lg shadow-2xs border border-slate-200 dark:border-slate-600 shrink-0" 
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = "/dipesh-sapkota-profile.webp";
+                    }}
                   />
                   <div className="min-w-0 flex-1">
                     <p className="text-xs text-slate-700 dark:text-slate-200">

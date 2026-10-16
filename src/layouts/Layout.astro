@@ -624,10 +624,14 @@ if (isSyllabus) {
     <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM summary" />
     <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full context for AI agents" />
 
-    <!-- Google Fonts: Manrope & Plus Jakarta Sans -->
+    <!-- Google Fonts: Manrope & Plus Jakarta Sans (Non-render-blocking with preload) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" />
+    </noscript>
 
     <title>{title}</title>
     <meta name="title" content={title} />

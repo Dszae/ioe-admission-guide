@@ -161,11 +161,15 @@ export default function Header({
               className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center p-1.5 shadow-2xs shrink-0 hover:border-blue-500 dark:hover:border-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <img 
-                src="/ioe-logo.png" 
+                src="/ioe-logo.webp" 
                 alt="Tribhuvan University IOE Emblem" 
                 className="w-full h-full object-contain"
+                width="40"
+                height="48"
+                loading="eager"
+                decoding="async"
                 onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = "/ioe logo.png";
+                  (e.currentTarget as HTMLImageElement).src = "/ioe-logo.png";
                 }}
               />
             </a>
