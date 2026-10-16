@@ -10,9 +10,9 @@ export default function AdmissionGuide({ isDark = false }: AdmissionGuideProps) 
       
       <div className="mb-5 sm:mb-6">
         <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
-          <h2 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white print:text-black">
-            IOE Engineering Admission Handbook & Counseling Procedure
-          </h2>
+          <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white print:text-black tracking-tight">
+            IOE Engineering Admission Handbook &amp; Counseling Procedure
+          </h1>
           <span className="text-[11px] font-semibold px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/50">
             Verified 2083/084 Cycle
           </span>

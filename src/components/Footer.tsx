@@ -19,56 +19,58 @@ export default function Footer({ isDark = false, showOfficialPortals = false }: 
           </svg>
           Direct Links to Official Portals
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
           {OFFICIAL_PORTALS.map((portal) => (
             <a
               key={portal.name}
               href={portal.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 sm:p-2.5 rounded-lg border border-slate-200 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-400 bg-slate-50 dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 transition-all flex flex-col justify-between group"
+              className="p-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 hover:bg-white dark:hover:bg-slate-700 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-xs transition-all flex items-center justify-between gap-3 group min-h-[52px]"
             >
-              <span className="font-medium text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-300 line-clamp-1">
-                {portal.name}
-              </span>
-              <span className="text-[11px] text-slate-600 dark:text-slate-300 mt-1 inline-flex items-center gap-1">
-                <span>{portal.authority}</span>
-                <svg className="w-2.5 h-2.5 opacity-80 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </span>
+              <div className="min-w-0">
+                <span className="font-medium text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 truncate block">
+                  {portal.name}
+                </span>
+                <span className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 block truncate">
+                  {portal.authority}
+                </span>
+              </div>
+              <svg className="w-3.5 h-3.5 text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
             </a>
           ))}
         </div>
       </div>
       )}
 
-      <nav aria-label="IOE Admission Hub sections" className="mb-5 border-y border-slate-200 py-4">
-        <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-700 mb-2.5">
+      <nav aria-label="IOE Admission Hub sections" className="mb-5 border-y border-slate-200 dark:border-slate-800 py-4">
+        <h2 className="text-xs font-semibold text-slate-800 dark:text-slate-200 mb-2.5">
           Explore IOE Admission Hub
         </h2>
-        <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
-          <a href="/" className="text-blue-700 hover:text-blue-900 hover:underline font-semibold">IOE Admission Hub Home</a>
-          <a href="/predictor/" className="text-blue-700 hover:text-blue-900 hover:underline font-bold">IOE Predictor</a>
-          <a href="/syllabus/" className="text-blue-700 hover:text-blue-900 hover:underline font-medium">IOE Entrance Syllabus</a>
-          <a href="/guide/" className="text-blue-700 hover:text-blue-900 hover:underline">IOE Admission Guide</a>
-          <a href="/campuses/" className="text-blue-700 hover:text-blue-900 hover:underline">IOE Campuses & Seats</a>
-          <a href="/financials/" className="text-blue-700 hover:text-blue-900 hover:underline">IOE Fee Structure</a>
-          <a href="/calculator/" className="text-blue-700 hover:text-blue-900 hover:underline">IOE CBT Calculator</a>
-          <a href="/priority/" className="text-blue-700 hover:text-blue-900 hover:underline">IOE Priority Optimizer</a>
-          <a href="/estimator/" className="text-blue-700 hover:text-blue-900 hover:underline">Score-to-Rank Curve</a>
-          <a href="/affiliated/" className="text-blue-700 hover:text-blue-900 hover:underline">TU-Affiliated Colleges</a>
-          <a href="/compare/" className="text-blue-700 hover:text-blue-900 hover:underline">Compare Disciplines</a>
-          <a href="/checklist/" className="text-blue-700 hover:text-blue-900 hover:underline">Admission Checklist</a>
-          <a href="/notices/" className="text-blue-700 hover:text-blue-900 hover:underline">Official Notices</a>
-          <a href="/profile/" className="text-blue-700 hover:text-blue-900 hover:underline">Dipesh Sapkota</a>
+        <div className="flex flex-wrap gap-x-5 gap-y-2.5 text-xs leading-normal">
+          <a href="/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline font-semibold">IOE Admission Hub Home</a>
+          <a href="/predictor/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline font-bold">IOE Predictor</a>
+          <a href="/syllabus/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline font-medium">IOE Entrance Syllabus</a>
+          <a href="/guide/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">IOE Admission Guide</a>
+          <a href="/campuses/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">IOE Campuses &amp; Seats</a>
+          <a href="/financials/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">IOE Fee Structure</a>
+          <a href="/calculator/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">IOE CBT Calculator</a>
+          <a href="/priority/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">IOE Priority Optimizer</a>
+          <a href="/estimator/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">Score-to-Rank Curve</a>
+          <a href="/affiliated/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">TU-Affiliated Colleges</a>
+          <a href="/compare/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">Compare Disciplines</a>
+          <a href="/checklist/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">Admission Checklist</a>
+          <a href="/notices/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">Official Notices</a>
+          <a href="/profile/" className="inline-block py-1 text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 hover:underline">Dipesh Sapkota</a>
         </div>
       </nav>
 
       {/* Disclaimers & Credits */}
       <div className="space-y-4 text-xs leading-relaxed border-t border-slate-200 dark:border-slate-800 pt-5">
         
-        <div className="p-3.5 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 text-[11px] text-slate-700 dark:text-slate-200">
+        <div className="p-3.5 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-600 text-xs text-slate-700 dark:text-slate-200">
           <strong className="text-slate-900 dark:text-white block mb-0.5">
             Academic Affiliation Disclaimer:
           </strong>
@@ -84,8 +86,8 @@ export default function Footer({ isDark = false, showOfficialPortals = false }: 
             <p className="font-semibold text-slate-800 dark:text-slate-200">
               © {new Date().getFullYear()} <a href="/" className="hover:text-blue-600 transition-colors">IOE Admission Hub</a>. All rights reserved.
             </p>
-            <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
-              Official fees & guidelines referenced from IOE Booklet 2083 (2083/084 intake). Historical cutoff benchmarks referenced from IOE Archives. Created and engineered by{' '}
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              Official fees &amp; guidelines referenced from IOE Booklet 2083 (2083/084 intake). Historical cutoff benchmarks referenced from IOE Archives. Created and engineered by{' '}
               <a 
                 href="/profile/" 
                 className="font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-colors"

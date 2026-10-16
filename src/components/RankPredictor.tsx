@@ -178,7 +178,7 @@ export default function RankPredictor({ isDark = false, onNavigateTab }: RankPre
       <div className="mb-6 space-y-1.5">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
-          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+          <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
             Tribhuvan University • Institute of Engineering
           </span>
         </div>
@@ -188,63 +188,77 @@ export default function RankPredictor({ isDark = false, onNavigateTab }: RankPre
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
           The dedicated <strong>IOE Predictor</strong> engine. Forecast your admission probability across Pulchowk, Thapathali, WRC, ERC, and Chitwan based on verified multi-round closing ranks.
         </p>
-        <p className="text-[11px] text-slate-500 dark:text-slate-400 pt-0.5">
+        <p className="text-xs text-slate-500 dark:text-slate-400 pt-0.5">
           Created and maintained by <a href="https://www.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer author" className="text-blue-700 dark:text-blue-400 hover:underline font-semibold">Dipesh Sapkota</a>.
         </p>
       </div>
 
       {/* Mode & Phase Switches */}
-      <div className="grid sm:grid-cols-2 gap-2.5 sm:gap-4 mb-5 sm:mb-6 print:hidden">
+      <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 mb-5 sm:mb-6 print:hidden">
         {/* Scope Segmented Control */}
-        <div className="grid grid-cols-2 p-1 rounded-xl bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-500" role="group" aria-label="Prediction Scope">
-          <button 
-            type="button"
-            onClick={() => handleModeChange('campus')} 
-            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all text-center ${
-              mode === 'campus' 
-                ? 'bg-white dark:bg-slate-500 text-slate-900 dark:text-white shadow-xs' 
-                : 'text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white'
-            }`}
-          >
-            By Specific Campus
-          </button>
-          <button 
-            type="button"
-            onClick={() => handleModeChange('cross')} 
-            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all text-center ${
-              mode === 'cross' 
-                ? 'bg-white dark:bg-slate-500 text-slate-900 dark:text-white shadow-xs' 
-                : 'text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white'
-            }`}
-          >
-            Compare All
-          </button>
+        <div>
+          <span id="scope-control-label" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            Prediction Scope
+          </span>
+          <div className="grid grid-cols-2 p-1 rounded-xl bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-500" role="group" aria-labelledby="scope-control-label">
+            <button 
+              type="button"
+              onClick={() => handleModeChange('campus')} 
+              aria-pressed={mode === 'campus'}
+              className={`px-3 py-1.5 text-xs rounded-lg transition-all text-center ${
+                mode === 'campus' 
+                  ? 'bg-blue-600 text-white font-bold shadow-xs' 
+                  : 'font-medium text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-slate-600/50'
+              }`}
+            >
+              By Specific Campus
+            </button>
+            <button 
+              type="button"
+              onClick={() => handleModeChange('cross')} 
+              aria-pressed={mode === 'cross'}
+              className={`px-3 py-1.5 text-xs rounded-lg transition-all text-center ${
+                mode === 'cross' 
+                  ? 'bg-blue-600 text-white font-bold shadow-xs' 
+                  : 'font-medium text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-slate-600/50'
+              }`}
+            >
+              Compare All
+            </button>
+          </div>
         </div>
 
         {/* Phase Round Segmented Control */}
-        <div className="grid grid-cols-2 p-1 rounded-xl bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-500" role="group" aria-label="Merit List Round">
-          <button 
-            type="button"
-            onClick={() => setPhase(1)} 
-            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all text-center ${
-              phase === 1 
-                ? 'bg-white dark:bg-slate-500 text-slate-900 dark:text-white shadow-xs' 
-                : 'text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white'
-            }`}
-          >
-            Phase 1 First List
-          </button>
-          <button 
-            type="button"
-            onClick={() => setPhase(2)} 
-            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all text-center ${
-              phase === 2 
-                ? 'bg-white dark:bg-slate-500 text-slate-900 dark:text-white shadow-xs' 
-                : 'text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white'
-            }`}
-          >
-            Final List (Estimated)
-          </button>
+        <div>
+          <span id="phase-control-label" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+            Merit List Round
+          </span>
+          <div className="grid grid-cols-2 p-1 rounded-xl bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-500" role="group" aria-labelledby="phase-control-label">
+            <button 
+              type="button"
+              onClick={() => setPhase(1)} 
+              aria-pressed={phase === 1}
+              className={`px-3 py-1.5 text-xs rounded-lg transition-all text-center ${
+                phase === 1 
+                  ? 'bg-blue-600 text-white font-bold shadow-xs' 
+                  : 'font-medium text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-slate-600/50'
+              }`}
+            >
+              Phase 1 First List
+            </button>
+            <button 
+              type="button"
+              onClick={() => setPhase(2)} 
+              aria-pressed={phase === 2}
+              className={`px-3 py-1.5 text-xs rounded-lg transition-all text-center ${
+                phase === 2 
+                  ? 'bg-blue-600 text-white font-bold shadow-xs' 
+                  : 'font-medium text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-slate-600/50'
+              }`}
+            >
+              Final List (Estimated)
+            </button>
+          </div>
         </div>
       </div>
 
@@ -455,48 +469,42 @@ export default function RankPredictor({ isDark = false, onNavigateTab }: RankPre
       {/* Internal Sitelinks & Connected Tools */}
       {onNavigateTab && (
         <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 print:hidden">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-3">
+          <h2 className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-3">
             Related Tools
-          </h3>
+          </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          <div className="flex flex-wrap gap-2">
             <button
               type="button"
               onClick={() => onNavigateTab('campuses')}
-              className="p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600 text-left transition-all group shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors shadow-2xs"
             >
-              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-300">
-                <span>Constituent Campuses</span>
-                <svg className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
+              <span>Constituent Campuses</span>
+              <svg className="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+              </svg>
             </button>
 
             <button
               type="button"
               onClick={() => onNavigateTab('priority')}
-              className="p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600 text-left transition-all group shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors shadow-2xs"
             >
-              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-300">
-                <span>Priority Planner</span>
-                <svg className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
+              <span>Priority Planner</span>
+              <svg className="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+              </svg>
             </button>
 
             <button
               type="button"
               onClick={() => onNavigateTab('calculator')}
-              className="p-3 rounded-xl border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 hover:bg-slate-50 dark:hover:bg-slate-600 text-left transition-all group shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors shadow-2xs"
             >
-              <div className="flex items-center justify-between text-xs font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-300">
-                <span>CBT Calculator</span>
-                <svg className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
+              <span>CBT Calculator</span>
+              <svg className="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+              </svg>
             </button>
           </div>
         </div>

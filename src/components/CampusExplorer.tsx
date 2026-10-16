@@ -30,9 +30,9 @@ export default function CampusExplorer({ isDark = false, onNavigateTab }: Campus
     <div className="animate-fadeIn">
       
       <div className="mb-5 sm:mb-6">
-        <h2 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white">
-          Constituent Campuses & Seat Matrix
-        </h2>
+        <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          Constituent Campuses &amp; Seat Matrix
+        </h1>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
           Explore official seat capacities, degree offerings, and campus profiles across all 5 constituent engineering colleges under TU IOE (Total 2,040 Seats).
         </p>

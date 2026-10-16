@@ -22,9 +22,9 @@ export default function NoticeTracker({ isDark = false }: NoticeTrackerProps) {
     <div className="animate-fadeIn">
       
       <div className="mb-6">
-        <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
-          Official Admission Notices & Circulars
-        </h2>
+        <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+          Official Admission Notices &amp; Circulars
+        </h1>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
           Direct tracker of official circulars, merit lists, quota notices, and entrance updates published by the IOE Entrance Board and constituent campus committees.
         </p>

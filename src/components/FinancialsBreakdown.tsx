@@ -9,9 +9,9 @@ export default function FinancialsBreakdown({ isDark: _isDark = false }: Financi
       {/* Header */}
       <div>
         <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
-          <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white print:text-black">
+          <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white print:text-black tracking-tight">
             4-Year Engineering Financial Investment Comparison
-          </h2>
+          </h1>
           <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/50">
             IOE Booklet 2083 (2083/084 Intake)
           </span>

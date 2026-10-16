@@ -44,9 +44,9 @@ export default function ScoreEstimator({ isDark = false, initialScore = '' }: Sc
     <div className="animate-fadeIn">
       
       <div className="mb-6">
-        <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white print:text-black">
+        <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white print:text-black tracking-tight">
           CBT Score-to-Rank Curve Estimator
-        </h2>
+        </h1>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
           Estimate your anticipated merit rank bracket from your raw CBT score (out of 140) before official rank lists are released.
         </p>

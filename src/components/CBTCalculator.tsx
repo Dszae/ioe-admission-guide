@@ -130,9 +130,9 @@ export default function CBTCalculator({ isDark = false, onSendToEstimator, onNav
     <div className="animate-fadeIn">
       
       <div className="mb-6">
-        <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white print:text-black">
+        <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white print:text-black tracking-tight">
           CBT Negative Marking Calculator
-        </h2>
+        </h1>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
           Calculate your exact net score for the 140-mark IOE Computer-Based Test taking into account the official 10% negative marking penalty.
         </p>

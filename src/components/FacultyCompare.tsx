@@ -43,9 +43,9 @@ export default function FacultyCompare({ isDark = false }: FacultyCompareProps) 
       {/* Header */}
       <div>
         <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
-          <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white print:text-black">
-            Engineering Faculty & Detailed Syllabus Comparator
-          </h2>
+          <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white print:text-black tracking-tight">
+            Engineering Faculty &amp; Detailed Syllabus Comparator
+          </h1>
           <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/50">
             12 Official IOE Disciplines
           </span>

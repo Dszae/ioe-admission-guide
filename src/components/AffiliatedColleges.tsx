@@ -19,9 +19,9 @@ export default function AffiliatedColleges({ isDark = false }: AffiliatedCollege
     <div className="animate-fadeIn">
       
       <div className="mb-5 sm:mb-6">
-        <h2 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white print:text-black">
+        <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white print:text-black tracking-tight">
           TU-Affiliated Engineering Colleges
-        </h2>
+        </h1>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
           Explore Tribhuvan University affiliated private engineering institutions in Kathmandu Valley for ranks outside constituent cutoff zones.
         </p>

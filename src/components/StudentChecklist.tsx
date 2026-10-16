@@ -51,9 +51,9 @@ export default function StudentChecklist({ isDark = false }: StudentChecklistPro
       
       <div className="mb-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-          <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
-            Admissions Roadmap & Action Checklist
-          </h2>
+          <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Admissions Roadmap &amp; Action Checklist
+          </h1>
           <button
             type="button"
             onClick={resetAll}
