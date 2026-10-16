@@ -483,9 +483,21 @@ if (isSyllabus) {
     description: 'Official chapter-wise syllabus for IOE entrance examination in Nepal: Mathematics (50 marks), Physics (45 marks), Chemistry (25 marks), and English (20 marks) totaling 140 marks.',
     provider: {
       '@type': 'Organization',
-      name: 'Institute of Engineering (IOE), Tribhuvan University'
+      name: 'Institute of Engineering (IOE), Tribhuvan University',
+      url: 'https://ioe.edu.np'
     },
-    educationalCredentialAwarded: 'IOE B.E. / B.Arch. Entrance Eligibility'
+    educationalCredentialAwarded: 'IOE B.E. / B.Arch. Entrance Eligibility',
+    hasCourseInstance: {
+      '@type': 'CourseInstance',
+      courseMode: 'Computer-Based Test (CBT)',
+      duration: 'PT2H'
+    },
+    about: [
+      { '@type': 'Thing', name: 'Mathematics for Engineering Entrance (50 Marks)' },
+      { '@type': 'Thing', name: 'Physics for Engineering Entrance (45 Marks)' },
+      { '@type': 'Thing', name: 'Chemistry for Engineering Entrance (25 Marks)' },
+      { '@type': 'Thing', name: 'English for Engineering Entrance (20 Marks)' }
+    ]
   });
 
   structuredData['@graph'].push({
@@ -494,7 +506,7 @@ if (isSyllabus) {
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'What is the syllabus for the IOE entrance examination?',
+        name: 'What is the official IOE syllabus for engineering entrance examination?',
         acceptedAnswer: {
           '@type': 'Answer',
           text: 'The IOE entrance examination syllabus covers 4 subjects: Mathematics (50 marks, 36 questions), Physics (45 marks, 33 questions), Chemistry (25 marks, 17 questions), and English (20 marks, 14 questions). Total exam marks is 140 with 100 multiple choice questions.'
@@ -502,7 +514,7 @@ if (isSyllabus) {
       },
       {
         '@type': 'Question',
-        name: 'What is the question pattern and marking scheme for IOE CBT?',
+        name: 'How are questions and marks distributed in the IOE entrance CBT exam?',
         acceptedAnswer: {
           '@type': 'Answer',
           text: 'The 2-hour CBT exam has 100 questions divided into Section A (60 questions of 1 mark each with 0.1 negative mark) and Section B (40 questions of 2 marks each with 0.2 negative mark). Passing requires at least 40% (56 marks).'
@@ -510,10 +522,34 @@ if (isSyllabus) {
       },
       {
         '@type': 'Question',
-        name: 'What are the highest weightage topics in IOE entrance?',
+        name: 'What topics are included in the IOE Mathematics syllabus?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'In Mathematics, Calculus and Coordinate Geometry contribute over 20 marks. In Physics, Mechanics and Electricity & Magnetism contribute over 24 marks. In Chemistry, Physical and Organic chemistry dominate with ~19 marks. English provides 20 high-efficiency marks.'
+          text: 'Mathematics (50 marks) covers: Set, Relations & Functions, Complex Numbers, Quadratic Equations, Sequences & Series, Permutations & Combinations, Binomial Theorem, Matrices & Determinants, Trigonometry, 2D Coordinate Geometry, Vectors, 3D Geometry, and Differential & Integral Calculus.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'What topics are included in the IOE Physics syllabus?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Physics (45 marks) covers: Units & Dimensions, Kinematics, Dynamics & Friction, Work & Energy, Gravitation, Rotational Dynamics, Oscillations (SHM), Fluid Mechanics, Heat & Thermodynamics, Optics, Wave Motion & Sound, Electrostatics, Current Electricity, Magnetism, AC Circuits, and Modern Physics.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'What topics are included in the IOE Chemistry syllabus?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Chemistry (25 marks) covers Physical Chemistry (Stoichiometry, Atomic Structure, Bonding, States, Equilibrium, Kinetics, Thermodynamics), Inorganic Chemistry (Periodic Trends, Non-metals, Metallurgy, Transition Elements), and Organic Chemistry (Nomenclature, Isomerism, Hydrocarbons, Functional Groups, Polymers).'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'What topics are included in the IOE English syllabus?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'English (20 marks) covers Grammar & Syntax (Tenses, Conditionals, Voice, Reported Speech, Subject-Verb Agreement, Prepositions), Vocabulary & Word Power (Synonyms, Antonyms, Idioms), and Reading Comprehension & Critical Analysis.'
         }
       }
     ]

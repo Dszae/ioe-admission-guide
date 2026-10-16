@@ -16,9 +16,9 @@ export default defineConfig({
         } else if (item.url.endsWith('/profile/')) {
           item.changefreq = 'weekly';
           item.priority = 0.95;
-        } else if (item.url.endsWith('/predictor/') || item.url.endsWith('/calculator/')) {
+        } else if (item.url.endsWith('/predictor/') || item.url.endsWith('/calculator/') || item.url.endsWith('/syllabus/')) {
           item.changefreq = 'daily';
-          item.priority = 0.9;
+          item.priority = 0.95;
         }
         return item;
       }
