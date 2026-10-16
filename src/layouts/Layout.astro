@@ -16,6 +16,7 @@ const isCalculator = canonical.includes('/calculator/');
 const isPredictor = canonical.includes('/predictor/') || canonical === `${site}/`;
 const isGuide = canonical.includes('/guide/');
 const isProfile = schemaType === 'ProfilePage' || canonical.includes('/profile/');
+const isSyllabus = canonical.includes('/syllabus/');
 
 const breadcrumbElements = canonical === `${site}/`
   ? [
@@ -117,10 +118,16 @@ const structuredData: {
       alternateName: [
         'IOE',
         'IOE Admission',
+        'IOE Predictor',
+        'IOE Entrance',
         'IOE Admission Hub',
+        'ioe syllabus',
+        'ioe marks',
+        'ioe campus',
+        'ioe question',
+        'ioe fee',
         'IOE Admission Hub by Dipesh Sapkota',
         'IOE Rank Predictor',
-        'IOE Predictor',
         'IOE Guide',
         'TU IOE Admission'
       ],
@@ -154,6 +161,12 @@ const structuredData: {
           '@id': `${site}/predictor/#webpage`,
           name: 'IOE Rank Predictor & Historical Cutoffs',
           url: `${site}/predictor/`
+        },
+        {
+          '@type': 'WebPage',
+          '@id': `${site}/syllabus/#webpage`,
+          name: 'IOE Entrance Syllabus & Exam Pattern',
+          url: `${site}/syllabus/`
         },
         {
           '@type': 'WebPage',
@@ -238,76 +251,83 @@ const structuredData: {
         {
           '@type': 'SiteNavigationElement',
           position: 2,
+          name: 'IOE Entrance Syllabus',
+          description: 'Official 140-mark syllabus breakdown for Mathematics, Physics, Chemistry, and English with exam blueprint.',
+          url: `${site}/syllabus/`
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 3,
+          name: 'IOE CBT Marks Calculator',
+          description: 'Calculate exact CBT score out of 140 with official 10% negative marking penalty rules.',
+          url: `${site}/calculator/`
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 4,
+          name: 'IOE Campuses & Seat Matrix',
+          description: 'Constituent campus profiles and 2,040 seat matrix capacities for Pulchowk, Thapathali, WRC, ERC, and Chitwan.',
+          url: `${site}/campuses/`
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 5,
+          name: 'IOE Fee Structure & Costs',
+          description: 'Official 4-year tuition fee breakdown across Regular, Full Fee, and hostel cost estimates.',
+          url: `${site}/financials/`
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 6,
           name: 'IOE Admission Guide',
           description: 'Step-by-step IOE counseling rules, merit-list rounds, auto-upgrades, and document verification.',
           url: `${site}/guide/`
         },
         {
           '@type': 'SiteNavigationElement',
-          position: 3,
-          name: 'IOE Campuses & Seats',
-          description: 'Constituent campus profiles and 2,040 seat matrix capacities for Pulchowk, Thapathali, WRC, ERC, and Chitwan.',
-          url: `${site}/campuses/`
-        },
-        {
-          '@type': 'SiteNavigationElement',
-          position: 4,
-          name: 'IOE Fee Structure & Living Costs',
-          description: 'Official 4-year tuition fee breakdown across Regular, Full Fee, Foreign, and hostel estimates.',
-          url: `${site}/financials/`
-        },
-        {
-          '@type': 'SiteNavigationElement',
-          position: 5,
-          name: 'IOE CBT Calculator',
-          description: 'Calculate exact CBT score out of 140 with official 10% negative marking penalty rules.',
-          url: `${site}/calculator/`
-        },
-        {
-          '@type': 'SiteNavigationElement',
-          position: 6,
+          position: 7,
           name: 'IOE Priority Form Optimizer',
           description: 'Build algorithmic Reach, Target, and Safety counseling preferences with cutoff benchmarks.',
           url: `${site}/priority/`
         },
         {
           '@type': 'SiteNavigationElement',
-          position: 7,
+          position: 8,
           name: 'IOE Score-to-Rank Estimator',
           description: 'Estimate historical IOE entrance merit-rank brackets from raw CBT entrance scores.',
           url: `${site}/estimator/`
         },
         {
           '@type': 'SiteNavigationElement',
-          position: 8,
+          position: 9,
           name: 'TU-Affiliated Colleges',
           description: 'Directory, programs, and estimated fee comparisons for 10 TU-affiliated private engineering colleges.',
           url: `${site}/affiliated/`
         },
         {
           '@type': 'SiteNavigationElement',
-          position: 9,
+          position: 10,
           name: 'Compare Engineering Disciplines',
           description: 'In-depth syllabus, core subject overlap, lab workshops, and career pathways across 12 disciplines.',
           url: `${site}/compare/`
         },
         {
           '@type': 'SiteNavigationElement',
-          position: 10,
+          position: 11,
           name: 'Admission Checklist',
           description: 'Step-by-step interactive checklist from entrance application to physical campus verification.',
           url: `${site}/checklist/`
         },
         {
           '@type': 'SiteNavigationElement',
-          position: 11,
+          position: 12,
           name: 'Official Notices & Circulars',
           description: 'Direct links and summaries of authentic IOE entrance examination notices, circulars, and merit lists.',
           url: `${site}/notices/`
         },
         {
           '@type': 'SiteNavigationElement',
-          position: 12,
+          position: 13,
           name: 'Dipesh Sapkota',
           description: 'Profile and background of Dipesh Sapkota, creator and builder of IOE Admission Hub.',
           url: `${site}/profile/`
@@ -454,6 +474,51 @@ if (isProfile) {
     ]
   });
 }
+
+if (isSyllabus) {
+  structuredData['@graph'].push({
+    '@type': 'Course',
+    '@id': `${canonical}#course`,
+    name: 'Tribhuvan University IOE Undergraduate Entrance Examination Syllabus',
+    description: 'Official chapter-wise syllabus for IOE entrance examination in Nepal: Mathematics (50 marks), Physics (45 marks), Chemistry (25 marks), and English (20 marks) totaling 140 marks.',
+    provider: {
+      '@type': 'Organization',
+      name: 'Institute of Engineering (IOE), Tribhuvan University'
+    },
+    educationalCredentialAwarded: 'IOE B.E. / B.Arch. Entrance Eligibility'
+  });
+
+  structuredData['@graph'].push({
+    '@type': 'FAQPage',
+    '@id': `${canonical}#faq`,
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What is the syllabus for the IOE entrance examination?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The IOE entrance examination syllabus covers 4 subjects: Mathematics (50 marks, 36 questions), Physics (45 marks, 33 questions), Chemistry (25 marks, 17 questions), and English (20 marks, 14 questions). Total exam marks is 140 with 100 multiple choice questions.'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'What is the question pattern and marking scheme for IOE CBT?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'The 2-hour CBT exam has 100 questions divided into Section A (60 questions of 1 mark each with 0.1 negative mark) and Section B (40 questions of 2 marks each with 0.2 negative mark). Passing requires at least 40% (56 marks).'
+        }
+      },
+      {
+        '@type': 'Question',
+        name: 'What are the highest weightage topics in IOE entrance?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'In Mathematics, Calculus and Coordinate Geometry contribute over 20 marks. In Physics, Mechanics and Electricity & Magnetism contribute over 24 marks. In Chemistry, Physical and Organic chemistry dominate with ~19 marks. English provides 20 high-efficiency marks.'
+        }
+      }
+    ]
+  });
+}
 ---
 <!doctype html>
 <html lang="en">
@@ -481,7 +546,7 @@ if (isProfile) {
     <meta name="author" content="Dipesh Sapkota" />
     <meta name="creator" content="Dipesh Sapkota" />
     <meta name="publisher" content="Dipesh Sapkota" />
-    <meta name="keywords" content={isProfile ? "Dipesh Sapkota, Dipesh Sapkota IOE, Dipesh Sapkota IOE Predictor, IOE Predictor Creator, Who created IOE Predictor, IOE Admission Hub Creator, Dipesh Sapkota Developer Nepal, Dszae, IOE Rank Predictor Dipesh" : "IOE, IOE Admission, IOE Admission Hub, IOE Entrance, IOE Rank Predictor, IOE Pulchowk, IOE Cutoff, IOE CBT Calculator, IOE Fee Structure, IOE Syllabus, IOE Counseling, Institute of Engineering Nepal, Tribhuvan University IOE, Dipesh Sapkota"} />
+    <meta name="keywords" content={isProfile ? "Dipesh Sapkota, Dipesh Sapkota IOE, Dipesh Sapkota IOE Predictor, IOE Predictor Creator, Who created IOE Predictor, IOE Admission Hub Creator, Dipesh Sapkota Developer Nepal, Dszae, IOE Rank Predictor Dipesh" : isSyllabus ? "ioe syllabus, IOE entrance syllabus, ioe marks, ioe question, ioe exam pattern, IOE physics syllabus, IOE mathematics syllabus, IOE chemistry syllabus, IOE english syllabus, IOE, IOE entrance, IOE entrance blueprint" : "IOE, IOE admission, IOE predictor, IOE entrance, IOE admission hub, ioe syllabus, ioe marks, ioe campus, ioe question, ioe fee, IOE Pulchowk, IOE Cutoff, IOE CBT Calculator, IOE Fee Structure, Institute of Engineering Nepal, Tribhuvan University IOE, Dipesh Sapkota"} />
     <meta name="geo.region" content="NP" />
     <meta name="geo.placename" content="Kathmandu, Nepal" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />

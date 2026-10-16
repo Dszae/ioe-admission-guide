@@ -12,6 +12,7 @@ import AdmissionGuide from './AdmissionGuide';
 import FacultyCompare from './FacultyCompare';
 import AffiliatedColleges from './AffiliatedColleges';
 import FinancialsBreakdown from './FinancialsBreakdown';
+import SyllabusExplorer from './SyllabusExplorer';
 
 export type TabId = 
   | 'predictor'
@@ -25,7 +26,8 @@ export type TabId =
   | 'guide'
   | 'checklist'
   | 'notices'
-  | 'financials';
+  | 'financials'
+  | 'syllabus';
 
 const SITE_ORIGIN = 'https://ioe-admission.dipeshsapkota7.com.np';
 
@@ -41,13 +43,14 @@ const TAB_PATHS: Record<TabId, string> = {
   guide: '/guide/',
   checklist: '/checklist/',
   notices: '/notices/',
-  financials: '/financials/'
+  financials: '/financials/',
+  syllabus: '/syllabus/'
 };
 
 const TAB_SEO: Record<TabId, [string, string]> = {
   predictor: ['IOE Rank Predictor & Historical Cutoffs | IOE Admission Hub', 'Compare IOE entrance merit ranks with official historical closing ranks by campus, program, fee category, and quota on IOE Admission Hub.'],
   profile: ['Dipesh Sapkota | Creator of IOE Predictor & IOE Admission Hub', 'Learn about Dipesh Sapkota, the software developer and creator of IOE Predictor and IOE Admission Hub in Nepal. Explore his background, developer story, and engineering tools.'],
-  calculator: ['IOE CBT Score Calculator (Negative Marking) | IOE Admission Hub', 'Calculate IOE CBT marks, duration, 40% pass threshold, and exact 10% negative-marking penalty rules on IOE Admission Hub.'],
+  calculator: ['IOE CBT Marks Calculator & Question Pattern (140 Full Marks) | IOE Admission Hub', 'Calculate IOE CBT marks, duration, 40% pass threshold, and exact 10% negative-marking penalty rules on IOE Admission Hub.'],
   estimator: ['IOE Score-to-Rank Estimator & Merit Curves | IOE Admission Hub', 'Estimate historical IOE entrance merit-rank brackets from raw CBT exam scores using benchmark percentile curves on IOE Admission Hub.'],
   campuses: ['IOE Constituent Campuses & 2,040 Seat Matrix | IOE Admission Hub', 'IOE constituent campus profiles, programs, facilities, and 2,040 seat matrix capacities for Pulchowk, Thapathali, WRC, ERC, and Chitwan.'],
   affiliated: ['TU-Affiliated Engineering Colleges Directory & Fees | IOE Admission Hub', 'Comprehensive reference directory and fee comparisons for 10 TU-affiliated private engineering colleges in Nepal.'],
@@ -56,7 +59,8 @@ const TAB_SEO: Record<TabId, [string, string]> = {
   guide: ['IOE Admission Guide & Counseling Handbook (2083/084) | IOE Admission Hub', 'Comprehensive IOE counseling handbook: merit-list rounds, auto-upgrade rules, physical document verification, and affirmative action quotas.'],
   checklist: ['IOE Admission Checklist & Document Verification | IOE Admission Hub', 'Track the complete IOE admission process from CBT registration through document verification with an interactive checklist.'],
   notices: ['IOE Admission Notices, Quota Circulars & Merit Lists | IOE Admission Hub', 'Browse authentic and source-linked IOE entrance and admission notices, circulars, and campus merit lists.'],
-  financials: ['IOE Engineering Tuition Fees & Living Costs Breakdown | IOE Admission Hub', 'Compare 4-year tuition costs between IOE Regular and Full Fee schemes, hostel expenses, and living cost estimates on IOE Admission Hub.']
+  financials: ['IOE Fee Structure & 4-Year Tuition Cost (Regular vs Full Fee) | IOE Admission Hub', 'Compare 4-year tuition costs between IOE Regular and Full Fee schemes, hostel expenses, and living cost estimates on IOE Admission Hub.'],
+  syllabus: ['IOE Entrance Syllabus & Marks Scheme (Physics, Math, Chem, English) | IOE Admission Hub', 'Complete official chapter-wise syllabus for Tribhuvan University IOE entrance examination: 140 marks blueprint, high-yield topics, formulas, and revision tracker.']
 };
 
 const TAB_LABELS: Record<TabId, string> = {
@@ -71,7 +75,8 @@ const TAB_LABELS: Record<TabId, string> = {
   guide: 'Admission Guide',
   checklist: 'Admission Checklist',
   notices: 'Admission Notices',
-  financials: 'Fees and Living Costs'
+  financials: 'Fees and Living Costs',
+  syllabus: 'Entrance Syllabus'
 };
 
 interface AppProps {
@@ -102,7 +107,7 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
           'predictor', 'profile', 'calculator', 'estimator', 
           'campuses', 'affiliated', 'compare', 
           'priority', 
-          'guide', 'checklist', 'notices', 'financials'
+          'guide', 'checklist', 'notices', 'financials', 'syllabus'
         ];
         if (tabParam && validTabs.includes(tabParam)) {
           return tabParam;
@@ -594,6 +599,7 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
             {activeTab === 'compare' && <FacultyCompare isDark={isDark} />}
             {activeTab === 'affiliated' && <AffiliatedColleges isDark={isDark} />}
             {activeTab === 'financials' && <FinancialsBreakdown isDark={isDark} />}
+            {activeTab === 'syllabus' && <SyllabusExplorer isDark={isDark} onNavigateTab={setActiveTab} />}
 
             {/* Bottom Breadcrumbs & Author Attribution */}
             {activeTab !== 'profile' && (

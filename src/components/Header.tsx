@@ -12,6 +12,7 @@ interface NavGroup {
 }
 
 const SECONDARY_TABS: NavItem[] = [
+  { id: 'syllabus', label: 'Entrance Syllabus' },
   { id: 'estimator', label: 'Score Curve' },
   { id: 'affiliated', label: 'Affiliated Colleges' },
   { id: 'compare', label: 'Compare Disciplines' },
@@ -23,10 +24,11 @@ const SECONDARY_TABS: NavItem[] = [
 
 const NAV_GROUPS: NavGroup[] = [
   {
-    title: 'Rank & Admission Odds',
+    title: 'Rank, CBT & Syllabus',
     items: [
       { id: 'predictor', label: 'Rank Predictor' },
-      { id: 'calculator', label: 'CBT Calculator' },
+      { id: 'syllabus', label: 'IOE Entrance Syllabus' },
+      { id: 'calculator', label: 'CBT Marks Calculator' },
       { id: 'estimator', label: 'Score-to-Rank Curve' }
     ]
   },
@@ -191,9 +193,10 @@ export default function Header({
           <nav className="hidden lg:flex items-center gap-1" aria-label="Quick Navigation">
             {([
               { id: 'predictor', label: 'Predictor', title: 'IOE Rank Predictor & Cutoffs' },
+              { id: 'syllabus', label: 'Syllabus', title: 'IOE Entrance Exam Syllabus & Marks' },
+              { id: 'calculator', label: 'Calculator', title: 'IOE CBT Score Calculator' },
               { id: 'campuses', label: 'Campuses', title: 'IOE Constituent Campuses & 2,040 Seats' },
               { id: 'priority', label: 'Priority', title: 'IOE Priority Form Optimizer' },
-              { id: 'calculator', label: 'Calculator', title: 'IOE CBT Score Calculator' },
               { id: 'guide', label: 'Guide', title: 'IOE Admission Guide & Handbook' }
             ] as const).map(tab => {
               const isActive = activeTab === tab.id;

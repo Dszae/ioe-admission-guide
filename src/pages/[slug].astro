@@ -4,9 +4,10 @@ import App, { type TabId } from '../components/App';
 
 const pages: Record<string, [string, string, string]> = {
   profile: ['Dipesh Sapkota | Creator of IOE Predictor & IOE Admission Hub', 'Learn about Dipesh Sapkota, the software developer and creator of IOE Predictor and IOE Admission Hub in Nepal. Explore his background, developer story, and engineering tools.', 'Dipesh Sapkota — Developer & Creator of IOE Predictor'],
-  predictor: ['IOE Rank Predictor & Historical Cutoffs | IOE Admission Hub', 'Compare IOE entrance merit ranks with official historical closing ranks by campus, program, fee category, and quota on IOE Admission Hub.', 'IOE Rank Predictor and Historical Closing Ranks'],
-  campuses: ['IOE Constituent Campuses & 2,040 Seat Matrix | IOE Admission Hub', 'IOE constituent campus profiles, programs, facilities, and 2,040 seat matrix capacities for Pulchowk, Thapathali, WRC, ERC, and Chitwan.', 'IOE Constituent Campuses and Seat Matrix'],
-  calculator: ['IOE CBT Score Calculator (Negative Marking) | IOE Admission Hub', 'Calculate IOE CBT marks, duration, 40% pass threshold, and exact 10% negative-marking penalty rules on IOE Admission Hub.', 'IOE CBT Score Calculator and Negative Marking Rules'],
+  predictor: ['IOE Rank Predictor & Historical Cutoff Intelligence | IOE Admission Hub', 'Compare IOE entrance merit ranks with official historical closing ranks by campus, program, fee category, and quota on IOE Admission Hub.', 'IOE Rank Predictor and Historical Closing Ranks'],
+  syllabus: ['IOE Entrance Syllabus & Marks Scheme (Physics, Math, Chem, English) | IOE Admission Hub', 'Official chapter-wise IOE entrance examination syllabus: 140 marks blueprint, 100 questions pattern, high-yield focus areas, formulas, and revision tracker.', 'IOE Entrance Examination Syllabus and Blueprint'],
+  campuses: ['IOE Constituent Campuses & 2,040 Seat Matrix (Pulchowk, Thapathali, WRC, ERC, Chitwan) | IOE Admission Hub', 'IOE constituent campus profiles, programs, facilities, and 2,040 seat matrix capacities for Pulchowk, Thapathali, WRC, ERC, and Chitwan.', 'IOE Constituent Campuses and Seat Matrix'],
+  calculator: ['IOE CBT Marks Calculator & Question Pattern (140 Full Marks) | IOE Admission Hub', 'Calculate IOE CBT marks, duration, 40% pass threshold, and exact 10% negative-marking penalty rules on IOE Admission Hub.', 'IOE CBT Score Calculator and Question Pattern'],
   estimator: ['IOE Score-to-Rank Estimator & Merit Curves | IOE Admission Hub', 'Estimate historical IOE entrance merit-rank brackets from raw CBT exam scores using benchmark percentile curves on IOE Admission Hub.', 'IOE Score-to-Rank Estimator'],
   priority: ['IOE Priority Form Optimizer & Counseling Strategy | IOE Admission Hub', 'Build an algorithmic Reach, Target, and Safety IOE counseling preference sequence using historical cutoff data on IOE Admission Hub.', 'IOE Priority Form Optimizer'],
   guide: ['IOE Admission Guide & Counseling Handbook (2083/084) | IOE Admission Hub', 'Comprehensive IOE counseling handbook: merit-list rounds, auto-upgrade rules, physical document verification, and affirmative action quotas.', 'IOE Admission Guide and Counseling Handbook'],
@@ -14,13 +15,14 @@ const pages: Record<string, [string, string, string]> = {
   notices: ['IOE Admission Notices, Quota Circulars & Merit Lists | IOE Admission Hub', 'Browse authentic and source-linked IOE entrance and admission notices, circulars, and campus merit lists.', 'IOE Admission Notices and Circulars'],
   affiliated: ['TU-Affiliated Engineering Colleges Directory & Fees | IOE Admission Hub', 'Comprehensive reference directory and fee comparisons for 10 TU-affiliated private engineering colleges in Nepal.', 'TU-Affiliated Engineering Colleges Directory'],
   compare: ['Compare IOE Engineering Disciplines & Career Scope | IOE Admission Hub', 'Compare IOE engineering discipline focus areas, curriculum overlap, and industry career directions on IOE Admission Hub.', 'Compare IOE Engineering Disciplines'],
-  financials: ['IOE Engineering Tuition Fees & Living Costs Breakdown | IOE Admission Hub', 'Compare 4-year tuition costs between IOE Regular and Full Fee schemes, hostel expenses, and living cost estimates on IOE Admission Hub.', 'IOE Engineering Tuition Fees and Living Costs']
+  financials: ['IOE Fee Structure & 4-Year Tuition Cost (Regular vs Full Fee) | IOE Admission Hub', 'Official IOE fee structure: compare 4-year tuition costs between Regular and Full Fee schemes across constituent campuses, hostel expenses, and living cost estimates.', 'IOE Fee Structure and Living Costs']
 };
 
 export function getStaticPaths() {
   return [
     'profile',
     'predictor',
+    'syllabus',
     'campuses',
     'calculator',
     'estimator',
