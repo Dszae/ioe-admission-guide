@@ -13,7 +13,8 @@ const { title, description, canonical, heading, schemaType = 'WebPage' } = Astro
 const site = 'https://ioe-admission.dipeshsapkota7.com.np';
 
 const isCalculator = canonical.includes('/calculator/');
-const isPredictor = canonical.includes('/predictor/') || canonical === `${site}/`;
+const isPredictor = canonical.includes('/predictor/');
+const isHomepage = canonical === `${site}/`;
 const isGuide = canonical.includes('/guide/');
 const isProfile = schemaType === 'ProfilePage' || canonical.includes('/profile/');
 const isSyllabus = canonical.includes('/syllabus/');
@@ -413,7 +414,7 @@ if (isPredictor || isCalculator) {
   });
 }
 
-if (canonical === `${site}/`) {
+if (isHomepage) {
   structuredData['@graph'].push({
     '@type': 'FAQPage',
     '@id': `${canonical}#faq`,
@@ -695,7 +696,7 @@ if (isSyllabus) {
     <meta name="description" content={description} />
     <meta name="author" content="Dipesh Sapkota" />
     <meta name="creator" content="Dipesh Sapkota" />
-    <meta name="keywords" content={isProfile ? "Dipesh Sapkota, Dipesh Sapkota IOE, Dipesh Sapkota IOE Predictor, IOE Predictor Creator, Who created IOE Predictor, IOE Admission Hub Creator, Dipesh Sapkota Developer Nepal, Dszae, IOE Rank Predictor Dipesh" : canonical.includes('/predictor/') ? "IOE Predictor, IOE Rank Predictor, IOE Entrance Predictor, IOE Cutoff Predictor, IOE Pulchowk Predictor, IOE Admission Predictor, IOE Predictor Nepal, Dipesh Sapkota IOE Predictor, IOE, IOE Entrance" : isSyllabus ? "ioe syllabus, IOE entrance syllabus, ioe marks, ioe question, ioe exam pattern, IOE physics syllabus, IOE mathematics syllabus, IOE chemistry syllabus, IOE english syllabus, IOE, IOE entrance, IOE entrance blueprint" : "IOE, IOE admission, IOE predictor, IOE entrance, IOE admission hub, ioe syllabus, ioe marks, ioe campus, ioe question, ioe fee, IOE Pulchowk, IOE Cutoff, IOE CBT Calculator, IOE Fee Structure, Institute of Engineering Nepal, Tribhuvan University IOE, Dipesh Sapkota"} />
+    <meta name="keywords" content={isProfile ? "Dipesh Sapkota, Dipesh Sapkota IOE, Dipesh Sapkota IOE Predictor, IOE Predictor Creator, Who created IOE Predictor, IOE Admission Hub Creator, Dipesh Sapkota Developer Nepal, Dszae, IOE Rank Predictor Dipesh" : isPredictor ? "IOE Predictor, IOE Rank Predictor, IOE Entrance Predictor, IOE Cutoff Predictor, IOE Pulchowk Predictor, IOE Admission Predictor, IOE Predictor Nepal, Dipesh Sapkota IOE Predictor, IOE Cutoff 2083" : isSyllabus ? "ioe syllabus, IOE entrance syllabus, ioe marks, ioe question, ioe exam pattern, IOE physics syllabus, IOE mathematics syllabus, IOE chemistry syllabus, IOE english syllabus, IOE entrance blueprint" : "IOE Admission Hub, IOE Admission, IOE, IOE entrance, IOE entrance guide, IOE Nepal, IOE Pulchowk admission, Tribhuvan University IOE, IOE Admission Hub by Dipesh Sapkota, Dipesh Sapkota, ioe syllabus, ioe marks, ioe campus, ioe fee"} />
     <meta name="geo.region" content="NP" />
     <meta name="geo.placename" content="Kathmandu, Nepal" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />

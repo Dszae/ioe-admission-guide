@@ -61,7 +61,7 @@ const TAB_SEO: Record<TabId, [string, string]> = {
   checklist: ['IOE Admission Checklist & Document Verification | IOE Admission Hub', 'Track the complete IOE admission process from CBT registration through document verification with an interactive checklist.'],
   notices: ['IOE Admission Notices, Quota Circulars & Merit Lists | IOE Admission Hub', 'Browse authentic and source-linked IOE entrance and admission notices, circulars, and campus merit lists.'],
   financials: ['IOE Fee Structure & 4-Year Tuition Cost (Regular vs Full Fee) | IOE Admission Hub', 'Compare 4-year tuition costs between IOE Regular and Full Fee schemes, hostel expenses, and living cost estimates on IOE Admission Hub.'],
-  syllabus: ['IOE Entrance Syllabus & Marks Scheme (Physics, Math, Chem, English) | IOE Admission Hub', 'Complete official chapter-wise syllabus for Tribhuvan University IOE entrance examination: 140 marks blueprint, high-yield topics, formulas, and revision tracker.']
+  syllabus: ['IOE Syllabus — Official IOE Entrance Examination Syllabus & Blueprint | IOE Admission Hub', 'Official IOE syllabus: Complete chapter-wise curriculum for Mathematics (50 marks), Physics (45 marks), Chemistry (25 marks), and English (20 marks) with CBT question blueprint.']
 };
 
 const TAB_LABELS: Record<TabId, string> = {
@@ -151,10 +151,10 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
     const isHomepage = activeTab === 'predictor' && (typeof window !== 'undefined' && window.location.pathname === '/');
     const [tabTitle, tabDesc] = TAB_SEO[activeTab] || TAB_SEO.predictor;
     const title = isHomepage
-      ? 'IOE Admission Hub | Central IOE Admission Guide, Rank Predictor & CBT Calculator'
+      ? 'IOE Admission Hub — Central TU IOE Entrance Portal & Admission Guide'
       : tabTitle;
     const description = isHomepage
-      ? 'IOE Admission Hub: the premier central admission portal for Tribhuvan University Institute of Engineering (IOE) applicants in Nepal. Predict entrance ranks, explore 2,040 constituent seats, calculate CBT negative marking scores, and optimize counseling priority.'
+      ? 'IOE Admission Hub: The central educational portal for Tribhuvan University engineering applicants in Nepal. Access official IOE entrance syllabus, 2,040 campus seat matrices, CBT marks calculator, fee structures, and the dedicated IOE Predictor.'
       : tabDesc;
     const tabUrl = `${SITE_ORIGIN}${isHomepage ? '/' : (TAB_PATHS[activeTab] || TAB_PATHS.predictor)}`;
     const setMeta = (selector: string, value: string) => {
