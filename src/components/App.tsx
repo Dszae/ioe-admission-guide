@@ -264,7 +264,7 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
                           </a>
                           {/* LinkedIn */}
                           <a
-                            href="https://www.linkedin.com/in/dipesh-sapkota/"
+                            href="https://www.linkedin.com/in/dipeshsapkota7/"
                             target="_blank"
                             rel="noopener noreferrer me"
                             title="LinkedIn"
@@ -403,8 +403,8 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
                           github.com/Dszae
                         </a>
                         , LinkedIn at{' '}
-                        <a href="https://www.linkedin.com/in/dipesh-sapkota/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline">
-                          linkedin.com/in/dipesh-sapkota
+                        <a href="https://www.linkedin.com/in/dipeshsapkota7/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline">
+                          linkedin.com/in/dipeshsapkota7
                         </a>
                         , or Instagram at{' '}
                         <a href="https://instagram.com/dsz.ae" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline">
@@ -555,7 +555,7 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
 
                       {/* LinkedIn */}
                       <a
-                        href="https://www.linkedin.com/in/dipesh-sapkota/"
+                        href="https://www.linkedin.com/in/dipeshsapkota7/"
                         target="_blank"
                         rel="noopener noreferrer me"
                         title="LinkedIn"

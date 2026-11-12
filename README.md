@@ -110,7 +110,7 @@ Software Developer & Creator of [IOE Admission Hub](https://ioe-admission.dipesh
 
 - 🌐 **Personal Website**: [https://www.dipeshsapkota7.com.np/](https://www.dipeshsapkota7.com.np/)
 - 🐙 **GitHub**: [@Dszae](https://github.com/Dszae)
-- 💼 **LinkedIn**: [in/dipesh-sapkota](https://www.linkedin.com/in/dipesh-sapkota/)
+- 💼 **LinkedIn**: [in/dipeshsapkota7](https://www.linkedin.com/in/dipeshsapkota7/)
 - 📸 **Instagram**: [@dsz.ae](https://instagram.com/dsz.ae)
 
 ---

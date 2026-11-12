@@ -169,7 +169,7 @@ export default function Footer({ isDark = false, showOfficialPortals = false }: 
 
             {/* LinkedIn Icon */}
             <a
-              href="https://www.linkedin.com/in/dipesh-sapkota/"
+              href="https://www.linkedin.com/in/dipeshsapkota7/"
               target="_blank"
               rel="noopener noreferrer me"
               title="LinkedIn Profile"
