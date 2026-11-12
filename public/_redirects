@@ -1,0 +1,15 @@
+# Edge-level 301 Permanent Redirects for canonical path consistency
+/index.html    /              301
+/predictor     /predictor/    301
+/syllabus      /syllabus/     301
+/calculator    /calculator/   301
+/campuses      /campuses/     301
+/priority      /priority/     301
+/guide         /guide/        301
+/estimator     /estimator/    301
+/financials    /financials/   301
+/affiliated    /affiliated/   301
+/compare       /compare/      301
+/checklist     /checklist/    301
+/notices       /notices/      301
+/profile       /profile/      301

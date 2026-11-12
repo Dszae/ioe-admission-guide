@@ -52,3 +52,4 @@ Allow: /
 Host: https://ioe-admission.dipeshsapkota7.com.np
 Sitemap: https://ioe-admission.dipeshsapkota7.com.np/sitemap-index.xml
 Sitemap: https://ioe-admission.dipeshsapkota7.com.np/sitemap-0.xml
+Sitemap: https://ioe-admission.dipeshsapkota7.com.np/sitemap.xml
