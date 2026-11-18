@@ -50,7 +50,7 @@ const TAB_PATHS: Record<TabId, string> = {
 
 const TAB_SEO: Record<TabId, [string, string]> = {
   predictor: ['IOE Predictor — Official IOE Entrance Rank Predictor & Cutoffs | IOE Admission Hub', 'IOE Predictor: Calculate your admission chances across Pulchowk, Thapathali, WRC, and ERC using official historical closing ranks. 100% free entrance rank predictor for TU IOE.'],
-  profile: ['Dipesh Sapkota | Creator of IOE Predictor & IOE Admission Hub', 'Learn about Dipesh Sapkota, the software developer and creator of IOE Predictor and IOE Admission Hub in Nepal. Explore his background, developer story, and engineering tools.'],
+  profile: ['Dipesh Sapkota — Creator of IOE Admission Hub', 'Dipesh Sapkota is the software developer and creator of IOE Admission Hub and IOE Predictor, building open-access engineering tools for students in Nepal.'],
   calculator: ['IOE CBT Marks Calculator & Question Pattern (140 Full Marks) | IOE Admission Hub', 'Calculate IOE CBT marks, duration, 40% pass threshold, and exact 10% negative-marking penalty rules on IOE Admission Hub.'],
   estimator: ['IOE Score-to-Rank Estimator & Merit Curves | IOE Admission Hub', 'Estimate historical IOE entrance merit-rank brackets from raw CBT exam scores using benchmark percentile curves on IOE Admission Hub.'],
   campuses: ['IOE Constituent Campuses & 2,040 Seat Matrix | IOE Admission Hub', 'IOE constituent campus profiles, programs, facilities, and 2,040 seat matrix capacities for Pulchowk, Thapathali, WRC, ERC, and Chitwan.'],
@@ -80,11 +80,12 @@ const TAB_LABELS: Record<TabId, string> = {
   syllabus: 'Entrance Syllabus'
 };
 
-interface AppProps {
+export interface AppProps {
   initialTab?: TabId;
+  isHomepage?: boolean;
 }
 
-export default function App({ initialTab = 'predictor' }: AppProps) {
+export default function App({ initialTab = 'predictor', isHomepage = false }: AppProps) {
   const isDark = false;
 
   useEffect(() => {
@@ -147,16 +148,18 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
     }
   }, [activeTab]);
 
+  const isCurrentHomepage = activeTab === 'predictor' && (isHomepage || (typeof window !== 'undefined' && (window.location.pathname === '/' || window.location.pathname === '')));
+
   useEffect(() => {
-    const isHomepage = activeTab === 'predictor' && (typeof window !== 'undefined' && window.location.pathname === '/');
+    const isHp = isCurrentHomepage;
     const [tabTitle, tabDesc] = TAB_SEO[activeTab] || TAB_SEO.predictor;
-    const title = isHomepage
-      ? 'IOE Admission Hub — Central TU IOE Entrance Portal & Admission Guide'
+    const title = isHp
+      ? 'IOE Admission Hub — TU IOE Entrance Portal & Guide'
       : tabTitle;
-    const description = isHomepage
-      ? 'IOE Admission Hub: The central educational portal for Tribhuvan University engineering applicants in Nepal. Access official IOE entrance syllabus, 2,040 campus seat matrices, CBT marks calculator, fee structures, and the dedicated IOE Predictor.'
+    const description = isHp
+      ? 'Central TU IOE entrance portal for Nepal. Access official IOE syllabus, 2,040 seat matrix, CBT marks calculator, fee structures, and the IOE Predictor.'
       : tabDesc;
-    const tabUrl = `${SITE_ORIGIN}${isHomepage ? '/' : (TAB_PATHS[activeTab] || TAB_PATHS.predictor)}`;
+    const tabUrl = `${SITE_ORIGIN}${isHp ? '/' : (TAB_PATHS[activeTab] || TAB_PATHS.predictor)}`;
     const setMeta = (selector: string, value: string) => {
       const element = document.querySelector(selector);
       if (element) element.setAttribute('content', value);
@@ -206,7 +209,7 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
             : 'bg-white border-slate-200/90 shadow-2xs'
         }`}>
           <main id="main-content" tabIndex={-1} className="min-w-0 focus:outline-none">
-            {activeTab === 'predictor' && <RankPredictor isDark={isDark} onNavigateTab={setActiveTab} />}
+            {activeTab === 'predictor' && <RankPredictor isDark={isDark} onNavigateTab={setActiveTab} isHomepage={isCurrentHomepage} />}
             {activeTab === 'profile' && (
               <article className="animate-fadeIn space-y-7 max-w-3xl mx-auto">
                 <nav aria-label="Breadcrumb" className="text-[11px] text-slate-500 dark:text-slate-400">
@@ -378,38 +381,49 @@ export default function App({ initialTab = 'predictor' }: AppProps) {
                     </svg>
                     Frequently Asked Questions about IOE Predictor &amp; Dipesh Sapkota
                   </h3>
-                  <div className="space-y-3 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                  <div className="space-y-4 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
                     <div>
                       <h4 className="font-bold text-slate-800 dark:text-slate-100">Who created the IOE Predictor?</h4>
                       <p className="mt-0.5">
-                        IOE Predictor was created and developed by <strong>Dipesh Sapkota</strong>, a software developer from Nepal, to provide free, accurate CBT scoring, rank forecasting, and counseling priority tools for Tribhuvan University engineering applicants.
+                        The IOE Predictor and IOE Admission Hub platform were created and developed by <strong>Dipesh Sapkota</strong>, a software developer from Kathmandu, Nepal, to provide transparent cutoff analytics, CBT score calculators, and counseling intelligence for Tribhuvan University engineering applicants.
                       </p>
                     </div>
                     <div>
-                      <h4 className="font-bold text-slate-800 dark:text-slate-100">What is IOE Predictor (IOE Admission Hub)?</h4>
+                      <h4 className="font-bold text-slate-800 dark:text-slate-100">Who is Dipesh Sapkota?</h4>
                       <p className="mt-0.5">
-                        It is an analytical web application featuring a 140-mark CBT exam score calculator with exact 10% negative marking penalty checks, an empirical score-to-rank curve estimator, and an automated priority setting sequence generator.
+                        Dipesh Sapkota is a software engineer, web developer, and the creator of IOE Admission Hub (IOE Predictor). He specializes in building accessible, data-driven web tools for education and open-source applications in Nepal.
                       </p>
                     </div>
                     <div>
-                      <h4 className="font-bold text-slate-800 dark:text-slate-100">Where can I find Dipesh Sapkota's official profiles?</h4>
+                      <h4 className="font-bold text-slate-800 dark:text-slate-100">What tools has Dipesh Sapkota built for IOE applicants?</h4>
                       <p className="mt-0.5">
-                        You can visit Dipesh Sapkota's official personal website at{' '}
+                        Dipesh Sapkota developed the IOE Merit Rank Predictor, CBT Negative Marking Calculator (140-mark test engine), Priority Form Sequence Optimizer, Score-to-Rank Estimator, 2,040 Constituent Seat Matrix Explorer, and Fee Structure Breakdown.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-slate-800 dark:text-slate-100">How can I connect with Dipesh Sapkota?</h4>
+                      <p className="mt-0.5">
+                        You can connect with Dipesh Sapkota via his official website ({' '}
                         <a href="https://www.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer author" className="text-blue-600 dark:text-blue-400 underline">
                           dipeshsapkota7.com.np
                         </a>
-                        , his GitHub at{' '}
+                        ), GitHub ({' '}
                         <a href="https://github.com/Dszae" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline">
-                          github.com/Dszae
+                          @Dszae
                         </a>
-                        , LinkedIn at{' '}
+                        ), LinkedIn ({' '}
                         <a href="https://www.linkedin.com/in/dipeshsapkota7/" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline">
-                          linkedin.com/in/dipeshsapkota7
+                          in/dipeshsapkota7
                         </a>
-                        , or Instagram at{' '}
+                        ), Instagram ({' '}
                         <a href="https://instagram.com/dsz.ae" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline">
                           @dsz.ae
-                        </a>.
+                        </a>
+                        ), and X/Twitter ({' '}
+                        <a href="https://x.com/Dszae" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline">
+                          @Dszae
+                        </a>
+                        ).
                       </p>
                     </div>
                   </div>

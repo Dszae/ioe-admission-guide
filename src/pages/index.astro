@@ -2,10 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import App from '../components/App';
 
-const title = 'IOE Admission Hub — Central TU IOE Entrance Portal & Admission Guide';
-const description = 'IOE Admission Hub: The central educational portal for Tribhuvan University engineering applicants in Nepal. Access official IOE entrance syllabus, 2,040 campus seat matrices, CBT marks calculator, fee structures, and the dedicated IOE Predictor.';
+const title = 'IOE Admission Hub — TU IOE Entrance Portal & Guide';
+const description = 'Central TU IOE entrance portal for Nepal. Access official IOE syllabus, 2,040 seat matrix, CBT marks calculator, fee structures, and the IOE Predictor.';
 const canonical = 'https://ioe-admission.dipeshsapkota7.com.np/';
 ---
 <Layout title={title} description={description} canonical={canonical} heading="IOE Admission Hub — Central TU IOE Entrance Guide & Admission Intelligence">
-  <App client:load initialTab="predictor" />
+  <App client:load initialTab="predictor" isHomepage={true} />
 </Layout>
