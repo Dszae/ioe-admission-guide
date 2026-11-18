@@ -49,7 +49,7 @@ const TAB_PATHS: Record<TabId, string> = {
 };
 
 const TAB_SEO: Record<TabId, [string, string]> = {
-  predictor: ['IOE Predictor — Official IOE Entrance Rank Predictor & Cutoffs | IOE Admission Hub', 'IOE Predictor: Calculate your admission chances across Pulchowk, Thapathali, WRC, and ERC using official historical closing ranks. 100% free entrance rank predictor for TU IOE.'],
+  predictor: ['IOE Predictor — TU Entrance Rank & Cutoff Intelligence', 'Calculate your TU IOE admission chances across Pulchowk, Thapathali, WRC, and ERC using verified historical closing ranks. Free rank predictor for IOE entrance.'],
   profile: ['Dipesh Sapkota — Creator of IOE Admission Hub', 'Dipesh Sapkota is the software developer and creator of IOE Admission Hub and IOE Predictor, building open-access engineering tools for students in Nepal.'],
   calculator: ['IOE CBT Marks Calculator & Question Pattern (140 Full Marks) | IOE Admission Hub', 'Calculate IOE CBT marks, duration, 40% pass threshold, and exact 10% negative-marking penalty rules on IOE Admission Hub.'],
   estimator: ['IOE Score-to-Rank Estimator & Merit Curves | IOE Admission Hub', 'Estimate historical IOE entrance merit-rank brackets from raw CBT exam scores using benchmark percentile curves on IOE Admission Hub.'],

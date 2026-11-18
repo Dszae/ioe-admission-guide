@@ -18,6 +18,8 @@ const isHomepage = canonical === `${site}/`;
 const isGuide = canonical.includes('/guide/');
 const isProfile = schemaType === 'ProfilePage' || canonical.includes('/profile/');
 const isSyllabus = canonical.includes('/syllabus/');
+const datePublished = '2024-09-01T00:00:00+05:45';
+const dateModified = '2026-11-18T20:00:00+05:45';
 
 const breadcrumbElements = canonical === `${site}/`
   ? [
@@ -345,6 +347,8 @@ const structuredData: {
       name: title,
       description,
       inLanguage: 'en',
+      datePublished,
+      dateModified,
       isPartOf: {
         '@id': `${site}/#website`
       },
@@ -492,7 +496,7 @@ if (canonical.includes('/predictor/')) {
         name: 'How does the IOE Predictor work?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'The IOE Predictor compares your entrance merit rank against official multi-phase closing rank cutoffs for Regular and Full Fee quotas across engineering disciplines (Computer, Civil, Electrical, Mechanical, etc.) to calculate realistic admission odds.'
+          text: 'The IOE Predictor compares your entrance merit rank against verified multi-phase closing rank cutoffs for Regular and Full Fee quotas across engineering disciplines (Computer, Civil, Electrical, Mechanical, etc.) to calculate realistic admission odds.'
         }
       },
       {
@@ -699,6 +703,9 @@ if (isSyllabus) {
     <meta name="description" content={description} />
     <meta name="author" content="Dipesh Sapkota" />
     <meta name="creator" content="Dipesh Sapkota" />
+    <meta property="article:published_time" content={datePublished} />
+    <meta property="article:modified_time" content={dateModified} />
+    <meta name="date" content={dateModified} />
     <meta name="keywords" content={isProfile ? "Dipesh Sapkota, Dipesh Sapkota IOE, Dipesh Sapkota IOE Predictor, IOE Predictor Creator, Who created IOE Predictor, IOE Admission Hub Creator, Dipesh Sapkota Developer Nepal, Dszae, IOE Rank Predictor Dipesh" : isPredictor ? "IOE Predictor, IOE Rank Predictor, IOE Entrance Predictor, IOE Cutoff Predictor, IOE Pulchowk Predictor, IOE Admission Predictor, IOE Predictor Nepal, Dipesh Sapkota IOE Predictor, IOE Cutoff 2083" : isSyllabus ? "ioe syllabus, IOE entrance syllabus, ioe marks, ioe question, ioe exam pattern, IOE physics syllabus, IOE mathematics syllabus, IOE chemistry syllabus, IOE english syllabus, IOE entrance blueprint" : "IOE Admission Hub, IOE Admission, IOE, IOE entrance, IOE entrance guide, IOE Nepal, IOE Pulchowk admission, Tribhuvan University IOE, IOE Admission Hub by Dipesh Sapkota, Dipesh Sapkota, ioe syllabus, ioe marks, ioe campus, ioe fee"} />
     <meta name="geo.region" content="NP" />
     <meta name="geo.placename" content="Kathmandu, Nepal" />
@@ -717,7 +724,7 @@ if (isSyllabus) {
     <meta property="og:image" content={isProfile ? `${site}/dipesh-sapkota-profile.webp` : `${site}/og-image.png`} />
     <meta property="og:image:width" content={isProfile ? "800" : "1200"} />
     <meta property="og:image:height" content={isProfile ? "800" : "630"} />
-    <meta property="og:image:alt" content={isProfile ? "Dipesh Sapkota — Creator of IOE Admission Hub" : "IOE Admission Hub by Dipesh Sapkota"} />
+    <meta property="og:image:alt" content={isProfile ? "Dipesh Sapkota — Creator of IOE Admission Hub" : "IOE Admission Hub — Central TU IOE Entrance Guide & Rank Intelligence by Dipesh Sapkota"} />
 
     <!-- Twitter Card -->
     <meta property="twitter:card" content="summary_large_image" />

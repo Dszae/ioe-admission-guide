@@ -194,7 +194,15 @@ export default function RankPredictor({ isDark = false, onNavigateTab, isHomepag
             : <>The dedicated <strong>IOE Predictor</strong> engine. Forecast your admission probability across Pulchowk, Thapathali, WRC, ERC, and Chitwan based on verified multi-round closing ranks.</>}
         </p>
         <p className="text-xs text-slate-500 dark:text-slate-400 pt-0.5">
-          Created and maintained by <a href="https://www.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer author" className="text-blue-700 dark:text-blue-400 hover:underline font-semibold">Dipesh Sapkota</a>.
+          Created and maintained by{' '}
+          <a href="https://www.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer author" className="text-blue-700 dark:text-blue-400 hover:underline font-semibold">
+            Dipesh Sapkota
+          </a>
+          {' '}(
+          <a href="https://www.wikidata.org/wiki/Q141595522" target="_blank" rel="noopener noreferrer me" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:underline">Wikidata</a>
+          {' • '}
+          <a href="https://orcid.org/0009-0001-7595-5114" target="_blank" rel="noopener noreferrer me" className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:underline">ORCID</a>
+          ).
         </p>
       </div>
 
@@ -516,86 +524,140 @@ export default function RankPredictor({ isDark = false, onNavigateTab, isHomepag
       )}
 
       {/* Frequently Asked Questions (Visible matching Schema.org FAQPage) */}
-      <section className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 print:hidden space-y-4" aria-labelledby="homepage-faq-heading">
-        <h2 id="homepage-faq-heading" className="text-sm sm:text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+      <section className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 print:hidden space-y-4" aria-labelledby="faq-heading">
+        <h2 id="faq-heading" className="text-sm sm:text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
           <svg className="w-4 h-4 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          Frequently Asked Questions
+          {isHomepage ? 'Frequently Asked Questions about IOE Admission Hub' : 'Frequently Asked Questions about IOE Predictor'}
         </h2>
 
         <div className="space-y-2.5 text-xs sm:text-sm">
-          <details className="group rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/50 p-3.5 transition-colors open:bg-slate-50 dark:open:bg-slate-800/80">
-            <summary className="cursor-pointer font-semibold text-slate-800 dark:text-slate-100 flex items-center justify-between gap-3 list-none">
-              <span>What is IOE and IOE Admission?</span>
-              <svg className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </summary>
-            <p className="mt-2.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-700/60 pt-2.5">
-              IOE stands for Institute of Engineering, Tribhuvan University, the premier engineering institution in Nepal. IOE Admission refers to the centralized merit-based counseling process for allocating 2,040 constituent seats across Pulchowk, Thapathali, Pashchimanchal (WRC), Purwanchal (ERC), and Chitwan campuses based on the entrance Computer-Based Test (CBT).
-            </p>
-          </details>
+          {isHomepage ? (
+            <>
+              <details className="group rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/50 p-3.5 transition-colors open:bg-slate-50 dark:open:bg-slate-800/80">
+                <summary className="cursor-pointer font-semibold text-slate-800 dark:text-slate-100 flex items-center justify-between gap-3 list-none">
+                  <span>What is IOE and IOE Admission?</span>
+                  <svg className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="mt-2.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-700/60 pt-2.5">
+                  IOE stands for Institute of Engineering, Tribhuvan University, the premier engineering institution in Nepal. IOE Admission refers to the centralized merit-based counseling process for allocating 2,040 constituent seats across Pulchowk, Thapathali, Pashchimanchal (WRC), Purwanchal (ERC), and Chitwan campuses based on the entrance Computer-Based Test (CBT).
+                </p>
+              </details>
 
-          <details className="group rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/50 p-3.5 transition-colors open:bg-slate-50 dark:open:bg-slate-800/80">
-            <summary className="cursor-pointer font-semibold text-slate-800 dark:text-slate-100 flex items-center justify-between gap-3 list-none">
-              <span>What is the IOE Predictor and how does it predict admission cutoffs?</span>
-              <svg className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </summary>
-            <p className="mt-2.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-700/60 pt-2.5">
-              The IOE Predictor (available at <a href="/predictor/" className="text-blue-600 dark:text-blue-400 underline font-medium">ioe-admission.dipeshsapkota7.com.np/predictor/</a>) is an entrance rank forecasting algorithm created by Dipesh Sapkota. It compares an applicant's merit rank against verified historical closing ranks across all campuses, programs, and quotas to determine admission probability.
-            </p>
-          </details>
+              <details className="group rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/50 p-3.5 transition-colors open:bg-slate-50 dark:open:bg-slate-800/80">
+                <summary className="cursor-pointer font-semibold text-slate-800 dark:text-slate-100 flex items-center justify-between gap-3 list-none">
+                  <span>What is the IOE Predictor and how does it predict admission cutoffs?</span>
+                  <svg className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="mt-2.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-700/60 pt-2.5">
+                  The IOE Predictor (available at <a href="/predictor/" className="text-blue-600 dark:text-blue-400 underline font-medium">ioe-admission.dipeshsapkota7.com.np/predictor/</a>) is an entrance rank forecasting algorithm created by Dipesh Sapkota. It compares an applicant's merit rank against verified historical closing ranks across all campuses, programs, and quotas to determine admission probability.
+                </p>
+              </details>
 
-          <details className="group rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/50 p-3.5 transition-colors open:bg-slate-50 dark:open:bg-slate-800/80">
-            <summary className="cursor-pointer font-semibold text-slate-800 dark:text-slate-100 flex items-center justify-between gap-3 list-none">
-              <span>What is IOE Admission Hub?</span>
-              <svg className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </summary>
-            <p className="mt-2.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-700/60 pt-2.5">
-              IOE Admission Hub is a free, centralized educational portal by Dipesh Sapkota providing engineering aspirants in Nepal with the IOE Predictor, official IOE entrance syllabus, CBT marks calculator with negative marking, 2,040 campus seat matrices, fee structures, and priority counseling optimization.
-            </p>
-          </details>
+              <details className="group rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/50 p-3.5 transition-colors open:bg-slate-50 dark:open:bg-slate-800/80">
+                <summary className="cursor-pointer font-semibold text-slate-800 dark:text-slate-100 flex items-center justify-between gap-3 list-none">
+                  <span>What is IOE Admission Hub?</span>
+                  <svg className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="mt-2.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-700/60 pt-2.5">
+                  IOE Admission Hub is a free, centralized educational portal by Dipesh Sapkota providing engineering aspirants in Nepal with the IOE Predictor, official IOE entrance syllabus, CBT marks calculator with negative marking, 2,040 campus seat matrices, fee structures, and priority counseling optimization.
+                </p>
+              </details>
 
-          <details className="group rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/50 p-3.5 transition-colors open:bg-slate-50 dark:open:bg-slate-800/80">
-            <summary className="cursor-pointer font-semibold text-slate-800 dark:text-slate-100 flex items-center justify-between gap-3 list-none">
-              <span>What is the official IOE Entrance Examination syllabus and question pattern?</span>
-              <svg className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </summary>
-            <p className="mt-2.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-700/60 pt-2.5">
-              The official IOE entrance examination is a 2-hour Computer-Based Test (CBT) carrying 140 full marks with 100 questions: Mathematics (50 marks), Physics (45 marks), Chemistry (25 marks), and English (20 marks). It features a 10% negative marking penalty (-0.1 for 1-mark and -0.2 for 2-mark questions) and requires 40% (56 marks) to pass.
-            </p>
-          </details>
+              <details className="group rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/50 p-3.5 transition-colors open:bg-slate-50 dark:open:bg-slate-800/80">
+                <summary className="cursor-pointer font-semibold text-slate-800 dark:text-slate-100 flex items-center justify-between gap-3 list-none">
+                  <span>What is the official IOE Entrance Examination syllabus and question pattern?</span>
+                  <svg className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="mt-2.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-700/60 pt-2.5">
+                  The official IOE entrance examination is a 2-hour Computer-Based Test (CBT) carrying 140 full marks with 100 questions: Mathematics (50 marks), Physics (45 marks), Chemistry (25 marks), and English (20 marks). It features a 10% negative marking penalty (-0.1 for 1-mark and -0.2 for 2-mark questions) and requires 40% (56 marks) to pass.
+                </p>
+              </details>
 
-          <details className="group rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/50 p-3.5 transition-colors open:bg-slate-50 dark:open:bg-slate-800/80">
-            <summary className="cursor-pointer font-semibold text-slate-800 dark:text-slate-100 flex items-center justify-between gap-3 list-none">
-              <span>How can I calculate my IOE CBT marks and entrance rank?</span>
-              <svg className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </summary>
-            <p className="mt-2.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-700/60 pt-2.5">
-              You can use the IOE CBT Calculator (<a href="/calculator/" className="text-blue-600 dark:text-blue-400 underline font-medium">calculator</a>) to compute your exact net score with negative marking penalty, and the IOE Predictor (<a href="/predictor/" className="text-blue-600 dark:text-blue-400 underline font-medium">predictor</a>) to estimate your admission chances into constituent campuses.
-            </p>
-          </details>
+              <details className="group rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/50 p-3.5 transition-colors open:bg-slate-50 dark:open:bg-slate-800/80">
+                <summary className="cursor-pointer font-semibold text-slate-800 dark:text-slate-100 flex items-center justify-between gap-3 list-none">
+                  <span>How can I calculate my IOE CBT marks and entrance rank?</span>
+                  <svg className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="mt-2.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-700/60 pt-2.5">
+                  You can use the IOE CBT Calculator (<a href="/calculator/" className="text-blue-600 dark:text-blue-400 underline font-medium">calculator</a>) to compute your exact net score with negative marking penalty, and the IOE Predictor (<a href="/predictor/" className="text-blue-600 dark:text-blue-400 underline font-medium">predictor</a>) to estimate your admission chances into constituent campuses.
+                </p>
+              </details>
 
-          <details className="group rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/50 p-3.5 transition-colors open:bg-slate-50 dark:open:bg-slate-800/80">
-            <summary className="cursor-pointer font-semibold text-slate-800 dark:text-slate-100 flex items-center justify-between gap-3 list-none">
-              <span>Who built and maintains IOE Admission Hub and IOE Predictor?</span>
-              <svg className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </summary>
-            <p className="mt-2.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-700/60 pt-2.5">
-              IOE Admission Hub and IOE Predictor were engineered and developed by <a href="https://www.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer author" className="text-blue-700 dark:text-blue-400 font-semibold underline">Dipesh Sapkota</a>, a software developer from Kathmandu, Nepal, to provide open-source, accurate entrance and cutoff intelligence for engineering students.
-            </p>
-          </details>
+              <details className="group rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/50 p-3.5 transition-colors open:bg-slate-50 dark:open:bg-slate-800/80">
+                <summary className="cursor-pointer font-semibold text-slate-800 dark:text-slate-100 flex items-center justify-between gap-3 list-none">
+                  <span>Who built and maintains IOE Admission Hub and IOE Predictor?</span>
+                  <svg className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="mt-2.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-700/60 pt-2.5">
+                  IOE Admission Hub and IOE Predictor were engineered and developed by <a href="https://www.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer author" className="text-blue-700 dark:text-blue-400 font-semibold underline">Dipesh Sapkota</a>, a software developer from Kathmandu, Nepal, to provide open-source, accurate entrance and cutoff intelligence for engineering students.
+                </p>
+              </details>
+            </>
+          ) : (
+            <>
+              <details className="group rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/50 p-3.5 transition-colors open:bg-slate-50 dark:open:bg-slate-800/80">
+                <summary className="cursor-pointer font-semibold text-slate-800 dark:text-slate-100 flex items-center justify-between gap-3 list-none">
+                  <span>What is the IOE Predictor?</span>
+                  <svg className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="mt-2.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-700/60 pt-2.5">
+                  The IOE Predictor is an entrance rank and admission forecasting engine created by Dipesh Sapkota. It accurately estimates an engineering applicant's admission chances across Pulchowk, Thapathali, WRC, ERC, and Chitwan campuses based on verified historical closing cutoffs.
+                </p>
+              </details>
+
+              <details className="group rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/50 p-3.5 transition-colors open:bg-slate-50 dark:open:bg-slate-800/80">
+                <summary className="cursor-pointer font-semibold text-slate-800 dark:text-slate-100 flex items-center justify-between gap-3 list-none">
+                  <span>How does the IOE Predictor work?</span>
+                  <svg className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="mt-2.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-700/60 pt-2.5">
+                  The IOE Predictor compares your entrance merit rank against verified multi-phase closing rank cutoffs for Regular and Full Fee quotas across engineering disciplines (Computer, Civil, Electrical, Mechanical, etc.) to calculate realistic admission odds.
+                </p>
+              </details>
+
+              <details className="group rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/50 p-3.5 transition-colors open:bg-slate-50 dark:open:bg-slate-800/80">
+                <summary className="cursor-pointer font-semibold text-slate-800 dark:text-slate-100 flex items-center justify-between gap-3 list-none">
+                  <span>Can the IOE Predictor predict admission odds for Pulchowk Campus?</span>
+                  <svg className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="mt-2.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-700/60 pt-2.5">
+                  Yes, the IOE Predictor contains comprehensive historical cutoff datasets for Pulchowk Campus across all quotas (Open, Female, Janajati) and both Regular and Full Fee schemes.
+                </p>
+              </details>
+
+              <details className="group rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/70 dark:bg-slate-800/50 p-3.5 transition-colors open:bg-slate-50 dark:open:bg-slate-800/80">
+                <summary className="cursor-pointer font-semibold text-slate-800 dark:text-slate-100 flex items-center justify-between gap-3 list-none">
+                  <span>Who created the IOE Predictor?</span>
+                  <svg className="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="mt-2.5 text-xs text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-200/60 dark:border-slate-700/60 pt-2.5">
+                  The IOE Predictor was created and built by <a href="https://www.dipeshsapkota7.com.np/" target="_blank" rel="noopener noreferrer author" className="text-blue-700 dark:text-blue-400 font-semibold underline">Dipesh Sapkota</a>, a software developer from Kathmandu, Nepal, to help engineering aspirants navigate IOE admissions with confidence.
+                </p>
+              </details>
+            </>
+          )}
         </div>
       </section>
 
